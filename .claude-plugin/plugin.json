@@ -1,0 +1,11 @@
+{
+  "name": "ui-design-format",
+  "version": "10.0.0",
+  "description": "通用網頁介面設計系統：六套風格 × 十二組核心 ＋ SC1 色系、十三級字級、間距標尺、62 項元件與四項交付前自動檢查。",
+  "author": {
+    "name": "art0428"
+  },
+  "homepage": "https://art0428.github.io/webdesign/",
+  "repository": "https://github.com/art0428/webdesign",
+  "license": "MIT"
+}
