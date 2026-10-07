@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>通用規範 FOUNDATIONS ─ 管理者工作室 設計系統</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+/* ══ 字級、行距、間距 tokens v2 ══ 與 tokens.css 同源 */
+html{font-size:62.5%}
+:root,[data-type="productive"]{
+ --fs-d1:3.0rem;--lh-d1:1.15;--ls-d1:-0.01em; --fs-h1:2.1rem;--lh-h1:1.40;--ls-h1:0.03em;
+ --fs-h2:1.7rem;--lh-h2:1.45;--ls-h2:0.06em;  --fs-h3:1.4rem;--lh-h3:1.50;--ls-h3:0.08em;
+ --fs-b1:1.4rem;--lh-b1:1.80; --fs-b2:1.25rem;--lh-b2:1.70; --fs-b3:1.2rem;--lh-b3:1.70;
+ --fs-l1:1.2rem;--lh-l1:1.50;--ls-l1:0.08em; --fs-l2:1.1rem;--lh-l2:1.50;--ls-l2:0.15em;
+ --fs-n1:2.3rem;--lh-n1:1.20; --fs-n2:1.9rem;--lh-n2:1.25; --fs-n3:1.25rem;--lh-n3:1.60; --fs-n4:1.25rem;--lh-n4:1.60;--ls-n4:0.02em;
+ --sp-1:0.4rem;--sp-2:0.8rem;--sp-3:1.2rem;--sp-4:1.6rem;--sp-5:2.0rem;--sp-6:2.4rem;--sp-7:3.2rem;--sp-8:4.0rem;--sp-9:4.8rem;--sp-10:6.4rem;
+ --r-lg:16px;--r-sm:12px;--r-pill:999px;--bw:1px;--bw-on:1.5px}
+[data-type="expressive"]{
+ --fs-d1:4.4rem;--lh-d1:1.10; --fs-h1:3.0rem;--lh-h1:1.35; --fs-h2:2.2rem;--lh-h2:1.40; --fs-h3:1.6rem;--lh-h3:1.50;
+ --fs-b1:1.6rem;--lh-b1:1.90; --fs-b2:1.4rem;--lh-b2:1.80; --fs-b3:1.3rem;--lh-b3:1.90;
+ --fs-l1:1.2rem;--lh-l1:1.50; --fs-l2:1.1rem;--lh-l2:1.50;
+ --fs-n1:3.0rem;--lh-n1:1.15; --fs-n2:2.3rem;--lh-n2:1.20; --fs-n3:1.4rem;--lh-n3:1.60; --fs-n4:1.3rem;--lh-n4:1.60}
+@media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem}}
+.num,.amt,.price{font-variant-numeric:tabular-nums}
+
+/* ══ 頁面本身：中性版面（不屬於任何風格），灰階跟著所選風格換 ══ */
+:root{
+ --ink:#26292E;--muted:#6F6B64;--line:#E4E2DE;--band:#FBFAF8;--page:#F6F5F2;--card:#FFFFFF;
+ --acc:#2B5FB8;--accsoft:#EDF1F9;--acc2:#C2377B;--acc2soft:#FAEEF4;--acc2-deep:#BA3576;
+ --err:#B23F2F;--err-soft:#F7ECEA;--wrn:#846200;--wrn-soft:#F3EFE6;--ok:#2A722E;--ok-soft:#EAF1EA;--info:#1A66AA;--info-soft:#E8F0F6;
+ --font-cjk:'Noto Sans TC',sans-serif;--font-num:Arial,Helvetica,'Noto Sans TC',sans-serif}
+*{box-sizing:border-box}
+body{margin:0;font-family:var(--font-cjk);font-size:var(--fs-b1);line-height:var(--lh-b1);color:var(--ink);background:var(--page);padding:0.4rem 1.6rem 6.4rem}
+.wrap{max-width:1080px;margin:0 auto}
+.head{padding:2.4rem 0 1.6rem}
+.kick{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:0.15em;font-weight:700;color:var(--muted);font-family:var(--font-num)}
+h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:0.03em;font-weight:900;margin:0.4rem 0 0.8rem}
+.head p{margin:0;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);max-width:760px}
+.head p b{color:var(--ink)}
+.now{display:flex;gap:0.8rem;flex-wrap:wrap;margin-top:1.2rem}
+.now span{display:inline-flex;align-items:center;gap:0.8rem;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:0.4rem 1.2rem 0.4rem 0.4rem;font-size:var(--fs-l1);line-height:var(--lh-l1);font-weight:700;letter-spacing:0.08em}
+.now i{width:1.8rem;height:1.8rem;border-radius:50%;display:inline-block}
+.sec{display:flex;align-items:center;gap:1.2rem;margin:3.2rem 0 0.8rem}
+.sec .no{font-family:var(--font-num);font-size:var(--fs-l1);font-weight:700;color:var(--acc);letter-spacing:0.08em}
+.sec h2{margin:0;font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:0.06em;font-weight:900}
+.sec .rule{flex:1;border-top:1px solid var(--line)}
+.sec .en{font-family:var(--font-num);font-size:var(--fs-l2);letter-spacing:0.15em;color:var(--muted);font-weight:700}
+.use{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);margin:0 0 1.6rem}
+.use b{color:var(--ink)}
+.board{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:1.6rem 2.0rem}
+.cap{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:0.15em;font-weight:700;color:var(--muted)}
+.rowset{display:flex;gap:2.4rem;flex-wrap:wrap;align-items:flex-start}
+table{border-collapse:collapse;width:100%}
+th{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:0.15em;color:var(--muted);text-align:left;font-weight:700;padding:0.8rem 1.2rem;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:1.2rem;border-bottom:1px solid var(--line);vertical-align:middle;font-size:var(--fs-b2);line-height:var(--lh-b2)}
+tr:last-child td{border-bottom:none}
+td.code{font-family:var(--font-num);font-weight:700;color:var(--acc);width:5rem}
+td.spec{font-family:var(--font-num);font-size:var(--fs-n4);color:var(--muted);white-space:nowrap}
+td.spec b{color:var(--ink);font-weight:700}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--card)}
+.seg button{border:none;background:none;padding:0.8rem 1.6rem;font-family:inherit;font-size:var(--fs-b3);font-weight:500;color:var(--ink);cursor:pointer;min-height:3.2rem}
+.seg button.on{background:var(--acc);color:#fff;font-weight:700}
+.ctl{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;margin-bottom:1.6rem}
+.ctl .lbl{font-size:var(--fs-l1);letter-spacing:0.08em;font-weight:700;color:var(--muted)}
+/* 字級樣本 */
+.t-d1{font-family:var(--font-num);font-size:var(--fs-d1);line-height:var(--lh-d1);letter-spacing:-0.01em;font-weight:700}
+.t-h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:0.03em;font-weight:900}
+.t-h2{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:0.06em;font-weight:900}
+.t-h3{font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:0.08em;font-weight:900}
+.t-b1{font-size:var(--fs-b1);line-height:var(--lh-b1)}
+.t-b2{font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.t-b3{font-size:var(--fs-b3);line-height:var(--lh-b3)}
+.t-l1{font-size:var(--fs-l1);line-height:var(--lh-l1);letter-spacing:0.08em;font-weight:700}
+.t-l2{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:0.15em;font-weight:700}
+.t-n1{font-family:var(--font-num);font-size:var(--fs-n1);line-height:var(--lh-n1);font-weight:700}
+.t-n2{font-family:var(--font-num);font-size:var(--fs-n2);line-height:var(--lh-n2);font-weight:700}
+.t-n3{font-family:var(--font-num);font-size:var(--fs-n3);line-height:var(--lh-n3);font-weight:700}
+.t-n4{font-family:var(--font-num);font-size:var(--fs-n4);line-height:var(--lh-n4);letter-spacing:0.02em}
+.t-n1 small,.t-n2 small{font-size:.68em;color:var(--muted);font-weight:400;margin-right:0.4rem}
+td.sample{width:46%}
+/* 行距比較 */
+.lhbox{flex:1 1 280px;border:1px solid var(--line);border-radius:var(--r-sm);padding:1.6rem 2.0rem;background:var(--band)}
+.lhbox .cap{margin-bottom:0.8rem}
+.lhbox p{margin:0;font-size:var(--fs-b1)}
+.lhbox.bad{border-style:dashed}
+.lhbox.bad .cap{color:var(--err)}
+/* 間距標尺 */
+.scale{display:grid;grid-template-columns:6rem 1fr 1fr;gap:0.8rem 1.6rem;align-items:center;font-size:var(--fs-b2)}
+.scale .tk{font-family:var(--font-num);font-weight:700;color:var(--acc)}
+.scale .bar{height:1.4rem;background:var(--acc);border-radius:3px;display:inline-block;vertical-align:middle;margin-right:0.8rem}
+.scale .v{font-family:var(--font-num);color:var(--muted);font-size:var(--fs-n4)}
+.scale .u{color:var(--muted);font-size:var(--fs-b3)}
+.padd{border:1px dashed var(--acc);border-radius:var(--r-lg);padding:1.6rem 2.0rem;background:var(--accsoft);position:relative;font-size:var(--fs-b3);color:var(--muted);flex:0 0 auto}
+.padd b{display:block;color:var(--ink);font-size:var(--fs-h3);letter-spacing:0.08em;font-weight:900}
+.padd .in{background:var(--card);border:1px solid var(--line);border-radius:var(--r-sm);padding:1.2rem;text-align:center}
+.padd .tv{position:absolute;left:50%;top:0.2rem;transform:translateX(-50%);font-family:var(--font-num);font-size:var(--fs-l2);font-weight:700;color:var(--acc)}
+.padd .th{position:absolute;left:0.3rem;top:50%;transform:translateY(-50%);font-family:var(--font-num);font-size:var(--fs-l2);font-weight:700;color:var(--acc)}
+/* 圓角 */
+.rad{display:flex;gap:2.0rem;flex-wrap:wrap}
+.rad div{width:12rem;text-align:center;font-size:var(--fs-b3);color:var(--muted)}
+.rad i{display:block;height:7.2rem;border:1.5px solid var(--ink);background:var(--card);margin-bottom:0.8rem}
+.rad b{display:block;color:var(--ink);font-family:var(--font-num)}
+/* 高度 */
+.hgt{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:flex-end}
+.hgt .h{display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:999px;padding:0 2.4rem;font-size:var(--fs-b2);font-weight:700;background:var(--card)}
+.hgt .h.p{background:var(--acc);color:#fff;border-color:var(--acc)}
+.hgt .h.i{border-radius:var(--r-sm);color:var(--muted);font-weight:400;justify-content:flex-start;width:18rem}
+.hgt .h.s{font-size:var(--fs-l1);letter-spacing:0.08em;background:var(--wrn-soft);color:var(--wrn);border-color:transparent}
+.hgt figure{margin:0;text-align:center}
+.hgt figcaption{font-family:var(--font-num);font-size:var(--fs-l2);letter-spacing:0.15em;color:var(--muted);font-weight:700;margin-top:0.8rem}
+/* 色彩 */
+.sw{display:grid;grid-template-columns:repeat(auto-fill,minmax(14rem,1fr));gap:1.2rem}
+.sw div{border:1px solid var(--line);border-radius:var(--r-sm);overflow:hidden;background:var(--card);font-size:var(--fs-l1);line-height:var(--lh-l1)}
+.sw i{display:block;height:5.2rem}
+.sw b{display:block;padding:0.8rem 1.2rem 0;letter-spacing:0.08em}
+.sw small{display:block;padding:0 1.2rem 0.8rem;font-family:var(--font-num);color:var(--muted);font-size:var(--fs-l2)}
+.onc{display:flex;gap:1.2rem;flex-wrap:wrap;margin-top:1.6rem}
+.onc span{padding:0.8rem 1.6rem;border-radius:var(--r-sm);font-size:var(--fs-b2);font-weight:700}
+/* RWD */
+.bp{display:flex;gap:1.2rem;align-items:flex-end;flex-wrap:wrap}
+.bp figure{margin:0;text-align:center;font-size:var(--fs-b3);color:var(--muted)}
+.bp i{display:block;border:1.5px solid var(--ink);border-radius:8px;background:var(--card);margin:0 auto 0.8rem;position:relative}
+.bp i::after{content:"";position:absolute;left:12%;top:12%;width:22%;bottom:12%;background:var(--accsoft);border-radius:3px}
+.bp i.ph::after{left:12%;right:12%;top:auto;bottom:10%;height:16%;width:auto;background:var(--acc)}
+.bp b{display:block;color:var(--ink);font-family:var(--font-num)}
+.rules{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(24rem,1fr));gap:1.2rem}
+.rules li{border:1px solid var(--line);border-radius:var(--r-sm);padding:1.2rem 1.6rem;font-size:var(--fs-b3);line-height:var(--lh-b3);background:var(--band)}
+.rules li b{display:block;color:var(--ink);font-size:var(--fs-b2);margin-bottom:0.4rem}
+.rules li .num{color:var(--acc);font-weight:700}
+.foot{margin-top:4.0rem;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);border-top:1px solid var(--line);padding-top:1.6rem}
+@media (max-width:767px){body{padding:0.4rem 1.6rem 4.8rem}.board{padding:1.6rem}td.sample{width:auto}.scale{grid-template-columns:5rem 1fr}.scale .u{grid-column:2}}
+</style>
+<div class="wrap">
+  <div class="head">
+    <div class="kick">管理者工作室 ─ DESIGN SYSTEM · FOUNDATIONS</div>
+    <h1>通用規範（六套風格共用）</h1>
+    <p>這一頁的每個數值<b>不隨風格改變</b>：字級十三級、行距、字距、間距標尺、圓角、元件高度、語意色、斷點。換風格只會換下方「結構灰階」那一組值；換色系只會換「品牌雙色」。所有數值直接讀自 <b>tokens.css</b>，與六套元件庫用的是同一份，因此這裡顯示的就是元件真正用的值。</p>
+    <div class="now"><span><i id="swA"></i><span id="nmPair">C1 深海藍</span></span><span><i id="swS" style="background:#26292E"></i><span id="nmStyle">S1 奶油 的灰階</span></span></div>
+  </div>
+
+  <div class="sec"><span class="no">01</span><h2>字級十三級</h2><span class="rule"></span><span class="en">TYPE SCALE</span></div>
+  <p class="use">兩套並存：<b>Productive 效率型</b>給後台、購物車、結帳；<b>Expressive 表現型</b>給前台商品頁、目錄、首頁。以 <code>body[data-type]</code> 切換，元件一行不用改。字級與行距綁在同一級裡定義，寫 <code>var(--fs-b1)</code> 就該同時寫 <code>var(--lh-b1)</code>。下方樣本是即時渲染，切換放大倍率可驗收 125%／150% 下的排版（規範 v2 第 4.5 節）。</p>
+  <div class="ctl">
+    <span class="lbl">字級組</span>
+    <span class="seg" id="typeSeg"><button class="on" data-t="productive">Productive 效率型</button><button data-t="expressive">Expressive 表現型</button></span>
+    <span class="lbl">放大倍率</span>
+    <span class="seg" id="zoomSeg"><button class="on" data-z="1">100%</button><button data-z="1.25">125%</button><button data-z="1.5">150%</button></span>
+  </div>
+  <div class="board" style="padding:0.4rem 2.0rem;overflow-x:auto">
+    <table id="typeTable">
+      <thead><tr><th>代號</th><th>用途</th><th>樣本（即時）</th><th>字級 / rem</th><th>字重</th><th>字距</th><th>行距</th><th>字型</th></tr></thead>
+      <tbody>
+        <tr><td class="code">D1</td><td>顯示數字（統計大數）</td><td class="sample"><span class="t-d1 num">96,140</span></td><td class="spec" data-v="d1"></td><td class="spec">700</td><td class="spec">-0.01em</td><td class="spec" data-lh="d1"></td><td class="spec">Arial</td></tr>
+        <tr><td class="code">H1</td><td>頁面標題</td><td class="sample"><span class="t-h1">訂單管理</span></td><td class="spec" data-v="h1"></td><td class="spec">900</td><td class="spec">0.03em</td><td class="spec" data-lh="h1"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">H2</td><td>區塊／章節標題、彈窗與面板標題</td><td class="sample"><span class="t-h2">本月出貨概況</span></td><td class="spec" data-v="h2"></td><td class="spec">900</td><td class="spec">0.06em</td><td class="spec" data-lh="h2"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">H3</td><td>卡片標題列、表格標題、行內小標題</td><td class="sample"><span class="t-h3">金額摘要</span></td><td class="spec" data-v="h3"></td><td class="spec">900</td><td class="spec">0.08em</td><td class="spec" data-lh="h3"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">B1</td><td>內文（預設）</td><td class="sample"><span class="t-b1">出貨前可修改數量與議價，送出後將無法修改。</span></td><td class="spec" data-v="b1"></td><td class="spec">400</td><td class="spec">0</td><td class="spec" data-lh="b1"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">B2</td><td>密集內文（表格內）</td><td class="sample"><span class="t-b2">大同機械股份有限公司 · 觀音區工業二路 88 號</span></td><td class="spec" data-v="b2"></td><td class="spec">400</td><td class="spec">0</td><td class="spec" data-lh="b2"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">B3</td><td>說明／輔助文字</td><td class="sample"><span class="t-b3">支援 JPG／PNG／PDF，單檔 20MB 以內。</span></td><td class="spec" data-v="b3"></td><td class="spec">400</td><td class="spec">0</td><td class="spec" data-lh="b3"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">L1</td><td>欄位標籤</td><td class="sample"><span class="t-l1">貴司採購單號 PO NO.</span></td><td class="spec" data-v="l1"></td><td class="spec">700</td><td class="spec">0.08em</td><td class="spec" data-lh="l1"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">L2</td><td>微標籤／眉標</td><td class="sample"><span class="t-l2">通知鈴 BELL</span></td><td class="spec" data-v="l2"></td><td class="spec">700</td><td class="spec">0.15em</td><td class="spec" data-lh="l2"></td><td class="spec">黑體</td></tr>
+        <tr><td class="code">N1</td><td>金額（大／合計）</td><td class="sample"><span class="t-n1 num"><small>NT$</small>96,140</span></td><td class="spec" data-v="n1"></td><td class="spec">700</td><td class="spec">0</td><td class="spec" data-lh="n1"></td><td class="spec">Arial</td></tr>
+        <tr><td class="code">N2</td><td>金額（中／小計）</td><td class="sample"><span class="t-n2 num"><small>NT$</small>28,166</span></td><td class="spec" data-v="n2"></td><td class="spec">700</td><td class="spec">0</td><td class="spec" data-lh="n2"></td><td class="spec">Arial</td></tr>
+        <tr><td class="code">N3</td><td>金額（表格內）</td><td class="sample"><span class="t-n3 num">18,920</span></td><td class="spec" data-v="n3"></td><td class="spec">700</td><td class="spec">0</td><td class="spec" data-lh="n3"></td><td class="spec">Arial</td></tr>
+        <tr><td class="code">N4</td><td>料號／單號／日期</td><td class="sample"><span class="t-n4 num">SO-260907-003 · AL-2040-A · 2026/09/15</span></td><td class="spec" data-v="n4"></td><td class="spec">400</td><td class="spec">0.02em</td><td class="spec" data-lh="n4"></td><td class="spec">Arial</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="use" style="margin-top:1.2rem"><b>硬規則：</b>10px、11px 只給單詞或極短片語的標籤，字重 700 以上並加大字距，不得寫句子；中文不用斜體；行動裝置不縮字級只改版型，唯一例外是 Expressive 的 D1 在 768px 以下降為 36px；金額千分位一律加、貨幣前綴縮小至 0.68 倍轉灰、表格中靠右、負數轉 error 紅。</p>
+
+  <div class="sec"><span class="no">02</span><h2>行距</h2><span class="rule"></span><span class="en">LINE HEIGHT</span></div>
+  <p class="use">中文是方塊字、字面率高、沒有英文那種上下起伏的輪廓，行距太小會糊成一片。<b>中文段落 1.8、表格內 1.7、說明 1.70、標題 1.4〜1.5、純數字 1.15〜1.25</b>。Material 3 與 Tailwind 的 1.43 是為拉丁字母調的，本系統不採用。</p>
+  <div class="board"><div class="rowset">
+    <div class="lhbox"><div class="cap">B1 內文 · 行距 1.80</div><p style="line-height:1.8">確認送出後，系統會在一個工作天內回覆價格與交期；若品項含刻印或客製尺寸，交期另計。您可在「訂單查詢」追蹤每一筆的處理進度。</p></div>
+    <div class="lhbox"><div class="cap">B2 表格內 · 行距 1.70</div><p style="line-height:1.7;font-size:var(--fs-b2)">確認送出後，系統會在一個工作天內回覆價格與交期；若品項含刻印或客製尺寸，交期另計。您可在「訂單查詢」追蹤每一筆的處理進度。</p></div>
+    <div class="lhbox bad"><div class="cap">不採用 · 1.43（M3 / Tailwind 預設）</div><p style="line-height:1.43">確認送出後，系統會在一個工作天內回覆價格與交期；若品項含刻印或客製尺寸，交期另計。您可在「訂單查詢」追蹤每一筆的處理進度。</p></div>
+  </div></div>
+
+  <div class="sec"><span class="no">03</span><h2>字距</h2><span class="rule"></span><span class="en">LETTER SPACING</span></div>
+  <p class="use">字距只有六個值，跟著字級走：<b>D1 -0.01em</b>（大數字收緊）、<b>H1 0.03em</b>、<b>H2 0.06em</b>、<b>H3 與 L1 0.08em</b>、<b>L2 0.15em</b>（字越小距離越大，補償辨識度）、<b>N4 0.02em</b>；內文與金額為 0。不得出現其他值。</p>
+  <div class="board"><div class="rowset" style="gap:3.2rem;align-items:baseline">
+    <span class="t-d1 num">1.84M</span><span class="t-h1">頁面標題</span><span class="t-h2">區塊標題</span><span class="t-h3">卡片標題列</span><span class="t-l1">欄位標籤</span><span class="t-l2">微標籤 LABEL</span><span class="t-n4 num">SO-260907-003</span>
+  </div></div>
+
+  <div class="sec"><span class="no">04</span><h2>間距標尺</h2><span class="rule"></span><span class="en">SPACING</span></div>
+  <p class="use">所有 margin、padding、gap 一律取自 <b>0.4rem 基準十級</b>（4px 基準），不得出現標尺以外的數值；<b>負 margin 不使用</b>（堆疊頭像、資料夾頁籤例外）。字級放大時間距跟著放大，所以用 rem 不用 px。</p>
+  <div class="board"><div class="rowset" style="gap:3.2rem">
+    <div class="scale" style="flex:1 1 380px">
+      <span class="tk">space-1</span><span><i class="bar" style="width:0.4rem"></i><span class="v">4px · 0.4rem</span></span><span class="u">圖示與文字之間、標籤內距</span>
+      <span class="tk">space-2</span><span><i class="bar" style="width:0.8rem"></i><span class="v">8px · 0.8rem</span></span><span class="u">元件內小間隔、並排小按鈕、標籤到元件</span>
+      <span class="tk">space-3</span><span><i class="bar" style="width:1.2rem"></i><span class="v">12px · 1.2rem</span></span><span class="u">元件之間的標準間距、儲存格垂直內距</span>
+      <span class="tk">space-4</span><span><i class="bar" style="width:1.6rem"></i><span class="v">16px · 1.6rem</span></span><span class="u">卡片垂直內距、區塊內元素間距</span>
+      <span class="tk">space-5</span><span><i class="bar" style="width:2.0rem"></i><span class="v">20px · 2.0rem</span></span><span class="u">卡片與儲存格水平內距</span>
+      <span class="tk">space-6</span><span><i class="bar" style="width:2.4rem"></i><span class="v">24px · 2.4rem</span></span><span class="u">區塊與區塊之間</span>
+      <span class="tk">space-7</span><span><i class="bar" style="width:3.2rem"></i><span class="v">32px · 3.2rem</span></span><span class="u">大區段之間</span>
+      <span class="tk">space-8</span><span><i class="bar" style="width:4.0rem"></i><span class="v">40px · 4.0rem</span></span><span class="u">頁面區段分隔</span>
+      <span class="tk">space-9</span><span><i class="bar" style="width:4.8rem"></i><span class="v">48px · 4.8rem</span></span><span class="u">頁首與內容之間</span>
+      <span class="tk">space-10</span><span><i class="bar" style="width:6.4rem"></i><span class="v">64px · 6.4rem</span></span><span class="u">頁面上下留白</span>
+    </div>
+    <div style="flex:1 1 240px;display:flex;flex-direction:column;gap:1.6rem">
+      <div class="padd"><span class="tv">16</span><span class="th">20</span><b>卡片內距</b>垂直 space-4 · 水平 space-5<div class="in" style="margin-top:0.8rem">內容</div></div>
+      <div class="padd" style="padding:1.2rem 2.0rem"><span class="tv">12</span><span class="th">20</span><b>表格儲存格</b>垂直 space-3 · 水平 space-5<div class="in" style="margin-top:0.8rem">儲存格</div></div>
+      <p class="use" style="margin:0">儲存格比卡片緊是刻意的：表格要密、卡片要鬆；水平內距相同，並排時左緣才會對齊。</p>
+    </div>
+  </div></div>
+
+  <div class="sec"><span class="no">05</span><h2>圓角、框線、陰影</h2><span class="rule"></span><span class="en">SHAPE</span></div>
+  <p class="use">造型 token 一律 <b>維持 px</b>，不隨字級放大——字變大時圓角不該跟著變圓。四級圓角固定；框線 1px、選中 1.5px；陰影由各風格自己定義（奶油零陰影、浮雕雙向柔影、手帳硬影）。</p>
+  <div class="board"><div class="rad">
+    <div><i style="border-radius:18px"></i><b>18px</b>焦點框 · 大面板</div>
+    <div><i style="border-radius:16px"></i><b>16px</b>卡片、表格容器</div>
+    <div><i style="border-radius:12px"></i><b>12px</b>輸入框、小卡、選單</div>
+    <div><i style="border-radius:999px;height:4.0rem;margin-top:1.6rem"></i><b>999px</b>所有按鈕、狀態膠囊</div>
+    <div><i style="border-width:1px"></i><b>1px</b>框線 --bw</div>
+    <div><i style="border-width:1.5px;border-color:var(--acc)"></i><b>1.5px</b>選中／聚焦框線 --bw-on</div>
+  </div></div>
+
+  <div class="sec"><span class="no">06</span><h2>元件高度與觸控目標</h2><span class="rule"></span><span class="en">SIZING</span></div>
+  <p class="use">所有元件禁止固定 <code>height</code>，一律 <code>min-height</code>（rem）：字級放大時框跟著長高，文字才不會被裁切。<b>手機 44px（4.4rem）觸控下限</b>來自 Apple 人機介面指南；相鄰可點元件之間至少留 space-2。</p>
+  <div class="board"><div class="hgt">
+    <figure><span class="h p" style="min-height:4.0rem">送出訂單</span><figcaption>主按鈕 4.0 → 手機 4.4</figcaption></figure>
+    <figure><span class="h" style="min-height:3.8rem">下載 Excel</span><figcaption>一般按鈕 3.8 → 4.4</figcaption></figure>
+    <figure><span class="h" style="min-height:3.2rem;font-size:var(--fs-b3)">小按鈕</span><figcaption>小按鈕 3.2 → 4.0</figcaption></figure>
+    <figure><span class="h i" style="min-height:4.0rem">PO-2026-xxxx</span><figcaption>輸入框 4.0 → 4.4（字 16px）</figcaption></figure>
+    <figure><span class="h s" style="min-height:2.4rem;padding:0 1.2rem">● 待確認</span><figcaption>狀態膠囊 2.4</figcaption></figure>
+    <figure><span class="h" style="min-height:4.4rem;border-radius:var(--r-sm);width:22rem;justify-content:flex-start;font-weight:400">表格列</span><figcaption>表格列 4.4</figcaption></figure>
+    <figure><span class="h" style="min-height:3.8rem;border-radius:var(--r-sm);width:16rem;justify-content:flex-start">▤ 訂單管理</span><figcaption>側欄項目 3.8</figcaption></figure>
+  </div></div>
+
+  <div class="sec"><span class="no">07</span><h2>色彩三層</h2><span class="rule"></span><span class="en">COLOR</span></div>
+  <p class="use"><b>第一層品牌雙色</b>十二組核心 ＋ SC 特殊任選、執行時注入（上方色系列切換就會變）；<b>第二層結構灰階</b>各風格一組（上方風格列切換就會變）；<b>第三層語意色</b>六套共用、永不改變。介面上不得出現這三層以外的顏色。</p>
+  <div class="board">
+    <div class="cap">第一層 · 品牌雙色（隨色系）</div>
+    <div class="sw" id="swBrand" style="margin:0.8rem 0 1.6rem"></div>
+    <div class="cap">第二層 · 結構灰階（隨風格）</div>
+    <div class="sw" id="swGrey" style="margin:0.8rem 0 1.6rem"></div>
+    <div class="cap">第三層 · 語意色（固定）</div>
+    <div class="sw" style="margin-top:0.8rem">
+      <div><i style="background:#B23F2F"></i><b>error 紅</b><small>#B23F2F · 淡底 #F7ECEA</small></div>
+      <div><i style="background:#846200"></i><b>warning 琥珀</b><small>#846200 · 淡底 #F3EFE6</small></div>
+      <div><i style="background:#2A722E"></i><b>success 綠</b><small>#2A722E · 淡底 #EAF1EA</small></div>
+      <div><i style="background:#1A66AA"></i><b>info 藍</b><small>#1A66AA · 淡底 #E8F0F6</small></div>
+    </div>
+    <div class="cap" style="margin-top:1.6rem">第四層 · 資料視覺化色板（固定順序，與品牌色無關）</div>
+<div class="sw" style="margin-top:0.8rem">
+<div><i style="background:#1F4F9E"></i><b>D1 藍</b><small>#1F4F9E</small></div>
+<div><i style="background:#C9781F"></i><b>D2 橘</b><small>#C9781F</small></div>
+<div><i style="background:#00806A"></i><b>D3 綠</b><small>#00806A</small></div>
+<div><i style="background:#8659CC"></i><b>D4 紫</b><small>#8659CC</small></div>
+<div><i style="background:#5E7A12"></i><b>D5 橄欖</b><small>#5E7A12</small></div>
+<div><i style="background:#C7466E"></i><b>D6 桃</b><small>#C7466E</small></div>
+<div><i style="background:#0E82A8"></i><b>D7 青</b><small>#0E82A8</small></div>
+<div><i style="background:#B5651D"></i><b>D8 棕</b><small>#B5651D</small></div>
+</div>
+<p class="use" style="margin-top:0.8rem">這一層只負責「分辨這是第幾條資料」。<b>兩個數列以下</b>用第一層的主色與深副色；<b>三個以上</b>一律改用這八色，依 D1〜D8 的固定順序取用。固定順序、與品牌色無關的意思是：使用者把色系從深海藍換成節慶桃紅，這八個顏色一個都不會動——否則同一張圖今天藍色代表 A 產品、明天變成桃紅，看圖的人會誤判。語意色不得拿來當數列色（綠色數列會被讀成「成功」）；超過八個數列改分組或併為「其他」。六套元件庫第 56 節各有一張用這八色畫的示範。</p>
+    <div class="cap" style="margin-top:1.6rem">色系分三類：核心 C（十二組，任何風格都成立）、特殊 SC（需要例外規則或只在部分風格可用）、趨勢 T（依年份退場，尚未進正選）</div>
+    <div style="overflow-x:auto;margin-top:0.8rem"><table>
+      <thead><tr><th>編號</th><th>名稱</th><th>副色型</th><th>S1 奶油</th><th>S2 浮雕</th><th>S3 琉璃</th><th>S4 手帳</th><th>S5 極光</th><th>S6 石墨</th><th>例外規則</th></tr></thead>
+      <tbody>
+        <tr><td class="code">C1–C12</td><td>十二組核心</td><td>深型</td><td>◎</td><td>◎</td><td>◎</td><td>◎（冷色系依 8.3 矩陣）</td><td>◎</td><td>◎（暖色系 ○）</td><td>承載字的副色填色用深副色配白字</td></tr>
+        <tr><td class="code">SC1</td><td>深綠 × 相思黃</td><td>淺型</td><td>◎</td><td>✕ 鎖定</td><td>◎</td><td>△ 自動加框線</td><td>◎ 最推薦</td><td>◎</td><td>副色填色上放主文字；填色元件須有 1px 框線或置於白卡；不與 warning 琥珀同列</td></tr>
+      </tbody>
+    </table></div>
+    <div class="cap" style="margin-top:1.6rem">著色面上的字：夠亮配墨色、夠深配白，副色承載字一律深副色</div>
+    <div class="onc">
+      <span style="background:var(--acc);color:#fff">主色底 · 白字</span>
+      <span style="background:var(--accsoft);color:var(--acc)">主色淡底 · 主色字</span>
+      <span style="background:var(--acc2-deep);color:#fff">深副色底 · 白字</span>
+      <span style="background:var(--acc2);color:var(--acc2-text,#fff)">副色底 · acc2-text</span>
+      <span style="background:var(--acc2soft);color:var(--acc2-deep)">副色淡底 · 深副色字</span>
+      <span style="background:var(--err-soft);color:var(--err)">語意淡底 · 語意字</span>
+      <span style="background:var(--line);color:var(--muted)">停用 · 灰底灰字</span>
+    </div>
+  </div>
+
+  <div class="sec"><span class="no">08</span><h2>RWD 斷點</h2><span class="rule"></span><span class="en">BREAKPOINTS</span></div>
+  <p class="use">主分界 <b>768px</b>、次要分界 <b>480px</b>、平板 <b>1024px</b>；斷點維持 px（它描述的是裝置，不是字）。原則：<b>不縮字級，只改版型</b>。</p>
+  <div class="board"><div class="rowset" style="gap:3.2rem">
+    <div class="bp">
+      <figure><i style="width:14rem;height:9rem"></i><b>≥ 1024</b>桌機 · 側欄常駐</figure>
+      <figure><i style="width:11rem;height:8rem"></i><b>768 – 1023</b>平板 · 側欄收窄</figure>
+      <figure><i class="ph" style="width:5.2rem;height:9rem"></i><b>480 – 767</b>手機 · 側欄改抽屜</figure>
+      <figure><i class="ph" style="width:4.4rem;height:8rem"></i><b>&lt; 480</b>窄手機 · 單欄</figure>
+    </div>
+    <ul class="rules" style="flex:1 1 320px">
+      <li><b>側欄 → 抽屜</b>768 以下側欄改為覆蓋式抽屜加遮罩，漢堡鈕 44px。</li>
+      <li><b>表格 → 卡片</b>手機上水平捲動是下策；每格帶欄名（data-l）轉成卡片列。</li>
+      <li><b>輸入框 16px</b>低於 16px 時 iOS Safari 會在聚焦時放大整頁。</li>
+      <li><b>底部計價條</b>商品規格頁的計價面板在手機改為底部固定條。</li>
+    </ul>
+  </div></div>
+
+  <div class="foot">數值來源：《字級與行距規範 v2》《網頁設計規範 v4》第 5、6 章、《色彩系統定義 v2》。本頁與六套元件庫共用 <b>tokens.css</b>；合規檢查腳本 <code>check_tokens.py</code> 會掃出任何不在表上的字級、行距、字距、間距與固定高度。</div>
+</div>
+
+<script>
+const THEMES={
+ c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC","accDeep":"#35463D"}
+};
+const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨"};
+const PAIRS={}; Object.entries(THEMES).forEach(([k,t])=>{PAIRS[k]={n:t.name,cd:t.id,a1:t.acc,s1:t.accSoft,a2:t.acc2,s2:t.acc2Soft,deep:t.acc2Deep,type:t.acc2Type,series:t.series,styles:t.styles,adjust:t.adjust};});
+const GREY={
+ s1:{n:"S1 奶油",ink:"#26292E",muted:"#6F6B64",line:"#E4E2DE",band:"#FBFAF8",page:"#F6F5F2",card:"#FFFFFF",note:"零陰影"},
+ s2:{n:"S2 浮雕",ink:"#333B49",muted:"#5F6673",line:"rgba(163,177,198,.45)",band:"rgba(255,255,255,.35)",page:"#E6EAF0",card:"#E6EAF0",note:"底色即卡色，靠光影分層"},
+ s3:{n:"S3 琉璃",ink:"#232936",muted:"#454C59",line:"rgba(35,41,54,.14)",band:"rgba(255,255,255,.55)",page:"漸層",card:"白 70% 玻璃",note:"深玻璃＝墨色 66% 配白字"},
+ s4:{n:"S4 手帳",ink:"#2E2A24",muted:"#6E6656",line:"#D8CDB8",band:"#FAF3E4",page:"#FAF3E4",card:"#FFFDF7",note:"框線 2px 墨色"},
+ s5:{n:"S5 極光",ink:"#22262E",muted:"#686E78",line:"#E9E9EF",band:"#F4F6F9",page:"#FCFCFD",card:"#FFFFFF",note:"漸層只准三處"},
+ s6:{n:"S6 石墨",ink:"#171717",muted:"#6A6A6A",line:"#E3E3E3",band:"#F6F6F6",page:"#FBFBFB",card:"#FFFFFF",note:"純無彩色：每個灰的紅綠藍三值相等"}
+};
+let curPair="c1",curStyle="s1";
+function sw(color,name,val){return '<div><i style="background:'+color+'"></i><b>'+name+'</b><small>'+val+'</small></div>';}
+function render(){
+ const t=PAIRS[curPair],g=GREY[curStyle],r=document.documentElement.style;
+ r.setProperty('--acc',t.a1);r.setProperty('--accsoft',t.s1);r.setProperty('--acc2',t.a2);r.setProperty('--acc2soft',t.s2);r.setProperty('--acc2-deep',t.deep);r.setProperty('--acc2-text',t.type==='light'?g.ink:'#FFFFFF');
+ document.getElementById('swA').style.background='linear-gradient(90deg,'+t.a1+' 50%,'+t.a2+' 50%)';
+ document.getElementById('nmPair').textContent=t.cd+' '+t.n+(t.series==='SC'?'（SC 特殊色系）':'');
+ document.getElementById('swS').style.background=g.ink; document.getElementById('nmStyle').textContent=g.n+' 的灰階';
+ document.getElementById('swBrand').innerHTML=sw(t.a1,'accent-1 主色',t.a1)+sw(t.s1,'主色淡底 soft',t.s1)+sw(t.a2,'accent-2 副色',t.a2)
+   +sw(t.deep,'深副色 acc2-deep',t.deep+'（副色當字時用）')+sw(t.s2,'副色淡底 soft',t.s2)+sw(t.type==='light'?g.ink:'#FFFFFF','acc2-text 副色上的字',(t.type==='light'?'淺型副色：填色上放主文字':'深型副色：承載字的填色用深副色配白字'));
+ document.getElementById('swGrey').innerHTML=sw(g.ink,'ink 主文字',g.ink)+sw(g.muted,'muted 次要文字',g.muted)+sw(g.line,'line 框線',g.line)
+   +sw(g.band,'band 表頭帶',g.band)+sw(g.page,'page 頁面底',g.page)+sw(g.card,'card 卡片底',g.card+' · '+g.note);
+ // 字級表：依目前字級組讀 token 值
+ const cs=getComputedStyle(document.body);
+ document.querySelectorAll('[data-v]').forEach(td=>{const v=cs.getPropertyValue('--fs-'+td.dataset.v).trim();const px=parseFloat(v)*10;td.innerHTML='<b>'+px+'px</b> / '+v;});
+ document.querySelectorAll('[data-lh]').forEach(td=>{td.textContent=cs.getPropertyValue('--lh-'+td.dataset.lh).trim();});
+}
+function fromHash(){
+ const h=(location.hash||'').replace('#','');
+ h.split(/[.,|]/).forEach(p=>{if(PAIRS[p])curPair=p; if(GREY[p])curStyle=p;});
+ render();
+}
+addEventListener('hashchange',fromHash);
+addEventListener('message',e=>{const d=e.data||{}; let ch=false;
+ if(d.pair&&PAIRS[d.pair]){curPair=d.pair;ch=true} if(d.style&&GREY[d.style]){curStyle=d.style;ch=true} if(ch)render();
+ if(d.ask==='sections'){try{parent.postMessage({sections:[...document.querySelectorAll('h2')].map(h=>h.textContent.trim())},'*')}catch(_){}}
+});
+document.getElementById('typeSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ document.body.dataset.type=b.dataset.t;[...e.currentTarget.children].forEach(x=>x.classList.toggle('on',x===b));render();});
+document.getElementById('zoomSeg').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+ document.documentElement.style.fontSize=(62.5*parseFloat(b.dataset.z))+'%';[...e.currentTarget.children].forEach(x=>x.classList.toggle('on',x===b));});
+if(window.self!==window.top) document.documentElement.classList.add('embedded');
+fromHash();
+</script>
+<script>document.body.dataset.type='productive';</script>

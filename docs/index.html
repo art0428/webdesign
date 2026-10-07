@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>設計系統瀏覽器</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --ground:#EEECE8;
+  --panel:#FFFFFF;
+  --ink:#22252A;
+  --muted:#6B6760;
+  --line:#DBD7D0;
+  --line-soft:#E7E3DC;
+  --sel:#26292E;
+  --sel-ink:#FFFFFF;
+  --font-cjk:'Noto Sans TC','PingFang TC','Microsoft JhengHei',sans-serif;
+  --font-num:Arial,Helvetica,'Noto Sans TC',sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#16181B;--panel:#202328;--ink:#EAE7E2;--muted:#9B968E;
+    --line:#303439;--line-soft:#282C31;--sel:#EAE7E2;--sel-ink:#16181B;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#16181B;--panel:#202328;--ink:#EAE7E2;--muted:#9B968E;
+  --line:#303439;--line-soft:#282C31;--sel:#EAE7E2;--sel-ink:#16181B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{height:100%}
+body{
+  font-family:var(--font-cjk);background:var(--ground);color:var(--ink);
+  font-size:14px;line-height:1.75;-webkit-font-smoothing:antialiased;
+  display:flex;flex-direction:column;
+}
+.num{font-family:var(--font-num);font-variant-numeric:tabular-nums}
+
+/* ── 控制列 ── */
+.bar{flex:0 0 auto;border-bottom:1px solid var(--line);background:var(--panel)}
+.bar-in{max-width:1500px;margin:0 auto;padding:11px 18px 12px;display:flex;flex-direction:column;gap:9px}
+.brandline{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}
+.brandline .eyebrow{font-size:9.5px;font-weight:700;letter-spacing:.17em;color:var(--muted);font-family:var(--font-num)}
+.brandline h1{font-size:15px;font-weight:900;letter-spacing:.05em;line-height:1.4}
+.brandline .now{
+  margin-left:auto;display:flex;align-items:center;gap:8px;
+  font-size:11.5px;color:var(--muted);
+}
+.brandline .now b{color:var(--ink);font-weight:700}
+.brandline .now .duo{display:inline-flex}
+.brandline .now .duo i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.14)}
+.brandline .now .duo i:last-child{margin-left:-5px}
+
+.row{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.row[hidden]{display:none}
+.row .lb{
+  font-size:9.5px;font-weight:700;letter-spacing:.16em;color:var(--muted);
+  font-family:var(--font-num);flex:0 0 auto;width:52px;
+}
+.opt{
+  font:inherit;font-size:12px;font-weight:700;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  border-radius:999px;padding:5px 13px;display:inline-flex;align-items:center;gap:7px;
+  transition:border-color .12s,background .12s,color .12s;
+}
+.opt .cc{font-family:var(--font-num);font-size:9.5px;font-weight:700;letter-spacing:.09em;color:var(--muted)}
+.opt .hint{font-weight:400;font-size:11px;color:var(--muted)}
+.opt:hover{border-color:var(--sel)}
+.opt[aria-pressed="true"]{background:var(--sel);color:var(--sel-ink);border-color:var(--sel)}
+.opt[aria-pressed="true"] .cc,.opt[aria-pressed="true"] .hint{color:var(--sel-ink);opacity:.65}
+.opt .duo{display:inline-flex;flex:0 0 auto}
+.opt .duo i{width:12px;height:12px;border-radius:50%;border:1px solid rgba(0,0,0,.14)}
+.opt .duo i:last-child{margin-left:-5px}
+.opt:focus-visible{outline:2px solid var(--sel);outline-offset:2px}
+
+/* ── 舞台 ── */
+.stage{flex:1 1 auto;min-height:340px;position:relative;background:var(--ground)}
+.stage iframe{width:100%;height:100%;border:0;display:block;background:#fff}
+.foot{
+  flex:0 0 auto;border-top:1px solid var(--line);background:var(--panel);
+  padding:7px 18px;font-size:11px;color:var(--muted);
+  display:flex;gap:6px 18px;flex-wrap:wrap;align-items:baseline;
+}
+.foot b{color:var(--ink);font-weight:700}
+
+@media (max-width:700px){
+  .bar-in{padding:9px 14px 10px;gap:7px}
+  .row .lb{width:100%;}
+  .brandline h1{font-size:14px}
+  .brandline .now{width:100%;margin-left:0}
+  .stage{min-height:60vh}
+}
+@media (prefers-reduced-motion: reduce){*{transition-duration:.01ms !important}}
+
+/* ── 色票鎖定與提示 ── */
+.pairsep{width:1px;height:22px;background:var(--line);margin:0 4px}
+.lb.sclb{width:auto}
+.opt .lk{display:none;font-size:10px;margin-left:2px}
+.opt.locked{opacity:.4;cursor:not-allowed;text-decoration:line-through}
+.opt.locked .lk{display:inline}
+.opt.locked:hover{border-color:var(--line)}
+.opt.adjust .cc::after{content:" △";color:var(--fail,#C24A3A)}
+.pairnote{font-size:11.5px;font-weight:700;color:var(--fail,#C24A3A);padding-left:59px;transition:opacity .4s}
+.pairnote[hidden]{display:none}
+/* ── 檢視切換 ── */
+.viewseg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--panel)}
+.viewseg button{font:inherit;font-size:11.5px;font-weight:700;border:none;background:none;color:var(--ink);padding:5px 14px;cursor:pointer}
+.viewseg button.on{background:var(--sel);color:var(--sel-ink)}
+.viewhint{font-size:11.5px;color:var(--muted)}
+/* ── 元件清單面板 ── */
+.idxbtn{
+  font:inherit;font-size:11.5px;font-weight:700;cursor:pointer;flex:0 0 auto;
+  border:1px solid var(--line);background:var(--panel);color:var(--ink);
+  border-radius:999px;padding:5px 13px;margin-left:auto}
+.idxbtn[aria-expanded="true"]{background:var(--sel);color:var(--sel-ink);border-color:var(--sel)}
+.idx{border-top:1px solid var(--line-soft);padding:11px 0 3px}
+.idx[hidden]{display:none}
+.idx .grp{margin-bottom:10px}
+.idx .tier{margin-bottom:14px}
+.idx .tname{font-size:11.5px;font-weight:900;letter-spacing:.06em;color:var(--ink);padding:0 0 8px;display:flex;align-items:baseline;gap:10px;border-bottom:1px solid var(--line-soft);margin-bottom:9px}
+.idx .tname b{font-family:var(--font-num);font-weight:700;color:var(--muted);font-size:11px}
+.idx .gname{
+  font-size:9.5px;font-weight:700;letter-spacing:.16em;color:var(--muted);
+  font-family:var(--font-num);margin-bottom:5px}
+.idx .items{display:flex;flex-wrap:wrap;gap:5px}
+.idx .it{
+  font:inherit;font-size:11.5px;cursor:pointer;border:1px solid var(--line);
+  background:var(--panel);color:var(--ink);border-radius:8px;padding:4px 10px;
+  display:inline-flex;align-items:baseline;gap:6px}
+.idx .it:hover{border-color:var(--sel)}
+.idx .it .mk{font-size:10px;color:var(--pass,#2E7D32)}
+.idx .it.absent{opacity:.45;cursor:default}
+.idx .it.absent .mk{color:var(--fail,#C24A3A)}
+.idx .tally{font-size:11px;color:var(--muted);padding-top:4px}
+.idx .tally b{color:var(--ink);font-weight:700}
+.idx .tally .mk2{font-weight:700;color:var(--ink);margin-left:6px}
+.idx .it.shared{opacity:.72;cursor:default}
+.idx .it.shared .mk{color:var(--muted)}
+:root{--pass:#2E7D32;--fail:#C24A3A}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pass:#7FBF83;--fail:#E08878}}
+:root[data-theme="dark"]{--pass:#7FBF83;--fail:#E08878}
+
+/* ══ 側欄版面：控制列坐左邊，舞台佔滿右邊（≥901px）；窄螢幕退回上方導覽列 ══ */
+@media (min-width:901px){
+  body{flex-direction:row}
+  .bar{flex:0 0 268px;width:268px;height:100vh;overflow-y:auto;border-right:1px solid var(--line);border-bottom:0}
+  .bar-in{padding:14px 14px 18px;gap:16px;max-width:none}
+  .brandline{flex-direction:column;align-items:flex-start;gap:3px}
+  .brandline .now{margin-left:0;width:100%;margin-top:6px;font-size:11px}
+  .row{flex-direction:column;align-items:stretch;gap:4px}
+  .row .lb{width:auto;margin-bottom:3px}
+  .row[hidden]{display:none}
+  .viewseg{display:flex}
+  .viewseg button{flex:1;text-align:center}
+  .viewhint{font-size:11px;line-height:1.6}
+  .opt{width:100%;justify-content:flex-start;border-radius:10px;padding:6px 10px}
+  .opt .hint{margin-left:auto}
+  .row[aria-label="色系"]{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .row[aria-label="色系"] .lb,.pairsep,.lb.sclb{grid-column:1/-1}
+  .row[aria-label="色系"] .opt{padding:5px 8px;gap:5px;font-size:11.5px}
+  .row[aria-label="色系"] .opt .cc{display:none}
+  .row[aria-label="風格"] .opt{padding:5px 10px}
+  .pairsep{width:auto;height:1px;margin:4px 0 0}
+  .lb.sclb{margin:0}
+  .pairnote{padding-left:0;line-height:1.5}
+  .idxbtn{margin-left:0;width:100%}
+  #idxRow>span:not(.lb):not(.idxbtn){font-size:11px;line-height:1.6}
+  .idx{padding:10px 0 0}
+  .idx .items{gap:4px}
+  .idx .it{padding:3px 8px;font-size:11px}
+  .stage{flex:1 1 auto;height:100vh;min-height:0}
+  .foot{border-top:1px solid var(--line-soft);padding:12px 0 0;margin-top:auto;flex-direction:column;gap:6px;font-size:10.5px;line-height:1.6;background:none}
+}
+@media (max-width:900px){
+  .foot{border-top:1px solid var(--line-soft);padding:8px 0 0;margin-top:4px;font-size:11px}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <div class="bar-in">
+    <div class="brandline">
+      <span class="eyebrow">管理者工作室</span>
+      <h1>設計系統瀏覽器</h1>
+      <span class="now">
+        <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
+        <span>目前：<b id="nowTxt">—</b></span>
+      </span>
+    </div>
+    <div class="row" role="group" aria-label="檢視"><span class="lb">檢視</span>
+      <span class="viewseg" id="viewSeg"><button type="button" class="on" data-v="lib">元件庫</button><button type="button" data-v="found">通用規範</button></span>
+      <span class="viewhint" id="viewHint">六十二項元件一項一節，依風格與色系即時換裝。</span>
+    </div>
+    <div class="row" role="group" aria-label="風格"><span class="lb">風格</span><span id="styleRow" style="display:contents"></span></div>
+    <div class="row" role="group" aria-label="色系"><span class="lb">色系</span><span id="pairRow" style="display:contents"></span></div>
+    <div class="pairnote" id="pairNote" role="status" aria-live="polite" hidden></div>
+    <div class="row" id="idxRow"><span class="lb">元件</span>
+      <span style="font-size:11.5px;color:var(--muted)">六十二項元件一項一節，分核心 45／選用 17，逐項核對本風格是否都有。</span>
+      <button type="button" class="idxbtn" id="idxBtn" aria-expanded="false" aria-controls="idx">展開元件清單</button>
+    </div>
+    <div class="idx" id="idx" hidden></div>
+    <div class="foot">
+  <span>六套風格 × 十二組核心 ＋ SC1，共 <b class="num">77</b> 種可用組合（SC1 不適用於浮雕）。</span>
+  <span>換色系不重載，換風格才重載；「通用規範」檢視兩者都不重載。</span>
+  <span>第二層結構灰階與第三層四個語意色<b>不隨色系改變</b>。</span>
+</div>
+  </div>
+</div>
+
+<div class="stage"><iframe id="stage" title="元件庫預覽"></iframe></div>
+
+
+<script>
+
+const FILES={s1:"components_s1_cream.html",s2:"components_s2_emboss.html",s3:"components_s3_glaze.html",s4:"components_s4_doodle.html",s5:"components_s5_aurora.html",s6:"components_s6_graphite.html",found:"foundations.html"};
+const STYLES=[
+ {k:"s1",cd:"S1",nm:"奶油",hint:"零陰影"},
+ {k:"s2",cd:"S2",nm:"浮雕",hint:"凸凹柔影"},
+ {k:"s3",cd:"S3",nm:"琉璃",hint:"毛玻璃"},
+ {k:"s4",cd:"S4",nm:"手帳",hint:"手繪硬影"},
+ {k:"s5",cd:"S5",nm:"極光",hint:"暈染有機角"},
+ {k:"s6",cd:"S6",nm:"石墨",hint:"無彩灰細線"}
+];
+const THEMES={
+ c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
+ sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC","accDeep":"#35463D"}
+};
+const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨"};
+const PAIRS=Object.entries(THEMES).map(([k,t])=>({k,cd:t.id,nm:t.name,a1:t.acc,a2:t.acc2,t}));
+function allowed(k,style){ const t=THEMES[k]; return !!t && (t.styles.includes(style) || (t.adjust||[]).includes(style)); }
+function note(msg){
+  const n=document.getElementById("pairNote"); n.textContent=msg; n.hidden=false; n.style.opacity="1";
+  clearTimeout(note.t); note.t=setTimeout(()=>{ n.style.opacity="0"; setTimeout(()=>{n.hidden=true;},400); },3000);
+}
+
+let curStyle="s1", curPair="c1";
+const frame=document.getElementById("stage");
+
+const styleRow=document.getElementById("styleRow");
+STYLES.forEach(s=>{
+  const b=document.createElement("button");
+  b.type="button"; b.className="opt"; b.dataset.k=s.k;
+  b.setAttribute("aria-pressed",String(s.k===curStyle));
+  b.innerHTML='<span class="cc">'+s.cd+'</span>'+s.nm+'<span class="hint">'+s.hint+'</span>';
+  b.addEventListener("click",()=>pickStyle(s.k));
+  styleRow.appendChild(b);
+});
+
+const pairRow=document.getElementById("pairRow");
+PAIRS.forEach(p=>{
+  if(p.t.series==="SC"){
+    const sep=document.createElement("span"); sep.className="pairsep"; sep.setAttribute("aria-hidden","true"); pairRow.appendChild(sep);
+    const lb=document.createElement("span"); lb.className="lb sclb"; lb.textContent="SC 特殊"; pairRow.appendChild(lb);
+  }
+  const b=document.createElement("button");
+  b.type="button"; b.className="opt"; b.dataset.k=p.k;
+  b.setAttribute("aria-pressed",String(p.k===curPair));
+  b.title=p.cd+" "+p.nm;
+  b.innerHTML='<span class="duo"><i style="background:'+p.a1+'"></i><i style="background:'+p.a2+'"></i></span>'
+             +'<span class="cc">'+p.cd+'</span>'+p.nm+'<span class="lk" aria-hidden="true">鎖</span>';
+  b.addEventListener("click",()=>pickPair(p.k));
+  pairRow.appendChild(b);
+});
+function lockChips(){
+  pairRow.querySelectorAll(".opt").forEach(b=>{
+    const ok=allowed(b.dataset.k,curStyle), adj=(THEMES[b.dataset.k].adjust||[]).includes(curStyle);
+    b.disabled=!ok; b.classList.toggle("locked",!ok); b.classList.toggle("adjust",adj);
+    b.tabIndex = ok ? 0 : -1;
+    const t=THEMES[b.dataset.k];
+    b.title=t.id+" "+t.name+(ok?"":"（此風格不適用）")+(adj?"（此風格下副色填色自動加框線）":"");
+  });
+}
+
+function sync(){
+  lockChips();
+  try{ history.replaceState(null,"","#"+curStyle+"/"+curPair); }catch(_){}
+  styleRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curStyle)));
+  pairRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curPair)));
+  const s=STYLES.find(x=>x.k===curStyle), p=PAIRS.find(x=>x.k===curPair);
+  document.getElementById("nowTxt").textContent=s.cd+" "+s.nm+" × "+p.cd+" "+p.nm;
+  document.getElementById("nowA1").style.background=p.a1;
+  document.getElementById("nowA2").style.background=p.a2;
+}
+let curView="lib";
+function load(){
+  frame.src = curView==="found" ? (FILES.found+"#"+curPair+"."+curStyle) : (FILES[curStyle]+"#"+curPair);
+}
+document.getElementById("viewSeg").addEventListener("click",e=>{
+  const b=e.target.closest("button"); if(!b||b.dataset.v===curView) return;
+  curView=b.dataset.v;
+  [...e.currentTarget.children].forEach(x=>x.classList.toggle("on",x===b));
+  document.getElementById("idxRow").hidden = curView==="found";
+  document.getElementById("idx").hidden = true; idxOpen=false;
+  document.getElementById("idxBtn").setAttribute("aria-expanded","false");
+  document.getElementById("viewHint").textContent = curView==="found"
+    ? "六套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
+    : "六十二項元件一項一節，依風格與色系即時換裝。";
+  load();
+});
+function pickStyle(k){
+  if(k===curStyle) return;
+  curStyle=k;
+  if(!allowed(curPair,curStyle)){
+    const t=THEMES[curPair]; curPair="c1";
+    note(t.id+" 不適用於"+STYLE_NAME[curStyle]+"風格，已切回 C1");
+  } else if((THEMES[curPair].adjust||[]).includes(curStyle)){
+    note(STYLE_NAME[curStyle]+"風格下副色填色自動加框線");
+  }
+  sync();
+  if(curView==="found"){ try{ frame.contentWindow.postMessage({style:k},"*"); }catch(_){ load(); } }
+  else load();
+}
+function pickPair(k){
+  if(!allowed(k,curStyle)){ note(THEMES[k].id+" 不適用於"+STYLE_NAME[curStyle]+"風格，已切回 C1"); k="c1"; }
+  else if((THEMES[k].adjust||[]).includes(curStyle)){ note(STYLE_NAME[curStyle]+"風格下副色填色自動加框線"); }
+  curPair=k; sync();
+  /* 換色不重載，直接通知內層 */
+  try{ frame.contentWindow.postMessage({pair:k},"*"); }
+  catch(_){ load(); }
+}
+function fromHash(){
+  const parts=(location.hash||"").replace("#","").split(/[\/.,|]/);
+  parts.forEach(p=>{ if(STYLES.some(x=>x.k===p)) curStyle=p; if(THEMES[p]) curPair=p; });
+  if(!allowed(curPair,curStyle)){ const t=THEMES[curPair]; curPair="c1"; setTimeout(()=>note(t.id+" 不適用於"+STYLE_NAME[curStyle]+"風格，已切回 C1"),200); }
+}
+fromHash(); sync(); load();
+addEventListener("hashchange",()=>{
+  const want="#"+curStyle+"/"+curPair; if(location.hash===want) return;   /* 自己寫的 hash 不處理 */
+  const ps=curStyle, pp=curPair; fromHash();
+  if(curStyle!==ps || curPair!==pp){ sync(); if(curStyle!==ps) load(); else try{ frame.contentWindow.postMessage({pair:curPair},"*"); }catch(_){ load(); } }
+});
+
+/* ══ 元件清單：六套共用的完整清冊，逐項標示本風格有沒有 ══ */
+const TIERS=[
+ {tier:"核心 CORE ─ 每個專案必備", key:"core", groups:[
+  {g:"基礎 FOUNDATION", items:[["設計 Token","設計 Token"],["字級層級","字級層級 Type scale"],["分隔線","分隔線 Divider"]]},
+  {g:"動作 ACTIONS", items:[["按鈕","按鈕 Button"],["動作鈕","動作鈕 Kebab"],["分段控制","分段控制 Segmented"]]},
+  {g:"表單 DATA ENTRY", items:[["輸入框","輸入框 Input"],["搜尋框","搜尋框 Search"],["核取與單選","核取與單選 Checkbox / Radio"],["篩選膠囊","篩選膠囊 Filter pill"],["開關","開關 Switch"],["上傳","上傳 Upload"],["多行輸入","多行輸入 Textarea"],["下拉選單","下拉選單 Select"],["多選＋搜尋","多選＋搜尋 Multi-select"],["日期與時間選擇器","日期與時間選擇器 Date / Time"],["自動完成","自動完成 Autocomplete"],["數字步進器","數字步進器 Number stepper"],["選項 chip","選項 chip Choice chip"]]},
+  {g:"資料呈現 DATA DISPLAY", items:[["表格","表格 Table"],["表格進階","表格進階 Table advanced"],["卡片","卡片 Card"],["統計卡","統計卡 Stat card"],["描述清單","描述清單 Descriptions"],["狀態標籤","狀態標籤 Status"],["屬性 tag","屬性 tag Tag"],["折疊面板","折疊面板 Accordion"],["頭像","頭像 Avatar"],["數字角標","數字角標 Badge"]]},
+  {g:"導覽 NAVIGATION", items:[["側欄項目","側欄項目 Nav item"],["頁籤","頁籤 Tabs"],["麵包屑","麵包屑 Breadcrumb"],["分頁器","分頁器 Pagination"],["側滑面板","側滑面板 Drawer"]]},
+  {g:"回饋 FEEDBACK", items:[["彈窗","彈窗 Modal"],["就地確認","就地確認 Popconfirm"],["提示氣泡","提示氣泡 Tooltip"],["Toast","Toast 提示"],["警示條","警示條 Alert"],["提示框","提示框 Notice"],["空狀態","空狀態 Empty"],["骨架屏","骨架屏 Skeleton"],["通知鈴","通知鈴 Bell"],["進度條","進度條 Progress"],["搜尋無結果","搜尋無結果 No result"]]}
+ ]},
+ {tier:"選用 OPTIONAL ─ 依系統類型勾選", key:"opt", groups:[
+  {g:"動作 ACTIONS", items:[["工具列","工具列 Toolbar"]]},
+  {g:"表單 DATA ENTRY", items:[["滑桿","滑桿 Slider"],["級聯選擇","級聯選擇 Cascader"],["穿梭框","穿梭框 Transfer"]]},
+  {g:"資料呈現 DATA DISPLAY", items:[["摘要方塊","摘要方塊 Summary box"],["來源標記","來源標記 Source badge"],["百分比膠囊","百分比膠囊 Percent pill"],["量表","量表 Meter"],["樹狀","樹狀 Tree"],["時間軸","時間軸 Timeline"],["圖表","圖表 Chart"],["媒體與輪播","媒體與輪播 Media / Carousel"],["動態列表","動態列表 Feed"]]},
+  {g:"導覽 NAVIGATION", items:[["步驟精靈","步驟精靈 Stepper wizard"],["唯讀步驟","唯讀步驟 Read-only steps"],["分割面板","分割面板 Splitter"]]},
+  {g:"回饋 FEEDBACK", items:[["結果頁","結果頁 Result"]]}
+ ]}
+];
+
+let idxOpen=false, present=new Set(), lastSections=[];
+
+function buildIndex(){
+  const wrap=document.getElementById("idx");
+  let html="", gt=0, gh=0;
+  TIERS.forEach(t=>{
+    let total=0, have=0, body="";
+    t.groups.forEach(g=>{
+      body+='<div class="grp"><div class="gname">'+g.g+'</div><div class="items">';
+      g.items.forEach(([label,anchor])=>{
+        total++;
+        const shared=false;
+        const hit=[...present].find(sec=>sec===anchor) ? anchor : null;
+        const ok=shared || !!hit;
+        if(ok) have++;
+        const mk = shared ? '◇' : (ok?'◎':'✕');
+        const ttl = shared ? ' title="六套共用，見「通用規範」檢視"' : (ok?'':' title="尚未實作"');
+        body+='<button type="button" class="it'+(ok?'':' absent')+(shared?' shared':'')+'" data-a="'
+             +(hit||'')+'"'+(ok&&!shared?'':' disabled')+ttl+'><span class="mk">'+mk+'</span>'+label+'</button>';
+      });
+      body+='</div></div>';
+    });
+    gt+=total; gh+=have;
+    html+='<div class="tier"><div class="tname">'+t.tier+'<b>'+have+' / '+total+'</b></div>'+body+'</div>';
+  });
+  html+='<div class="tally">本風格涵蓋 <b>'+gh+' / '+gt+'</b> 項。'
+      +'<span class="mk2">◎</span> 本風格已實作　<span class="mk2">✕</span> 尚缺。'
+      +'一項一節、名稱與元件庫標題一致；點任一項跳到該節。</div>';
+  wrap.innerHTML=html;
+  wrap.querySelectorAll(".it:not(.absent)").forEach(b=>{
+    b.addEventListener("click",()=>{
+      try{ frame.contentWindow.postMessage({scrollTo:b.dataset.a},"*"); }catch(_){}
+    });
+  });
+}
+function askSections(){
+  try{ frame.contentWindow.postMessage({ask:"sections"},"*"); }catch(_){}
+}
+addEventListener("message",e=>{
+  if(!e.data||!e.data.sections) return;
+  lastSections=e.data.sections;
+  present=new Set(lastSections);
+  buildIndex();
+});
+document.getElementById("idxBtn").addEventListener("click",()=>{
+  idxOpen=!idxOpen;
+  document.getElementById("idx").hidden=!idxOpen;
+  document.getElementById("idxBtn").setAttribute("aria-expanded",String(idxOpen));
+  if(idxOpen) askSections();
+});
+frame.addEventListener("load",()=>{ setTimeout(()=>{ if(idxOpen) askSections(); },160); });
+</script>
+</body>
+</html>
