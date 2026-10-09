@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-10 v15 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S6 另有深色模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十三級字級、間距標尺、圓角、元件高度、RWD、62 項元件清單與四項自動檢查；動態 token 與 Lucide 圖示規則；六張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-10 v16 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S6 另有深色模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD、62 項元件清單與四項自動檢查；動態 token 與 Lucide 圖示規則；六張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v15》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，六套元件庫與 `tokens.css` 在 `assets/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v16》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，六套元件庫與 `tokens.css` 在 `assets/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -211,7 +211,7 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink)}
 ```css
 html{font-size:62.5%}                       /* 1rem = 10px，px 除以 10 即 rem */
 :root,[data-type="productive"]{             /* 後台、購物車、結帳（預設） */
- --fs-d1:3.0rem;--lh-d1:1.15;--ls-d1:-0.01em; --fs-h1:2.1rem;--lh-h1:1.40;--ls-h1:0.03em;
+ --fs-d1:3.0rem;--lh-d1:1.15;--ls-d1:-0.01em; --fs-h0:2.6rem;--lh-h0:1.30;--ls-h0:0.02em; --fs-h1:2.1rem;--lh-h1:1.40;--ls-h1:0.03em;
  --fs-h2:1.7rem;--lh-h2:1.45;--ls-h2:0.06em;  --fs-h3:1.4rem;--lh-h3:1.50;--ls-h3:0.08em;
  --fs-b1:1.4rem;--lh-b1:1.80; --fs-b2:1.25rem;--lh-b2:1.70; --fs-b3:1.2rem;--lh-b3:1.70;
  --fs-l1:1.2rem;--lh-l1:1.50;--ls-l1:0.08em; --fs-l2:1.1rem;--lh-l2:1.50;--ls-l2:0.15em;
@@ -219,11 +219,11 @@ html{font-size:62.5%}                       /* 1rem = 10px，px 除以 10 即 re
  --sp-1:0.4rem;--sp-2:0.8rem;--sp-3:1.2rem;--sp-4:1.6rem;--sp-5:2.0rem;--sp-6:2.4rem;--sp-7:3.2rem;--sp-8:4.0rem;--sp-9:4.8rem;--sp-10:6.4rem;
  --r-lg:16px;--r-sm:12px;--r-pill:999px;--bw:1px;--bw-on:1.5px}
 [data-type="expressive"]{                   /* 前台商品頁、目錄、首頁 */
- --fs-d1:4.4rem;--lh-d1:1.10; --fs-h1:3.0rem;--lh-h1:1.35; --fs-h2:2.2rem;--lh-h2:1.40; --fs-h3:1.6rem;--lh-h3:1.50;
+ --fs-d1:4.4rem;--lh-d1:1.10; --fs-h0:4.0rem;--lh-h0:1.25; --fs-h1:3.0rem;--lh-h1:1.35; --fs-h2:2.2rem;--lh-h2:1.40; --fs-h3:1.6rem;--lh-h3:1.50;
  --fs-b1:1.6rem;--lh-b1:1.90; --fs-b2:1.4rem;--lh-b2:1.80; --fs-b3:1.3rem;--lh-b3:1.90;
  --fs-l1:1.2rem;--lh-l1:1.50; --fs-l2:1.1rem;--lh-l2:1.50;
  --fs-n1:3.0rem;--lh-n1:1.15; --fs-n2:2.3rem;--lh-n2:1.20; --fs-n3:1.4rem;--lh-n3:1.60; --fs-n4:1.3rem;--lh-n4:1.60}
-@media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem}}
+@media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem;--fs-h0:3.2rem}}
 :root{--dur-1:120ms;--dur-2:200ms;--dur-3:320ms;--ease-out:cubic-bezier(.2,0,0,1);--ease-in:cubic-bezier(.4,0,1,1)}
 @media (prefers-reduced-motion:reduce){:root{--dur-1:0ms;--dur-2:0ms;--dur-3:0ms}}
 body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:var(--lh-b1)}
@@ -233,12 +233,13 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 | 代號 | 用途 | 字重 | 字型 |
 |---|---|---|---|
 | D1 | 顯示數字（統計大數） | 700 | Arial |
+| H0 | 展示標題（只給前台 Hero 與活動主標，一頁最多一個） | 900 | 黑體 |
 | H1 / H2 / H3 | 頁面標題 / 區塊標題、彈窗與面板標題 / 卡片標題列、行內小標題 | 900 | 黑體 |
 | B1 / B2 / B3 | 內文 / 表格內密集內文 / 說明輔助 | 400 | 黑體 |
 | L1 / L2 | 欄位標籤 / 微標籤眉標 | 700 | 黑體 |
 | N1 / N2 / N3 / N4 | 合計金額 / 小計 / 表格金額 / 料號單號日期 | 700 700 700 400 | Arial |
 
-硬規則：字級只能是這十三級，寫 `var(--fs-xx)` 就要同時寫 `var(--lh-xx)`；12px 是承載句子的最小字級（Expressive 13px）；11px 是整套標尺的絕對下限，只給 L2 微標籤（一到四個字的單詞或極短片語），字重 700 以上並加大字距，不得寫句子；**欄位標籤一律 12px（L1），不得用 11px**；**不得出現 10px 以下的字**；**標題不得小於它所領導的內文**（H3 與 B1 同為 14px，靠字重 900 與字距區分）；**H2 與 H3 依用途分**：彈窗（`.modal .mh`）、側滑面板（`.drawer .dh`）、獨立自成一件事的大卡片用 H2，卡片標題列（`.card-title`）、表格標題（`.tcap`）、圖表卡標題、表單分組小標題用 H3，覺得卡片標題太小就改用 H2、不得新增中間值（見規範 4.2）；中文不用斜體；行距不採用 M3 或 Tailwind 的 1.43（中文會糊）；行動裝置不縮字級只改版型；金額千分位必加、貨幣前綴縮小 0.68 倍轉灰、表格中靠右、負數轉 error 紅。
+硬規則：字級只能是這十四級；**H0 只給前台 Hero 與活動主標、一頁最多一個、後台不用，一行以十四字為上限、最多兩行，必須加 `text-wrap:balance`**（40px 中文標題容易在最後一行只剩一兩個字），768 以下降為 32px；D1 仍只給數字；寫 `var(--fs-xx)` 就要同時寫 `var(--lh-xx)`；12px 是承載句子的最小字級（Expressive 13px）；11px 是整套標尺的絕對下限，只給 L2 微標籤（一到四個字的單詞或極短片語），字重 700 以上並加大字距，不得寫句子；**欄位標籤一律 12px（L1），不得用 11px**；**不得出現 10px 以下的字**；**標題不得小於它所領導的內文**（H3 與 B1 同為 14px，靠字重 900 與字距區分）；**H2 與 H3 依用途分**：彈窗（`.modal .mh`）、側滑面板（`.drawer .dh`）、獨立自成一件事的大卡片用 H2，卡片標題列（`.card-title`）、表格標題（`.tcap`）、圖表卡標題、表單分組小標題用 H3，覺得卡片標題太小就改用 H2、不得新增中間值（見規範 4.2）；中文不用斜體；行距不採用 M3 或 Tailwind 的 1.43（中文會糊）；行動裝置不縮字級只改版型；金額千分位必加、貨幣前綴縮小 0.68 倍轉灰、表格中靠右、負數轉 error 紅。
 
 **行距一定要跟字級配成同一代號**，不可以拿 B2 的字級去配 B3 的行距。每個值單獨看都在表上，所以肉眼與只看宣告值的檢查都抓不出來。沒有自己指定行距的元素會往上繼承，所以 `body` 一定要寫 `line-height:var(--lh-b1)`——漏掉的話整份文件的預設行距會退回瀏覽器的 `normal`（約 1.2 倍）。兩個例外是規範自己要求的、不算違規：貨幣前綴縮小 0.68 倍、768px 以下輸入框 16px 防 iOS 放大。見規範 4.2。
 
@@ -254,7 +255,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 ## 6. RWD
 
-斷點 1024 / 768 / 480（px，描述裝置）。768 以下：側欄改覆蓋式抽屜加遮罩、漢堡鈕 44px；表格轉卡片列（每格 `data-l` 帶欄名，不做水平捲動）；輸入框 16px；商品規格頁計價面板改底部固定條；主要動作滿版。480 以下單欄。任何寬度 body 不得橫向捲動（flex 子項記得 `min-width:0`）。
+斷點 1024 / 768 / 480（px，描述裝置）。768 以下：側欄改覆蓋式抽屜加遮罩、漢堡鈕 44px；表格轉卡片列（每格 `data-l` 帶欄名，不做水平捲動）；輸入框 16px；商品規格頁計價面板改底部固定條；主要動作滿版。480 以下單欄，**例外是商品卡列表維持兩欄**（卡片與欄間距收為 `--sp-3`、名稱最多兩行 `-webkit-line-clamp:2`、評價只留星等、加入購物車改右下角 44px 圖示鈕並以 `aria-label` 寫明商品名稱；見規範 6.3）。任何寬度 body 不得橫向捲動（flex 子項記得 `min-width:0`）。
 
 ## 7. 版型與文案（摘要）
 
@@ -274,7 +275,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 **圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；七套風格共用同一組圖示。
 
-**前台長什麼樣**：`assets/storefront/*.html` 六張選物店首頁（掛 Expressive，只用元件庫 class），設計系統瀏覽器的「前台示範」檢視可切換風格與色系。做前台時照它的結構起手。
+**前台長什麼樣**：`assets/storefront/*.html` 八張選物店首頁（掛 Expressive，只用元件庫 class），設計系統瀏覽器的「前台示範」檢視可切換風格與色系。做前台時照它的結構起手。
 
 ## 9. 交付前四項自動檢查（腳本在本 skill 的 `scripts/`）
 
@@ -283,11 +284,11 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 | 檢查 | 指令 | 標準 |
 |---|---|---|
 | 一、對比稽核 | `python scripts/audit_contrast.py page.html --themes all` | 把頁面畫出來，對每個文字節點取周邊像素當底色；一般字 ≥4.5、大字 ≥3.0；停用控件豁免。頁面若支援色系切換，每個可用色系都要 0 不及格（`--themes` 走網址 hash，例如 `page.html#c3`） |
-| 二、標尺合規 | `python scripts/check_tokens.py page.html` | 字級不在十三級、行距字距不在表上、間距不在標尺、負 margin，任何一項出現即不通過；固定 `height` 列為提醒，承載文字的要改 `min-height` |
+| 二、標尺合規 | `python scripts/check_tokens.py page.html` | 字級不在十四級、行距字距不在表上、間距不在標尺、負 margin，任何一項出現即不通過；固定 `height` 列為提醒，承載文字的要改 `min-height` |
 | 三、行高配對 | `python scripts/check_lineheight.py page.html --render` | 靜態掃每條 CSS 規則的字級與行距是否同代號、有沒有寫了字級卻漏掉行距；`--render` 再渲染頁面，比對每個文字元素實際算出來的字級與行高。`check_tokens.py` 只看宣告值，抓不到這一類 |
 | 四、溢出檢查 | `python scripts/check_overflow.py page.html` | 390px、768px 寬度下不得橫向捲動，並列出撐破版面的元素 |
 
-前台閱讀型頁面（`data-type="expressive"`）的二、三項加 `--type expressive`。開發時才出現的控制列等區塊，加上 `data-audit-skip` 屬性即可排除在對比稽核外。
+前台閱讀型頁面（`data-type="expressive"`）的二、三項加 `--type expressive`；同一頁兩套都用（例如前台頁面引用了元件庫的後台樣式）改用 `--type all`。開發時才出現的控制列等區塊，加上 `data-audit-skip` 屬性即可排除在對比稽核外。
 
 批次改動後，所選風格的每個頁面都要截圖對照，不抽樣。若無法執行腳本（例如沒有 Python 環境），至少逐條人工核對：所有字級與行距都引用 `var(--fs-xx)` ＋ 同代號 `var(--lh-xx)`、間距只用 `--sp-*`、沒有寫死的色碼。
 

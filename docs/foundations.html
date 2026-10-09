@@ -8,7 +8,7 @@
 /* ══ 字級、行距、間距 tokens v2 ══ 與 tokens.css 同源 */
 html{font-size:62.5%}
 :root,[data-type="productive"]{
- --fs-d1:3.0rem;--lh-d1:1.15;--ls-d1:-0.01em; --fs-h1:2.1rem;--lh-h1:1.40;--ls-h1:0.03em;
+ --fs-d1:3.0rem;--lh-d1:1.15;--ls-d1:-0.01em; --fs-h0:2.6rem;--lh-h0:1.30;--ls-h0:0.02em; --fs-h1:2.1rem;--lh-h1:1.40;--ls-h1:0.03em;
  --fs-h2:1.7rem;--lh-h2:1.45;--ls-h2:0.06em;  --fs-h3:1.4rem;--lh-h3:1.50;--ls-h3:0.08em;
  --fs-b1:1.4rem;--lh-b1:1.80; --fs-b2:1.25rem;--lh-b2:1.70; --fs-b3:1.2rem;--lh-b3:1.70;
  --fs-l1:1.2rem;--lh-l1:1.50;--ls-l1:0.08em; --fs-l2:1.1rem;--lh-l2:1.50;--ls-l2:0.15em;
@@ -16,11 +16,11 @@ html{font-size:62.5%}
  --sp-1:0.4rem;--sp-2:0.8rem;--sp-3:1.2rem;--sp-4:1.6rem;--sp-5:2.0rem;--sp-6:2.4rem;--sp-7:3.2rem;--sp-8:4.0rem;--sp-9:4.8rem;--sp-10:6.4rem;
  --r-lg:16px;--r-sm:12px;--r-pill:999px;--bw:1px;--bw-on:1.5px}
 [data-type="expressive"]{
- --fs-d1:4.4rem;--lh-d1:1.10; --fs-h1:3.0rem;--lh-h1:1.35; --fs-h2:2.2rem;--lh-h2:1.40; --fs-h3:1.6rem;--lh-h3:1.50;
+ --fs-d1:4.4rem;--lh-d1:1.10; --fs-h0:4.0rem;--lh-h0:1.25; --fs-h1:3.0rem;--lh-h1:1.35; --fs-h2:2.2rem;--lh-h2:1.40; --fs-h3:1.6rem;--lh-h3:1.50;
  --fs-b1:1.6rem;--lh-b1:1.90; --fs-b2:1.4rem;--lh-b2:1.80; --fs-b3:1.3rem;--lh-b3:1.90;
  --fs-l1:1.2rem;--lh-l1:1.50; --fs-l2:1.1rem;--lh-l2:1.50;
  --fs-n1:3.0rem;--lh-n1:1.15; --fs-n2:2.3rem;--lh-n2:1.20; --fs-n3:1.4rem;--lh-n3:1.60; --fs-n4:1.3rem;--lh-n4:1.60}
-@media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem}}
+@media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem;--fs-h0:3.2rem}}
 .num,.amt,.price{font-variant-numeric:tabular-nums}
 
 /* ══ 頁面本身：中性版面（不屬於任何風格），灰階跟著所選風格換 ══ */
@@ -65,6 +65,7 @@ td.spec b{color:var(--ink);font-weight:700}
 /* 字級樣本 */
 .t-d1{font-family:var(--font-num);font-size:var(--fs-d1);line-height:var(--lh-d1);letter-spacing:-0.01em;font-weight:700}
 .t-h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:0.03em;font-weight:900}
+.t-h0{font-size:var(--fs-h0);line-height:var(--lh-h0);letter-spacing:0.02em;font-weight:900}
 .t-h2{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:0.06em;font-weight:900}
 .t-h3{font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:0.08em;font-weight:900}
 .t-b1{font-size:var(--fs-b1);line-height:var(--lh-b1)}
@@ -133,12 +134,12 @@ td.sample{width:46%}
 <div class="wrap">
   <div class="head">
     <div class="kick">管理者工作室 ─ DESIGN SYSTEM · FOUNDATIONS</div>
-    <h1>通用規範（六套風格共用）</h1>
-    <p>這一頁的每個數值<b>不隨風格改變</b>：字級十三級、行距、字距、間距標尺、圓角、元件高度、語意色、斷點。換風格只會換下方「結構灰階」那一組值；換色系只會換「品牌雙色」。所有數值直接讀自 <b>tokens.css</b>，與六套元件庫用的是同一份，因此這裡顯示的就是元件真正用的值。</p>
+    <h1>通用規範（七套風格共用）</h1>
+    <p>這一頁的每個數值<b>不隨風格改變</b>：字級十四級、行距、字距、間距標尺、圓角、元件高度、語意色、斷點。換風格只會換下方「結構灰階」那一組值；換色系只會換「品牌雙色」。所有數值直接讀自 <b>tokens.css</b>，與六套元件庫用的是同一份，因此這裡顯示的就是元件真正用的值。</p>
     <div class="now"><span><i id="swA"></i><span id="nmPair">C1 深海藍</span></span><span><i id="swS" style="background:#26292E"></i><span id="nmStyle">S1 奶油 的灰階</span></span></div>
   </div>
 
-  <div class="sec"><span class="no">01</span><h2>字級十三級</h2><span class="rule"></span><span class="en">TYPE SCALE</span></div>
+  <div class="sec"><span class="no">01</span><h2>字級十四級</h2><span class="rule"></span><span class="en">TYPE SCALE</span></div>
   <p class="use">兩套並存：<b>Productive 效率型</b>給後台、購物車、結帳；<b>Expressive 表現型</b>給前台商品頁、目錄、首頁。以 <code>body[data-type]</code> 切換，元件一行不用改。字級與行距綁在同一級裡定義，寫 <code>var(--fs-b1)</code> 就該同時寫 <code>var(--lh-b1)</code>。下方樣本是即時渲染，切換放大倍率可驗收 125%／150% 下的排版（規範 v2 第 4.5 節）。</p>
   <div class="ctl">
     <span class="lbl">字級組</span>
@@ -151,6 +152,7 @@ td.sample{width:46%}
       <thead><tr><th>代號</th><th>用途</th><th>樣本（即時）</th><th>字級 / rem</th><th>字重</th><th>字距</th><th>行距</th><th>字型</th></tr></thead>
       <tbody>
         <tr><td class="code">D1</td><td>顯示數字（統計大數）</td><td class="sample"><span class="t-d1 num">96,140</span></td><td class="spec" data-v="d1"></td><td class="spec">700</td><td class="spec">-0.01em</td><td class="spec" data-lh="d1"></td><td class="spec">Arial</td></tr>
+        <tr><td class="code">H0</td><td>展示標題（前台 Hero）</td><td class="sample"><span class="t-h0">秋季選物</span></td><td class="spec" data-v="h0"></td><td class="spec">900</td><td class="spec">0.02em</td><td class="spec" data-lh="h0"></td><td class="spec">黑體</td></tr>
         <tr><td class="code">H1</td><td>頁面標題</td><td class="sample"><span class="t-h1">訂單管理</span></td><td class="spec" data-v="h1"></td><td class="spec">900</td><td class="spec">0.03em</td><td class="spec" data-lh="h1"></td><td class="spec">黑體</td></tr>
         <tr><td class="code">H2</td><td>區塊／章節標題、彈窗與面板標題</td><td class="sample"><span class="t-h2">本月出貨概況</span></td><td class="spec" data-v="h2"></td><td class="spec">900</td><td class="spec">0.06em</td><td class="spec" data-lh="h2"></td><td class="spec">黑體</td></tr>
         <tr><td class="code">H3</td><td>卡片標題列、表格標題、行內小標題</td><td class="sample"><span class="t-h3">金額摘要</span></td><td class="spec" data-v="h3"></td><td class="spec">900</td><td class="spec">0.08em</td><td class="spec" data-lh="h3"></td><td class="spec">黑體</td></tr>
