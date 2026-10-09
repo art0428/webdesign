@@ -1,9 +1,9 @@
 # 管理者工作室 網頁設計系統 · ui-design-format
 
 一套可以直接裝進 Claude 的網頁介面設計系統（以 Agent Skill 形式提供：裝好之後，Claude 做網頁時會自動照這套規範）。
-七套風格（S6 另有深色模式）、十二組核心色系加三組特殊色系、十三級字級、間距與動態標尺、62 項元件、前台示範頁，外加四支交付前的自動檢查腳本。
+七套風格（S6 另有深色模式）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、62 項元件、前台示範頁，外加四支交付前的自動檢查腳本。
 
-**A Claude Agent Skill for building web UIs: 7 visual styles (plus a dark mode) × 15 color themes, a 13-level type scale, spacing tokens, 62 components, and 4 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow). Docs are in Traditional Chinese.**
+**A Claude Agent Skill for building web UIs: 7 visual styles (plus a dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 62 components, and 4 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow). Docs are in Traditional Chinese.**
 
 **線上預覽** → <https://art0428.github.io/webdesign/>
 左側切換風格與色系，右側即時換裝；「前台示範」檢視是一張完整的選物店首頁，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
@@ -90,7 +90,7 @@ docs/                         線上預覽（GitHub Pages）、規範全文 spec
 dist/ui-design-format.zip     給 claude.ai 上傳用的打包檔
 ```
 
-規範全文：[docs/spec.md](docs/spec.md)（v15）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
+規範全文：[docs/spec.md](docs/spec.md)（v16）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
 
 ## 授權
 

@@ -8,7 +8,7 @@
             只回報「源頭」——字級或行高與父層不同的元素；純繼承的子孫不重複計。
 
 用法：
-  python check_lineheight.py page.html [more.html ...] [--render] [--type productive|expressive]
+  python check_lineheight.py page.html [more.html ...] [--render] [--type productive|expressive|all]
 
   --render 需要 Playwright（pip install playwright && playwright install chromium）。
 
@@ -17,16 +17,21 @@
 """
 import asyncio, re, io, os, sys, collections, argparse, pathlib
 
+# d1m、h0m 是 Expressive 在 768px 以下的 D1 與 H0（行距不變）
 LEVELS = {
-    "productive": {"d1": (30, 1.15), "h1": (21, 1.40), "h2": (17, 1.45), "h3": (14, 1.50),
+    "productive": {"d1": (30, 1.15), "h0": (26, 1.30), "h1": (21, 1.40), "h2": (17, 1.45), "h3": (14, 1.50),
                    "b1": (14, 1.80), "b2": (12.5, 1.70), "b3": (12, 1.70),
                    "l1": (12, 1.50), "l2": (11, 1.50),
                    "n1": (23, 1.20), "n2": (19, 1.25), "n3": (12.5, 1.60), "n4": (12.5, 1.60)},
-    "expressive": {"d1": (44, 1.10), "h1": (30, 1.35), "h2": (22, 1.40), "h3": (16, 1.50),
+    "expressive": {"d1": (44, 1.10), "d1m": (36, 1.10), "h0": (40, 1.25), "h0m": (32, 1.25), "h1": (30, 1.35), "h2": (22, 1.40), "h3": (16, 1.50),
                    "b1": (16, 1.90), "b2": (14, 1.80), "b3": (13, 1.90),
                    "l1": (12, 1.50), "l2": (11, 1.50),
                    "n1": (30, 1.15), "n2": (23, 1.20), "n3": (14, 1.60), "n4": (13, 1.60)},
 }
+
+
+# all：同一頁兩套都用（例如前台頁面引用了後台元件樣式）。代號沿用 Productive，Expressive 的值另掛 e 字尾供比對
+LEVELS["all"] = {**LEVELS["productive"], **{k + "e": v for k, v in LEVELS["expressive"].items()}}
 
 
 def build(level):
@@ -101,11 +106,14 @@ def static_check(path, level, allowed, lh_table):
         if not (has_fs or has_lh):
             continue
         fslv = lv_of_fs(d["font-size"], level) if has_fs else None
+        # 規範例外：輸入框 16px 防 iOS 放大，不論 16px 在不在該字級套裡，都不做配對檢查
+        if has_fs and re.search(r"\binput\b|\btextarea\b|\bselect\b", sel) and re.search(r"\b1\.6rem\b|\b16px\b", d["font-size"]):
+            continue
         if fslv and fslv.startswith("?"):
             if fslv == "?16px" and re.search(r"\binput\b|\btextarea\b|\bselect\b", sel):
                 pass    # 規範例外：輸入框 16px
             else:
-                out["字級不在十三級"].append((sel, d["font-size"]))
+                out["字級不在十四級"].append((sel, d["font-size"]))
         if has_fs and not has_lh and fslv in level:
             out["有字級沒配行距"].append((sel, d["font-size"]))
         if not has_lh:
@@ -184,7 +192,7 @@ def classify(nodes, allowed):
                 continue
             if abs(fs - 16) < .01:
                 continue    # 輸入框 16px 例外
-            bad["字級不在十三級"].append(nd)
+            bad["字級不在十四級"].append(nd)
         elif ratio is None:
             bad["行高 normal（沒指定，body 記得寫 line-height:var(--lh-b1)）"].append(nd)
         elif not any(abs(ratio - a) < .02 for a in allowed[key]):
@@ -196,7 +204,7 @@ def main():
     ap = argparse.ArgumentParser(description="行高配對檢查")
     ap.add_argument("files", nargs="+")
     ap.add_argument("--render", action="store_true", help="加跑第二關（需要 Playwright）")
-    ap.add_argument("--type", choices=["productive", "expressive"], default="productive")
+    ap.add_argument("--type", choices=["productive", "expressive", "all"], default="productive")
     a = ap.parse_args()
     level = LEVELS[a.type]
     allowed, lh_table = build(level)
