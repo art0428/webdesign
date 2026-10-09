@@ -9,7 +9,7 @@
   python audit_contrast.py page.html [more.html https://... ] [--themes c1,c2,sc1] [--width 1280] [-v]
 
   --themes  頁面支援用網址 hash 切換色系時（例如 page.html#c3），逐一稽核這些色系。
-            填 all 代表十二組核心 ＋ SC1。不填就只稽核頁面目前的樣子。
+            填 all 代表十二組核心 ＋ SC1〜SC3。不填就只稽核頁面目前的樣子。
   --width   視窗寬度，預設 1280。
 
 需要 Playwright 與 Pillow：
@@ -19,7 +19,7 @@
 """
 import asyncio, io, re, sys, collections, argparse, pathlib
 
-ALL_THEMES = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10", "c11", "c12", "sc1"]
+ALL_THEMES = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10", "c11", "c12", "sc1", "sc2", "sc3"]
 
 
 def lum(rgb):
@@ -163,7 +163,7 @@ async def audit(targets, themes, width):
 def main():
     ap = argparse.ArgumentParser(description="對比稽核")
     ap.add_argument("targets", nargs="+", help="HTML 檔案路徑或網址")
-    ap.add_argument("--themes", default="", help="逐一稽核的色系 hash，逗號分隔；all ＝ 十三組")
+    ap.add_argument("--themes", default="", help="逐一稽核的色系 hash，逗號分隔；all ＝ 十五組")
     ap.add_argument("--width", type=int, default=1280)
     ap.add_argument("-v", action="store_true", help="列出每個不及格節點")
     a = ap.parse_args()

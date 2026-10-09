@@ -1,18 +1,18 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-10 v10 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：六套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨）擇一開發；十二組核心 ＋ SC1 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十三級字級、間距標尺、圓角、元件高度、RWD、62 項元件清單與四項自動檢查。"
+description: "通用的網頁介面設計系統（2026-10 v15 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S6 另有深色模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十三級字級、間距標尺、圓角、元件高度、RWD、62 項元件清單與四項自動檢查；動態 token 與 Lucide 圖示規則；六張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v10》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，六套元件庫與 `tokens.css` 在 `assets/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v15》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，六套元件庫與 `tokens.css` 在 `assets/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
 ## 0. 三十秒摘要
 
 一、**工程師選一套風格開發，全站只有一套風格**；風格是「殼」，只覆寫表面材質，不碰結構、色彩變數、字級。
-二、**系統內建十二組核心色系 ＋ SC1 特殊色系讓使用者切換**，切換只換第一層七個 CSS 變數；第二層灰階、第三層語意色、第四層資料視覺化色板永不隨色系變。不適用於該風格的色系要鎖住，不合法組合退回 C1 並提示，不靜默套用。
+二、**系統內建十二組核心色系 ＋ SC1〜SC3 特殊色系讓使用者切換**，切換只換第一層七個 CSS 變數；第二層灰階、第三層語意色、第四層資料視覺化色板永不隨色系變。不適用於該風格的色系要鎖住，不合法組合退回 C1 並提示，不靜默套用。
 三、色彩、字級、間距、圓角一律引用 token，**不寫死數字**；字級與間距用 rem（1rem ＝ 10px），圓角框線斷點用 px；所有元件 `min-height` 不用 `height`。
 四、交付前跑四項檢查：對比稽核（每個文字節點 ≥4.5）、標尺合規（字級、行距、間距、字距全在表上）、**行高配對**（字級與行距必須同代號）、390px 不橫向溢出。
 五、**框線色不得拿來當文字色**。`--line` 與 `--line-2` 是給線條用的，拿來寫「不重要的字」（月曆的非本月日期、麵包屑的分隔符）對比只有 1.4，必然不及格；要淡就用 `--muted`。
@@ -20,37 +20,58 @@ description: "通用的網頁介面設計系統（2026-10 v10 規範）。凡是
 
 ## 1. 工作流程
 
-1. **選風格**：依系統類型從六套選一（見第 2 節矩陣）。後台、資料密集預設 S1 奶油；要「工具感」而不是「文件感」的後台、開發者介面、資料密集儀表板選 S6 石墨；不確定就 S1。
-2. **選預設色系**：從 C1〜C12 選一組當預設（新專案預設 C1 深海藍）；SC1 只在 S1、S3、S5、S6 可當預設。
+1. **選風格**：依系統類型從七套選一（見第 2 節矩陣）。後台、資料密集預設 S1 奶油；要「工具感」而不是「文件感」的後台、開發者介面、資料密集儀表板選 S6 石墨；內容網站、品牌官網、長文閱讀選 S7 編輯；不確定就 S1。
+2. **選預設色系**：從 C1〜C12 選一組當預設（新專案預設 C1 深海藍）；SC 系列只在不鎖、不需調整的風格可當預設：SC1 為 S1、S3、S5、S6；SC2 為 S1、S3、S5、S6（高彩度，給零售、消費品、活動頁）；SC3 為 S1、S3、S5、S6（冷灰藍，給金融、資安、監控）。
 3. **起手**：載入 tokens（第 5 節）＋ 該風格的表面層（第 3 節）＋ THEMES 與切換器（第 4 節）。
 4. **元件**：只用第 8 節清單裡的元件與 class 語彙，狀態齊全（預設、hover、focus、disabled、錯誤、空、載入）。
 5. **檢查**：第 9 節四項檢查通過才算完成。
 
-## 2. 六套風格與選型
+## 2. 七套風格與選型
 
 | 編號 | 名稱 | 材質原理 | 適合 | 不適合 |
 |---|---|---|---|---|
 | S1 | 奶油 CREAM | 暖白底、大圓角、1px 暖灰線、零陰影 | 任何後台、預設值 | 無短板，也沒有記憶點 |
-| S2 | 浮雕 EMBOSS | 同色凸凹柔影：凸＝可按、凹＝已選／輸入區 | 操作元件多的工具型介面 | 大量小字資料表（對比先天弱）；SC1 鎖定 |
+| S2 | 浮雕 EMBOSS | 同色凸凹柔影：凸＝可按、凹＝已選／輸入區 | 操作元件多的工具型介面 | 大量小字資料表（對比先天弱）；SC1、SC2 鎖定 |
 | S3 | 琉璃 GLAZE | 品牌雙色 133° 漸層背景 ＋ 毛玻璃面板 | 品牌展示、前台首頁、AI 賣點 | 資訊密集後台；iOS 對 `background-attachment:fixed` 支援差 |
 | S4 | 手帳 DOODLE | 暖紙底、2px 墨色手繪歪框、硬影位移 | 餐飲、文創、電商、品牌頁 | 需快速掃描的表格（手繪框是噪音）；冷色系需調整 |
 | S5 | 極光 AURORA | 雙色柔霧暈染、一角收尖的有機圓角 | 品牌故事、服務型前台、儀表板首頁 | 漸層只准三處（強調按鈕、AI 標記、hero 數字／目前狀態節點） |
 | S6 | 石墨 GRAPHITE | 純無彩色近白底、1px 細線、零陰影、小圓角、N4 等寬字 | 後台、資料密集儀表板、開發者與內部工具、設定頁 | 前台品牌頁、行銷頁、需要情緒與記憶點的介面 |
+| S7 | 編輯 EDITORIAL | 暖白紙、墨色、明體標題、2px 欄線分段、1px 細線、直角、零陰影 | 內容網站、品牌官網、活動頁、長文閱讀、以文章為主的內容管理後台 | 資料密集後台與儀表板（明體與留白降低密度） |
+
+風格 × 系統類型（◎ 首選 ○ 可用 △ 有條件 ✕ 不建議；完整條件見規範 8.7）：
+
+| 系統類型 | S1 | S2 | S3 | S4 | S5 | S6 | S7 | 首選 |
+|---|---|---|---|---|---|---|---|---|
+| 後台管理（訂單、庫存、ERP 類） | ◎ | △ | ✕ | ✕ | ○ | ◎ | △ | S1；要工具感選 S6 |
+| 資料密集儀表板、報表 | ◎ | ✕ | ✕ | ✕ | ○ | ◎ | ✕ | S6 |
+| 開發者工具、內部工具、系統設定 | ○ | △ | ✕ | ✕ | △ | ◎ | ✕ | S6 |
+| SaaS 產品的主工作介面 | ◎ | △ | ✕ | △ | ○ | ◎ | △ | S1 |
+| 少資料、多操作的工具（設定精靈、控制面板、自助機台） | ○ | ◎ | △ | ○ | ○ | ○ | ○ | S2 |
+| 電商前台 | ○ | △ | ○ | ◎ | ◎ | △ | ◎ | S5；品牌偏手作選 S4、偏雜誌感選 S7 |
+| 服務型前台（預約、點餐、會員中心） | ◎ | ○ | △ | ○ | ◎ | △ | ○ | S5 或 S1 |
+| 品牌官網、活動頁、產品發表 | ○ | ○ | ◎ | ◎ | ◎ | △ | ◎ | S3；內容多的品牌官網選 S7 |
+| 餐飲、文創、年輕客群的前台 | ○ | △ | ○ | ◎ | ○ | ✕ | ○ | S4 |
+| 內容與閱讀（文章、說明中心、技術文件） | ◎ | △ | ✕ | ○ | ○ | ○ | ◎ | S7；技術文件選 S6 |
+
+選型三條規則：一、先看系統類型（使用者一天看多久、資料多不多），再看品牌調性，最後才挑色系；**看得久、資料多的系統只考慮 S1 與 S6；以閱讀為主的前台先看 S7**，S2、S3、S4、S7 不當資料密集後台的主風格。二、一個系統只有一套風格，前後台同屬一個系統時以使用時數最長的一端決定（點餐系統照店家後台選），前後台是分開的兩個系統才可各選一套。三、字級套與風格無關：做事的頁面 Productive、看的頁面 Expressive，電商結帳仍是 Productive。不確定就選 S1。
 
 風格 × 色系矩陣（◎ 推薦 ○ 可用 △ 需調整 ✕ 鎖住）：
 
-| | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 | C11 | C12 | SC1 |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| S1 | ◎ | ◎ | ◎ | ○ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ |
-| S2 | ◎ | ◎ | ◎ | ○ | ○ | △ | △ | △ | ○ | ○ | ○ | ○ | ✕ |
-| S3 | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ○ | ○ | ◎ | ◎ | ○ | ○ | ◎ |
-| S4 | ○ | ○ | △ | △ | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ◎ | ◎ | △ 自動加框線 |
-| S5 | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | △ | △ | ○ | ◎ | ◎ | ◎ | ◎ |
-| S6 | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ○ | ◎ | ◎ | ◎ | ○ | ○ | ◎ |
+| | C1 | C2 | C3 | C4 | C5 | C6 | C7 | C8 | C9 | C10 | C11 | C12 | SC1 | SC2 | SC3 |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| S1 | ◎ | ◎ | ◎ | ○ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ◎ |
+| S2 | ◎ | ◎ | ◎ | ○ | ○ | △ | △ | △ | ○ | ○ | ○ | ○ | ✕ | ✕ | △ 自動加框線 |
+| S3 | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ○ | ○ | ◎ | ◎ | ○ | ○ | ◎ | ◎ | ○ |
+| S4 | ○ | ○ | △ | △ | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ◎ | ◎ | △ 自動加框線 | △ 自動加框線 | △ |
+| S5 | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | △ | △ | ○ | ◎ | ◎ | ◎ | ◎ | ◎ | ○ |
+| S6 | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ○ | ◎ | ◎ | ◎ | ○ | ○ | ◎ | ○ | ◎ |
+| S7 | ◎ | ◎ | ◎ | ○ | ◎ | ◎ | ◎ | ◎ | ◎ | ○ | ◎ | ○ | ○ | ○ | ◎ |
 
 △ 的調整方式：S2 遇暖色改暖灰底 `#EDE8E0`；S4 遇冷色建議改選 S1；S5 遇 C7、C8 暈染只取彩色端。
 
-**S1 與 S6 是一對**：奶油暖而軟，給文件與對外畫面；石墨冷而硬，給工程師與內部工具。兩套的辨識度靠底色拉開：S1 是暖白 `#F6F5F2`、S6 是中性灰 `#F4F4F4`，卡片都是純白。S6 是六套裡對色系最寬容的一套（沒有任何一格需調整或鎖住），因為它把品牌色壓到最少。六套 × 十三組 ＝ 78，扣掉鎖住的 S2 × SC1，可用 **77 種**。
+**S6 深色模式（規範 8.8）**：深色是 S6 的模式不是第七套風格，結構、圓角、細線、等寬字不變，色系可用規則沿用 S6；只有 S6 有深色。灰階 `--page:#121212 --card:#1A1A1A --band/paperc:#202020 --sel:#262626 --line:#2E2E2E --line-2:#3A3A3A --ink:#EDEDED --muted:#A3A3A3`；語意色 `--err:#F28B82 --wrn:#E2B341 --ok:#74C483 --info:#7DB6EE`（淡底為該色 16% 混入卡片色）；`--d1` 改 `#6E97DB`。品牌色深色值：主色在 OKLab 只加明度到卡片上 ≥4.6、淡底上 ≥4.8，**填色上一律放深色字**（`--on-acc`、`--on-acc2`、`--on-err`、`--on-ink` 都是 `#121212`），十五組數值見規範 8.8 或 `assets/components/s6d-graphite-dark.html` 的 `DARK`。宣告 `color-scheme:dark`；預設跟隨系統並提供淺／深／跟隨三選一；不用 `filter:invert()`。新寫的元件不要寫死 `#fff`，白字改引用上述四個變數。
+
+**S1 與 S6 是一對**：奶油暖而軟，給文件與對外畫面；石墨冷而硬，給工程師與內部工具。兩套的辨識度靠底色拉開：S1 是暖白 `#F6F5F2`、S6 是中性灰 `#F4F4F4`，卡片都是純白。S6 是對色系最寬容的一套（沒有任何一格需調整或鎖住，S7 同樣如此），因為它把品牌色壓到最少。七套 × 十五組 ＝ 105，扣掉鎖住的 S2 × SC1、S2 × SC2，可用 **103 種**；S6 深色另 15 種，合計 118 種。
 
 ## 3. 各風格的表面層（只覆寫材質）
 
@@ -72,9 +93,11 @@ S1 為基準（不掛 class），其餘五套以 `html.sty-emboss / sty-glaze / 
 二、**灰階是純無彩色**，每個灰的紅綠藍三值必須相等，不得帶藍調或黃調。
 三、**表格區不用品牌色，只有選取列例外**——篩選膠囊選中、側欄 hover、分段控制都用中性灰 `--sel`；品牌色只留給主按鈕、連結、側欄選中項、目前頁籤、選取列。
 
+**S7 編輯**（規範 8.2）：`--page:#FAF8F3`（暖白紙）`--card:#FFFFFF --band/paperc:#F3F0E9 --line:#E2DDD3 --ink:#1A1814 --muted:#615C54`；零陰影。外層區塊 `.board` 不加框、改上緣 `2px solid var(--ink)` 欄線，左右內距 0、上方 `--sp-6`；框只留給卡片與輸入元件（1px 細線）。兩項風格層例外（只有 S7）：**標題用明體**——H1〜H3 與元件內標題 `font-family:'Noto Serif TC','Songti TC','Source Han Serif TC','PMingLiU',serif`（Google Fonts 加載 `Noto+Serif+TC:wght@700;900`），字級行距字重照表，內文標籤按鈕仍黑體、金額仍 Arial；**直角**——`--r-lg:0 --r-sm:2px`，容器 0、按鈕輸入框選項標籤 2px、頭像圓點正圓。提示框改用 `--paperc` 底（外層區塊透明，用頁面色會消失）。
+
 兩項風格層例外（只有 S6 適用）：按鈕與輸入框圓角 **6px**、卡片與表格容器 **12px**（狀態膠囊、篩選膠囊、屬性 tag 仍 999px）；N4 級（料號、單號、日期、IP、追蹤碼）改等寬字 `"SF Mono",Menlo,Consolas,"Liberation Mono",monospace`，**金額 N1〜N3 仍用 Arial、中文仍用 Noto Sans TC**。
 
-## 4. 色彩四層與色系切換（十二組核心 ＋ SC1）
+## 4. 色彩四層與色系切換（十二組核心 ＋ SC1〜SC3）
 
 **鐵則：介面上不得出現這四層以外的任何顏色。**
 
@@ -86,7 +109,7 @@ S1 為基準（不掛 class），其餘五套以 `html.sty-emboss / sty-glaze / 
 
 - `--acc` 主色負責所有「操作」：主按鈕、選中、連結、聚焦框、目前頁籤、進行中狀態。
 - `--acc2` 副色負責「點綴」：品牌標記、圖表第二數列、趨勢箭頭；每頁最多三處。
-- `--acc-deep` 十三組一律等於 `--acc`。
+- `--acc-deep` 十五組一律等於 `--acc`。
 - **副色分兩型**：深型（十二組核心）承載文字的填色一律 `--acc2-deep` 配白字，副色當字一律 `--acc2-deep`，不承載文字的裝飾填色才用 `--acc2`；淺型（SC 系列）填色上放 `--acc2-text`（＝該風格的 `--ink`），填色元件必須有 1px 框線或置於白卡，且同一列不得與 warning 琥珀並存（並存時品牌標記改用 `--acc`）。
 
 | 編號 | 名稱 | `--acc` | `--acc-soft` | `--acc2` | `--acc2-soft` | `--acc2-deep` | 副色型 | 可用風格 |
@@ -104,6 +127,8 @@ S1 為基準（不掛 class），其餘五套以 `html.sty-emboss / sty-glaze / 
 | C11 | 燒橄欖 | `#646049` | `#F3F2F0` | `#C65D52` | `#FAF2F1` | `#B2463B` | 深型 | 全部 |
 | C12 | 玫瑰棕 | `#80565B` | `#F5F1F2` | `#BA797D` | `#F9F4F5` | `#9F5257` | 深型 | 全部 |
 | SC1 | 深綠 × 相思黃 | `#35463D` | `#EFF0EF` | `#DACD65` | `#FCFBF3` | `#6F6519` | 淺型 | S1、S3、S5、S6；S4 需加框線；S2 鎖住 |
+| SC2 | 鈷藍 × 亮橘 | `#2449E8` | `#EEF1FD` | `#FF7A1A` | `#FFF3EA` | `#B0490A` | 淺型 | S1、S3、S5、S6；S4 需加框線；S2 鎖住（高彩度，前台與活動頁） |
+| SC3 | 石板藍 × 冰川青 | `#3D4C5E` | `#EFF1F3` | `#5FB4C9` | `#F0F8FA` | `#296778` | 淺型 | S1、S3、S4、S5、S6；S2 需加框線（冷灰藍，工具型） |
 
 顏色一律 sRGB 十六進位；Pantone、RAL 等外部色號只作對照，不得寫進程式或規範。退場的舊色（石板藍 `#334155`、酒紅 `#7A2230`）新專案不得選用。專案若有既有品牌色，只替換第一層七個變數，仍須通過第 9 節對比稽核。
 
@@ -123,7 +148,9 @@ const THEMES={
  c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
  c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
  c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","accDeep":"#35463D","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC"}
+ sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","accDeep":"#35463D","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC"},
+ sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC","accDeep":"#2449E8"},
+ sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6"],"adjust":["s2"],"series":"SC","accDeep":"#3D4C5E"}
 };
 const STYLE='s1';                                   // 本系統選定的風格，建置時決定
 function themeAllowed(k){const t=THEMES[k];return !!t&&(t.styles.includes(STYLE)||t.adjust.includes(STYLE));}
@@ -136,7 +163,7 @@ function applyTheme(k){
   const ink=getComputedStyle(document.documentElement).getPropertyValue('--ink').trim();
   r.setProperty('--acc2-text', t.acc2Type==='light' ? ink : '#FFFFFF');
   document.documentElement.classList.toggle('sc-light', t.acc2Type==='light');
-  document.documentElement.classList.toggle('sc-adjust', t.adjust.includes(STYLE));   // S4 × SC1：副色填色自動加 1px 墨色框線
+  document.documentElement.classList.toggle('sc-adjust', t.adjust.includes(STYLE));   // S4 × SC1、S4 × SC2、S2 × SC3：副色填色自動加 1px 墨色框線
   return k;   // 呼叫端把實際套用的 k 存回使用者偏好
 }
 ```
@@ -197,6 +224,8 @@ html{font-size:62.5%}                       /* 1rem = 10px，px 除以 10 即 re
  --fs-l1:1.2rem;--lh-l1:1.50; --fs-l2:1.1rem;--lh-l2:1.50;
  --fs-n1:3.0rem;--lh-n1:1.15; --fs-n2:2.3rem;--lh-n2:1.20; --fs-n3:1.4rem;--lh-n3:1.60; --fs-n4:1.3rem;--lh-n4:1.60}
 @media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem}}
+:root{--dur-1:120ms;--dur-2:200ms;--dur-3:320ms;--ease-out:cubic-bezier(.2,0,0,1);--ease-in:cubic-bezier(.4,0,1,1)}
+@media (prefers-reduced-motion:reduce){:root{--dur-1:0ms;--dur-2:0ms;--dur-3:0ms}}
 body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:var(--lh-b1)}
 .num,.amt,.price{font-family:Arial,Helvetica,'Noto Sans TC',sans-serif;font-variant-numeric:tabular-nums}
 ```
@@ -217,9 +246,11 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 圓角四級固定、維持 px：18px 焦點框與大面板、16px 卡片與表格容器、12px 輸入框小卡選單、999px 所有按鈕與狀態膠囊；框線 1px、選中 1.5px。陰影由各風格定義（奶油、極光、石墨零陰影，浮雕雙向柔影，琉璃面板投影，手帳硬影）。
 
-**風格層例外只有 S6 石墨**：按鈕與輸入框 6px、卡片與表格容器 12px；N4 級改等寬字。其餘五套一律照上表。
+**風格層例外只有 S6 石墨與 S7 編輯**：S6 按鈕與輸入框 6px、卡片與表格容器 12px、N4 級改等寬字；S7 容器 0、按鈕與輸入元件 2px、標題用明體。其餘五套一律照上表。
 
 元件高度一律 `min-height`（rem）：主按鈕 4.0（手機 4.4）、一般按鈕 3.8（4.4）、小按鈕 3.2（4.0）、輸入框 4.0（4.4，字 16px 防 iOS 放大）、狀態膠囊 2.4、表格列 4.4、側欄項目 3.8；相鄰可點元件至少留 8px。正圓元件（頭像、圓點、播放鈕）加 `aspect-ratio:1/1` 以免在 flex 列被拉成橢圓。
+
+**動態（規範 5.5）**：轉場時長只用 `--dur-1` 120ms（顏色、框線、陰影、按下：滑過與聚焦）、`--dur-2` 200ms（元件內位移與展開：開關滑塊、折疊、下拉、提示氣泡）、`--dur-3` 320ms（彈窗、側滑面板、Toast），進場與狀態變化用 `--ease-out`、退場用 `--ease-in` 且短一級；不寫死秒數、不寫 `transition:all`；只轉場顏色、背景、框線色、陰影、`opacity`、`transform`，不轉場 `width`、`height`、`top`、`left`、`margin`、`padding`（移動用 `translate`）。骨架屏與轉圈等迴圈動畫不受此限。
 
 ## 6. RWD
 
@@ -231,15 +262,19 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 ## 8. 元件清單（62 項：核心 45 必備、選用 17 依系統勾選）
 
-**核心（每個專案都要，六套風格皆已實作）**
+**核心（每個專案都要，七套風格皆已實作）**
 基礎：設計 Token、字級層級、分隔線。動作：按鈕、動作鈕 ⋯、分段控制。表單：輸入框、搜尋框、核取與單選、篩選膠囊、開關、上傳、多行輸入、下拉選單、多選＋搜尋、日期與時間選擇器、自動完成、數字步進器、選項 chip。資料呈現：表格、表格進階（排序、欄位切換、批次選取）、卡片、統計卡、描述清單、狀態標籤、屬性 tag、折疊面板、頭像、數字角標。導覽：側欄項目、頁籤、麵包屑、分頁器（P4 底線數字式）、側滑面板。回饋：彈窗、就地確認、提示氣泡、Toast、警示條（四語意色）、提示框、空狀態、骨架屏、通知鈴、進度條、搜尋無結果。
 
 **選用（依系統類型）**
 工具列、滑桿、級聯選擇、穿梭框、摘要方塊、來源標記（原 AI 標記）、百分比膠囊、量表、樹狀、時間軸、圖表（兩個數列以下用主色與深副色，三個以上改用第四層八色）、媒體與輪播、動態列表、步驟精靈、唯讀步驟、分割面板、結果頁。
 
-**警示條與提示框（v7 定案、v8 補對齊守則，六套一致）**：警示條 `.alert` 不用左側 4px 色條，改 `border:1px solid color-mix(in srgb,currentColor 32%,transparent)` 一圈細框，框線顏色自動跟著語意色走；標題與內文同一行（`b` 與 `p` 都 `display:inline`），圖示保留，背景仍是該語意的 `-soft` 淡底。四條使用守則：**標題是選用的**（一句話講得完就不要標題）、**動作最多一顆**且做成帶底線的文字連結而非按鈕（`.alert .btn.sm` 去底去框去陰影）、**錯誤與警告不給關閉鈕**（使用者關掉就看不到問題了，只有 info 與 ok 可關）、**文字動作與關閉鈕要跟內文站在同一條基線上**（和內文共用同一個行框：同字級、同行距、`align-self:flex-start`，不要再給它 `min-height`——按鈕那個 32px 會把整列撐高，差將近 6px）。提示框 `.notice` 去掉左側主色條與彩色底，S1 與 S6 直接用頁面灰底無框、S2 用凹面無框、S3 是 1px 玻璃框、S4 是 2px 虛線框、S5 是淡線框加淡底——它只是「順便一提」，不該比旁邊的內容搶眼。
+**警示條與提示框（v7 定案、v8 補對齊守則，七套一致）**：警示條 `.alert` 不用左側 4px 色條，改 `border:1px solid color-mix(in srgb,currentColor 32%,transparent)` 一圈細框，框線顏色自動跟著語意色走；標題與內文同一行（`b` 與 `p` 都 `display:inline`），圖示保留，背景仍是該語意的 `-soft` 淡底。四條使用守則：**標題是選用的**（一句話講得完就不要標題）、**動作最多一顆**且做成帶底線的文字連結而非按鈕（`.alert .btn.sm` 去底去框去陰影）、**錯誤與警告不給關閉鈕**（使用者關掉就看不到問題了，只有 info 與 ok 可關）、**文字動作與關閉鈕要跟內文站在同一條基線上**（和內文共用同一個行框：同字級、同行距、`align-self:flex-start`，不要再給它 `min-height`——按鈕那個 32px 會把整列撐高，差將近 6px）。提示框 `.notice` 去掉左側主色條與彩色底，S1 與 S6 直接用頁面灰底無框、S2 用凹面無框、S3 是 1px 玻璃框、S4 是 2px 虛線框、S5 是淡線框加淡底——它只是「順便一提」，不該比旁邊的內容搶眼。
 
-六套**共用同一份元件 HTML**：S1 奶油是基準，其餘五套只掛 `html.sty-*` 覆寫材質；六套的 62 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（六套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
+七套**共用同一份元件 HTML**：S1 奶油是基準，其餘六套只覆寫材質（S6、S7 由產生器以 S1 為基底重建，S6 深色再由 S6 產生）；七套的 62 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（七套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
+
+**圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；七套風格共用同一組圖示。
+
+**前台長什麼樣**：`assets/storefront/*.html` 六張選物店首頁（掛 Expressive，只用元件庫 class），設計系統瀏覽器的「前台示範」檢視可切換風格與色系。做前台時照它的結構起手。
 
 ## 9. 交付前四項自動檢查（腳本在本 skill 的 `scripts/`）
 
@@ -284,16 +319,17 @@ body{margin:0;background:var(--page);color:var(--ink)}
 | 要查的事 | 讀這個檔 |
 |---|---|
 | 名詞對照表、文件目的、五條設計總則 | `references/overview.md` |
-| 第三章 色彩四層、十二組核心 ＋ SC1 色碼、副色深型與淺型、著色面上的文字 | `references/color.md` |
+| 第三章 色彩四層、十二組核心與 SC 特殊色系色碼、副色深型與淺型、著色面上的文字 | `references/color.md` |
 | 第四章 字型、十三級字級、行距配對、金額與數字格式 | `references/typography.md` |
-| 第五章 間距標尺、圓角、框線、元件高度 | `references/spacing-radius.md` |
+| 第五章 間距標尺、圓角、框線、元件高度、動態（時長與緩動） | `references/spacing-radius.md` |
 | 第六章 斷點、側欄抽屜、表格轉卡片列 | `references/rwd.md` |
-| 第七章 元件規範（含警示條與提示框守則） | `references/components.md` |
-| 第八章 六套風格的表面層、風格 × 色系矩陣 | `references/styles.md` |
+| 第七章 元件規範（含警示條與提示框守則、Lucide 圖示規範） | `references/components.md` |
+| 第八章 各風格定義、風格 × 色系矩陣、風格 × 系統類型選型、S6 深色模式 | `references/styles.md` |
 | 第九章 後台與前台版型 | `references/layout.md` |
 | 第十章 對比、焦點、鍵盤操作 | `references/accessibility.md` |
 | 第十一章 介面文案（按鈕、錯誤訊息、空狀態的寫法） | `references/copywriting.md` |
 | 附錄 已退場的歷年色系 | `references/legacy-colors.md` |
 | 某個元件的完整 HTML 與 CSS | `assets/components/<風格>.html`，搜尋該元件的節標題 |
-| 六套共用的數值一覽（字級、間距、圓角、色彩、斷點） | `assets/foundations.html` |
+| 前台頁面的結構範例（選物店首頁，Expressive 字級） | `assets/storefront/<風格>.html` |
+| 各風格共用的數值一覽（字級、間距、圓角、色彩、斷點） | `assets/foundations.html` |
 | 字級、間距、造型 token | `assets/tokens.css` |

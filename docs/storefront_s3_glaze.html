@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>管理者工作室 元件規範 — S3 琉璃 GLAZE</title>
+<title>管理者工作室 前台示範 — S3 琉璃 GLAZE</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <style>
 /* ══ 字級、行距、間距 tokens v2 ══ 與 code/type_system/typography.css 同源；改這裡要同步改那裡 */
@@ -696,13 +696,77 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
 /* 提示框 C 案：維持玻璃塊，左邊改回與其他三邊同一條白框 */
 .notice{border-left:1px solid var(--glBd)}
 </style>
+<style>
+/* ══ 前台示範頁的版面（只寫排版；材質交給各套的 .board .card .btn） ══ */
+.ic{flex:none;vertical-align:middle}
+.sf{display:flex;flex-direction:column;gap:var(--sp-6)}
+.sf a{color:inherit;text-decoration:none}
+.sf-nav{display:flex;align-items:center;gap:var(--sp-6)}
+.sf-logo{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;letter-spacing:var(--ls-h3)}
+.sf-mark{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2)}
+.sf-links{display:flex;gap:var(--sp-5);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:500}
+.sf-links a:hover{color:var(--acc)}
+.sf-tools{margin-left:auto;display:flex;align-items:center;gap:var(--sp-1)}
+.sf-ib{min-width:44px;min-height:4.4rem;display:inline-flex;align-items:center;justify-content:center;border:none;background:none;color:var(--ink);border-radius:var(--r-pill);cursor:pointer;padding:0;transition:background var(--dur-1) var(--ease-out)}
+.sf-ib:hover{background:var(--accsoft)}
+.sf-ib:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sf-menu{display:none}
+.sf-hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:var(--sp-8);align-items:center}
+.sf-eyebrow{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted);text-transform:uppercase}
+.sf-h1{margin:var(--sp-3) 0 var(--sp-4);font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);font-weight:900}
+.sf-h2{margin:0;font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);font-weight:900}
+.sf-lead{margin:0 0 var(--sp-6);color:var(--muted);max-width:34em}
+.sf-cta{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.sf-cta .btn{display:inline-flex;align-items:center;gap:var(--sp-2)}
+.sf-media{aspect-ratio:4/3;border-radius:var(--r-lg);background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.sf-sechead{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-4)}
+.sf-more{display:inline-flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:700;color:var(--acc)}
+.sf-filter{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-5)}
+.sf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-5)}
+.sf-prod{display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.sf-thumb{position:relative;aspect-ratio:1/1;background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.sf-thumb .tag{position:absolute;top:var(--sp-3);left:var(--sp-3)}
+.sf-fav{position:absolute;top:var(--sp-1);right:var(--sp-1)}
+.sf-pbody{display:flex;flex-direction:column;gap:var(--sp-2);flex:1}
+.sf-pname{margin:0;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-meta{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-pricing{display:flex;align-items:baseline;flex-wrap:wrap;gap:var(--sp-2);margin-top:auto}
+.sf-pricing .price{font-family:Arial,sans-serif;font-weight:700;color:var(--ink);font-size:var(--fs-n2);line-height:var(--lh-n2)}
+.sf-pricing .price small{font-size:.68em;color:var(--muted);font-weight:400}
+.sf-was{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);text-decoration:line-through}
+.sf-add{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);width:100%}
+.sf-feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-6)}
+.sf-feat{display:flex;gap:var(--sp-2);align-items:flex-start}
+.sf-feat .ic{color:var(--acc)}
+.sf-feat h3{margin:0 0 var(--sp-1);font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-feat p{margin:0;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-article{display:flex;flex-direction:column;gap:var(--sp-4)}
+.sf-article .sf-body{max-width:36em}
+.sf-article .sf-body p{margin:0 0 var(--sp-4)}
+.sf-news{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);align-items:end}
+.sf-news p{margin:var(--sp-2) 0 0;font-size:var(--fs-b2);line-height:var(--lh-b2);color:var(--muted)}
+.sf-form{display:flex;gap:var(--sp-3);align-items:flex-end}
+.sf-form .field{flex:1;min-width:0}
+.sf-foot{display:flex;flex-wrap:wrap;gap:var(--sp-5);justify-content:space-between;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);padding:0 var(--sp-2)}
+.sf-foot nav{display:flex;flex-wrap:wrap;gap:var(--sp-4)}
+.sf-foot.board{padding:var(--sp-4) var(--sp-5)}
+@media (max-width:1023px){.sf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:767px){
+ .sf-links{display:none}.sf-menu{display:inline-flex}
+ .sf-hero,.sf-feats,.sf-news{grid-template-columns:1fr}
+ .sf-hero{gap:var(--sp-6)}.sf-media{order:-1}
+ .sf-form{flex-direction:column;align-items:stretch}
+ .sf-cta .btn{flex:1;justify-content:center}
+}
+@media (max-width:479px){.sf-grid{grid-template-columns:1fr}}
+</style>
 </head>
-<body>
+<body data-type="expressive">
 
 <div class="head">
-  <div class="kick">管理者工作室 — COMPONENT SPEC · S3 GLAZE</div>
-  <h1>S3 琉璃（玻璃擬態）</h1>
-  <p>同一套元件清單，改用玻璃擬態（Glassmorphism：半透明毛玻璃面板＋背景模糊）呈現。<b>背景漸層直接由品牌雙色生成</b>——品牌色不再只是按鈕的顏色，而是整個介面的空氣；面板分兩種：<b>深玻璃</b>（墨色 66%、白字，做強調與裝飾）與<b>亮玻璃</b>（高不透明度、深字，裝資料保可讀）。色彩紀律、膠囊按鈕、P4 分頁器照舊。</p>
+  <div class="kick">管理者工作室 — STOREFRONT DEMO · S3 GLAZE · EXPRESSIVE</div>
+  <h1>S3 琉璃 前台示範</h1>
+  <p>同一套風格拿來做前台長什麼樣：選物店首頁，字級掛 <b>Expressive 表現型</b>。只用元件庫既有的 class 組成，材質與色系切換都與元件庫同源；選型依據見規範 8.7。</p>
 </div>
 
 <div class="accbar">
@@ -726,363 +790,14 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
   <span class="accnote" id="accnote" role="status" aria-live="polite" hidden></span>
 </div>
 
-<div class="wrap"><div class="tierbar"><b>核心元件</b>45 項 ─ 每個專案必備，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">01</span><h2>設計 Token</h2><span class="rule"></span></div><div class="use">Token（設計變數：把顏色、圓角、陰影統一成可替換的參數）分三層：第一層品牌雙色由色系切換注入，第二層結構灰階每套風格一組，第三層四個語意色固定不變。任何元件都只能引用這裡的變數，不得寫死色碼。 本風格：亮玻璃白 70%＋blur 24 放資料、深玻璃墨色 66% 放導覽；文字不落在漸層上、彩色字不落在玻璃上。</div><div class="board glass">
-<div class="tok">
-<div class="tokcell"><div class="sw" style="background:linear-gradient(133deg,var(--acc),var(--acc2))"></div><div class="tn">背景＝雙色漸層</div><div class="tv">acc-1 → acc-2 / 133°</div></div>
-<div class="tokcell"><div class="sw" style="background:rgba(255,255,255,.62);backdrop-filter:blur(4px)"></div><div class="tn">亮玻璃（資料層）</div><div class="tv">white 70% + blur 24</div></div>
-<div class="tokcell"><div class="sw" style="background:rgba(90,90,110,.35)"></div><div class="tn">深玻璃（導覽層）</div><div class="tv">ink 66% + blur 18</div></div>
-<div class="tokcell"><div class="sw" style="background:#232936"></div><div class="tn">ink 主文字</div><div class="tv">#232936（玻璃上）</div></div>
-<div class="tokcell"><div class="sw" style="background:var(--err)"></div><div class="tn">error 紅</div><div class="tv">#B23F2F</div></div>
-<div class="tokcell"><div class="sw" style="background:#E3C94E"></div><div class="tn">warning 琥珀</div><div class="tv">字 #846200</div></div>
-<div class="tokcell"><div class="sw" style="background:var(--ok)"></div><div class="tn">success 綠</div><div class="tv">#2A722E</div></div>
-</div>
-</div><div class="sec"><span class="no num">02</span><h2>字級層級 Type scale</h2><span class="rule"></span></div><div class="use">全站只有十三級字級，每一級綁定自己的行距與字距，寫 <code>var(--fs-xx)</code> 就要同時寫 <code>var(--lh-xx)</code>。中文一律黑體靠字重分層，數字、料號、金額一律 Arial 等寬數字。六套風格共用同一張表，完整推導見「通用規範」檢視。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="typels"><div class="tl-row"><span class="code num">D1</span><span class="num" style="font-size:var(--fs-d1);line-height:var(--lh-d1);font-weight:700;letter-spacing:var(--ls-d1);">1,840,000</span><span class="hint">顯示數字 · 3.0rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">H1</span><span style="font-size:var(--fs-h1);line-height:var(--lh-h1);font-weight:900;letter-spacing:var(--ls-h1);">訂單管理</span><span class="hint">頁面標題 · 2.1rem · 900</span></div><div class="tl-row"><span class="code num">H2</span><span style="font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:900;letter-spacing:var(--ls-h2);">本月出貨概況</span><span class="hint">區塊標題、彈窗與面板標題 · 1.7rem · 900</span></div><div class="tl-row"><span class="code num">H3</span><span style="font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;letter-spacing:var(--ls-h3);">金額摘要</span><span class="hint">卡片標題列、表格標題、行內小標題 · 1.4rem · 900 · 字距 0.08em</span></div><div class="tl-row"><span class="code num">B1</span><span style="font-size:var(--fs-b1);line-height:var(--lh-b1);font-weight:400;">交貨請先電聯倉管，貨車限 3.5 噸以下。</span><span class="hint">內文 · 1.4rem · 400 · 行距 1.80</span></div><div class="tl-row"><span class="code num">B2</span><span style="font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:400;">AL-2040 L 型支架 ×100，他 1 項</span><span class="hint">表格內文 · 1.25rem · 400 · 行距 1.70</span></div><div class="tl-row"><span class="code num">B3</span><span style="font-size:var(--fs-b3);line-height:var(--lh-b3);font-weight:400;">價格未登入不公開，登入後顯示專屬價。</span><span class="hint">說明輔助 · 1.2rem · 400 · 行距 1.70</span></div><div class="tl-row"><span class="code num">L1</span><span style="font-size:var(--fs-l1);line-height:var(--lh-l1);font-weight:700;letter-spacing:var(--ls-l1);">期望到貨日</span><span class="hint">欄位標籤 · 1.2rem · 700 · 字距 0.08em</span></div><div class="tl-row"><span class="code num">L2</span><span style="font-size:var(--fs-l2);line-height:var(--lh-l2);font-weight:700;letter-spacing:var(--ls-l2);">DATE RANGE</span><span class="hint">微標籤 · 1.1rem · 700 · 字距 0.15em</span></div><div class="tl-row"><span class="code num">N1</span><span class="num" style="font-size:var(--fs-n1);line-height:var(--lh-n1);font-weight:700;">NT$ 30,372</span><span class="hint">合計金額 · 2.3rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N2</span><span class="num" style="font-size:var(--fs-n2);line-height:var(--lh-n2);font-weight:700;">NT$ 1,446</span><span class="hint">小計 · 1.9rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N3</span><span class="num" style="font-size:var(--fs-n3);line-height:var(--lh-n3);font-weight:700;">28,166</span><span class="hint">表格金額 · 1.25rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N4</span><span class="num" style="font-size:var(--fs-n4);line-height:var(--lh-n4);font-weight:400;letter-spacing:var(--ls-n4);">SO-260907-003 · 2026/09/15</span><span class="hint">料號／單號／日期 · 1.25rem · 400 · Arial</span></div></div></div></div><div class="sec"><span class="no num">03</span><h2>分隔線 Divider</h2><span class="rule"></span></div><div class="use">分隔線有帶字、不帶字、直式三種，上下間距固定 14px。帶字版用在「以下是另一組」的語意切換；直式版只放在同一列的兩組操作之間。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">分隔線 DIVIDER</div><div class="divider">或</div><div class="divider l">進階選項</div><hr class="hr"/><div style="font-size:var(--fs-b3);color:var(--muted);line-height:var(--lh-b3)">36 筆<span class="vdiv"></span>已選 3<span class="vdiv"></span>合計 NT$ 143,226</div></div></div></div><div class="sec"><span class="no num">04</span><h2>按鈕 Button</h2><span class="rule"></span></div><div class="use">圓度一律膠囊；層級只靠填色區分：實心＝主要動作、主色外框＝強調動作、灰框＝一般動作、紅＝危險動作。<b>每頁最多一顆實心主按鈕</b>；停用用灰底灰字不用透明度；處理中顯示轉圈並鎖住按鈕。 本風格：實心主色＝主要、主色框亮玻璃＝強調、素亮玻璃＝一般、深玻璃白字＝直接放在漸層背景上的按鈕。</div><div class="board glass">
-<div class="rowset">
-<button class="btn primary">送出訂單</button>
-<button class="btn accent">＋ 代客下單</button>
-<button class="btn">下載 Excel</button>
-<button class="btn sm">預覽</button>
-<button class="btn danger">取消訂單</button>
-<button class="btn primary" disabled="">停用</button>
-</div>
-</div><div class="rowset" style="margin-top:1.2rem"><button class="btn onglass">深玻璃按鈕（直接放在背景上用）</button><span class="crumb">← 例如門市首頁的「開始訂購」</span></div><div class="sec"><span class="no num">05</span><h2>動作鈕 Kebab</h2><span class="rule"></span></div><div class="use">動作鈕「⋯」是表格列與卡片右上角的溢出選單入口：常用的一兩個動作直接露出，其餘收進選單；危險動作紅字置底並與其他項目隔一條線。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd" style="width:190px">
-<span class="cap" style="color:var(--ink)">動作選單「⋯」</span>
-<button class="kebab">⋯</button>
-<div class="menu">
-<div class="mi">檢視明細</div>
-<div class="mi">複製為新訂單</div>
-<div class="mi">列印出貨單 <span class="sub">⌘P</span></div>
-<div class="mi sep danger">取消訂單</div>
-</div>
-</div></div></div><div class="sec"><span class="no num">06</span><h2>分段控制 Segmented</h2><span class="rule"></span></div><div class="use">分段控制用在互斥的檢視切換（全部／待確認／備貨中），選項不超過五個、文字要短；它切換的是「看什麼」，不是送出資料，所以永遠不需要確認鈕。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="cap">資料範圍</span><span class="seg"><button class="on">全部</button><button>待確認</button><button>備貨中</button></span><span class="cap">檢視模式</span><span class="seg"><button class="on">列表</button><button>看板</button><button>行事曆</button></span></div><div class="rowset"><span class="cap">同一頁不要兩種分段控制都用；超過四段改用下拉或頁籤。</span></div></div><div class="sec"><span class="no num">07</span><h2>輸入框 Input</h2><span class="rule"></span></div><div class="use">輸入框四態齊全：預設、聚焦、錯誤、停用；必填以紅色星號標示，錯誤訊息放在欄位正下方並說怎麼修。手機上字級固定 16px 避免 iOS 放大整頁。 本風格：半透明白 55%、聚焦墊高到 80% 並轉主色框——玻璃變實的聚焦語彙。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="field"><label>貴司採購單號 PO No.</label><input class="num" placeholder="PO-2026-xxxx"/></div><div class="field"><label>統一編號</label><input class="num" value="27815377"/><div class="msg ok">已比對財政部資料，公司名稱相符</div></div><div class="field dis"><label>建立者</label><input disabled="" value="陳品妤（採購）"/><div class="msg">由 Email 解析建立，不可修改</div></div><div class="field"><label>期望到貨日 <span class="req">*</span></label><input class="num" type="date" value="2026-09-15"/></div><div class="field err"><label>裁切長度 mm <span class="req">*</span></label><input class="num" value="7500"/><div class="msg">超出範圍：100–6000 mm</div></div></div></div><div class="sec"><span class="no num">08</span><h2>搜尋框 Search</h2><span class="rule"></span></div><div class="use">搜尋框全站統一膠囊形、放大鏡在左；輸入後右側出現清除鍵；列表頁的搜尋框固定放在標題列右側，與篩選膠囊同一列。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="search"><span style="color:var(--muted)">🔍</span><input placeholder="搜尋 單號 / 客戶 / 料號"/></span></div></div><div class="sec"><span class="no num">09</span><h2>核取與單選 Checkbox / Radio</h2><span class="rule"></span></div><div class="use">核取（可多選）與單選（只能選一個）都要有名稱加一行灰色說明；選中狀態靠填色與勾號，不只靠顏色。同組必選時在群組標題標示，不在每個選項上重複。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="radio on"><i></i>月結 30 天 <span class="sub">貴司核定條件</span></span><span class="radio"><i></i>貨到付款</span><span class="radio dis"><i></i>指定物流<span class="sub">需先簽約才能選</span></span><span class="check on"><i></i>端蓋 ×2（+NT$12/支）</span><span class="check"><i></i>防震墊片組</span><span class="check ind"><i></i>部分品項已選（3 / 8）</span><span class="check dis"><i></i>代客戶報關（未開通）</span></div><div class="rowset"><span class="cap">停用的選項要說明為什麼不能選，不要直接隱藏。</span></div></div><div class="sec"><span class="no num">10</span><h2>篩選膠囊 Filter pill</h2><span class="rule"></span></div><div class="use">篩選膠囊是列表頁的快速篩選：一列膠囊、選中實心；「全部」永遠在第一個。超過七個就改用多選下拉。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><button class="pillf on">全部<span class="n">128</span></button><button class="pillf">鋁擠型<span class="n">42</span></button><button class="pillf">支架配件<span class="n">31</span></button><button class="pillf">緊固件<span class="n">12</span></button><button class="pillf">逾期<span class="n">2</span></button></div><div class="rowset"><span class="cap">數字一律帶上，讓人不必點就知道有幾筆；超過七個改用多選下拉。</span></div></div><div class="sec"><span class="no num">11</span><h2>開關 Switch</h2><span class="rule"></span></div><div class="use">開關代表「立即生效」的二元設定（商品上下架、規則啟用），按下去馬上存、不需要儲存鈕；需要送出表單才生效的用核取方塊。四態：關、開、切換中、停用。 本風格：玻璃軌道＋白色實心圓鈕，開啟時軌道轉主色。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<span class="cap">開關 SWITCH</span>
-<div style="display:flex;flex-direction:column;gap:1.2rem;padding-top:0.8rem">
-<span class="sw2 on"><span class="tk"></span>商品上架中</span>
-<span class="sw2"><span class="tk"></span>允許缺貨預購 <span class="lbl2">關閉中</span></span><span class="sw2 dis"><span class="tk"></span>串接物流 API<span class="lbl2">需先設定金鑰</span></span>
-</div>
-</div></div></div><div class="sec"><span class="no num">12</span><h2>上傳 Upload</h2><span class="rule"></span></div><div class="use">上傳區用虛線框表示「可以放東西進來」，同時支援拖放與點擊；下方一定寫清楚格式與大小上限。已選檔案一列一個，帶大小與移除鍵；上傳中顯示進度並允許離開此頁。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<span class="cap">上傳區 UPLOAD</span>
-<div class="upload" style="margin-top:0.8rem">⬆<br/>拖放檔案到這裡，或 <b>點擊選擇</b><br/>支援 JPG／PNG／PDF，單檔 20MB</div>
-<div class="upfile"><span>▤</span><span class="nm2 num">傳真訂單_0907.jpg</span><span class="pct num">68%</span></div><div class="upfile ok"><span>▤</span><span class="nm2 num">報價單_北銘_2609.pdf</span><span class="pct num">已完成</span></div><div class="upfile err"><span>▤</span><span class="nm2 num">規格書.docx</span><span class="why">格式不支援，請轉成 PDF</span><span class="pct num">失敗</span></div>
-</div></div></div><div class="sec"><span class="no num">13</span><h2>多行輸入 Textarea</h2><span class="rule"></span></div><div class="use">多行輸入右下角固定顯示字數；超出上限整組轉紅並鎖住送出。高度預設三行、可拉伸；placeholder 只給範例，不放說明。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="txa">
-<span class="cap">多行輸入 TEXTAREA</span>
-<textarea style="margin-top:0.8rem">交貨請先電聯倉管王先生 0912-345-678，貨車限 3.5 噸以下。</textarea>
-<div class="cnt2">31 / 200</div>
-</div></div></div><div class="sec"><span class="no num">14</span><h2>下拉選單 Select</h2><span class="rule"></span></div><div class="use">下拉選單給「從固定清單挑一個」：觸發框顯示目前值、展開面板列出全部選項、選中項打勾；清單末尾可帶一個「新增」入口。超過十五個選項就改用多選＋搜尋或自動完成。 本風格：展開面板＝更實的玻璃（75%）浮在上層；選中項全白。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
-<span class="cap" style="color:var(--ink)">單選下拉（展開態）</span>
-<div class="trg">桃園廠｜觀音區工業二路 88 號 <span class="car">▼</span></div>
-<div class="menu">
-<div class="mi on">桃園廠｜觀音區工業二路 88 號</div>
-<div class="mi">台中倉｜西屯區工業區一路 22 號</div>
-<div class="mi sep" style="color:var(--acc);font-weight:700">＋ 新增送貨地址</div>
-</div>
-</div></div></div><div class="sec"><span class="no num">15</span><h2>多選＋搜尋 Multi-select</h2><span class="rule"></span></div><div class="use">多選＋搜尋：面板內建搜尋列、選項用核取方塊、觸發框顯示「已選 N 項」而不是把名字排成一長串；底部常駐「已選 N 項・清除全部」。搜尋無結果時要給說明與清除鍵，留白會讓人以為壞了。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
-<span class="cap" style="color:var(--ink)">多選＋搜尋</span>
-<div class="trg">已選 2 個客戶群組 <span class="car">▼</span></div>
-<div class="menu">
-<div class="msearch">🔍 搜尋群組…</div>
-<div class="mck on"><i></i>A 級經銷</div>
-<div class="mck on"><i></i>B 級經銷</div>
-<div class="mck"><i></i>一般客戶</div>
-</div>
-</div></div></div><div class="sec"><span class="no num">16</span><h2>日期與時間選擇器 Date / Time</h2><span class="rule"></span></div><div class="use"><b>日期選擇器</b>：輸入框可直接打字、也可點開月曆；區間用「起點實心、中間淡底、終點實心」表達，今天畫一圈細框；常用區間（今天、本週、兩週、本月）放在月曆最上方，多數人不需要真的點日期。<b>時間選擇器</b>：時、分兩欄各自捲動選取，分鐘只給 15 分鐘一格（要精確到分就直接打字）；常用時段放最上方；需要日期加時間時兩個面板並排，先選日期再選時間。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">日期區間選擇器 DATE RANGE</div>
-<div class="field datein" style="margin-top:0.8rem"><input class="num" value="2026/09/10 – 2026/09/24"/></div>
-<div class="cal" style="margin-top:0.8rem">
-<div class="quick"><button>今天</button><button>本週</button><button class="on">兩週</button><button>本月</button></div>
-<div class="ch"><button aria-label="上個月">‹</button><span class="num">2026 年 9 月</span><button aria-label="下個月">›</button></div>
-<div class="cg"><span class="wd">一</span><span class="wd">二</span><span class="wd">三</span><span class="wd">四</span><span class="wd">五</span><span class="wd">六</span><span class="wd">日</span><span></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span class="sel a">10</span><span class="inr">11</span><span class="inr">12</span><span class="inr">13</span><span class="inr">14</span><span class="inr">15</span><span class="inr">16</span><span class="inr">17</span><span class="inr">18</span><span class="inr">19</span><span class="inr">20</span><span class="inr">21</span><span class="inr">22</span><span class="inr">23</span><span class="sel b">24</span><span>25</span><span>26</span><span>27</span><span>28</span><span>29</span><span>30</span></div>
-<div class="cf"><span>已選 <b class="num">15</b> 天</span><button class="btn primary sm">套用</button></div>
-</div>
-</div><div>
-<div class="cap">時間選擇器 TIME ─ 時、分兩欄</div>
-<div class="field timein" style="margin-top:0.8rem"><input class="num" value="14:30"/></div>
-<div class="cal tp" style="margin-top:0.8rem">
-<div class="quick"><button>09:00</button><button>12:00</button><button class="on">14:30</button><button>18:00</button></div>
-<div class="tpcols">
-<div class="tpcol"><span class="wd">時</span><span>12</span><span>13</span><span class="sel">14</span><span>15</span><span>16</span><span>17</span></div>
-<div class="tpcol"><span class="wd">分</span><span>00</span><span>15</span><span class="sel">30</span><span>45</span></div>
-</div>
-<div class="cf"><span>已選 <b class="num">14:30</b></span><button class="btn primary sm">套用</button></div>
-</div>
-</div></div></div><div class="sec"><span class="no num">17</span><h2>自動完成 Autocomplete</h2><span class="rule"></span></div><div class="use">自動完成給「清單太長、使用者知道自己要找什麼」的欄位（客戶、料號、地址）：符合的字用主色加粗、不用底色；每筆右側放次要識別（統編、料號）避免同名；底部固定一列鍵盤提示。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">自動完成 AUTOCOMPLETE ─ 客戶、料號、地址</div>
-<div class="ac" style="margin-top:0.8rem">
-<div class="field" style="width:100%"><input placeholder="輸入客戶名稱或統編" value="大同"/></div>
-<div class="menu">
-<div class="cap">符合 3 筆</div>
-<div class="mi on"><span><mark>大同</mark>機械股份有限公司</span><small>84149xxx</small></div>
-<div class="mi"><span><mark>大同</mark>精工</span><small>23456xxx</small></div>
-<div class="mi"><span>台灣<mark>大同</mark>電子</span><small>12345xxx</small></div>
-<div class="hint"><span><kbd>↑</kbd><kbd>↓</kbd> 選擇</span><span><kbd>Enter</kbd> 帶入</span><span><kbd>Esc</kbd> 關閉</span></div>
-</div>
-</div>
-</div></div></div><div class="sec"><span class="no num">18</span><h2>數字步進器 Number stepper</h2><span class="rule"></span></div><div class="use">數字步進器（減、輸入、加）給任何整數欄位，不只訂購數量：到下限減號停用、到上限加號停用，不符級距時顯示提示並自動修正到最近的合法值。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="qty"><button>－</button><span class="disp num">100</span><button>＋</button></span><span class="qty"><button disabled="">－</button><span class="disp num">1</span><button>＋</button></span></div><div class="rowset"><span class="cap">到下限時「減」停用而不是消失；最小訂購量 1，需為 4 的倍數。</span></div></div><div class="sec"><span class="no num">19</span><h2>選項 chip Choice chip</h2><span class="rule"></span></div><div class="use">選項 chip 是單選的可視化選項（規格、尺寸、方案）：可選、已選、不可選三態；<b>不可選用半透明加劃線，永不隱藏</b>，使用者才知道這個選項存在但目前不能選。 本風格：半透明＝可選、全白實心＋主色框＝已選（玻璃結晶成實體）。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><button class="chip on">鋁合金 6061</button><button class="chip">不鏽鋼 304</button><button class="chip off">電解拋光</button></div></div><div class="sec"><span class="no num">20</span><h2>表格 Table</h2><span class="rule"></span></div><div class="use">表格是後台的主角：數字靠右 Arial、文字靠左、狀態用膠囊；列 hover 淡底；表頭固定、表尾放合計或分頁。手機上整張表轉成卡片列，每格帶欄名，不做水平捲動。載入中用骨架屏、無資料用空狀態。 本風格：資料層用最實的玻璃（白 72%），表頭表尾更透一級做層次。</div><div class="tblwrap">
-<div class="tcap"><b>訂單</b><span class="cnt">36 筆 · 篩選 3</span>
-<span class="sp"><button class="pillf on">全部</button><button class="pillf">待確認</button><button class="btn sm">下載 Excel</button></span>
-</div>
-<table class="t">
-<thead><tr><th>單號</th><th>客戶</th><th>品項</th><th>狀態</th><th style="text-align:right">金額</th><th style="text-align:right">到貨</th></tr></thead>
-<tbody>
-<tr><td class="num">SO-260907-003</td><td>大同機械</td><td>AL-2040 ×100 他 1 項</td><td><span class="st wrn">待確認</span></td><td class="amt">28,166</td><td class="dt">09/15</td></tr>
-<tr><td class="num">SO-260905-008</td><td>詮宏精密</td><td>AL-2040 ×500（刻印）</td><td><span class="st acc">備貨中</span></td><td class="amt">96,140</td><td class="dt">09/10</td></tr>
-<tr><td class="num">SO-260904-021</td><td>大同機械</td><td>SC-M6 ×2,000 他 3 項</td><td><span class="st ok">已出貨</span></td><td class="amt">18,920</td><td class="dt">09/06</td></tr>
-</tbody>
-</table>
-<div class="tfoot"><span class="num">36 筆中的 1–3</span>
-<span class="p4"><button>‹</button><button class="on">1</button><button>2</button><button>3</button><button style="cursor:default">…</button><button>8</button><button>›</button></span>
-</div>
-</div><div class="sec"><span class="no num">21</span><h2>表格進階 Table advanced</h2><span class="rule"></span></div><div class="use"><b>表格進階</b>三件事：勾選列出現批次列（取代原本的表頭，動作跟著選取數走）、可排序欄位的表頭帶方向箭頭（目前排序欄墨色加粗、箭頭主色）、欄位顯示切換放在批次列右端的齒輪裡，可勾選可拖曳排序。排序只允許單欄，多欄排序後台幾乎沒人會用。</div><div class="board glass"><div><div class="cap">表格進階 ─ 批次選取列、可排序表頭、欄位顯示切換</div><div class="rowset" style="align-items:flex-start;gap:1.6rem;flex-wrap:wrap;margin-top:0.8rem"><div class="tblwrap adv" style="flex:1 1 560px;min-width:0">
-<div class="batchbar">已選 3 筆<span class="vdiv" style="margin:0 0.4rem"></span><button class="btn sm">匯出</button><button class="btn sm">標記已出貨</button><button class="btn sm danger">刪除</button>
-<span class="sp"><button aria-label="欄位顯示" class="kebab">⚙</button></span></div>
-<table class="t">
-<thead><tr><th class="ck"><span class="check on"><i></i></span></th><th>單號</th><th>客戶</th><th class="sortable">狀態<i>↕</i></th><th class="sortable on" style="text-align:right">金額<i>↓</i></th><th class="sortable" style="text-align:right">到貨<i>↕</i></th></tr></thead>
-<tbody>
-<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num">SO-260905-008</td><td>詮宏精密</td><td><span class="st acc">備貨中</span></td><td class="amt">96,140</td><td class="dt">09/10</td></tr>
-<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num">SO-260907-003</td><td>大同機械</td><td><span class="st wrn">待確認</span></td><td class="amt">28,166</td><td class="dt">09/15</td></tr>
-<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num">SO-260904-021</td><td>大同機械</td><td><span class="st ok">已出貨</span></td><td class="amt">18,920</td><td class="dt">09/06</td></tr>
-<tr><td class="ck"><span class="check"><i></i></span></td><td class="num">SO-260903-014</td><td>宏達金屬</td><td><span class="st ok">已出貨</span></td><td class="amt">12,400</td><td class="dt">09/04</td></tr>
-</tbody>
-</table>
-</div>
-<div class="menu colmenu">
-<div class="cap">顯示欄位</div>
-<div class="mi"><span class="check on"><i></i>單號</span><span class="drag">⋮⋮</span></div>
-<div class="mi"><span class="check on"><i></i>客戶</span><span class="drag">⋮⋮</span></div>
-<div class="mi"><span class="check"><i></i>品項</span><span class="drag">⋮⋮</span></div>
-<div class="mi"><span class="check on"><i></i>狀態</span><span class="drag">⋮⋮</span></div>
-<div class="mi"><span class="check on"><i></i>金額</span><span class="drag">⋮⋮</span></div>
-</div>
-</div></div></div><div class="sec"><span class="no num">22</span><h2>卡片 Card</h2><span class="rule"></span></div><div class="use">卡片是「一組相關資訊」的容器：標題列可帶灰色提示（選填），內容區留 16／20 的內距；可點擊的卡片 hover 時整張有反應（外框轉主色或浮起），不要只讓標題變色。一頁的卡片圓角與框線要完全一致。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="card"><div class="card-title">出貨備註<span class="hint">選填</span></div><div class="card-body">交貨請先電聯倉管王先生，貨車限 3.5 噸以下；夜間與假日不收貨。</div></div><div class="card click"><div class="card-title">可點擊卡 → 進入詳情</div><div class="card-body">整張卡都是點擊區，滑過時整張有反應，不是只有標題變色。</div></div></div></div><div class="sec"><span class="no num">23</span><h2>統計卡 Stat card</h2><span class="rule"></span></div><div class="use">統計卡是儀表板的關鍵數字：小字標籤在上、大數字在下、可帶與昨日或上期的變化量；當頁的焦點數字可升級成 hero 版（主色大字）。一頁最多一張 hero。 本風格：亮玻璃；hero 最實（白 85%）；深玻璃卡當品牌區。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="statc hero"><div class="k">待確認</div><div class="v num">3<small>張</small></div><div class="delta num">▲ 2 vs 昨日</div></div><div class="statc"><div class="k">備貨中</div><div class="v num">12<small>張</small></div><div class="delta dn">▼ 3 vs 上週</div></div><div class="statc deepcard"><div class="k">本月出貨</div><div class="v num"><small style="font-size:var(--fs-b3);margin:0 0 0 0;line-height:var(--lh-b3)">NT$</small>1.84M</div><div class="delta up">▲ 12.4% 比上月</div></div></div><div class="use">升降一律箭頭加文字，不單靠顏色；「升」不一定是好事，顏色跟的是好壞不是方向。</div><div class="sec"><span class="no num">24</span><h2>描述清單 Descriptions</h2><span class="rule"></span></div><div class="use">描述清單是詳情頁的骨架：兩欄成組、欄位名淡底靠左對齊、值可以放狀態標籤或頭像；長文用 full 跨欄；手機自動收成單欄。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 380px">
-<div class="cap">描述清單 DESCRIPTIONS ─ 詳情頁的欄位：值</div>
-<dl class="desc" style="margin-top:0.8rem">
-<dt>單號</dt><dd class="num">SO-260907-003</dd><dt>狀態</dt><dd><span class="st wrn">待確認</span></dd>
-<dt>客戶</dt><dd>大同機械股份有限公司</dd><dt>負責人</dt><dd><span class="avatar sm">林</span>林佳穎</dd>
-<dt>到貨日</dt><dd class="num">2026/09/15</dd><dt>付款</dt><dd>月結 30 天</dd>
-<dt>備註</dt><dd class="full">交貨請先電聯倉管王先生，貨車限 3.5 噸以下。</dd>
-</dl>
-</div></div></div><div class="sec"><span class="no num">25</span><h2>狀態標籤 Status</h2><span class="rule"></span></div><div class="use">狀態只用「語意色＋品牌主色＋灰」：待人處理＝warning 琥珀、進行中＝主色、成功結束＝success 綠、異常＝error 紅、結案封存＝灰。一律「符號＋文字」，不單靠顏色。 本風格：語意色底墊高不透明度保對比。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="st wrn">待確認</span><span class="st acc">備貨中</span><span class="st ok">已出貨</span><span class="st gray">已完成</span><span class="st err">已取消</span></div><div class="rowset"><span class="cap">對應：待人處理＝warning、進行中＝主色、成功結束＝success、結案封存＝灰、異常＝error、中性提示＝info。</span></div></div><div class="sec"><span class="no num">26</span><h2>屬性 tag Tag</h2><span class="rule"></span></div><div class="use">屬性 tag 是資料的分類標記（產品線、規格、權限），與狀態標籤不同：狀態會變、屬性不會。細框小字、同色文字與框線；實心版只留給最高強調。 本風格：小字元件墊白底，彩色字不直接落在玻璃上。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="tag acc">3 屬性 18 SKU</span><span class="tag gray">可加購</span><span class="tag gray">客製參數</span><span class="tag err">必選</span></div></div><div class="sec"><span class="no num">27</span><h2>折疊面板 Accordion</h2><span class="rule"></span></div><div class="use">折疊面板用在詳情頁的分區與 FAQ：收合狀態也要能看懂標題在講什麼，所以標題右側常駐一行摘要；展開記號固定在同一側；同時只展開一個或允許多個要在頁面內一致。 本風格：展開的內容墊白 50% 加強可讀。</div><div class="acc-p">
-<div class="arow">
-<div class="ahead"><b class="num">AL-2040-A-AS-44</b><span>工業鋁擠型 L 型支架</span><span class="num" style="font-weight:700">×100</span><span class="car">▲</span></div>
-<div class="abody">規格快照：鋁合金 6061・陽極銀・40×40・裁切 <b class="num">1500mm</b>・端蓋 ×2・刻印「HD-A203」<br/>計價：底價 192 ＋ 加購 12 ＋ 刻印 50 → 階梯 95 折 → A級 92 折 ＝ <b class="num">NT$ 222</b>/支</div>
-</div>
-<div class="arow">
-<div class="ahead"><b class="num">CB-1100-40-ZN</b><span>鋁擠型角碼連接件</span><span class="num" style="font-weight:700">×400</span><span class="car">▼</span></div>
-</div>
-</div><div class="sec"><span class="no num">28</span><h2>頭像 Avatar</h2><span class="rule"></span></div><div class="use">頭像以文字縮寫為主（後台系統多數人沒上傳照片），主色配白字、第二個人用深副色、未指派用灰；堆疊時白邊隔開、超出的人數用「+N」。一律正圓，在 flex 列裡加 <code>aspect-ratio:1/1</code> 免得被拉成橢圓。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">頭像 AVATAR ─ 文字縮寫優先</div><div class="rowset" style="margin-top:0.8rem;gap:0.8rem;align-items:center">
-<span class="avatar lg">林</span><span class="avatar">王</span><span class="avatar a2">陳</span><span class="avatar sm">李</span><span class="avatar gray">?</span><span class="avatar sq">AI</span>
-</div><div class="rowset" style="margin-top:1.2rem;gap:1.6rem;align-items:center">
-<span class="avatar">林<i class="dot"></i></span>
-<span class="avstack"><span class="avatar sm">林</span><span class="avatar sm a2">王</span><span class="avatar sm gray">+3</span></span>
-<span class="avrow"><span class="avatar">王</span><span>王大明<small>業務 · 台中</small></span></span>
-</div></div></div></div><div class="sec"><span class="no num">29</span><h2>數字角標 Badge</h2><span class="rule"></span></div><div class="use">數字角標紅色代表「有事情等你」，灰色代表純計數；行內計數用淡底膠囊，不用實心。可掛在任何元件右上角，超過 99 顯示 99+。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 250px">
-<div class="cap" style="margin-top:2rem">數字角標 BADGE ─ 掛在任何東西上</div>
-<div class="rowset" style="margin-top:1.2rem;gap:2rem;align-items:center">
-<span class="badge"><button class="btn sm">收件匣</button><b class="num">7</b></span>
-<span class="badge"><button class="btn sm">草稿</button><b class="num gray">2</b></span>
-<span class="badge"><span class="avatar">林</span><b class="dot"></b></span>
-<span style="font-size:var(--fs-b2);line-height:var(--lh-b2)">待處理 <span class="count err">12</span></span>
-<span style="font-size:var(--fs-b2);line-height:var(--lh-b2)">已完成 <span class="count gray">128</span></span>
-</div>
-</div></div></div><div class="sec"><span class="no num">30</span><h2>側欄項目 Nav item</h2><span class="rule"></span></div><div class="use">側欄項目：目前所在高亮、其餘平文；圖示固定在左、計數靠右；群組標題小字灰色。手機上整條側欄變成覆蓋式抽屜。 本風格：亮玻璃墨字，目前所在＝白色實心＋主色字（霧裡那顆亮的）。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><button class="nitem on">▤ 訂單管理</button><button class="nitem">◇ 商品與規格</button><button class="nitem">◆ AI 訂單解析</button><button class="nitem">自動核准<span class="lbl2">Beta</span></button></div><div class="use">側欄項目高 38px、手機 44px；選中項與 hover 是兩種不同的底色。</div><div class="sec"><span class="no num">31</span><h2>頁籤 Tabs</h2><span class="rule"></span></div><div class="use">頁籤給詳情頁的分區（基本資料／明細／歷程）：底線式、目前頁籤主色加粗；頁籤可帶計數；超過六個就改用側欄或下拉。切換頁籤不重載頁面、也不改變網址以外的狀態。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px">
-<div class="cap">頁籤 TABS ─ 詳情頁分區</div>
-<div style="margin-top:1.2rem"><span class="tabs"><button class="tab on">明細 <b class="cnt">3</b></button><button class="tab">出貨</button><button class="tab">付款</button><button class="tab">歷程 <b class="cnt">12</b></button></span></div>
-<div style="font-size:var(--fs-b3);color:var(--muted);margin-top:1.2rem;line-height:var(--lh-b3)">頁籤切的是<b style="color:var(--ink)">同一筆資料的不同面向</b>；分段控制切的是同一份清單的不同檢視。超過五個頁籤就該改成側欄。</div>
-</div></div></div><div class="sec"><span class="no num">32</span><h2>麵包屑 Breadcrumb</h2><span class="rule"></span></div><div class="use">麵包屑只出現在第三層以上的頁面，最後一層是目前頁、不可點；最多顯示四層，中間過長用「…」收起。 本風格：白字直接放在漸層背景上。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="crumb">宏達金屬 ／ 訂單管理 ／ <b class="num">SO-260907-003</b></span></div><div class="sec"><span class="no num">33</span><h2>分頁器 Pagination</h2><span class="rule"></span></div><div class="use">全站定案 <b>P4 底線數字式</b>：無框純數字、目前頁底線；放在表尾右側，是所有分頁樣式裡視覺重量最輕的一種。上千筆資料改用跳頁式；首末頁的上一頁／下一頁鎖住、不隱藏。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">P4 底線數字式 ─ 定案，全站統一</div>
-<div style="margin-top:0.8rem"><span class="p4" style="margin-left:0"><button>‹</button><button class="on">1</button><button>2</button><button>3</button><button style="cursor:default">…</button><button>9</button><button>›</button></span></div></div><div><div class="cap">跳頁式 ─ 資料上千筆時改用</div>
-<div style="margin-top:0.8rem"><span class="p4" style="margin-left:0;gap:0.8rem"><button>‹</button><span>第</span><input class="num" style="width:4.4rem;text-align:center;border:1px solid var(--line);border-radius:8px;padding:0.4rem;background:#fff;font-size:var(--fs-b2);line-height:var(--lh-b2)" value="3"/><span>／ 9 頁</span><button>›</button></span></div></div></div></div><div class="sec"><span class="no num">34</span><h2>側滑面板 Drawer</h2><span class="rule"></span></div><div class="use">側滑面板從右側滑入、寬度 420–560px、背後遮罩可點擊關閉；用在「看一眼就回列表」的詳情與篩選，要編輯很多欄位就開完整頁。手機側欄抽屜是同一個元件。</div><div class="board glass"><div><div class="cap" style="margin-top:2.4rem">側滑面板 DRAWER ─ 右側詳情、篩選面板</div><div class="drawerdemo" style="margin-top:0.8rem">
-<div class="ghost"><i style="width:40%"></i><i></i><i style="width:80%"></i><i></i><i style="width:60%"></i><i style="width:90%"></i><i></i><i style="width:50%"></i></div>
-<div class="scrim"></div>
-<div class="drawer">
-<div class="dh">SO-260907-003 <span class="st wrn">待確認</span><button aria-label="關閉" class="x">×</button></div>
-<div class="db">
-<div class="row"><span>客戶</span><span>大同機械</span></div>
-<div class="row"><span>品項</span><span>AL-2040 ×100 他 1 項</span></div>
-<div class="row"><span>金額</span><span class="num">NT$ 28,166</span></div>
-<div class="row"><span>到貨</span><span class="num">2026/09/15</span></div>
-</div>
-<div class="df"><button class="btn sm">開啟完整頁</button><button class="btn primary sm">確認訂單</button></div>
-</div>
-</div></div></div><div class="sec"><span class="no num">35</span><h2>彈窗 Modal</h2><span class="rule"></span></div><div class="use">彈窗給必須停下來決定的事：標題一句話、內文寫清楚「會發生什麼」、最多兩顆按鈕。<b>危險動作一律二次確認</b>，主按鈕轉紅並寫明無法復原；Esc 與遮罩點擊可關閉，但危險型不可誤觸關閉。 本風格：最實玻璃 78%＋最重陰影，浮最高層。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="modal">
-<div class="mh">確認出貨？</div>
-<div class="mb">SO-260905-008 · 詮宏精密 · NT$ 96,140<br/>出貨後將無法修改品項與數量。</div>
-<div class="mf"><button class="btn sm">返回</button><button class="btn primary sm">確認出貨</button></div>
-</div></div><div class="sec"><span class="no num">36</span><h2>就地確認 Popconfirm</h2><span class="rule"></span></div><div class="use">就地確認是氣泡式的輕量二次確認，給表格每列的刪除、取消這類可還原的動作；不可還原的仍走彈窗。氣泡緊貼觸發鈕、箭頭指向它，一句話加兩顆小按鈕。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 280px">
-<div class="cap">就地確認 POPCONFIRM</div>
-<div class="popwrap" style="margin-top:0.8rem">
-<button class="btn sm danger">刪除</button>
-<div class="pop">
-<div class="pt"><i>!</i>刪除這筆報價？</div>
-<div class="pb">SO-260905-008 會移到回收桶，30 天內可還原。</div>
-<div class="pf"><button class="btn sm">取消</button><button class="btn sm danger">刪除</button></div>
-</div>
-</div>
-<div style="min-height:16.4rem"></div>
-</div></div></div><div class="sec"><span class="no num">37</span><h2>提示氣泡 Tooltip</h2><span class="rule"></span></div><div class="use">提示氣泡（滑鼠停留說明）給圖示鈕與縮寫欄位名：深色泡泡、一行字、不放可點的東西。手機沒有 hover，重要說明不能只靠它。 本風格：深色玻璃泡泡。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap;padding-top:4.4rem"><div class="tipwrap"><span class="tip">依客戶等級與數量計算後的折後價</span><button class="btn sm">折後單價 ⓘ</button></div></div></div><div class="sec"><span class="no num">38</span><h2>Toast 提示</h2><span class="rule"></span></div><div class="use">Toast 是會自動消失的操作回饋：成功、錯誤、處理中三種，右上或底部出現三秒，可手動關閉；一次只顯示一則，新的取代舊的。需要一直看到的訊息用警示條。 本風格：深色玻璃膠囊。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="toast"><i></i>訂單已建立 SO-260907-004，Email 已通知</div></div><div class="sec"><span class="no num">39</span><h2>警示條 Alert</h2><span class="rule"></span></div><div class="use"><b>警示條常駐、Toast 會消失</b>——權限不足、資料過期、維護公告這類「使用者需要一直看到」的訊息用警示條。四個語意色各一種，圖示與標題同色、內文一律墨色，可帶一顆動作鈕或關閉鍵。　標題是選用的，一句話講得完就不要拆成標題加內文；動作最多一顆、用文字按鈕不用實心鈕；錯誤與警告不給關閉鈕，只有成功與中性提示可以關。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px;display:flex;flex-direction:column;gap:0.8rem">
-<div class="cap">警示條 ALERT ─ 四個語意色各一種</div>
-<div class="alert err"><i>!</i><div><b>匯入失敗</b><p>第 12 列的料號不存在，整批未寫入。修正後重新上傳即可。</p></div></div>
-<div class="alert wrn"><i>!</i><div><b>價格表已過期</b><p>目前顯示的是 2026 Q2 版本，下單前請先更新。</p></div><button class="btn sm">更新</button></div>
-<div class="alert ok"><i>✓</i><div><b>已同步</b><p>36 筆訂單於 09:42 同步完成。</p></div><button aria-label="關閉" class="x">×</button></div>
-<div class="alert info"><i>i</i><div><b>系統維護</b><p>9 月 20 日（六）02:00–04:00 暫停服務。</p></div></div>
-</div></div></div><div class="sec"><span class="no num">40</span><h2>提示框 Notice</h2><span class="rule"></span></div><div class="use">提示框是段落內的說明區塊：中性灰底塊、淡字內文、關鍵字加粗；用在「這個區塊為什麼是這樣」的背景說明，不放操作、不會消失。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="notice">您的專屬價已套用：<b>A級經銷 92 折</b>＋數量階梯價。價格未登入不公開。</div></div><div class="sec"><span class="no num">41</span><h2>空狀態 Empty</h2><span class="rule"></span></div><div class="use">空狀態是邀請不是報告：一句話說明現在沒有什麼、一句話說可以做什麼、一顆行動鈕。首次使用的純空與篩選後無結果要分開處理，後者給「清除篩選」。 本風格：虛線深玻璃。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="empty"><b>還沒有訂單</b><br/>分享你的門市連結給客戶，或用「代客下單」建立第一張<br/><br/><button class="btn onglass sm">＋ 代客下單</button></div></div><div class="sec"><span class="no num">42</span><h2>骨架屏 Skeleton</h2><span class="rule"></span></div><div class="use">表格與清單一律用骨架屏（內容形狀的灰色閃爍佔位），不用轉圈圈——骨架屏先把版面撐開，內容到位時不會跳動。轉圈圈只留給按鈕內與整頁初次載入。 本風格：半透明白條呼吸。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="skel">
-<span class="cap" style="color:var(--ink)">骨架屏 SKELETON</span>
-<div class="skrow"><div class="sk" style="width:110px"></div><div class="sk" style="width:70px"></div><div class="sk" style="flex:1"></div></div>
-<div class="skrow"><div class="sk" style="width:110px"></div><div class="sk" style="width:70px"></div><div class="sk" style="flex:1"></div></div>
-</div><div class="spin" style="margin-top:0.8rem"></div></div></div><div class="sec"><span class="no num">43</span><h2>通知鈴 Bell</h2><span class="rule"></span></div><div class="use">通知鈴掛在頂列右側，未讀數用<b>數字角標一律 error 紅</b>——它表達的是「有事情等你」而不是品牌識別，不隨品牌色改變。點開是通知清單：未讀帶圓點、已讀變灰、最上方「全部標為已讀」。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">通知鈴 BELL</div>
-<div style="margin-top:0.8rem"><span class="bell">🔔<b class="num">3</b></span></div>
-</div><div class="noti">
-<div class="nh">通知 <span class="mk">全部標為已讀</span></div>
-<div class="nrow"><span class="dot2"></span><span>大同機械 送出新訂單 <b class="num">SO-260907-003</b><br/><span class="tm">3 分鐘前</span></span></div>
-<div class="nrow"><span class="dot2" style="background:var(--acc2)"></span><span><span class="aibadge" style="font-size:var(--fs-l2);padding:0 0.8rem;line-height:var(--lh-l2)">◆ AI</span> 解析完成，1 筆低信心待確認<br/><span class="tm">18 分鐘前</span></span></div>
-<div class="nrow read"><span class="dot2"></span><span>詮宏精密 訂單已出貨<br/><span class="tm">昨天 17:42</span></span></div>
-</div></div></div><div class="sec"><span class="no num">44</span><h2>進度條 Progress</h2><span class="rule"></span></div><div class="use">進度條講「做到哪」：純主色不用漸層，旁邊寫百分比與可否離開；不確定時長時用不定式條紋。與量表不同：量表講「還剩多少」。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">進度條 PROGRESS ─ 上傳中</div>
-<div class="bar" style="margin-top:1.2rem"><i style="width:62%"></i></div>
-<div class="num" style="font-size:var(--fs-l1);color:var(--muted);margin-top:0.8rem;line-height:var(--lh-l1)">62% ─ 可離開此頁</div>
-</div></div></div><div class="sec"><span class="no num">45</span><h2>搜尋無結果 No result</h2><span class="rule"></span></div><div class="use">搜尋無結果要給出口：一行說明找不到什麼、一顆清除搜尋鍵，留白會讓人以為壞了。與空狀態的差別是它一定伴隨使用者剛輸入的關鍵字。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
-<div class="cap">搜尋無結果 ─ 要給出口</div>
-<div class="trg">選擇群組 <span class="car">▼</span></div>
-<div class="menu">
-<div class="noresult">找不到符合「<b>零售</b>」的群組<br/>
-<button class="btn sm" style="margin-top:0.8rem">清除搜尋</button></div>
-</div>
-</div></div></div><div class="tierbar"><b>選用元件</b>17 項 ─ 依系統類型勾選，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">46</span><h2>工具列 Toolbar</h2><span class="rule"></span></div><div class="use">工具列是一組按鈕的鍵盤導覽群組：Tab 只停一次、方向鍵在按鈕間移動；分組用直式分隔線。只在編輯器與批次操作列使用。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">工具列 TOOLBAR ─ 一組按鈕、一個 Tab 停留點</div><div style="margin-top:0.8rem"><span aria-label="格式" class="toolbar" role="toolbar">
-<button class="tb on">B</button><button class="tb" style="font-style:italic">I</button><button class="tb" style="text-decoration:underline">U</button>
-<span class="vdiv"></span><button class="tb">≡</button><button class="tb">☰</button><button class="tb">⋮≡</button>
-<span class="vdiv"></span><button class="tb w">H2</button><button class="tb w">連結</button><button class="tb">⌧</button></span></div></div></div></div><div class="sec"><span class="no num">47</span><h2>滑桿 Slider</h2><span class="rule"></span></div><div class="use">滑桿只給「大概就好」的數值（價格區間、透明度），要精確輸入一律配輸入框；拇指 21px、拖曳時顯示數值氣泡、兩端標刻度。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 300px">
-<div class="cap" style="margin-top:2.4rem">滑桿 SLIDER ─ 單值與區間</div>
-<div class="slider"><div class="tr"></div><div class="fl" style="left:0;width:62%"></div><div class="th" style="left:62%"><span class="tt">62</span></div>
-<span class="tk" style="left:0">0</span><span class="tk" style="left:50%">50</span><span class="tk" style="left:100%">100</span></div>
-<div class="slider" style="margin-top:3.2rem"><div class="tr"></div><div class="fl" style="left:20%;width:45%"></div>
-<div class="th" style="left:20%"><span class="tt">NT$ 200</span></div><div class="th" style="left:65%"><span class="tt">NT$ 650</span></div>
-<span class="tk" style="left:0">0</span><span class="tk" style="left:100%">1,000</span></div>
-</div></div></div><div class="sec"><span class="no num">48</span><h2>級聯選擇 Cascader</h2><span class="rule"></span></div><div class="use">級聯選擇：每一層一欄、選到最後一層才算完成；觸發框顯示完整路徑、最後一層加粗。三層以上或項目超過三十個就改用搜尋式自動完成。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">級聯選擇 CASCADER ─ 多層分類</div>
-<div class="dd" style="width:300px;max-width:100%;margin-top:0.8rem"><div class="trg">五金 / 緊固件 / <b>內六角螺絲</b><span class="car">▼</span></div></div>
-<div class="casc">
-<ul><li class="on">五金<span class="car">›</span></li><li>電子零件<span class="car">›</span></li><li>包材<span class="car">›</span></li><li>耗材<span class="car">›</span></li></ul>
-<ul><li>手工具<span class="car">›</span></li><li class="on">緊固件<span class="car">›</span></li><li>軸承<span class="car">›</span></li></ul>
-<ul><li>螺帽</li><li class="pick">內六角螺絲</li><li>自攻螺絲</li><li>華司</li></ul>
-</div>
-</div></div></div><div class="sec"><span class="no num">49</span><h2>穿梭框 Transfer</h2><span class="rule"></span></div><div class="use">穿梭框：左邊可選、右邊已選，標題列帶全選與計數；只有在「一次挑很多個」時才用它，挑一兩個用多選下拉。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">穿梭框 TRANSFER ─ 權限指派</div>
-<div class="transfer" style="margin-top:0.8rem">
-<div class="tlist"><div class="th2"><span class="check on"><i></i></span>可選成員<small>2 / 5</small></div>
-<div class="tb2"><span class="check on"><i></i>林佳穎</span><span class="check on"><i></i>王大明</span><span class="check"><i></i>陳志豪</span><span class="check"><i></i>李美玲</span><span class="check"><i></i>張家豪</span></div></div>
-<div class="tarr"><button class="btn primary sm">›</button><button class="btn sm">‹</button></div>
-<div class="tlist"><div class="th2"><span class="check"><i></i></span>訂單審核組<small>2</small></div>
-<div class="tb2"><span class="check"><i></i>周雅婷</span><span class="check"><i></i>黃建宏</span></div></div>
-</div>
-</div></div></div><div class="sec"><span class="no num">50</span><h2>摘要方塊 Summary box</h2><span class="rule"></span></div><div class="use">摘要方塊是小計、稅、合計的結算塊：標題列、逐項兩端對齊、合計列上加線並放大字級；全站共用同一個元件，不要每頁重寫。只有交易型系統需要。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="cardx">
-<div class="ct">金額摘要 <span class="hint">Pricing Service</span></div>
-<div class="cb">
-<div class="sumrow"><span>商品小計</span><span class="price"><small>NT$</small>28,926</span></div>
-<div class="sumrow"><span>營業稅 5%</span><span class="price"><small>NT$</small>1,446</span></div>
-<div class="sumrow total"><span>合計</span><span class="price"><small>NT$</small>30,372</span></div>
-</div>
-</div></div><div class="sec"><span class="no num">51</span><h2>來源標記 Source badge</h2><span class="rule"></span></div><div class="use">來源標記標示資料由 AI 解析或匯入產生：深型副色填色配白字（淺型副色配墨字），每頁最多三處；同一列與 warning 狀態並存時改用主色，避免兩種黃分不清。 本風格：副色實心白字，彩色字一律墊白。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="aibadge">◆ AI 解析</span></div></div><div class="sec"><span class="no num">52</span><h2>百分比膠囊 Percent pill</h2><span class="rule"></span></div><div class="use">百分比膠囊顯示信心度或達成率，三段色階（高綠、中琥珀、低紅）走語意色；與來源標記成對出現，數字用 Arial。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="conf hi num">98%</span><span class="conf md num">71%</span><span class="conf lo num">42%</span></div></div><div class="sec"><span class="no num">53</span><h2>量表 Meter</h2><span class="rule"></span></div><div class="use">量表與進度條不同：進度條講「做到哪」、只有主色；量表講「還剩多少」，顏色隨水位走語意色（安全綠、注意琥珀、危險紅），並畫出門檻線。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 280px">
-<div class="cap">量表 METER ─ 講「還剩多少」</div>
-<div class="meter" style="margin-top:1.2rem"><div class="mh"><span>庫存水位 AL-2040</span><b>72%</b></div><div class="mt"><i style="width:72%"></i><em style="left:20%"></em></div><small>安全庫存線 20%</small></div>
-<div class="meter wrn" style="margin-top:1.6rem"><div class="mh"><span>本月 API 配額</span><b>88%</b></div><div class="mt"><i style="width:88%"></i><em style="left:80%"></em></div><small>超過 80% 提醒、100% 暫停</small></div>
-<div class="meter err" style="margin-top:1.6rem"><div class="mh"><span>附件空間</span><b>97%</b></div><div class="mt"><i style="width:97%"></i><em style="left:90%"></em></div><small>剩 0.6 GB，上傳將失敗</small></div>
-</div></div></div><div class="sec"><span class="no num">54</span><h2>樹狀 Tree</h2><span class="rule"></span></div><div class="use">樹狀：縮排線用虛線、展開箭頭固定 14px 寬、計數靠右；選中節點淡底主色字。表格做不出父子關係時才用樹。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">樹狀 TREE ─ 分類管理</div>
-<ul class="tree" style="margin-top:0.8rem">
-<li><div class="nd"><span class="tw">▼</span>全部商品<span class="count cnt">312</span></div>
-<ul>
-<li><div class="nd"><span class="tw">▼</span>五金<span class="count cnt">140</span></div>
-<ul>
-<li><div class="nd on"><span class="tw">▶</span>緊固件<span class="count cnt">86</span></div></li>
-<li><div class="nd"><span class="tw">▶</span>手工具<span class="count cnt">54</span></div></li>
-</ul></li>
-<li><div class="nd"><span class="tw">▶</span>電子零件<span class="count cnt">122</span></div></li>
-<li><div class="nd"><span class="tw"></span>包材<span class="count cnt gray">50</span></div></li>
-</ul></li>
-</ul>
-</div></div></div><div class="sec"><span class="no num">55</span><h2>時間軸 Timeline</h2><span class="rule"></span></div><div class="use">時間軸最新在最上面、節點顏色跟語意色走、每筆一定有時間戳；只放事件，不放可操作的東西。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 300px">
-<div class="cap">時間軸 TIMELINE ─ 歷程</div>
-<ul class="tl" style="margin-top:1.2rem">
-<li class="acc"><span class="tt">備貨中</span><span class="tm">09/10 14:20</span><p>倉管 王大明 完成揀貨 2 / 3 項</p></li>
-<li class="ok"><span class="tt">已確認</span><span class="tm">09/08 09:05</span><p>業務 林佳穎 確認價格與交期</p></li>
-<li class="err"><span class="tt">價格異議</span><span class="tm">09/07 17:40</span><p>客戶回覆：AL-2040 單價高於上季報價</p></li>
-<li><span class="tt">建立訂單</span><span class="tm">09/07 11:02</span><p>由 AI 解析傳真單建立，信心度 98%</p></li>
-</ul>
-</div></div></div><div class="sec"><span class="no num">56</span><h2>圖表 Chart</h2><span class="rule"></span></div><div class="use">圖表不指定圖表庫，只定規則：第一序列主色、第二序列深副色（副色本身太亮，當線條會看不清）、第三序列以後用灰階；語意色只給「好壞」有意義的圖；座標軸字 10px Arial 灰、格線用框線色、關鍵值直接標在圖上。統計卡可以放一條迷你趨勢線。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px">
-<div class="cap">圖表 CHART ─ 主色第一序列、深副色折線、灰階第三序列</div>
-<div class="chart" style="margin-top:0.8rem">
-<div class="chh">每月出貨<small>2026 上半年 · 千件</small></div>
-<svg aria-label="每月出貨與退貨" role="img" viewbox="0 0 400 172"><line class="gd" x1="28" x2="400" y1="150" y2="150"></line><text class="ax" text-anchor="end" x="22" y="153">0</text><line class="gd" x1="28" x2="400" y1="115" y2="115"></line><text class="ax" text-anchor="end" x="22" y="118">25</text><line class="gd" x1="28" x2="400" y1="80" y2="80"></line><text class="ax" text-anchor="end" x="22" y="83">50</text><line class="gd" x1="28" x2="400" y1="45" y2="45"></line><text class="ax" text-anchor="end" x="22" y="48">75</text><line class="gd" x1="28" x2="400" y1="10" y2="10"></line><text class="ax" text-anchor="end" x="22" y="13">100</text><rect class="s1" height="87" rx="4" width="22" x="35" y="63"></rect><rect class="s3" height="56" rx="4" width="22" x="61" y="94"></rect><text class="ax" text-anchor="middle" x="59" y="166">1月</text><rect class="s1" height="109" rx="4" width="22" x="97" y="41"></rect><rect class="s3" height="73" rx="4" width="22" x="123" y="77"></rect><text class="ax" text-anchor="middle" x="121" y="166">2月</text><rect class="s1" height="77" rx="4" width="22" x="159" y="73"></rect><rect class="s3" height="66" rx="4" width="22" x="185" y="84"></rect><text class="ax" text-anchor="middle" x="183" y="166">3月</text><rect class="s1" height="126" rx="4" width="22" x="221" y="24"></rect><rect class="s3" height="85" rx="4" width="22" x="247" y="65"></rect><text class="ax" text-anchor="middle" x="245" y="166">4月</text><rect class="s1" height="99" rx="4" width="22" x="283" y="51"></rect><rect class="s3" height="92" rx="4" width="22" x="309" y="58"></rect><text class="ax" text-anchor="middle" x="307" y="166">5月</text><rect class="s1" height="118" rx="4" width="22" x="345" y="32"></rect><rect class="s3" height="81" rx="4" width="22" x="371" y="69"></rect><text class="ax" text-anchor="middle" x="369" y="166">6月</text><polyline class="ln" points="59,88 121,78 183,83 245,71 307,67 369,73"></polyline><circle cx="59" cy="88" fill="#fff" r="3" stroke="var(--acc2-deep,var(--acc2))" stroke-width="2"></circle><circle cx="121" cy="78" fill="#fff" r="3" stroke="var(--acc2-deep,var(--acc2))" stroke-width="2"></circle><circle cx="183" cy="83" fill="#fff" r="3" stroke="var(--acc2-deep,var(--acc2))" stroke-width="2"></circle><circle cx="245" cy="71" fill="#fff" r="3" stroke="var(--acc2-deep,var(--acc2))" stroke-width="2"></circle><circle cx="307" cy="67" fill="#fff" r="3" stroke="var(--acc2-deep,var(--acc2))" stroke-width="2"></circle><circle cx="369" cy="73" fill="#fff" r="3" stroke="var(--acc2-deep,var(--acc2))" stroke-width="2"></circle><text class="vl" text-anchor="middle" x="245" y="18">90</text></svg>
-<div class="lg"><span><i style="background:var(--acc)"></i>出貨</span><span><i style="background:rgba(35,41,54,.14)"></i>去年同期</span><span><i style="background:var(--acc2-deep,var(--acc2))"></i>退貨率</span></div>
-</div>
-<div class="sparkrow">
-<div class="spark"><div class="k">本週訂單</div><div class="v">128</div><svg preserveaspectratio="none" viewbox="0 0 120 28"><polygon class="sa" points="0,28 0,26 20,18 40,22 60,12 80,16 100,7 120,4 120,28"></polygon><polyline class="sl" points="0,26 20,18 40,22 60,12 80,16 100,7 120,4"></polyline></svg></div>
-<div class="spark"><div class="k">平均交期</div><div class="v">4.2 <small style="font-size:var(--fs-l1);color:var(--muted);line-height:var(--lh-l1)">天</small></div><svg preserveaspectratio="none" viewbox="0 0 120 28"><polygon class="sa" points="0,28 0,4 20,10 40,6 60,16 80,21 100,24 120,26 120,28"></polygon><polyline class="sl" points="0,4 20,10 40,6 60,16 80,21 100,24 120,26"></polyline></svg></div>
-</div>
-</div><div style="flex:1 1 320px"><div class="cap">圖表 CHART ─ 三個數列以上改用第四層色板（固定順序，換色系不會變）</div><div class="chart" style="margin-top:0.8rem"><div class="chh">各區產品線出貨<small>2026 上半年 · 千件</small></div><svg aria-label="各區五條產品線出貨比較" role="img" viewbox="0 0 400 172"><line class="gd" x1="28" x2="400" y1="150" y2="150"></line><text class="ax" text-anchor="end" x="22" y="153">0</text><line class="gd" x1="28" x2="400" y1="115" y2="115"></line><text class="ax" text-anchor="end" x="22" y="118">25</text><line class="gd" x1="28" x2="400" y1="80" y2="80"></line><text class="ax" text-anchor="end" x="22" y="83">50</text><line class="gd" x1="28" x2="400" y1="45" y2="45"></line><text class="ax" text-anchor="end" x="22" y="48">75</text><line class="gd" x1="28" x2="400" y1="10" y2="10"></line><text class="ax" text-anchor="end" x="22" y="13">100</text><rect class="d1" height="103" rx="3" width="16" x="46" y="47"></rect><rect class="d2" height="81" rx="3" width="16" x="64" y="69"></rect><rect class="d3" height="57" rx="3" width="16" x="82" y="93"></rect><rect class="d4" height="42" rx="3" width="16" x="100" y="108"></rect><rect class="d5" height="26" rx="3" width="16" x="118" y="124"></rect><text class="ax" text-anchor="middle" x="90" y="166">北區</text><rect class="d1" height="88" rx="3" width="16" x="158" y="62"></rect><rect class="d2" height="73" rx="3" width="16" x="176" y="77"></rect><rect class="d3" height="64" rx="3" width="16" x="194" y="86"></rect><rect class="d4" height="35" rx="3" width="16" x="212" y="115"></rect><rect class="d5" height="23" rx="3" width="16" x="230" y="127"></rect><text class="ax" text-anchor="middle" x="202" y="166">中區</text><rect class="d1" height="73" rx="3" width="16" x="270" y="77"></rect><rect class="d2" height="59" rx="3" width="16" x="288" y="91"></rect><rect class="d3" height="49" rx="3" width="16" x="306" y="101"></rect><rect class="d4" height="32" rx="3" width="16" x="324" y="118"></rect><rect class="d5" height="18" rx="3" width="16" x="342" y="132"></rect><text class="ax" text-anchor="middle" x="314" y="166">南區</text></svg><div class="lg"><span><i style="background:var(--d1)"></i>藍</span><span><i style="background:var(--d2)"></i>橘</span><span><i style="background:var(--d3)"></i>綠</span><span><i style="background:var(--d4)"></i>紫</span><span><i style="background:var(--d5)"></i>橄欖</span></div></div></div></div><div class="rowset"><span class="cap">兩個數列以下用主色與深副色；三個以上一律改用第四層八色，固定順序取用。語意色不得當數列色，綠色數列會被讀成「成功」。</span></div></div><div class="sec"><span class="no num">57</span><h2>媒體與輪播 Media / Carousel</h2><span class="rule"></span></div><div class="use">媒體：圖片固定比例（商品 4:3、影片 16:9）、載入前先佔位不跳版；輪播不自動播放、圓點與箭頭都可鍵盤操作、下方縮圖列標示目前張；影片顯示時長與海報圖，點了才載入播放器。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">媒體與輪播 MEDIA ─ 圖片、影片、縮圖列</div>
-<div class="media" style="margin-top:0.8rem">
-<div class="thumb"><span class="lab">商品圖 4:3</span><button aria-label="上一張" class="arr l">‹</button><button aria-label="下一張" class="arr r">›</button><div class="dots"><i class="on"></i><i></i><i></i><i></i></div></div>
-<div class="strip"><div class="thumb on"><small>1</small></div><div class="thumb"><small>2</small></div><div class="thumb"><small>3</small></div><div class="thumb"><span class="play" style="width:26px;min-height:2.6rem;font-size:var(--fs-l1);padding-left:0;line-height:var(--lh-l1)">▶</span></div></div>
-<div class="capn">AL-2040 鋁擠型 40×40 ─ 主圖 1 / 4。輪播不自動播放；箭頭與圓點都要能鍵盤操作。</div>
-</div>
-<div class="media" style="margin-top:1.6rem;max-width:260px">
-<div class="thumb" style="aspect-ratio:16/9"><span class="play">▶</span><span class="dur">03:24</span></div>
-<div class="capn">安裝教學影片 ─ 有時長、有海報圖、點了才載入。</div>
-</div>
-</div></div></div><div class="sec"><span class="no num">58</span><h2>動態列表 Feed</h2><span class="rule"></span></div><div class="use">動態列表是無限捲動的動態牆：每筆帶頭像、動作、對象、相對時間；底部常駐載入提示，不用「載入更多」按鈕。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
-<div class="cap">動態列表 FEED ─ 無限捲動</div>
-<div class="feed" style="margin-top:1.2rem">
-<div class="fi"><span class="avatar">林</span><div><b>林佳穎</b> 確認了訂單 <b class="num">SO-260907-003</b><small>3 分鐘前</small></div></div>
-<div class="fi"><span class="avatar a2">王</span><div><b>王大明</b> 在 <b class="num">SO-260905-008</b> 留言：「刻印檔已收到」<small>18 分鐘前</small></div></div>
-<div class="fi"><span class="avatar sq">AI</span><div>解析完成 2 張傳真單，1 筆低信心待確認<small>今天 08:12</small></div></div>
-<div class="fi"><span class="avatar gray">系</span><div>價格表 2026 Q3 已發佈<small>昨天 17:42</small></div></div>
-<div class="more"><span class="spin"></span>往下捲動自動載入</div>
-</div>
-</div></div></div><div class="sec"><span class="no num">59</span><h2>步驟精靈 Stepper wizard</h2><span class="rule"></span></div><div class="use">步驟精靈是可操作的多步表單：已完成實心打勾、目前步驟外圈光暈、未到步驟灰；每步都能往回改，最後一步才真正送出。</div><div class="board glass"><div><div class="cap">步驟精靈 STEPPER ─ 可操作的多步表單</div><div class="stepper" style="margin-top:1.2rem">
-<div class="sp done"><span class="dot">✓</span><b>基本資料</b><small>已完成</small></div>
-<div class="sp done"><span class="dot">✓</span><b>品項與數量</b><small>3 項</small></div>
-<div class="sp cur"><span class="dot">3</span><b>送貨與付款</b><small>進行中</small></div>
-<div class="sp"><span class="dot">4</span><b>確認送出</b><small> </small></div>
-</div><div class="stepnav"><button class="btn sm">‹ 上一步</button><button class="btn primary sm">下一步 ›</button></div><div class="rowset" style="align-items:flex-start;gap:3.2rem;flex-wrap:wrap;margin-top:2.4rem">
-</div></div></div><div class="sec"><span class="no num">60</span><h2>唯讀步驟 Read-only steps</h2><span class="rule"></span></div><div class="use">唯讀步驟是步驟精靈的唯讀態：顯示訂單、簽核走到哪一步，不能點；走過的實心、目前的高亮、未到的灰。</div><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="flow">
-<span class="stp done">待確認</span><span class="arr">→</span><span class="stp done">已確認</span><span class="arr">→</span><span class="stp cur">備貨中</span><span class="arr">→</span><span class="stp">已出貨</span><span class="arr">→</span><span class="stp">已完成</span>
-</span></div><div class="sec"><span class="no num">61</span><h2>分割面板 Splitter</h2><span class="rule"></span></div><div class="use">分割面板給主從版型：左清單右詳情、中間 9px 可拖曳把手；記住使用者調過的寬度。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px">
-<div class="cap">分割面板 SPLITTER ─ 主從版型、可拖曳</div>
-<div class="split" style="margin-top:0.8rem">
-<div class="pa">
-<div class="li on"><span class="num">SO-260907-003</span><small>28,166</small></div>
-<div class="li"><span class="num">SO-260905-008</span><small>96,140</small></div>
-<div class="li"><span class="num">SO-260904-021</span><small>18,920</small></div>
-<div class="li"><span class="num">SO-260903-014</span><small>12,400</small></div>
-<div class="li"><span class="num">SO-260902-002</span><small>7,850</small></div>
-</div>
-<div aria-label="調整寬度" aria-orientation="vertical" class="gut" role="separator"></div>
-<div class="pb"><b class="num">SO-260907-003</b>
-<div class="row"><span>客戶</span><span>大同機械</span></div>
-<div class="row"><span>狀態</span><span class="st wrn">待確認</span></div>
-<div class="row"><span>金額</span><span class="num">NT$ 28,166</span></div>
-<div class="row"><span>到貨</span><span class="num">2026/09/15</span></div>
-</div>
-</div>
-</div></div></div><div class="sec"><span class="no num">62</span><h2>結果頁 Result</h2><span class="rule"></span></div><div class="use">結果頁與空狀態不同：空狀態是「還沒有資料」，結果頁是「這件事的結局」——成功、失敗、無權限各一種，圖示用語意色淡底圓、標題一句話說結局、內文說接下來會發生什麼、最多兩顆動作鈕。多數後台用 Toast 加導回即可。</div><div class="board glass"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px;display:flex;flex-direction:column;gap:1.6rem">
-<div class="cap">結果頁 RESULT ─ 這件事的結局</div>
-<div class="result ok">
-<div class="ic">✓</div>
-<h3>訂單已送出</h3>
-<p>我們會在 1 個工作天內確認價格與交期，<br/>確認後以 Email 通知您。</p>
-<div class="dl"><div><span>單號</span><b class="num">SO-260913-001</b></div><div><span>合計</span><b class="num">NT$ 96,140</b></div><div><span>預計到貨</span><b class="num">2026/09/22</b></div></div>
-<div class="acts"><button class="btn sm">查看訂單</button><button class="btn primary sm">繼續採購</button></div>
-</div>
-<div class="result err compact">
-<div class="ic">!</div>
-<h3>沒有權限查看這一頁</h3>
-<p>需要「訂單審核」權限。可向管理員申請。</p>
-<div class="acts"><button class="btn sm">回首頁</button><button class="btn primary sm">申請權限</button></div>
-</div>
-</div></div></div></div>
-<div class="foot">
-  <b>三種風格的取捨（目前已有三套完整元件庫可比）：</b>玻璃擬態的差異化與「品牌感」最強（背景就是品牌雙色），科技感高、很適合展示 AI 賣點；代價是 blur 效果吃裝置效能（低階手機列表捲動可能卡）、印刷／匯出畫面失真、深色文字必須靠高不透明度面板撐可讀性。與新擬態相比它對比更好做；與圓弧柔和版相比它更耗效能。建議：<b>行銷官網與門市首頁用玻璃擬態、進系統後的資料頁用圓弧柔和版</b>是常見的混搭。你挑定一套（或指定混搭比例），我就出對應的 mockup v4。
+<div class="wrap sf">
+<header class="board glass sf-nav"><a class="sf-logo" href="#"><span class="sf-mark" aria-hidden="true"></span>器物日常</a><nav class="sf-links" aria-label="主要分類"><a href="#">新品</a><a href="#">餐桌</a><a href="#">收納</a><a href="#">布織品</a><a href="#">選物誌</a></nav><div class="sf-tools"><button class="sf-ib" type="button" aria-label="搜尋"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg></button><button class="sf-ib" type="button" aria-label="會員"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></button><span class="badge"><button class="sf-ib" type="button" aria-label="購物袋，2 件商品"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M16 10a4 4 0 0 1-8 0" /><path d="M3.103 6.034h17.794" /><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" /></svg></button><b class="num">2</b></span><button class="sf-ib sf-menu" type="button" aria-label="開啟選單"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg></button></div></header>
+<section class="board glass sf-hero"><div><div class="sf-eyebrow">秋季選物 · 2026</div><h1 class="sf-h1">把每天用的東西，換成喜歡的樣子</h1><p class="sf-lead">手作陶器、木質餐具與布織品，每一件都經過三十天實際使用才上架。</p><div class="sf-cta"><button class="btn primary" type="button">逛新品<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></button><button class="btn" type="button">看選物誌</button></div></div><div class="sf-media" role="img" aria-label="商品情境照（示意）"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg></div></section>
+<section class="board glass" aria-labelledby="sf-new"><div class="sf-sechead"><h2 class="sf-h2" id="sf-new">本週新品</h2><a class="sf-more" href="#">全部商品<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></div><div class="sf-filter"><button class="pillf on" type="button">全部</button><button class="pillf" type="button">餐桌</button><button class="pillf" type="button">收納</button><button class="pillf" type="button">布織品</button></div><div class="sf-grid"><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><span class="tag acc">新品</span><button class="sf-ib sf-fav" type="button" aria-label="收藏 粗陶湯碗 · 霧白"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">粗陶湯碗 · 霧白</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.8</span><span>（126 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>680</span><span class="sf-was num">NT$ 850</span></div><button class="btn sm sf-add" type="button"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg>加入購物袋</button></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><span class="tag gray">限量</span><button class="sf-ib sf-fav" type="button" aria-label="收藏 胡桃木餐盤 24cm"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">胡桃木餐盤 24cm</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.9</span><span>（88 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>1,280</span></div><button class="btn sm sf-add" type="button"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg>加入購物袋</button></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><button class="sf-ib sf-fav" type="button" aria-label="收藏 亞麻餐墊兩入"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">亞麻餐墊兩入</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.6</span><span>（203 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>540</span></div><button class="btn sm sf-add" type="button"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg>加入購物袋</button></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><span class="tag acc">新品</span><button class="sf-ib sf-fav" type="button" aria-label="收藏 手吹玻璃水杯"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">手吹玻璃水杯</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.7</span><span>（64 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>420</span></div><button class="btn sm sf-add" type="button"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg>加入購物袋</button></div></article></div></section>
+<section class="board glass sf-feats" aria-label="購物保障"><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /><path d="M15 18H9" /><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /><circle cx="17" cy="18" r="2" /><circle cx="7" cy="18" r="2" /></svg><div><h3>滿 NT$1,500 免運</h3><p>本島三天內送達，離島另計運費。</p></div></div><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></svg><div><h3>七天內可退換</h3><p>未使用、包裝完整即可，運費由我們負擔。</p></div></div><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg><div><h3>安心付款</h3><p>支援信用卡、行動支付與超商取貨付款。</p></div></div></section>
+<article class="board glass sf-article"><div class="sf-eyebrow">選物誌</div><h2 class="sf-h2">一只碗為什麼要用三十天</h2><div class="sf-body"><p>照片裡好看的碗，放進洗碗機第二週就開始掉釉；拿在手上剛好的杯子，裝滿熱水卻燙到握不住。這些事在店裡看不出來，只有天天用才會知道。</p><p>所以每一件商品上架前，我們都會在自己的廚房用滿三十天：微波、冷藏、洗碗機、疊放收納都試過一輪，再把觀察寫進商品頁的「使用筆記」。</p></div><div class="notice">陶器每一件的釉色與氣孔都略有不同，屬於手作的正常樣貌，不列入瑕疵退換。</div><a class="sf-more" href="#">繼續閱讀<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></article>
+<section class="board glass sf-news" aria-labelledby="sf-mail"><div><h2 class="sf-h2" id="sf-mail">每月一封選物信</h2><p>新品、補貨與選物誌，一個月只寄一次，可隨時取消。</p></div><form class="sf-form" onsubmit="return false"><div class="field"><label for="sf-email">電子郵件</label><input id="sf-email" type="email" placeholder="name@example.com" autocomplete="email"/></div><button class="btn primary" type="submit">訂閱</button></form></section>
+<footer class="sf-foot board glass"><span>© 2026 器物日常（示範品牌）</span><nav aria-label="頁尾"><a href="#">關於我們</a><a href="#">運送與退換</a><a href="#">常見問題</a><a href="#">聯絡我們</a></nav></footer>
 </div>
 
 <script>

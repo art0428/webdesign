@@ -22,6 +22,8 @@ html{font-size:62.5%}
  --fs-l1:1.2rem;--lh-l1:1.50; --fs-l2:1.1rem;--lh-l2:1.50;
  --fs-n1:3.0rem;--lh-n1:1.15; --fs-n2:2.3rem;--lh-n2:1.20; --fs-n3:1.4rem;--lh-n3:1.60; --fs-n4:1.3rem;--lh-n4:1.60}
 @media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem}}
+:root{--dur-1:120ms;--dur-2:200ms;--dur-3:320ms;--ease-out:cubic-bezier(.2,0,0,1);--ease-in:cubic-bezier(.4,0,1,1)}
+@media (prefers-reduced-motion:reduce){:root{--dur-1:0ms;--dur-2:0ms;--dur-3:0ms}}
 .num,.amt,.price{font-variant-numeric:tabular-nums}
 
 :root{--info:#1A66AA;--info-soft:#E8F0F6;/* 第四語意色：資訊藍（2026-09 新增，不隨品牌色變）*/
@@ -46,7 +48,7 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 .accbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);margin:1.2rem 0 0;padding:0.8rem 2.4rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center}
 .accbar .acchint{width:100%;text-align:center;font-size:var(--fs-l2);color:var(--muted);letter-spacing:0.03em;line-height:var(--lh-l2)}
 .accbar .lb{font-size:var(--fs-l1);font-weight:700;letter-spacing:0.15em;color:var(--muted);line-height:var(--lh-l1)}
-.accbtn{display:flex;align-items:center;gap:0.4rem;border:1px solid var(--line);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;color:var(--ink);font-family:inherit;transition:border-color .12s;line-height:var(--lh-b3)}
+.accbtn{display:flex;align-items:center;gap:0.4rem;border:1px solid var(--line);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;color:var(--ink);font-family:inherit;transition:border-color var(--dur-1) var(--ease-out);line-height:var(--lh-b3)}
 .accbtn:hover{border-color:var(--acc)}
 .accbtn .cc{font-family:Arial,sans-serif;font-size:var(--fs-l2);font-weight:700;letter-spacing:0.08em;color:var(--muted);margin-right:0;line-height:var(--lh-l2)}
 .accbtn.on .cc{color:var(--acc)}
@@ -85,7 +87,7 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 .typerow .spec2{font-family:Arial,sans-serif;font-size:var(--fs-l2);color:var(--muted);line-height:var(--lh-l2)}
 
 /* ═══ BUTTONS ═══ */
-.btn{border:1px solid var(--line);border-radius:999px;background:#fff;padding:0.8rem 2rem;font-size:var(--fs-b2);font-weight:700;transition:border-color .12s;line-height:var(--lh-b2)}
+.btn{border:1px solid var(--line);border-radius:999px;background:#fff;padding:0.8rem 2rem;font-size:var(--fs-b2);font-weight:700;transition:border-color var(--dur-1) var(--ease-out);line-height:var(--lh-b2)}
 .btn:hover{border-color:var(--acc)}
 .btn.primary{background:var(--acc);border-color:var(--acc);color:#fff;border-radius:999px;padding:0.8rem 2.4rem;letter-spacing:0.08em}
 .btn.ghost{color:var(--acc);border:1.5px solid var(--acc);border-radius:999px;padding:0.8rem 2rem;background:#fff}
@@ -155,7 +157,7 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 .t th{font-size:var(--fs-l2);letter-spacing:0.15em;color:var(--muted);text-align:left;padding:0.8rem 1.6rem;font-weight:700;border-bottom:1px solid var(--line);line-height:var(--lh-l2)}
 .t td{padding:1.2rem 1.6rem;border-bottom:1px solid #F0F0F0;vertical-align:middle}
 .t tr:last-child td{border-bottom:none}
-.t tbody tr{transition:background .12s}
+.t tbody tr{transition:background var(--dur-1) var(--ease-out)}
 .t tbody tr:hover td{background:var(--accsoft)}
 .t tbody tr:hover td:first-child{border-radius:12px 0 0 12px}
 .t tbody tr:hover td:last-child{border-radius:0 12px 12px 0}
@@ -255,10 +257,10 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 
 /* ═══ SWITCH / UPLOAD / TEXTAREA ═══ */
 .sw2{display:inline-flex;align-items:center;gap:0.8rem;font-size:var(--fs-b2);line-height:var(--lh-b2)}
-.sw2 .tk{width:40px;height:22px;border-radius:999px;background:var(--line);position:relative;transition:background .15s}
-.sw2 .tk::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:left .15s}
+.sw2 .tk{width:40px;height:22px;border-radius:999px;background:var(--line);position:relative;transition:background var(--dur-2) var(--ease-out)}
+.sw2 .tk::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;transition:transform var(--dur-2) var(--ease-out)}
 .sw2.on .tk{background:var(--acc)}
-.sw2.on .tk::after{left:21px}
+.sw2.on .tk::after{transform:translateX(18px)}
 .sw2 .lbl2{color:var(--muted);font-size:var(--fs-l1);line-height:var(--lh-l1)}
 .upload{border:1.5px dashed var(--line);border-radius:16px;padding:2rem;text-align:center;color:var(--muted);font-size:var(--fs-b3);line-height:var(--lh-b3);width:280px;background:var(--paperc)}
 .upload b{color:var(--acc)}
@@ -302,7 +304,7 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 /* ── 十二組核心 ＋ SC1切換列（嵌入外層瀏覽器時隱藏，改由外層控制）── */
 .accbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);border-bottom:1px solid rgba(0,0,0,.09);margin:1.2rem 0 0;padding:0.8rem 2rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center;max-width:none}
 .accbar .lb{font-size:var(--fs-l2);font-weight:700;letter-spacing:0.15em;opacity:.7;line-height:var(--lh-l2)}
-.accbtn{display:inline-flex;align-items:center;gap:0.4rem;border:1px solid rgba(0,0,0,.14);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;font-family:inherit;color:#171717;transition:border-color .12s;line-height:var(--lh-b3)}
+.accbtn{display:inline-flex;align-items:center;gap:0.4rem;border:1px solid rgba(0,0,0,.14);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;font-family:inherit;color:#171717;transition:border-color var(--dur-1) var(--ease-out);line-height:var(--lh-b3)}
 .accbtn i{width:11px;min-height:1.1rem;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
 .accbtn .cc{font-family:Arial,sans-serif;font-size:var(--fs-l2);letter-spacing:0.08em;opacity:.55;line-height:var(--lh-l2)}
 .accbtn.on{border-color:#171717;border-width:1.5px}
@@ -605,7 +607,7 @@ html.embedded .accbar{display:none}
 .accbar .sclb{opacity:.75}
 .accbtn.locked,.accbtn:disabled{opacity:.4;cursor:not-allowed;text-decoration:line-through}
 .accbtn .lk{font-size:var(--fs-l2);line-height:var(--lh-l2);margin-left:0.4rem;text-decoration:none;display:inline-block}
-.accbar .accnote{width:100%;text-align:center;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--err);font-weight:700;transition:opacity .4s}
+.accbar .accnote{width:100%;text-align:center;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--err);font-weight:700;transition:opacity var(--dur-3) var(--ease-in)}
 .accbar .accnote[hidden]{display:none}
 /* ── 淺型副色（SC 系列）：填色上放主文字、不放白字；副色當字仍用 --acc2-deep ── */
 html.sc-light .aibadge{background:var(--acc2) !important;color:var(--acc2-text) !important;background-image:none !important}
@@ -739,6 +741,8 @@ body{background:#F4F4F4}
   <button class="accbtn" type="button" data-k="c12" onclick="setPair('c12',this)" title="C12 玫瑰棕"><i style="background:#80565B"></i><i style="background:#BA797D;margin-left:0"></i><span class="cc">C12</span>玫瑰棕</button>
   <span class="sep" aria-hidden="true"></span><span class="lb sclb">SC 特殊</span>
   <button class="accbtn" type="button" data-k="sc1" onclick="setPair('sc1',this)" title="SC1 深綠 × 相思黃"><i style="background:#35463D"></i><i style="background:#DACD65;margin-left:0"></i><span class="cc">SC1</span>深綠 × 相思黃</button>
+  <button class="accbtn" type="button" data-k="sc2" onclick="setPair('sc2',this)" title="SC2 鈷藍 × 亮橘"><i style="background:#2449E8"></i><i style="background:#FF7A1A;margin-left:0"></i><span class="cc">SC2</span>鈷藍 × 亮橘</button>
+  <button class="accbtn" type="button" data-k="sc3" onclick="setPair('sc3',this)" title="SC3 石板藍 × 冰川青"><i style="background:#3D4C5E"></i><i style="background:#5FB4C9;margin-left:0"></i><span class="cc">SC3</span>石板藍 × 冰川青</button>
   <span class="accnote" id="accnote" role="status" aria-live="polite" hidden></span>
 </div>
 
@@ -1144,21 +1148,23 @@ function setAcc(a1,s1,a2,s2,btn){
 /* ══ 色系橋接：十二組核心 ＋ SC1。可獨立使用，也可被外層瀏覽器以 hash / postMessage 控制 ══ */
 const STYLE='s6';
 const THEMES={
- c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC","accDeep":"#35463D"}
+ c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#35463D"},
+ sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#2449E8"},
+ sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6","s7"],"adjust":["s2"],"series":"SC","accDeep":"#3D4C5E"}
 };
-const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨"};
+const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s7": "編輯"};
 
 function accNote(msg){
  const n=document.getElementById('accnote'); if(!n) return;

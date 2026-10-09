@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>管理者工作室 元件規範 — S6 石墨 GRAPHITE</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<title>管理者工作室 元件規範 — S7 編輯 CREAM</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
 /* ══ 字級、行距、間距 tokens v2 ══ 與 code/type_system/typography.css 同源；改這裡要同步改那裡 */
 html{font-size:62.5%}
@@ -31,12 +31,12 @@ html{font-size:62.5%}
  --acc:#2B5FB8;--accsoft:#EDF1F9;/* accent-1 主色 */
  --acc2:#C2377B;--acc2soft:#FAEEF4;/* accent-2 副色 */
  /* 結構灰階（固定）*/
- --ink:#171717;--line:#E3E3E3;--muted:#6A6A6A;--paperc:#F6F6F6;/* 語意色（固定，不隨品牌色變）*/
+ --ink:#1A1814;--line:#E2DDD3;--muted:#615C54;--paperc:#F3F0E9;/* 語意色（固定，不隨品牌色變）*/
  --err:#B23F2F;--err-soft:#FAECEA;/* error 紅 */
  --wrn:#846200;--wrn-soft:#F8F0D8;/* warning 琥珀 */
  --ok:#2A722E;--ok-soft:#E9F2EA}        /* success 綠 */
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Noto Sans TC',sans-serif;background:#F4F4F4;color:var(--ink);font-size:var(--fs-b1);line-height:var(--lh-b1)}
+body{font-family:'Noto Sans TC',sans-serif;background:#FAF8F3;color:var(--ink);font-size:var(--fs-b1);line-height:var(--lh-b1)}
 .num{font-family:Arial,Helvetica,'Noto Sans TC',sans-serif}
 button{font-family:inherit;cursor:pointer}
 input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink);line-height:var(--lh-b2)}
@@ -44,7 +44,7 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 .head{max-width:1080px;margin:0 auto;padding:4rem 2.4rem 0.8rem}
 .head .kick{font-size:var(--fs-l1);letter-spacing:0.15em;color:var(--muted);font-weight:700;line-height:var(--lh-l1)}
 .head h1{font-size:var(--fs-d1);font-weight:900;letter-spacing:0.03em;margin:0.8rem 0 0.8rem;line-height:var(--lh-d1)}
-.head p{font-size:var(--fs-b2);color:#3B3B3B;line-height:var(--lh-b2);max-width:780px}
+.head p{font-size:var(--fs-b2);color:#3D3934;line-height:var(--lh-b2);max-width:780px}
 .accbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);margin:1.2rem 0 0;padding:0.8rem 2.4rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center}
 .accbar .acchint{width:100%;text-align:center;font-size:var(--fs-l2);color:var(--muted);letter-spacing:0.03em;line-height:var(--lh-l2)}
 .accbar .lb{font-size:var(--fs-l1);font-weight:700;letter-spacing:0.15em;color:var(--muted);line-height:var(--lh-l1)}
@@ -139,7 +139,7 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 .st.err{color:var(--err);background:var(--err-soft)}
 .st.ok{color:var(--ok);background:var(--ok-soft)}
 .st.wrn{color:var(--wrn);background:var(--wrn-soft)}
-.st.gray{color:var(--muted);background:#F1F1F1}
+.st.gray{color:var(--muted);background:#EFECE5}
 .tag{display:inline-block;font-size:var(--fs-l2);font-weight:700;border:1px solid currentColor;border-radius:6px;padding:0 0.8rem;letter-spacing:0.06em;line-height:var(--lh-l2)}
 .tag.acc{color:var(--acc)}.tag.gray{color:var(--muted)}.tag.err{color:var(--err)}.tag.wrn{color:var(--wrn)}
 .conf{font-family:Arial,sans-serif;font-size:var(--fs-l2);font-weight:700;border-radius:999px;padding:0.4rem 0.8rem;line-height:var(--lh-l2)}
@@ -155,7 +155,7 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 .tcap .sp{margin-left:auto;display:flex;gap:0.8rem}
 table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:var(--lh-b2)}
 .t th{font-size:var(--fs-l2);letter-spacing:0.15em;color:var(--muted);text-align:left;padding:0.8rem 1.6rem;font-weight:700;border-bottom:1px solid var(--line);line-height:var(--lh-l2)}
-.t td{padding:1.2rem 1.6rem;border-bottom:1px solid #F0F0F0;vertical-align:middle}
+.t td{padding:1.2rem 1.6rem;border-bottom:1px solid #ECE8E0;vertical-align:middle}
 .t tr:last-child td{border-bottom:none}
 .t tbody tr{transition:background var(--dur-1) var(--ease-out)}
 .t tbody tr:hover td{background:var(--accsoft)}
@@ -223,7 +223,7 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 .modal .mb{padding:0.4rem 2rem 1.2rem;font-size:var(--fs-b2);color:var(--muted);line-height:var(--lh-b2)}
 .modal .mf{display:flex;gap:0.8rem;justify-content:flex-end;padding:1.2rem 2rem 1.6rem}
 .toast{display:inline-flex;align-items:center;gap:0.8rem;border:1px solid var(--line);border-radius:999px;background:var(--ink);color:#fff;padding:0.8rem 2rem;font-size:var(--fs-b2);font-weight:500;line-height:var(--lh-b2)}
-.toast i{width:8px;min-height:0.8rem;border-radius:50%;background:#2A722E}
+.toast i{width:8px;min-height:0.8rem;border-radius:50%;background:#7BD89B}
 .empty{border:1.5px dashed var(--line);border-radius:16px;padding:3.2rem 2rem;text-align:center;color:var(--muted);font-size:var(--fs-b2);line-height:var(--lh-b2);width:330px}
 .empty b{color:var(--ink)}
 .flow{display:flex;gap:0;align-items:center;font-size:var(--fs-l1);color:var(--muted);flex-wrap:wrap;line-height:var(--lh-l1)}
@@ -279,14 +279,14 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 .tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--ink)}
 .skel{width:100%;max-width:420px}
 .skrow{display:flex;gap:1.2rem;align-items:center;padding:0.8rem 0}
-.sk{background:linear-gradient(90deg,#EFEFEF 25%,#F6F6F6 50%,#EFEFEF 75%);background-size:200% 100%;animation:sk 1.4s infinite;border-radius:8px;height:13px}
+.sk{background:linear-gradient(90deg,#EAE6DD 25%,#F5F2EC 50%,#EAE6DD 75%);background-size:200% 100%;animation:sk 1.4s infinite;border-radius:8px;height:13px}
 @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .spin{width:22px;height:22px;border:2.5px solid var(--accsoft);border-top-color:var(--acc);border-radius:50%;animation:sp 0.8s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
 .noti{width:300px;border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
 .noti .nh{display:flex;align-items:center;padding:1.2rem 1.6rem;border-bottom:1px solid var(--line);font-size:var(--fs-b3);font-weight:900;letter-spacing:0.08em;background:var(--paperc);line-height:var(--lh-b3)}
 .noti .nh .mk{margin-left:auto;font-size:var(--fs-l2);color:var(--acc);font-weight:700;line-height:var(--lh-l2)}
-.nrow{display:flex;gap:0.8rem;padding:0.8rem 1.6rem;border-bottom:1px solid #F0F0F0;font-size:var(--fs-b3);line-height:var(--lh-b3)}
+.nrow{display:flex;gap:0.8rem;padding:0.8rem 1.6rem;border-bottom:1px solid #ECE8E0;font-size:var(--fs-b3);line-height:var(--lh-b3)}
 .nrow:last-child{border-bottom:none}
 .nrow .dot2{width:7px;min-height:0.7rem;border-radius:50%;background:var(--acc);margin-top:0.4rem;flex-shrink:0}
 .nrow.read .dot2{background:var(--line)}
@@ -304,11 +304,11 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 /* ── 十二組核心 ＋ SC1切換列（嵌入外層瀏覽器時隱藏，改由外層控制）── */
 .accbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);border-bottom:1px solid rgba(0,0,0,.09);margin:1.2rem 0 0;padding:0.8rem 2rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center;max-width:none}
 .accbar .lb{font-size:var(--fs-l2);font-weight:700;letter-spacing:0.15em;opacity:.7;line-height:var(--lh-l2)}
-.accbtn{display:inline-flex;align-items:center;gap:0.4rem;border:1px solid rgba(0,0,0,.14);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;font-family:inherit;color:#171717;transition:border-color var(--dur-1) var(--ease-out);line-height:var(--lh-b3)}
+.accbtn{display:inline-flex;align-items:center;gap:0.4rem;border:1px solid rgba(0,0,0,.14);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;font-family:inherit;color:#1A1814;transition:border-color var(--dur-1) var(--ease-out);line-height:var(--lh-b3)}
 .accbtn i{width:11px;min-height:1.1rem;border-radius:50%;border:1px solid rgba(0,0,0,.12)}
 .accbtn .cc{font-family:Arial,sans-serif;font-size:var(--fs-l2);letter-spacing:0.08em;opacity:.55;line-height:var(--lh-l2)}
-.accbtn.on{border-color:#171717;border-width:1.5px}
-.accbtn:focus-visible{outline:2px solid #171717;outline-offset:2px}
+.accbtn.on{border-color:#1A1814;border-width:1.5px}
+.accbtn:focus-visible{outline:2px solid #1A1814;outline-offset:2px}
 html.embedded .accbar{display:none}
 
 /* ── 手機層（規範第六章）：不縮字級，只改版型；輸入 16px 避免 iOS 強制放大 ── */
@@ -409,7 +409,7 @@ html.embedded .accbar{display:none}
 
 /* ── 核心補件：描述清單 Descriptions ── */
 .desc{display:grid;grid-template-columns:max-content 1fr max-content 1fr;font-size:var(--fs-b2);width:100%;max-width:640px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:none;line-height:var(--lh-b2)}
-.desc dt{padding:0.8rem 1.2rem;font-size:var(--fs-l2);font-weight:700;color:var(--muted);letter-spacing:0.06em;background:var(--paperc,#F6F6F6);display:flex;align-items:center;line-height:var(--lh-l2)}
+.desc dt{padding:0.8rem 1.2rem;font-size:var(--fs-l2);font-weight:700;color:var(--muted);letter-spacing:0.06em;background:var(--paperc,#F3F0E9);display:flex;align-items:center;line-height:var(--lh-l2)}
 .desc dd{margin:0;padding:0.8rem 1.2rem;color:var(--ink);display:flex;align-items:center;gap:0.8rem}
 .desc dt:nth-child(n+5),.desc dd:nth-child(n+5){border-top:1px solid var(--line)}
 .desc .full{grid-column:2/-1}
@@ -431,7 +431,7 @@ html.embedded .accbar{display:none}
 .badge>b.dot{min-width:10px;height:10px;padding:0;top:-3px;right:-3px}
 .badge>b.gray{background:var(--muted)}
 .count{display:inline-flex;align-items:center;font-family:Arial,sans-serif;font-size:var(--fs-l1);font-weight:700;border-radius:999px;padding:0 0.8rem;background:var(--accsoft,var(--acc-soft));color:var(--acc);vertical-align:middle;line-height:var(--lh-l1)}
-.count.err{background:var(--err-soft,#F7ECEA);color:var(--err)} .count.gray{background:var(--paperc,#F6F6F6);color:var(--muted)}
+.count.err{background:var(--err-soft,#F7ECEA);color:var(--err)} .count.gray{background:var(--paperc,#F3F0E9);color:var(--muted)}
 
 /* ── 核心補件：表格進階（排序、欄位切換、批次選取）── */
 .t th.sortable{cursor:pointer;white-space:nowrap} .t th.sortable i{font-style:normal;margin-left:0.4rem;opacity:.55}
@@ -444,7 +444,7 @@ html.embedded .accbar{display:none}
 .colmenu .mi .drag{margin-left:auto;color:var(--muted);font-size:var(--fs-b3);line-height:var(--lh-b3)}
 .colmenu{margin-top:0;flex:0 0 200px}
 /* ── 核心補件：側滑面板 Drawer ── */
-.drawerdemo{position:relative;height:270px;width:100%;max-width:560px;border-radius:16px;overflow:hidden;background:#F4F4F4;border:1px solid var(--line)}
+.drawerdemo{position:relative;height:270px;width:100%;max-width:560px;border-radius:16px;overflow:hidden;background:#FAF8F3;border:1px solid var(--line)}
 .drawerdemo .ghost{position:absolute;left:18px;top:18px;right:18px;display:flex;flex-direction:column;gap:0.8rem}
 .drawerdemo .ghost i{display:block;height:10px;border-radius:5px;background:var(--line);opacity:.8}
 .drawerdemo .scrim{position:absolute;inset:0;background:rgba(20,24,32,.45)}
@@ -493,7 +493,7 @@ html.embedded .accbar{display:none}
 /* ── 選用補件：穿梭框 Transfer ── */
 .transfer{display:flex;align-items:center;gap:1.2rem;max-width:100%;flex-wrap:wrap}
 .tlist{width:212px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:none}
-.tlist .th2{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1.2rem;font-size:var(--fs-b3);font-weight:700;border-bottom:1px solid var(--line);background:var(--paperc,#F6F6F6);line-height:var(--lh-b3)}
+.tlist .th2{display:flex;align-items:center;gap:0.8rem;padding:0.8rem 1.2rem;font-size:var(--fs-b3);font-weight:700;border-bottom:1px solid var(--line);background:var(--paperc,#F3F0E9);line-height:var(--lh-b3)}
 .tlist .th2 small{font-size:var(--fs-l2);line-height:var(--lh-l2);margin-left:auto;color:var(--muted);font-family:Arial,sans-serif;font-weight:400}
 .tlist .tb2{padding:0.4rem;display:flex;flex-direction:column;gap:0}
 .tlist .check{padding:0.4rem 0.8rem;font-size:var(--fs-b2);border-radius:8px;line-height:var(--lh-b2)}
@@ -562,7 +562,7 @@ html.embedded .accbar{display:none}
 .spark .sl{fill:none;stroke:var(--acc);stroke-width:1.8} .spark .sa{fill:var(--acc);opacity:.12}
 /* ── 選用補件：分割面板 Splitter ── */
 .split{display:flex;height:210px;width:100%;max-width:560px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:none}
-.split .pa{flex:0 0 38%;padding:0.8rem;font-size:var(--fs-b2);background:var(--paperc,#F6F6F6);overflow:auto;line-height:var(--lh-b2)}
+.split .pa{flex:0 0 38%;padding:0.8rem;font-size:var(--fs-b2);background:var(--paperc,#F3F0E9);overflow:auto;line-height:var(--lh-b2)}
 .split .pa .li{padding:0.8rem 0.8rem;border-radius:8px;display:flex;justify-content:space-between;gap:0.8rem}
 .split .pa .li.on{background:var(--accsoft,var(--acc-soft));color:var(--acc);font-weight:700}
 .split .pa .li small{font-size:var(--fs-l1);line-height:var(--lh-l1);font-family:Arial,sans-serif;color:var(--muted)}
@@ -576,7 +576,7 @@ html.embedded .accbar{display:none}
 
 /* ── 選用補件：媒體與輪播 Media / Carousel ── */
 .media{width:100%;max-width:400px}
-.thumb{aspect-ratio:4/3;border-radius:12px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,#F6F6F6) 7px 14px)}
+.thumb{aspect-ratio:4/3;border-radius:12px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,#F3F0E9) 7px 14px)}
 .thumb .lab{background:rgba(255,255,255,.95);color:var(--muted);font-size:var(--fs-l2);letter-spacing:0.15em;font-weight:700;border-radius:6px;padding:0.4rem 0.8rem;line-height:var(--lh-l2)}
 .thumb .play{width:46px;height:46px;border-radius:50%;background:rgba(20,24,32,.74);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--fs-h2);padding-left:0.4rem;line-height:var(--lh-h2)}
 .thumb .dur{position:absolute;right:8px;bottom:8px;background:rgba(20,24,32,.8);color:#fff;font-family:Arial,sans-serif;font-size:var(--fs-l2);padding:0 0.8rem;border-radius:5px;line-height:var(--lh-l2)}
@@ -596,7 +596,7 @@ html.embedded .accbar{display:none}
 .result h3{margin:0;font-size:var(--fs-h2);font-weight:900;letter-spacing:0.02em;line-height:var(--lh-h2)}
 .result p{margin:0.8rem 0 0;color:var(--muted);font-size:var(--fs-b2);line-height:var(--lh-b2)}
 .result .acts{display:flex;gap:0.8rem;justify-content:center;margin-top:1.6rem;flex-wrap:wrap}
-.result .dl{margin-top:1.6rem;text-align:left;font-size:var(--fs-b3);background:var(--paperc,#F6F6F6);border-radius:12px;padding:0.8rem 1.2rem;color:var(--ink);line-height:var(--lh-b3)}
+.result .dl{margin-top:1.6rem;text-align:left;font-size:var(--fs-b3);background:var(--paperc,#F3F0E9);border-radius:12px;padding:0.8rem 1.2rem;color:var(--ink);line-height:var(--lh-b3)}
 .result .dl span{color:var(--muted);display:inline-block;width:64px}
 .result.compact{padding:2rem 2rem 1.6rem;max-width:340px} .result.compact .ic{width:44px;min-height:4.4rem;font-size:var(--fs-n2);margin-bottom:0.8rem;line-height:var(--lh-n2)} .result.compact h3{font-size:var(--fs-b1);line-height:var(--lh-b1)}
 /* 量表數值為語意色字：墊白（琉璃玻璃上彩字到不了 4.5）；樹狀選中節點的箭頭改主色 */
@@ -648,42 +648,6 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
 .card .card-title{border-bottom:1px solid var(--line);background:var(--paperc);border-radius:16px 16px 0 0}
 .card.click:hover{border-color:var(--acc)}
 
-/* ══════════════════════════════════════════════════════════════
-   S6 石墨 GRAPHITE 表面層
-   元件 HTML 與 class 與 S1〜S5 完全相同，這裡只覆寫材質。
-   三條鐵則：側欄頂列與頁面同色（只有卡片是白的）／灰階純無彩色／
-             表格區不用品牌色，只有選取列例外。
-   兩項風格層例外：按鈕與輸入框 6px、卡片與表格容器 12px；N4 級等寬字。
-   ══════════════════════════════════════════════════════════════ */
-:root{--line-2:#D9D9D9;--sel:#F2F2F2;--dark:#3B3B3B;
-      --mono:"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
-
-/* 鐵則一：頁面是灰的，只有卡片與輸入元件是白的 */
-body{background:#F4F4F4}
-.accbar{background:rgba(244,244,244,.93)}
-
-/* 例外一：按鈕與輸入框 6px */
-.btn,.btn.primary,.btn.ghost,.btn.danger,.kebab,.msearch,.p2,
-.cal .ch button,.cal .quick button,.p4 button{border-radius:6px}
-.field input,.field select,.field textarea,.search,.txa textarea,
-.p5 input,.dd .trg,.qty,.seg,.upfile,.tokcell,.mck,.chip{border-radius:6px}
-
-/* 例外一：卡片與表格容器 12px */
-.board,.tblwrap,.cardx,.card,.empty,.cal,.desc,.drawerdemo,.noti,
-.acc-p,.feed,.chart,.split,.result,.upload{border-radius:12px}
-.cardx .ct,.card .card-title{border-radius:12px 12px 0 0}
-
-/* 例外二：N4 級（料號、單號、日期、IP、追蹤碼）改等寬字；金額仍 Arial */
-.dt,.t td.num{font-family:var(--mono);letter-spacing:var(--ls-n4)}
-
-/* 鐵則三：表格區不用品牌色，只有選取列例外 */
-.t tbody tr:hover td{background:var(--sel)}
-.t tbody tr:hover td:first-child{border-radius:6px 0 0 6px}
-.t tbody tr:hover td:last-child{border-radius:0 6px 6px 0}
-.pillf.on{background:var(--sel);border-color:var(--line-2);color:var(--ink)}
-.seg button.on{background:var(--sel);color:var(--ink)}
-.nitem:hover{background:var(--sel)}
-
 /* ══ 狀態示範補齊（六套共用）══ */
 .check.dis,.radio.dis,.sw2.dis{color:var(--muted);cursor:not-allowed}
 .check.dis i,.radio.dis i{border-color:var(--muted);opacity:1}
@@ -713,16 +677,44 @@ body{background:#F4F4F4}
  text-decoration:underline;text-underline-offset:3px;padding:0 0;min-height:0;font-weight:700;
  font-size:var(--fs-b2);line-height:var(--lh-b2);align-self:flex-start}
 .alert .x{font-size:var(--fs-b2);line-height:var(--lh-b2);align-self:flex-start}
+.alert .btn.sm:hover{opacity:.75}
 /* ══ 提示框 C 案：中性灰底塊，無框線、無主色左條 ══ */
-.notice{background:#F4F4F4;border:none}
+.notice{background:#FAF8F3;border:none}
+
+/* ══════════════════════════════════════════════════════════════
+   S7 編輯 EDITORIAL 表面層（build_s7_editorial.py 產生）
+   元件 HTML 與 class 與 S1〜S6 完全相同，這裡只覆寫材質。
+   材質原理：紙本雜誌——暖白紙、墨色、2px 欄線分段、1px 細線、零陰影、大留白。
+   兩項風格層例外：標題用明體；容器直角、按鈕與輸入元件 2px。
+   ══════════════════════════════════════════════════════════════ */
+:root{--serif:'Noto Serif TC','Songti TC','Source Han Serif TC','PMingLiU',serif;--r-lg:0px;--r-sm:2px}
+.accbar{background:rgba(250,248,243,.94)}
+/* 提示框在 S1 用頁面底色；S7 的外層區塊是透明的，同色會消失，改用表頭帶的紙色 */
+.notice{background:var(--paperc)}
+
+/* 例外一：標題用明體（字級、行距、字重照十三級表，只換字型） */
+.head h1,.sec h2,.card .card-title,.cardx .ct,.modal .mh,.drawer .dh,.tcap b,.chart .chh,.result h3,.empty b,
+.acd .hd,.sf-h1,.sf-h2,.sf-pname,.sf-feat h3,.sf-logo{font-family:var(--serif)}
+
+/* 欄線：外層區塊不加框，上緣 2px 墨線分段，左右不留內距 */
+.board{background:transparent;border:none;border-top:2px solid var(--ink);border-radius:0;padding:var(--sp-6) 0 var(--sp-2)}
+.sec .rule{background:var(--ink);height:1px}
+
+/* 例外二：直角 */
+.card,.cardx,.tblwrap,.empty,.cal,.desc,.drawerdemo,.noti,.acc-p,.feed,.chart,.split,.result,.upload,
+.modal,.menu,.pop,.notice,.alert,.statc,.toast,.tip,.drawer,.dd .menu,.tlist,.casc,.spark{border-radius:0}
+.card .card-title,.cardx .ct{border-radius:0}
+.btn,.btn.primary,.btn.ghost,.btn.danger,.btn.sm,.kebab,.msearch,.p2,.p4 button,.cal .ch button,.cal .quick button,
+.field input,.field select,.field textarea,.search,.txa textarea,.p5 input,.dd .trg,.qty,.seg,.seg button,.upfile,
+.tokcell,.mck,.chip,.pillf,.st,.tag,.count,.tabs,.tab,.nitem,.aibadge,.bar,.bar i{border-radius:2px}
 </style>
 </head>
 <body>
 
 <div class="head">
-  <div class="kick">管理者工作室 — COMPONENT SPEC · S6 GRAPHITE · 十二組核心 ＋ SC1</div>
-  <h1>S6 石墨（冷灰精準）</h1>
-  <p>管理者工作室 網頁介面會用到的全部元件，一次定義。原則：<b>純無彩色灰、1px 細線、零陰影、小圓角</b>——側欄與頁面同色，只有卡片與輸入元件是白的；表格區不用品牌色，只有選取列例外。<b>色彩紀律：元件只准出現四類顏色</b>——品牌雙色（accent-1 主色＋accent-2 副色，runtime 注入）、結構灰階、以及四個固定語意色：error 紅／warning 琥珀／success 綠／info 藍。除此之外不用任何其他顏色。元件標記與 class 與其他五套風格完全相同，差別只在這一層材質。用下方切換鈕驗證雙色替換。</p>
+  <div class="kick">管理者工作室 — COMPONENT SPEC · S7 EDITORIAL · 十二組核心 ＋ SC1〜SC3</div>
+  <h1>S7 編輯（紙本雜誌）</h1>
+  <p>管理者工作室 網頁介面會用到的全部元件，一次定義。原則：<b>明體標題、暖白紙、墨色、2px 欄線分段、直角、零陰影、大留白</b>——給內容網站、品牌官網、活動頁這類閱讀型前台。<b>色彩紀律：元件只准出現四類顏色</b>——品牌雙色（runtime 注入）、結構灰階、以及四個固定語意色。元件標記與 class 與其他六套風格完全相同，差別只在這一層材質。用下方切換鈕驗證雙色替換。</p>
 </div>
 
 <div class="accbar">
@@ -746,12 +738,12 @@ body{background:#F4F4F4}
   <span class="accnote" id="accnote" role="status" aria-live="polite" hidden></span>
 </div>
 
-<div class="wrap"><div class="tierbar"><b>核心元件</b>45 項 ─ 每個專案必備，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">01</span><h2>設計 Token</h2><span class="rule"></span></div><div class="use">Token（設計變數：把顏色、圓角、陰影統一成可替換的參數）分三層：第一層品牌雙色由色系切換注入，第二層結構灰階每套風格一組，第三層四個語意色固定不變。任何元件都只能引用這裡的變數，不得寫死色碼。 <b>本風格：</b>S6 的表面層只改第二層灰階與兩個圓角值，第一、三、四層與其他五套風格完全相同。灰階為純無彩色（紅綠藍三值相等），這是 S6 與 S1 奶油最主要的區別。</div><div class="board">
+<div class="wrap"><div class="tierbar"><b>核心元件</b>45 項 ─ 每個專案必備，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">01</span><h2>設計 Token</h2><span class="rule"></span></div><div class="use">Token（設計變數：把顏色、圓角、陰影統一成可替換的參數）分三層：第一層品牌雙色由色系切換注入，第二層結構灰階每套風格一組，第三層四個語意色固定不變。任何元件都只能引用這裡的變數，不得寫死色碼。 <b>本風格：</b>暖白紙底、墨色字、1px 細線、零陰影；外層區塊改用上緣 2px 墨線分段。兩項風格層例外：標題用明體、容器直角（按鈕與輸入元件 2px）。</div><div class="board">
 <div class="tok">
-<div class="tokcell"><div class="sw" style="background:#171717"></div><div class="tn">ink 主文字</div><div class="tv">#171717</div></div>
-<div class="tokcell"><div class="sw" style="background:#6A6A6A"></div><div class="tn">muted 次要</div><div class="tv">#6A6A6A</div></div>
-<div class="tokcell"><div class="sw" style="background:#E3E3E3"></div><div class="tn">line 框線</div><div class="tv">#E3E3E3 · 1px</div></div>
-<div class="tokcell"><div class="sw" style="background:#F6F6F6;border:1px solid #E3E3E3"></div><div class="tn">band 表頭帶</div><div class="tv">#F6F6F6</div></div>
+<div class="tokcell"><div class="sw" style="background:#1A1814"></div><div class="tn">ink 主文字</div><div class="tv">#1A1814</div></div>
+<div class="tokcell"><div class="sw" style="background:#615C54"></div><div class="tn">muted 次要</div><div class="tv">#615C54</div></div>
+<div class="tokcell"><div class="sw" style="background:#E2DDD3"></div><div class="tn">line 框線</div><div class="tv">#E2DDD3 · 1px</div></div>
+<div class="tokcell"><div class="sw" style="background:#F3F0E9;border:1px solid #E2DDD3"></div><div class="tn">band 表頭帶</div><div class="tv">#F3F0E9</div></div>
 <div class="tokcell"><div class="sw" style="background:var(--acc)"></div><div class="tn">accent-1 主色</div><div class="tv num" id="tvAcc1">#2B5FB8</div></div>
 <div class="tokcell"><div class="sw" style="background:var(--acc2)"></div><div class="tn">accent-2 副色</div><div class="tv num" id="tvAcc2">#C2377B</div></div>
 <div class="tokcell"><div class="sw" style="background:var(--err)"></div><div class="tn">error 紅</div><div class="tv">#B23F2F（固定）</div></div>
@@ -760,13 +752,13 @@ body{background:#F4F4F4}
 </div>
 <div style="min-height:1.8rem"></div>
 <div class="radls">
-<div class="radcell"><div class="shape" style="border-radius:18px"></div><div class="tn">標註框／大面板</div><div class="tv num">18px</div></div><div class="radcell"><div class="shape" style="border-radius:12px"></div><div class="tn">卡片／表格容器／選單</div><div class="tv num">12px ← 例外</div></div><div class="radcell"><div class="shape" style="border-radius:6px"></div><div class="tn">按鈕／輸入框／選項</div><div class="tv num">6px ← 例外</div></div><div class="radcell"><div class="shape" style="border-radius:999px;width:84px;min-height:4rem"></div><div class="tn">狀態／篩選膠囊</div><div class="tv num">膠囊 999</div></div>
+<div class="radcell"><div class="shape" style="border-radius:0"></div><div class="tn">卡片／表格／面板／彈窗</div><div class="tv num">0 ← 例外</div></div><div class="radcell"><div class="shape" style="border-radius:2px"></div><div class="tn">按鈕／輸入框／選項／標籤</div><div class="tv num">2px ← 例外</div></div><div class="radcell"><div class="shape" style="border-radius:999px;width:4rem;min-height:4rem"></div><div class="tn">頭像與圓點</div><div class="tv num">正圓</div></div>
 </div>
 <div style="min-height:1.6rem"></div>
-<div style="border-top:1px dashed var(--line);padding-top:1.2rem;font-size:var(--fs-b2);line-height:var(--lh-b2);color:#3B3B3B">
+<div style="border-top:1px dashed var(--line);padding-top:1.2rem;font-size:var(--fs-b2);line-height:var(--lh-b2);color:#3D3934">
 <b style="color:var(--ink)">雙色分工</b>：<span style="color:var(--acc);font-weight:700">accent-1 主色</span>＝主按鈕、選中狀態、連結、聚焦框——所有「操作」｜<span style="color:var(--acc2-deep);font-weight:700">accent-2 副色</span>＝品牌識別（側欄 Logo 塊）、AI 功能標記、趨勢與圖表第二色——所有「點綴」，每頁少量出現｜<b style="color:var(--ink)">語意色</b>＝只講狀態：<span style="color:var(--err);font-weight:700">error 紅</span>（錯誤、逾期、不可回復）、<span style="color:var(--wrn);font-weight:700">warning 琥珀</span>（待處理、低庫存）、<span style="color:var(--ok);font-weight:700">success 綠</span>（成功、完成）｜其餘一律灰階。
     </div>
-</div><div class="sec"><span class="no num">02</span><h2>字級層級 Type scale</h2><span class="rule"></span></div><div class="use">全站只有十三級字級，每一級綁定自己的行距與字距，寫 <code>var(--fs-xx)</code> 就要同時寫 <code>var(--lh-xx)</code>。中文一律黑體靠字重分層，數字、料號、金額一律 Arial 等寬數字。六套風格共用同一張表，完整推導見「通用規範」檢視。 <b>本風格：</b>十三級字級不得增減。S6 的 N4 改用等寬字（每個字元同寬），只給料號、單號、IP、追蹤碼這類技術識別碼；金額仍用 Arial。中文一律 Noto Sans TC。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="typels"><div class="tl-row"><span class="code num">D1</span><span class="num" style="font-size:var(--fs-d1);line-height:var(--lh-d1);font-weight:700;letter-spacing:var(--ls-d1);">1,840,000</span><span class="hint">顯示數字 · 3.0rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">H1</span><span style="font-size:var(--fs-h1);line-height:var(--lh-h1);font-weight:900;letter-spacing:var(--ls-h1);">訂單管理</span><span class="hint">頁面標題 · 2.1rem · 900</span></div><div class="tl-row"><span class="code num">H2</span><span style="font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:900;letter-spacing:var(--ls-h2);">本月出貨概況</span><span class="hint">區塊標題、彈窗與面板標題 · 1.7rem · 900</span></div><div class="tl-row"><span class="code num">H3</span><span style="font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;letter-spacing:var(--ls-h3);">金額摘要</span><span class="hint">卡片標題列、表格標題、行內小標題 · 1.4rem · 900 · 字距 0.08em</span></div><div class="tl-row"><span class="code num">B1</span><span style="font-size:var(--fs-b1);line-height:var(--lh-b1);font-weight:400;">交貨請先電聯倉管，貨車限 3.5 噸以下。</span><span class="hint">內文 · 1.4rem · 400 · 行距 1.80</span></div><div class="tl-row"><span class="code num">B2</span><span style="font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:400;">AL-2040 L 型支架 ×100，他 1 項</span><span class="hint">表格內文 · 1.25rem · 400 · 行距 1.70</span></div><div class="tl-row"><span class="code num">B3</span><span style="font-size:var(--fs-b3);line-height:var(--lh-b3);font-weight:400;">價格未登入不公開，登入後顯示專屬價。</span><span class="hint">說明輔助 · 1.2rem · 400 · 行距 1.70</span></div><div class="tl-row"><span class="code num">L1</span><span style="font-size:var(--fs-l1);line-height:var(--lh-l1);font-weight:700;letter-spacing:var(--ls-l1);">期望到貨日</span><span class="hint">欄位標籤 · 1.2rem · 700 · 字距 0.08em</span></div><div class="tl-row"><span class="code num">L2</span><span style="font-size:var(--fs-l2);line-height:var(--lh-l2);font-weight:700;letter-spacing:var(--ls-l2);">DATE RANGE</span><span class="hint">微標籤 · 1.1rem · 700 · 字距 0.15em</span></div><div class="tl-row"><span class="code num">N1</span><span class="num" style="font-size:var(--fs-n1);line-height:var(--lh-n1);font-weight:700;">NT$ 30,372</span><span class="hint">合計金額 · 2.3rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N2</span><span class="num" style="font-size:var(--fs-n2);line-height:var(--lh-n2);font-weight:700;">NT$ 1,446</span><span class="hint">小計 · 1.9rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N3</span><span class="num" style="font-size:var(--fs-n3);line-height:var(--lh-n3);font-weight:700;">28,166</span><span class="hint">表格金額 · 1.25rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N4</span><span class="num" style="font-size:var(--fs-n4);line-height:var(--lh-n4);font-weight:400;letter-spacing:var(--ls-n4);">SO-260907-003 · 2026/09/15</span><span class="hint">料號／單號／日期 · 1.25rem · 400 · Arial</span></div></div></div></div><div class="sec"><span class="no num">03</span><h2>分隔線 Divider</h2><span class="rule"></span></div><div class="use">分隔線有帶字、不帶字、直式三種，上下間距固定 14px。帶字版用在「以下是另一組」的語意切換；直式版只放在同一列的兩組操作之間。 <b>本風格：</b>一律 1px <code>var(--line)</code>，不用漸層、不用雙線。S6 沒有陰影，分隔全靠線與底色差。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">分隔線 DIVIDER</div><div class="divider">或</div><div class="divider l">進階選項</div><hr class="hr"/><div style="font-size:var(--fs-b3);color:var(--muted);line-height:var(--lh-b3)">36 筆<span class="vdiv"></span>已選 3<span class="vdiv"></span>合計 NT$ 143,226</div></div></div></div><div class="sec"><span class="no num">04</span><h2>按鈕 Button</h2><span class="rule"></span></div><div class="use">圓度一律膠囊；層級只靠填色區分：實心＝主要動作、主色外框＝強調動作、灰框＝一般動作、紅＝危險動作。<b>每頁最多一顆實心主按鈕</b>；停用用灰底灰字不用透明度；處理中顯示轉圈並鎖住按鈕。 <b>本風格：</b>按鈕圓角 6px、不是膠囊——這是 S6 兩項風格層例外之一（另一項是 N4 等寬字）。每頁只有一顆實心主按鈕。停用用灰底灰字（<code>--line</code> 配 <code>--muted</code>），不用透明度——透明度會讓白字浮在淡底上，比不停用還難辨認。危險動作用外框紅字，不用實心紅底。</div><div class="board">
+</div><div class="sec"><span class="no num">02</span><h2>字級層級 Type scale</h2><span class="rule"></span></div><div class="use">全站只有十三級字級，每一級綁定自己的行距與字距，寫 <code>var(--fs-xx)</code> 就要同時寫 <code>var(--lh-xx)</code>。中文一律黑體靠字重分層，數字、料號、金額一律 Arial 等寬數字。六套風格共用同一張表，完整推導見「通用規範」檢視。 <b>本風格：</b>H1、H2、H3 與 D1 用明體 Noto Serif TC，字級、行距、字重照十三級表；內文、標籤、按鈕仍是黑體，金額仍是 Arial。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="typels"><div class="tl-row"><span class="code num">D1</span><span class="num" style="font-size:var(--fs-d1);line-height:var(--lh-d1);font-weight:700;letter-spacing:var(--ls-d1);">1,840,000</span><span class="hint">顯示數字 · 3.0rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">H1</span><span style="font-family:var(--serif);font-size:var(--fs-h1);line-height:var(--lh-h1);font-weight:900;letter-spacing:var(--ls-h1);">訂單管理</span><span class="hint">頁面標題 · 2.1rem · 900</span></div><div class="tl-row"><span class="code num">H2</span><span style="font-family:var(--serif);font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:900;letter-spacing:var(--ls-h2);">本月出貨概況</span><span class="hint">區塊標題、彈窗與面板標題 · 1.7rem · 900</span></div><div class="tl-row"><span class="code num">H3</span><span style="font-family:var(--serif);font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;letter-spacing:var(--ls-h3);">金額摘要</span><span class="hint">卡片標題列、表格標題、行內小標題 · 1.4rem · 900 · 字距 0.08em</span></div><div class="tl-row"><span class="code num">B1</span><span style="font-size:var(--fs-b1);line-height:var(--lh-b1);font-weight:400;">交貨請先電聯倉管，貨車限 3.5 噸以下。</span><span class="hint">內文 · 1.4rem · 400 · 行距 1.80</span></div><div class="tl-row"><span class="code num">B2</span><span style="font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:400;">AL-2040 L 型支架 ×100，他 1 項</span><span class="hint">表格內文 · 1.25rem · 400 · 行距 1.70</span></div><div class="tl-row"><span class="code num">B3</span><span style="font-size:var(--fs-b3);line-height:var(--lh-b3);font-weight:400;">價格未登入不公開，登入後顯示專屬價。</span><span class="hint">說明輔助 · 1.2rem · 400 · 行距 1.70</span></div><div class="tl-row"><span class="code num">L1</span><span style="font-size:var(--fs-l1);line-height:var(--lh-l1);font-weight:700;letter-spacing:var(--ls-l1);">期望到貨日</span><span class="hint">欄位標籤 · 1.2rem · 700 · 字距 0.08em</span></div><div class="tl-row"><span class="code num">L2</span><span style="font-size:var(--fs-l2);line-height:var(--lh-l2);font-weight:700;letter-spacing:var(--ls-l2);">DATE RANGE</span><span class="hint">微標籤 · 1.1rem · 700 · 字距 0.15em</span></div><div class="tl-row"><span class="code num">N1</span><span class="num" style="font-size:var(--fs-n1);line-height:var(--lh-n1);font-weight:700;">NT$ 30,372</span><span class="hint">合計金額 · 2.3rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N2</span><span class="num" style="font-size:var(--fs-n2);line-height:var(--lh-n2);font-weight:700;">NT$ 1,446</span><span class="hint">小計 · 1.9rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N3</span><span class="num" style="font-size:var(--fs-n3);line-height:var(--lh-n3);font-weight:700;">28,166</span><span class="hint">表格金額 · 1.25rem · 700 · Arial</span></div><div class="tl-row"><span class="code num">N4</span><span class="num" style="font-size:var(--fs-n4);line-height:var(--lh-n4);font-weight:400;letter-spacing:var(--ls-n4);">SO-260907-003 · 2026/09/15</span><span class="hint">料號／單號／日期 · 1.25rem · 400 · Arial</span></div></div></div></div><div class="sec"><span class="no num">03</span><h2>分隔線 Divider</h2><span class="rule"></span></div><div class="use">分隔線有帶字、不帶字、直式三種，上下間距固定 14px。帶字版用在「以下是另一組」的語意切換；直式版只放在同一列的兩組操作之間。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">分隔線 DIVIDER</div><div class="divider">或</div><div class="divider l">進階選項</div><hr class="hr"/><div style="font-size:var(--fs-b3);color:var(--muted);line-height:var(--lh-b3)">36 筆<span class="vdiv"></span>已選 3<span class="vdiv"></span>合計 NT$ 143,226</div></div></div></div><div class="sec"><span class="no num">04</span><h2>按鈕 Button</h2><span class="rule"></span></div><div class="use">圓度一律膠囊；層級只靠填色區分：實心＝主要動作、主色外框＝強調動作、灰框＝一般動作、紅＝危險動作。<b>每頁最多一顆實心主按鈕</b>；停用用灰底灰字不用透明度；處理中顯示轉圈並鎖住按鈕。 <b>本風格：</b>按鈕 2px 直角、不是膠囊——這是 S7 兩項風格層例外之一。層級仍靠填色：實心＝主要、主色外框＝強調、灰框＝一般。</div><div class="board">
 <div class="rowset">
 <button class="btn primary">送出訂單</button>
 <button class="btn ghost">＋ 代客下單</button>
@@ -775,8 +767,8 @@ body{background:#F4F4F4}
 <button class="btn danger">取消訂單</button>
 <button class="btn primary" disabled="">送出訂單</button>
 </div>
-<div class="rowset"><span class="cap">圓角一律 6px；層級只靠填色：實心＝結帳／確認建單｜主色外框＝次要主動作｜灰框＝工具列動作（下載、預覽）｜danger 紅框＝不可回復動作（一律需二次確認）</span></div>
-</div><div class="sec"><span class="no num">05</span><h2>動作鈕 Kebab</h2><span class="rule"></span></div><div class="use">動作鈕「⋯」是表格列與卡片右上角的溢出選單入口：常用的一兩個動作直接露出，其餘收進選單；危險動作紅字置底並與其他項目隔一條線。 <b>本風格：</b>選單項目左對齊、快捷鍵靠右並用等寬字。破壞性動作放最後、以分隔線隔開並用 error 紅。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd" style="width:190px">
+<div class="rowset"><span class="cap">圓角一律 2px；層級只靠填色：實心＝結帳／確認建單｜主色外框＝次要主動作｜灰框＝工具列動作（下載、預覽）｜danger 紅框＝不可回復動作（一律需二次確認）</span></div>
+</div><div class="sec"><span class="no num">05</span><h2>動作鈕 Kebab</h2><span class="rule"></span></div><div class="use">動作鈕「⋯」是表格列與卡片右上角的溢出選單入口：常用的一兩個動作直接露出，其餘收進選單；危險動作紅字置底並與其他項目隔一條線。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd" style="width:190px">
 <span class="cap">動作選單 — 表格列「⋯」</span>
 <button class="kebab">⋯</button>
 <div class="menu">
@@ -785,21 +777,21 @@ body{background:#F4F4F4}
 <div class="mi">列印出貨單 <span class="sub">⌘P</span></div>
 <div class="mi sep danger">取消訂單</div>
 </div>
-</div></div></div><div class="sec"><span class="no num">06</span><h2>分段控制 Segmented</h2><span class="rule"></span></div><div class="use">分段控制用在互斥的檢視切換（全部／待確認／備貨中），選項不超過五個、文字要短；它切換的是「看什麼」，不是送出資料，所以永遠不需要確認鈕。 <b>本風格：</b>兩種寫法：<code>.seg</code> 用於資料範圍切換（選中為品牌淡底），<code>.subtabs</code> 用於檢視模式切換（選中為白卡浮起）。同一頁不要兩種都用。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="cap">資料範圍</span><span class="seg"><button class="on">全部</button><button>待確認</button><button>備貨中</button></span><span class="cap">檢視模式</span><span class="seg"><button class="on">列表</button><button>看板</button><button>行事曆</button></span></div><div class="rowset"><span class="cap">同一頁不要兩種分段控制都用；超過四段改用下拉或頁籤。</span></div></div><div class="sec"><span class="no num">07</span><h2>輸入框 Input</h2><span class="rule"></span></div><div class="use">輸入框四態齊全：預設、聚焦、錯誤、停用；必填以紅色星號標示，錯誤訊息放在欄位正下方並說怎麼修。手機上字級固定 16px 避免 iOS 放大整頁。 <b>本風格：</b>輸入框圓角同樣是 6px。高 40px（手機 44px、字 16px 防 iOS 自動放大）。必填星號用 error 紅。錯誤訊息說明怎麼修，不只說「格式錯誤」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="field"><label>貴司採購單號 PO No.</label><input class="num" placeholder="PO-2026-xxxx"/></div><div class="field"><label>統一編號</label><input class="num" value="27815377"/><div class="msg ok">已比對財政部資料，公司名稱相符</div></div><div class="field dis"><label>建立者</label><input disabled="" value="陳品妤（採購）"/><div class="msg">由 Email 解析建立，不可修改</div></div><div class="field"><label>期望到貨日 <span class="req">*</span></label><input class="num" type="date" value="2026-09-15"/></div><div class="field"><label>送貨地址 <span class="req">*</span></label><select><option>桃園廠｜觀音區工業二路 88 號</option></select></div><div class="field err"><label>裁切長度 mm <span class="req">*</span></label><input class="num" value="7500"/><div class="msg">超出範圍：100–6000 mm</div></div></div></div><div class="sec"><span class="no num">08</span><h2>搜尋框 Search</h2><span class="rule"></span></div><div class="use">搜尋框全站統一膠囊形、放大鏡在左；輸入後右側出現清除鍵；列表頁的搜尋框固定放在標題列右側，與篩選膠囊同一列。 <b>本風格：</b>搜尋框在本風格是 6px 圓角，不是膠囊。有內容時右側出現清除鈕。搜尋不即時送出，按 Enter 或停止輸入 400 毫秒後才查。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="search"><svg fill="none" height="14" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="14"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input placeholder="搜尋 單號 / 客戶 / 料號 / PO"/></div></div></div><div class="sec"><span class="no num">09</span><h2>核取與單選 Checkbox / Radio</h2><span class="rule"></span></div><div class="use">核取（可多選）與單選（只能選一個）都要有名稱加一行灰色說明；選中狀態靠填色與勾號，不只靠顏色。同組必選時在群組標題標示，不在每個選項上重複。 <b>本風格：</b>核取方塊可複選、單選只能擇一，兩者不可互換。半選狀態用橫槓，只出現在「全選」那一格。停用項要說明為什麼不能選。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="radio on"><i></i>月結 30 天 <span class="sub">貴司核定條件</span></span><span class="radio"><i></i>貨到付款</span><span class="radio dis"><i></i>指定物流<span class="sub">需先簽約才能選</span></span><span class="check on"><i></i>端蓋 ×2（+NT$12/支）</span><span class="check"><i></i>防震墊片組</span><span class="check ind"><i></i>部分品項已選（3 / 8）</span><span class="check dis"><i></i>代客戶報關（未開通）</span></div><div class="rowset"><span class="cap">停用的選項要說明為什麼不能選，不要直接隱藏。</span></div></div><div class="sec"><span class="no num">10</span><h2>篩選膠囊 Filter pill</h2><span class="rule"></span></div><div class="use">篩選膠囊是列表頁的快速篩選：一列膠囊、選中實心；「全部」永遠在第一個。超過七個就改用多選下拉。 <b>本風格：</b>選中用中性灰底（<code>--sel</code>）加深色數字，不用品牌色——表格區要安靜，品牌色留給主按鈕與選中列。數字一律帶上，讓人不必點就知道有幾筆。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><button class="pillf on">全部<span class="n">128</span></button><button class="pillf">鋁擠型<span class="n">42</span></button><button class="pillf">支架配件<span class="n">31</span></button><button class="pillf">緊固件<span class="n">12</span></button><button class="pillf">逾期<span class="n">2</span></button></div><div class="rowset"><span class="cap">數字一律帶上，讓人不必點就知道有幾筆；超過七個改用多選下拉。</span></div></div><div class="sec"><span class="no num">11</span><h2>開關 Switch</h2><span class="rule"></span></div><div class="use">開關代表「立即生效」的二元設定（商品上下架、規則啟用），按下去馬上存、不需要儲存鈕；需要送出表單才生效的用核取方塊。四態：關、開、切換中、停用。 <b>本風格：</b>開關立即生效、不需按儲存；需要按儲存的設定用核取方塊。文字寫「做什麼」不寫「是否做什麼」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">06</span><h2>分段控制 Segmented</h2><span class="rule"></span></div><div class="use">分段控制用在互斥的檢視切換（全部／待確認／備貨中），選項不超過五個、文字要短；它切換的是「看什麼」，不是送出資料，所以永遠不需要確認鈕。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="cap">資料範圍</span><span class="seg"><button class="on">全部</button><button>待確認</button><button>備貨中</button></span><span class="cap">檢視模式</span><span class="seg"><button class="on">列表</button><button>看板</button><button>行事曆</button></span></div><div class="rowset"><span class="cap">同一頁不要兩種分段控制都用；超過四段改用下拉或頁籤。</span></div></div><div class="sec"><span class="no num">07</span><h2>輸入框 Input</h2><span class="rule"></span></div><div class="use">輸入框四態齊全：預設、聚焦、錯誤、停用；必填以紅色星號標示，錯誤訊息放在欄位正下方並說怎麼修。手機上字級固定 16px 避免 iOS 放大整頁。 <b>本風格：</b>輸入框 2px 直角，聚焦轉主色 1.5px；錯誤紅框＋下方訊息。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="field"><label>貴司採購單號 PO No.</label><input class="num" placeholder="PO-2026-xxxx"/></div><div class="field"><label>統一編號</label><input class="num" value="27815377"/><div class="msg ok">已比對財政部資料，公司名稱相符</div></div><div class="field dis"><label>建立者</label><input disabled="" value="陳品妤（採購）"/><div class="msg">由 Email 解析建立，不可修改</div></div><div class="field"><label>期望到貨日 <span class="req">*</span></label><input class="num" type="date" value="2026-09-15"/></div><div class="field"><label>送貨地址 <span class="req">*</span></label><select><option>桃園廠｜觀音區工業二路 88 號</option></select></div><div class="field err"><label>裁切長度 mm <span class="req">*</span></label><input class="num" value="7500"/><div class="msg">超出範圍：100–6000 mm</div></div></div></div><div class="sec"><span class="no num">08</span><h2>搜尋框 Search</h2><span class="rule"></span></div><div class="use">搜尋框全站統一膠囊形、放大鏡在左；輸入後右側出現清除鍵；列表頁的搜尋框固定放在標題列右側，與篩選膠囊同一列。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="search"><svg fill="none" height="14" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="14"><circle cx="11" cy="11" r="7"></circle><path d="M20 20l-4-4"></path></svg><input placeholder="搜尋 單號 / 客戶 / 料號 / PO"/></div></div></div><div class="sec"><span class="no num">09</span><h2>核取與單選 Checkbox / Radio</h2><span class="rule"></span></div><div class="use">核取（可多選）與單選（只能選一個）都要有名稱加一行灰色說明；選中狀態靠填色與勾號，不只靠顏色。同組必選時在群組標題標示，不在每個選項上重複。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="radio on"><i></i>月結 30 天 <span class="sub">貴司核定條件</span></span><span class="radio"><i></i>貨到付款</span><span class="radio dis"><i></i>指定物流<span class="sub">需先簽約才能選</span></span><span class="check on"><i></i>端蓋 ×2（+NT$12/支）</span><span class="check"><i></i>防震墊片組</span><span class="check ind"><i></i>部分品項已選（3 / 8）</span><span class="check dis"><i></i>代客戶報關（未開通）</span></div><div class="rowset"><span class="cap">停用的選項要說明為什麼不能選，不要直接隱藏。</span></div></div><div class="sec"><span class="no num">10</span><h2>篩選膠囊 Filter pill</h2><span class="rule"></span></div><div class="use">篩選膠囊是列表頁的快速篩選：一列膠囊、選中實心；「全部」永遠在第一個。超過七個就改用多選下拉。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><button class="pillf on">全部<span class="n">128</span></button><button class="pillf">鋁擠型<span class="n">42</span></button><button class="pillf">支架配件<span class="n">31</span></button><button class="pillf">緊固件<span class="n">12</span></button><button class="pillf">逾期<span class="n">2</span></button></div><div class="rowset"><span class="cap">數字一律帶上，讓人不必點就知道有幾筆；超過七個改用多選下拉。</span></div></div><div class="sec"><span class="no num">11</span><h2>開關 Switch</h2><span class="rule"></span></div><div class="use">開關代表「立即生效」的二元設定（商品上下架、規則啟用），按下去馬上存、不需要儲存鈕；需要送出表單才生效的用核取方塊。四態：關、開、切換中、停用。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <span class="cap">開關 SWITCH</span>
 <div style="display:flex;flex-direction:column;gap:1.2rem;padding-top:0.4rem">
 <span class="sw2 on"><span class="tk"></span>商品上架中</span>
 <span class="sw2"><span class="tk"></span>允許缺貨預購 <span class="lbl2">關閉中</span></span><span class="sw2 dis"><span class="tk"></span>串接物流 API<span class="lbl2">需先設定金鑰</span></span>
 </div>
-</div></div></div><div class="sec"><span class="no num">12</span><h2>上傳 Upload</h2><span class="rule"></span></div><div class="use">上傳區用虛線框表示「可以放東西進來」，同時支援拖放與點擊；下方一定寫清楚格式與大小上限。已選檔案一列一個，帶大小與移除鍵；上傳中顯示進度並允許離開此頁。 <b>本風格：</b>拖曳區在 hover 時邊框轉品牌色。每個檔案都要有進度、結果與移除；失敗要說原因與下一步。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">12</span><h2>上傳 Upload</h2><span class="rule"></span></div><div class="use">上傳區用虛線框表示「可以放東西進來」，同時支援拖放與點擊；下方一定寫清楚格式與大小上限。已選檔案一列一個，帶大小與移除鍵；上傳中顯示進度並允許離開此頁。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <span class="cap">上傳區 UPLOAD</span>
 <div class="upload" style="margin-top:0.4rem"><div class="ic">⬆</div>拖放檔案到這裡，或 <b>點擊選擇</b><br/>支援 JPG／PNG／PDF，單檔 20MB</div>
 <div class="upfile"><span>▤</span><span class="nm2 num">傳真訂單_0907.jpg</span><span class="pct num">68%</span></div><div class="upfile ok"><span>▤</span><span class="nm2 num">報價單_北銘_2609.pdf</span><span class="pct num">已完成</span></div><div class="upfile err"><span>▤</span><span class="nm2 num">規格書.docx</span><span class="why">格式不支援，請轉成 PDF</span><span class="pct num">失敗</span></div>
-</div></div></div><div class="sec"><span class="no num">13</span><h2>多行輸入 Textarea</h2><span class="rule"></span></div><div class="use">多行輸入右下角固定顯示字數；超出上限整組轉紅並鎖住送出。高度預設三行、可拉伸；placeholder 只給範例，不放說明。 <b>本風格：</b>只允許垂直縮放。字數上限時顯示計數，超過 90% 才轉 warning 色。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="txa">
+</div></div></div><div class="sec"><span class="no num">13</span><h2>多行輸入 Textarea</h2><span class="rule"></span></div><div class="use">多行輸入右下角固定顯示字數；超出上限整組轉紅並鎖住送出。高度預設三行、可拉伸；placeholder 只給範例，不放說明。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="txa">
 <span class="cap">多行輸入 TEXTAREA</span>
 <textarea style="margin-top:0.4rem">交貨請先電聯倉管王先生 0912-345-678，貨車限 3.5 噸以下。</textarea>
 <div class="cnt2">31 / 200</div>
-</div></div></div><div class="sec"><span class="no num">14</span><h2>下拉選單 Select</h2><span class="rule"></span></div><div class="use">下拉選單給「從固定清單挑一個」：觸發框顯示目前值、展開面板列出全部選項、選中項打勾；清單末尾可帶一個「新增」入口。超過十五個選項就改用多選＋搜尋或自動完成。 <b>本風格：</b>選項超過 8 個改用「多選加搜尋」。只有一個選項時停用並說明原因，不要讓人以為可以換。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
+</div></div></div><div class="sec"><span class="no num">14</span><h2>下拉選單 Select</h2><span class="rule"></span></div><div class="use">下拉選單給「從固定清單挑一個」：觸發框顯示目前值、展開面板列出全部選項、選中項打勾；清單末尾可帶一個「新增」入口。超過十五個選項就改用多選＋搜尋或自動完成。 <b>本風格：</b>選單面板直角、1px 細線、零陰影。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
 <span class="cap">單選下拉（展開態）— 送貨地址、付款條件</span>
 <div class="trg">桃園廠｜觀音區工業二路 88 號 <span class="car">▼</span></div>
 <div class="menu">
@@ -808,7 +800,7 @@ body{background:#F4F4F4}
 <div class="mi">高雄辦｜前鎮區成功二路 55 號</div>
 <div class="mi sep" style="color:var(--acc);font-weight:700">＋ 新增送貨地址</div>
 </div>
-</div></div></div><div class="sec"><span class="no num">15</span><h2>多選＋搜尋 Multi-select</h2><span class="rule"></span></div><div class="use">多選＋搜尋：面板內建搜尋列、選項用核取方塊、觸發框顯示「已選 N 項」而不是把名字排成一長串；底部常駐「已選 N 項・清除全部」。搜尋無結果時要給說明與清除鍵，留白會讓人以為壞了。 <b>本風格：</b>已選項目變成可移除的 chip 留在框內。搜尋結果把符合的字段加粗，不要只靠底色。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
+</div></div></div><div class="sec"><span class="no num">15</span><h2>多選＋搜尋 Multi-select</h2><span class="rule"></span></div><div class="use">多選＋搜尋：面板內建搜尋列、選項用核取方塊、觸發框顯示「已選 N 項」而不是把名字排成一長串；底部常駐「已選 N 項・清除全部」。搜尋無結果時要給說明與清除鍵，留白會讓人以為壞了。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
 <span class="cap">多選下拉＋搜尋 — 挑客戶、挑商品分類</span>
 <div class="trg">已選 2 個客戶群組 <span class="car">▼</span></div>
 <div class="menu">
@@ -818,7 +810,7 @@ body{background:#F4F4F4}
 <div class="mck"><i></i>一般客戶</div>
 <div class="selcount">已選 2 項 · 清除全部</div>
 </div>
-</div></div></div><div class="sec"><span class="no num">16</span><h2>日期與時間選擇器 Date / Time</h2><span class="rule"></span></div><div class="use"><b>日期選擇器</b>：輸入框可直接打字、也可點開月曆；區間用「起點實心、中間淡底、終點實心」表達，今天畫一圈細框；常用區間（今天、本週、兩週、本月）放在月曆最上方，多數人不需要真的點日期。<b>時間選擇器</b>：時、分兩欄各自捲動選取，分鐘只給 15 分鐘一格（要精確到分就直接打字）；常用時段放最上方；需要日期加時間時兩個面板並排，先選日期再選時間。 <b>本風格：</b>區間選擇時兩端實心、中間用淡底；今天畫一圈細框。永遠提供「今天／本週／本月／上季」快捷，多數人不需要真的翻月曆。時間只給 15 分鐘一格，要精確到分就直接在輸入框打字；兩個面板並排時先選日期再選時間。本風格不使用瀏覽器原生的 date／time 控件——原生控件的外觀隨作業系統變，在無彩色結構上會出現藍色系統色。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">16</span><h2>日期與時間選擇器 Date / Time</h2><span class="rule"></span></div><div class="use"><b>日期選擇器</b>：輸入框可直接打字、也可點開月曆；區間用「起點實心、中間淡底、終點實心」表達，今天畫一圈細框；常用區間（今天、本週、兩週、本月）放在月曆最上方，多數人不需要真的點日期。<b>時間選擇器</b>：時、分兩欄各自捲動選取，分鐘只給 15 分鐘一格（要精確到分就直接打字）；常用時段放最上方；需要日期加時間時兩個面板並排，先選日期再選時間。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">日期區間選擇器 DATE RANGE</div>
 <div class="field datein" style="margin-top:0.8rem"><input class="num" value="2026/09/10 – 2026/09/24"/></div>
 <div class="cal" style="margin-top:0.8rem">
@@ -838,7 +830,7 @@ body{background:#F4F4F4}
 </div>
 <div class="cf"><span>已選 <b class="num">14:30</b></span><button class="btn primary sm">套用</button></div>
 </div>
-</div></div></div><div class="sec"><span class="no num">17</span><h2>自動完成 Autocomplete</h2><span class="rule"></span></div><div class="use">自動完成給「清單太長、使用者知道自己要找什麼」的欄位（客戶、料號、地址）：符合的字用主色加粗、不用底色；每筆右側放次要識別（統編、料號）避免同名；底部固定一列鍵盤提示。 <b>本風格：</b>鍵盤上下鍵可移動、Enter 選取、Esc 關閉。結果帶上決策需要的資訊（這裡是庫存），不要只給名稱。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">17</span><h2>自動完成 Autocomplete</h2><span class="rule"></span></div><div class="use">自動完成給「清單太長、使用者知道自己要找什麼」的欄位（客戶、料號、地址）：符合的字用主色加粗、不用底色；每筆右側放次要識別（統編、料號）避免同名；底部固定一列鍵盤提示。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">自動完成 AUTOCOMPLETE ─ 客戶、料號、地址</div>
 <div class="ac" style="margin-top:0.8rem">
 <div class="field" style="width:100%"><input placeholder="輸入客戶名稱或統編" value="大同"/></div>
@@ -850,7 +842,7 @@ body{background:#F4F4F4}
 <div class="hint"><span><kbd>↑</kbd><kbd>↓</kbd> 選擇</span><span><kbd>Enter</kbd> 帶入</span><span><kbd>Esc</kbd> 關閉</span></div>
 </div>
 </div>
-</div></div></div><div class="sec"><span class="no num">18</span><h2>數字步進器 Number stepper</h2><span class="rule"></span></div><div class="use">數字步進器（減、輸入、加）給任何整數欄位，不只訂購數量：到下限減號停用、到上限加號停用，不符級距時顯示提示並自動修正到最近的合法值。 <b>本風格：</b>到達下限時「減」停用而不是消失。有倍數限制時在旁邊說明，並在送出前自動進位到最近的合法值。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="qty"><button>－</button><input class="num" value="100"/><button>＋</button></span><span class="qty"><button disabled="">－</button><input class="num" value="1"/><button>＋</button></span></div><div class="rowset"><span class="cap">到下限時「減」停用而不是消失；最小訂購量 1，需為 4 的倍數。</span></div></div><div class="sec"><span class="no num">19</span><h2>選項 chip Choice chip</h2><span class="rule"></span></div><div class="use">選項 chip 是單選的可視化選項（規格、尺寸、方案）：可選、已選、不可選三態；<b>不可選用半透明加劃線，永不隱藏</b>，使用者才知道這個選項存在但目前不能選。 <b>本風格：</b>規格選擇用 chip 不用下拉，讓人一眼看見所有選項與哪些不能選。停產或缺貨要標明，不要直接隱藏。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="chip on">鋁合金 6061</span><span class="chip">不鏽鋼 304</span><span class="chip off">電解拋光</span></div></div><div class="sec"><span class="no num">20</span><h2>表格 Table</h2><span class="rule"></span></div><div class="use">表格是後台的主角：數字靠右 Arial、文字靠左、狀態用膠囊；列 hover 淡底；表頭固定、表尾放合計或分頁。手機上整張表轉成卡片列，每格帶欄名，不做水平捲動。載入中用骨架屏、無資料用空狀態。 <b>本風格：</b>列高 44px、儲存格內距 12 / 20。金額靠右、千分位必加、貨幣前綴縮小轉灰、負數轉 error 紅。單號與日期用等寬字讓位數對齊。</div><div class="tblwrap">
+</div></div></div><div class="sec"><span class="no num">18</span><h2>數字步進器 Number stepper</h2><span class="rule"></span></div><div class="use">數字步進器（減、輸入、加）給任何整數欄位，不只訂購數量：到下限減號停用、到上限加號停用，不符級距時顯示提示並自動修正到最近的合法值。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="qty"><button>－</button><input class="num" value="100"/><button>＋</button></span><span class="qty"><button disabled="">－</button><input class="num" value="1"/><button>＋</button></span></div><div class="rowset"><span class="cap">到下限時「減」停用而不是消失；最小訂購量 1，需為 4 的倍數。</span></div></div><div class="sec"><span class="no num">19</span><h2>選項 chip Choice chip</h2><span class="rule"></span></div><div class="use">選項 chip 是單選的可視化選項（規格、尺寸、方案）：可選、已選、不可選三態；<b>不可選用半透明加劃線，永不隱藏</b>，使用者才知道這個選項存在但目前不能選。 <b>本風格：</b>選項 2px 直角，選中轉主色淡底。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="chip on">鋁合金 6061</span><span class="chip">不鏽鋼 304</span><span class="chip off">電解拋光</span></div></div><div class="sec"><span class="no num">20</span><h2>表格 Table</h2><span class="rule"></span></div><div class="use">表格是後台的主角：數字靠右 Arial、文字靠左、狀態用膠囊；列 hover 淡底；表頭固定、表尾放合計或分頁。手機上整張表轉成卡片列，每格帶欄名，不做水平捲動。載入中用骨架屏、無資料用空狀態。 <b>本風格：</b>表格容器直角；表頭帶是紙色 #F3F0E9，與頁面的暖白紙區分。</div><div class="tblwrap">
 <div class="tcap"><b>訂單</b><span class="cnt">36 筆 · 篩選 3</span>
 <span class="sp"><button class="pillf on">全部</button><button class="pillf">待確認</button><button class="btn sm">下載 Excel</button></span>
 </div>
@@ -863,7 +855,7 @@ body{background:#F4F4F4}
 </tbody>
 </table>
 <div class="tfoot"><span>3 筆選取</span><span class="tv num">NT$ 130,766</span></div>
-</div><div class="sec"><span class="no num">21</span><h2>表格進階 Table advanced</h2><span class="rule"></span></div><div class="use"><b>表格進階</b>三件事：勾選列出現批次列（取代原本的表頭，動作跟著選取數走）、可排序欄位的表頭帶方向箭頭（目前排序欄墨色加粗、箭頭主色）、欄位顯示切換放在批次列右端的齒輪裡，可勾選可拖曳排序。排序只允許單欄，多欄排序後台幾乎沒人會用。 <b>本風格：</b>選取列用品牌淡底（這是 S6 唯一在表格區用品牌色的地方）。批次工具列只在有選取時出現，並且明講選了幾筆。排序箭頭要看得出目前依哪一欄排。</div><div class="board"><div><div class="cap">表格進階 ─ 批次選取列、可排序表頭、欄位顯示切換</div><div class="rowset" style="align-items:flex-start;gap:1.6rem;flex-wrap:wrap;margin-top:0.8rem"><div class="tblwrap adv" style="flex:1 1 560px;min-width:0">
+</div><div class="sec"><span class="no num">21</span><h2>表格進階 Table advanced</h2><span class="rule"></span></div><div class="use"><b>表格進階</b>三件事：勾選列出現批次列（取代原本的表頭，動作跟著選取數走）、可排序欄位的表頭帶方向箭頭（目前排序欄墨色加粗、箭頭主色）、欄位顯示切換放在批次列右端的齒輪裡，可勾選可拖曳排序。排序只允許單欄，多欄排序後台幾乎沒人會用。</div><div class="board"><div><div class="cap">表格進階 ─ 批次選取列、可排序表頭、欄位顯示切換</div><div class="rowset" style="align-items:flex-start;gap:1.6rem;flex-wrap:wrap;margin-top:0.8rem"><div class="tblwrap adv" style="flex:1 1 560px;min-width:0">
 <div class="batchbar">已選 3 筆<span class="vdiv" style="margin:0 0.4rem"></span><button class="btn sm">匯出</button><button class="btn sm">標記已出貨</button><button class="btn sm danger">刪除</button>
 <span class="sp"><button aria-label="欄位顯示" class="kebab">⚙</button></span></div>
 <table class="t">
@@ -884,7 +876,7 @@ body{background:#F4F4F4}
 <div class="mi"><span class="check on"><i></i>狀態</span><span class="drag">⋮⋮</span></div>
 <div class="mi"><span class="check on"><i></i>金額</span><span class="drag">⋮⋮</span></div>
 </div>
-</div></div></div><div class="sec"><span class="no num">22</span><h2>卡片 Card</h2><span class="rule"></span></div><div class="use">卡片是「一組相關資訊」的容器：標題列可帶灰色提示（選填），內容區留 16／20 的內距；可點擊的卡片 hover 時整張有反應（外框轉主色或浮起），不要只讓標題變色。一頁的卡片圓角與框線要完全一致。 <b>本風格：</b>卡片 12px 圓角、1px 框線、零陰影。不是所有區塊都要做成卡片——邊框與底色代表「這是一個獨立物件」，用在該分群的地方。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="card"><div class="card-title">出貨備註<span class="hint">選填</span></div><div class="card-body">交貨請先電聯倉管王先生，貨車限 3.5 噸以下；夜間與假日不收貨。</div></div><div class="card click"><div class="card-title">可點擊卡 → 進入詳情</div><div class="card-body">整張卡都是點擊區，滑過時整張有反應，不是只有標題變色。</div></div></div></div><div class="sec"><span class="no num">23</span><h2>統計卡 Stat card</h2><span class="rule"></span></div><div class="use">統計卡是儀表板的關鍵數字：小字標籤在上、大數字在下、可帶與昨日或上期的變化量；當頁的焦點數字可升級成 hero 版（主色大字）。一頁最多一張 hero。 <b>本風格：</b>一張卡一個數字。升降用箭頭符號加文字，不單靠顏色。趨勢用副色深版、主數列用主色——這是 S6 全頁唯二會出現副色的地方之一。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="statc hero"><div class="k">待確認</div><div class="v num">3<small>張</small></div><div class="delta up">▲ 2 vs 昨日</div></div><div class="statc"><div class="k">備貨中</div><div class="v num">12<small>張</small></div><div class="delta dn">▼ 3 vs 上週</div></div><div class="statc"><div class="k">本月出貨</div><div class="v num"><small style="margin:0 0 0 0">NT$</small>1.84M</div><div class="delta up">▲ 12.4% 比上月</div></div></div><div class="rowset"><span class="cap">升降一律箭頭加文字，不單靠顏色；「升」不一定是好事，顏色跟的是好壞不是方向。</span></div></div><div class="sec"><span class="no num">24</span><h2>描述清單 Descriptions</h2><span class="rule"></span></div><div class="use">描述清單是詳情頁的骨架：兩欄成組、欄位名淡底靠左對齊、值可以放狀態標籤或頭像；長文用 full 跨欄；手機自動收成單欄。 <b>本風格：</b>標籤欄靠左不換行、值欄可換行。用在唯讀的明細區，不要拿來排表單。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 380px">
+</div></div></div><div class="sec"><span class="no num">22</span><h2>卡片 Card</h2><span class="rule"></span></div><div class="use">卡片是「一組相關資訊」的容器：標題列可帶灰色提示（選填），內容區留 16／20 的內距；可點擊的卡片 hover 時整張有反應（外框轉主色或浮起），不要只讓標題變色。一頁的卡片圓角與框線要完全一致。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="card"><div class="card-title">出貨備註<span class="hint">選填</span></div><div class="card-body">交貨請先電聯倉管王先生，貨車限 3.5 噸以下；夜間與假日不收貨。</div></div><div class="card click"><div class="card-title">可點擊卡 → 進入詳情</div><div class="card-body">整張卡都是點擊區，滑過時整張有反應，不是只有標題變色。</div></div></div></div><div class="sec"><span class="no num">23</span><h2>統計卡 Stat card</h2><span class="rule"></span></div><div class="use">統計卡是儀表板的關鍵數字：小字標籤在上、大數字在下、可帶與昨日或上期的變化量；當頁的焦點數字可升級成 hero 版（主色大字）。一頁最多一張 hero。 <b>本風格：</b>統計卡直角；數字仍是 Arial，標籤黑體。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="statc hero"><div class="k">待確認</div><div class="v num">3<small>張</small></div><div class="delta up">▲ 2 vs 昨日</div></div><div class="statc"><div class="k">備貨中</div><div class="v num">12<small>張</small></div><div class="delta dn">▼ 3 vs 上週</div></div><div class="statc"><div class="k">本月出貨</div><div class="v num"><small style="margin:0 0 0 0">NT$</small>1.84M</div><div class="delta up">▲ 12.4% 比上月</div></div></div><div class="rowset"><span class="cap">升降一律箭頭加文字，不單靠顏色；「升」不一定是好事，顏色跟的是好壞不是方向。</span></div></div><div class="sec"><span class="no num">24</span><h2>描述清單 Descriptions</h2><span class="rule"></span></div><div class="use">描述清單是詳情頁的骨架：兩欄成組、欄位名淡底靠左對齊、值可以放狀態標籤或頭像；長文用 full 跨欄；手機自動收成單欄。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 380px">
 <div class="cap">描述清單 DESCRIPTIONS ─ 詳情頁的欄位：值</div>
 <dl class="desc" style="margin-top:0.8rem">
 <dt>單號</dt><dd class="num">SO-260907-003</dd><dt>狀態</dt><dd><span class="st wrn">待確認</span></dd>
@@ -892,7 +884,7 @@ body{background:#F4F4F4}
 <dt>到貨日</dt><dd class="num">2026/09/15</dd><dt>付款</dt><dd>月結 30 天</dd>
 <dt>備註</dt><dd class="full">交貨請先電聯倉管王先生，貨車限 3.5 噸以下。</dd>
 </dl>
-</div></div></div><div class="sec"><span class="no num">25</span><h2>狀態標籤 Status</h2><span class="rule"></span></div><div class="use">狀態只用「語意色＋品牌主色＋灰」：待人處理＝warning 琥珀、進行中＝主色、成功結束＝success 綠、異常＝error 紅、結案封存＝灰。一律「符號＋文字」，不單靠顏色。 <b>本風格：</b>一律「符號加文字」，不單靠顏色傳達。狀態標籤的顏色是語意的、不是品牌的——只有「進行中」用主色，因為那代表系統正在為你做事。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="st wrn">待確認</span><span class="st acc">備貨中</span><span class="st ok">已出貨</span><span class="st gray">已完成</span><span class="st err">已取消</span><span class="st acc">A級經銷 92折</span></div><div class="rowset"><span class="cap">對應：待人處理＝warning、進行中＝主色、成功結束＝success、結案封存＝灰、異常＝error、中性提示＝info。</span></div></div><div class="sec"><span class="no num">26</span><h2>屬性 tag Tag</h2><span class="rule"></span></div><div class="use">屬性 tag 是資料的分類標記（產品線、規格、權限），與狀態標籤不同：狀態會變、屬性不會。細框小字、同色文字與框線；實心版只留給最高強調。 <b>本風格：</b>tag 描述「這是什麼」（分類、規格、來源），st 描述「現在怎麼了」（流程狀態）。兩者形狀相同但語意不同，不可混用。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="tag acc">3 屬性 18 SKU</span><span class="tag gray">可加購</span><span class="tag gray">客製參數</span><span class="tag err">必選</span></div></div><div class="sec"><span class="no num">27</span><h2>折疊面板 Accordion</h2><span class="rule"></span></div><div class="use">折疊面板用在詳情頁的分區與 FAQ：收合狀態也要能看懂標題在講什麼，所以標題右側常駐一行摘要；展開記號固定在同一側；同時只展開一個或允許多個要在頁面內一致。 <b>本風格：</b>標題要帶數量，讓人不必展開就知道有沒有東西。預設只展開第一個。</div><div class="acc-p">
+</div></div></div><div class="sec"><span class="no num">25</span><h2>狀態標籤 Status</h2><span class="rule"></span></div><div class="use">狀態只用「語意色＋品牌主色＋灰」：待人處理＝warning 琥珀、進行中＝主色、成功結束＝success 綠、異常＝error 紅、結案封存＝灰。一律「符號＋文字」，不單靠顏色。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="st wrn">待確認</span><span class="st acc">備貨中</span><span class="st ok">已出貨</span><span class="st gray">已完成</span><span class="st err">已取消</span><span class="st acc">A級經銷 92折</span></div><div class="rowset"><span class="cap">對應：待人處理＝warning、進行中＝主色、成功結束＝success、結案封存＝灰、異常＝error、中性提示＝info。</span></div></div><div class="sec"><span class="no num">26</span><h2>屬性 tag Tag</h2><span class="rule"></span></div><div class="use">屬性 tag 是資料的分類標記（產品線、規格、權限），與狀態標籤不同：狀態會變、屬性不會。細框小字、同色文字與框線；實心版只留給最高強調。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="tag acc">3 屬性 18 SKU</span><span class="tag gray">可加購</span><span class="tag gray">客製參數</span><span class="tag err">必選</span></div></div><div class="sec"><span class="no num">27</span><h2>折疊面板 Accordion</h2><span class="rule"></span></div><div class="use">折疊面板用在詳情頁的分區與 FAQ：收合狀態也要能看懂標題在講什麼，所以標題右側常駐一行摘要；展開記號固定在同一側；同時只展開一個或允許多個要在頁面內一致。 <b>本風格：</b>折疊面板列頭用明體，像雜誌的小標。</div><div class="acc-p">
 <div class="arow">
 <div class="ahead"><b class="num">AL-2040-A-AS-44</b><span>工業鋁擠型 L 型支架</span><span class="num" style="font-weight:700">×100</span><span class="car">▲</span></div>
 <div class="abody">規格快照：鋁合金 6061・陽極銀・40×40・裁切 <b class="num">1500mm</b>・端蓋 ×2・雷射刻印「HD-A203」<br/>計價：底價 192 ＋ 加購 12 ＋ 刻印 50 → 階梯 95 折 → A級 92 折 ＝ <b class="num">NT$ 222</b>/支</div>
@@ -900,13 +892,13 @@ body{background:#F4F4F4}
 <div class="arow">
 <div class="ahead"><b class="num">CB-1100-40-ZN</b><span>鋁擠型角碼連接件</span><span class="num" style="font-weight:700">×400</span><span class="car">▼</span></div>
 </div>
-</div><div class="sec"><span class="no num">28</span><h2>頭像 Avatar</h2><span class="rule"></span></div><div class="use">頭像以文字縮寫為主（後台系統多數人沒上傳照片），主色配白字、第二個人用深副色、未指派用灰；堆疊時白邊隔開、超出的人數用「+N」。一律正圓，在 flex 列裡加 <code>aspect-ratio:1/1</code> 免得被拉成橢圓。 <b>本風格：</b>圓形給人、方形給公司或品牌。堆疊用負 margin（這是規範允許負 margin 的兩個例外之一），最多顯示 3 個再加數字。一律加 <code>aspect-ratio:1/1</code>，否則在 flex 列裡會被拉成橢圓。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">頭像 AVATAR ─ 文字縮寫優先</div><div class="rowset" style="margin-top:0.8rem;gap:0.8rem;align-items:center">
+</div><div class="sec"><span class="no num">28</span><h2>頭像 Avatar</h2><span class="rule"></span></div><div class="use">頭像以文字縮寫為主（後台系統多數人沒上傳照片），主色配白字、第二個人用深副色、未指派用灰；堆疊時白邊隔開、超出的人數用「+N」。一律正圓，在 flex 列裡加 <code>aspect-ratio:1/1</code> 免得被拉成橢圓。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">頭像 AVATAR ─ 文字縮寫優先</div><div class="rowset" style="margin-top:0.8rem;gap:0.8rem;align-items:center">
 <span class="avatar lg">林</span><span class="avatar">王</span><span class="avatar a2">陳</span><span class="avatar sm">李</span><span class="avatar gray">?</span><span class="avatar sq">AI</span>
 </div><div class="rowset" style="margin-top:1.2rem;gap:1.6rem;align-items:center">
 <span class="avatar">林<i class="dot"></i></span>
 <span class="avstack"><span class="avatar sm">林</span><span class="avatar sm a2">王</span><span class="avatar sm gray">+3</span></span>
 <span class="avrow"><span class="avatar">王</span><span>王大明<small>業務 · 台中</small></span></span>
-</div></div></div></div><div class="sec"><span class="no num">29</span><h2>數字角標 Badge</h2><span class="rule"></span></div><div class="use">數字角標紅色代表「有事情等你」，灰色代表純計數；行內計數用淡底膠囊，不用實心。可掛在任何元件右上角，超過 99 顯示 99+。 <b>本風格：</b>角標一律 error 紅——它表達「有事情等你」，不是品牌識別，所以不隨色系改變。超過 99 顯示 99+。只提示不需數量時用小圓點。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 250px">
+</div></div></div></div><div class="sec"><span class="no num">29</span><h2>數字角標 Badge</h2><span class="rule"></span></div><div class="use">數字角標紅色代表「有事情等你」，灰色代表純計數；行內計數用淡底膠囊，不用實心。可掛在任何元件右上角，超過 99 顯示 99+。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 250px">
 <div class="cap" style="margin-top:2rem">數字角標 BADGE ─ 掛在任何東西上</div>
 <div class="rowset" style="margin-top:1.2rem;gap:2rem;align-items:center">
 <span class="badge"><button class="btn sm">收件匣</button><b class="num">7</b></span>
@@ -915,7 +907,7 @@ body{background:#F4F4F4}
 <span style="font-size:var(--fs-b2);line-height:var(--lh-b2)">待處理 <span class="count err">12</span></span>
 <span style="font-size:var(--fs-b2);line-height:var(--lh-b2)">已完成 <span class="count gray">128</span></span>
 </div>
-</div></div></div><div class="sec"><span class="no num">30</span><h2>側欄項目 Nav item</h2><span class="rule"></span></div><div class="use">側欄項目：目前所在高亮、其餘平文；圖示固定在左、計數靠右；群組標題小字灰色。手機上整條側欄變成覆蓋式抽屜。 <b>本風格：</b>側欄底色與頁面同色，只有卡片是白的——這是 S6 的核心結構。選中項用品牌淡底加品牌色字，是 S6 少數保留品牌色的位置。項目高 38px、手機 44px。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><button class="nitem on"><svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M6 3h12v18H6zM9 8h6M9 12h6"></path></svg>訂單管理</button><button class="nitem"><svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M4 17V7l8-4 8 4v10l-8 4z"></path></svg>商品與規格</button><button class="nitem"><svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M4 17V7l8-4 8 4v10l-8 4z"></path></svg>自動核准<span class="lbl2">Beta</span></button></div><div class="rowset"><span class="cap">側欄項目高 38px、手機 44px；選中項與 hover 是兩種不同的底色。</span></div></div><div class="sec"><span class="no num">31</span><h2>頁籤 Tabs</h2><span class="rule"></span></div><div class="use">頁籤給詳情頁的分區（基本資料／明細／歷程）：底線式、目前頁籤主色加粗；頁籤可帶計數；超過六個就改用側欄或下拉。切換頁籤不重載頁面、也不改變網址以外的狀態。 <b>本風格：</b>目前頁籤用主色底線加主色字，兩者並用。停用的頁籤要寫出什麼時候會開放。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="tabs"><button class="tab on">商品目錄</button><button class="tab">購物車</button><button class="tab">訂單查詢</button></span></div></div><div class="sec"><span class="no num">32</span><h2>麵包屑 Breadcrumb</h2><span class="rule"></span></div><div class="use">麵包屑只出現在第三層以上的頁面，最後一層是目前頁、不可點；最多顯示四層，中間過長用「…」收起。 <b>本風格：</b>最後一層是目前位置、不是連結。層級超過四層時中間收合成「…」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="crumb">宏達金屬 ／ 訂單管理 ／ <b class="num">SO-260830-012</b></span></div></div><div class="sec"><span class="no num">33</span><h2>分頁器 Pagination</h2><span class="rule"></span></div><div class="use">全站定案 <b>P4 底線數字式</b>：無框純數字、目前頁底線；放在表尾右側，是所有分頁樣式裡視覺重量最輕的一種。上千筆資料改用跳頁式；首末頁的上一頁／下一頁鎖住、不隱藏。 <b>本風格：</b>底線數字式（P4），目前頁用主色底線。一定要寫出總筆數與目前區間，只有頁碼會讓人不知道還有多少。</div><div class="board">
+</div></div></div><div class="sec"><span class="no num">30</span><h2>側欄項目 Nav item</h2><span class="rule"></span></div><div class="use">側欄項目：目前所在高亮、其餘平文；圖示固定在左、計數靠右；群組標題小字灰色。手機上整條側欄變成覆蓋式抽屜。 <b>本風格：</b>目前所在＝主色淡底的直角高亮。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><button class="nitem on"><svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M6 3h12v18H6zM9 8h6M9 12h6"></path></svg>訂單管理</button><button class="nitem"><svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M4 17V7l8-4 8 4v10l-8 4z"></path></svg>商品與規格</button><button class="nitem"><svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="15"><path d="M4 17V7l8-4 8 4v10l-8 4z"></path></svg>自動核准<span class="lbl2">Beta</span></button></div><div class="rowset"><span class="cap">側欄項目高 38px、手機 44px；選中項與 hover 是兩種不同的底色。</span></div></div><div class="sec"><span class="no num">31</span><h2>頁籤 Tabs</h2><span class="rule"></span></div><div class="use">頁籤給詳情頁的分區（基本資料／明細／歷程）：底線式、目前頁籤主色加粗；頁籤可帶計數；超過六個就改用側欄或下拉。切換頁籤不重載頁面、也不改變網址以外的狀態。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="tabs"><button class="tab on">商品目錄</button><button class="tab">購物車</button><button class="tab">訂單查詢</button></span></div></div><div class="sec"><span class="no num">32</span><h2>麵包屑 Breadcrumb</h2><span class="rule"></span></div><div class="use">麵包屑只出現在第三層以上的頁面，最後一層是目前頁、不可點；最多顯示四層，中間過長用「…」收起。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="crumb">宏達金屬 ／ 訂單管理 ／ <b class="num">SO-260830-012</b></span></div></div><div class="sec"><span class="no num">33</span><h2>分頁器 Pagination</h2><span class="rule"></span></div><div class="use">全站定案 <b>P4 底線數字式</b>：無框純數字、目前頁底線；放在表尾右側，是所有分頁樣式裡視覺重量最輕的一種。上千筆資料改用跳頁式；首末頁的上一頁／下一頁鎖住、不隱藏。</div><div class="board">
 <div class="rowset"><span class="cap">P1 圓粒式 — 每顆都是正圓，選中實心；最直覺，適合頁數不多的清單</span>
 <span class="p1"><button>‹</button><button class="on num">1</button><button class="num">2</button><button class="num">3</button><span class="dots">…</span><button class="num">9</button><button>›</button></span>
 </div>
@@ -931,7 +923,7 @@ body{background:#F4F4F4}
 <div class="rowset"><span class="cap">P5 跳頁式 — 前後頁＋可輸入頁碼；適合後台大量資料表（訂單上千筆時）</span>
 <span class="p5"><button>‹</button><span>第</span><input class="num" value="1"/><span class="of num">/ 9 頁</span><button>›</button></span>
 </div>
-</div><div class="sec"><span class="no num">34</span><h2>側滑面板 Drawer</h2><span class="rule"></span></div><div class="use">側滑面板從右側滑入、寬度 420–560px、背後遮罩可點擊關閉；用在「看一眼就回列表」的詳情與篩選，要編輯很多欄位就開完整頁。手機側欄抽屜是同一個元件。 <b>本風格：</b>用在「看細節但不想離開列表」的情境。動作固定在底部，內容區可捲動。手機上改為全螢幕。</div><div class="board"><div><div class="cap" style="margin-top:2.4rem">側滑面板 DRAWER ─ 右側詳情、篩選面板</div><div class="drawerdemo" style="margin-top:0.8rem">
+</div><div class="sec"><span class="no num">34</span><h2>側滑面板 Drawer</h2><span class="rule"></span></div><div class="use">側滑面板從右側滑入、寬度 420–560px、背後遮罩可點擊關閉；用在「看一眼就回列表」的詳情與篩選，要編輯很多欄位就開完整頁。手機側欄抽屜是同一個元件。</div><div class="board"><div><div class="cap" style="margin-top:2.4rem">側滑面板 DRAWER ─ 右側詳情、篩選面板</div><div class="drawerdemo" style="margin-top:0.8rem">
 <div class="ghost"><i style="width:40%"></i><i></i><i style="width:80%"></i><i></i><i style="width:60%"></i><i style="width:90%"></i><i></i><i style="width:50%"></i></div>
 <div class="scrim"></div>
 <div class="drawer">
@@ -944,11 +936,11 @@ body{background:#F4F4F4}
 </div>
 <div class="df"><button class="btn sm">開啟完整頁</button><button class="btn primary sm">確認訂單</button></div>
 </div>
-</div></div></div><div class="sec"><span class="no num">35</span><h2>彈窗 Modal</h2><span class="rule"></span></div><div class="use">彈窗給必須停下來決定的事：標題一句話、內文寫清楚「會發生什麼」、最多兩顆按鈕。<b>危險動作一律二次確認</b>，主按鈕轉紅並寫明無法復原；Esc 與遮罩點擊可關閉，但危險型不可誤觸關閉。 <b>本風格：</b>危險動作的確認鈕要寫清楚做什麼（「確認取消訂單」不是「確定」），並在內文寫明後果。標題帶上對象的名稱或單號。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="modal">
+</div></div></div><div class="sec"><span class="no num">35</span><h2>彈窗 Modal</h2><span class="rule"></span></div><div class="use">彈窗給必須停下來決定的事：標題一句話、內文寫清楚「會發生什麼」、最多兩顆按鈕。<b>危險動作一律二次確認</b>，主按鈕轉紅並寫明無法復原；Esc 與遮罩點擊可關閉，但危險型不可誤觸關閉。 <b>本風格：</b>彈窗直角、零陰影，標題用明體，靠遮罩分層。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="modal">
 <div class="mh">確認出貨？</div>
 <div class="mb">SO-260829-008 · 詮宏精密 · NT$ 96,140<br/>出貨後將無法修改品項與數量。</div>
 <div class="mf"><button class="btn">返回</button><button class="btn primary">確認出貨</button></div>
-</div></div></div><div class="sec"><span class="no num">36</span><h2>就地確認 Popconfirm</h2><span class="rule"></span></div><div class="use">就地確認是氣泡式的輕量二次確認，給表格每列的刪除、取消這類可還原的動作；不可還原的仍走彈窗。氣泡緊貼觸發鈕、箭頭指向它，一句話加兩顆小按鈕。 <b>本風格：</b>影響範圍小的破壞性動作用就地確認，不要用彈窗——彈窗會遮住上下文，讓人忘記自己在刪什麼。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 280px">
+</div></div></div><div class="sec"><span class="no num">36</span><h2>就地確認 Popconfirm</h2><span class="rule"></span></div><div class="use">就地確認是氣泡式的輕量二次確認，給表格每列的刪除、取消這類可還原的動作；不可還原的仍走彈窗。氣泡緊貼觸發鈕、箭頭指向它，一句話加兩顆小按鈕。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 280px">
 <div class="cap">就地確認 POPCONFIRM</div>
 <div class="popwrap" style="margin-top:0.8rem">
 <button class="btn sm danger">刪除</button>
@@ -959,17 +951,17 @@ body{background:#F4F4F4}
 </div>
 </div>
 <div style="min-height:16.4rem"></div>
-</div></div></div><div class="sec"><span class="no num">37</span><h2>提示氣泡 Tooltip</h2><span class="rule"></span></div><div class="use">提示氣泡（滑鼠停留說明）給圖示鈕與縮寫欄位名：深色泡泡、一行字、不放可點的東西。手機沒有 hover，重要說明不能只靠它。 <b>本風格：</b>只放一句話的補充說明，不放操作按鈕（要放按鈕就用就地確認）。滑鼠移開即消失，鍵盤 focus 也要能觸發。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap;padding-top:4.4rem"><div class="tipwrap"><span class="tip">依客戶等級與數量計算後的折後價</span><button class="btn sm">折後單價 ⓘ</button></div></div></div><div class="sec"><span class="no num">38</span><h2>Toast 提示</h2><span class="rule"></span></div><div class="use">Toast 是會自動消失的操作回饋：成功、錯誤、處理中三種，右上或底部出現三秒，可手動關閉；一次只顯示一則，新的取代舊的。需要一直看到的訊息用警示條。 <b>本風格：</b>操作成功的回饋用 Toast 不用彈窗。可復原的動作一定附「復原」，這比事前跳確認視窗更好用。四秒後自動消失，失敗的不自動消失。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="toast"><i></i>訂單已建立 SO-260830-013，Email 已通知</div></div></div><div class="sec"><span class="no num">39</span><h2>警示條 Alert</h2><span class="rule"></span></div><div class="use"><b>警示條常駐、Toast 會消失</b>——權限不足、資料過期、維護公告這類「使用者需要一直看到」的訊息用警示條。四個語意色各一種，圖示與標題同色、內文一律墨色，可帶一顆動作鈕或關閉鍵。 <b>本風格：</b>四個語意色各一種用途，不可挪用。每條都用符號加粗體標題開頭，讓人掃描時先看到「是什麼事」。能處理的要給出口。　標題是選用的，一句話講得完就不要拆成標題加內文；動作最多一顆、用文字按鈕不用實心鈕；錯誤與警告不給關閉鈕，只有成功與中性提示可以關。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px;display:flex;flex-direction:column;gap:0.8rem">
+</div></div></div><div class="sec"><span class="no num">37</span><h2>提示氣泡 Tooltip</h2><span class="rule"></span></div><div class="use">提示氣泡（滑鼠停留說明）給圖示鈕與縮寫欄位名：深色泡泡、一行字、不放可點的東西。手機沒有 hover，重要說明不能只靠它。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap;padding-top:4.4rem"><div class="tipwrap"><span class="tip">依客戶等級與數量計算後的折後價</span><button class="btn sm">折後單價 ⓘ</button></div></div></div><div class="sec"><span class="no num">38</span><h2>Toast 提示</h2><span class="rule"></span></div><div class="use">Toast 是會自動消失的操作回饋：成功、錯誤、處理中三種，右上或底部出現三秒，可手動關閉；一次只顯示一則，新的取代舊的。需要一直看到的訊息用警示條。 <b>本風格：</b>深色直角條，右上出現三秒。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="toast"><i></i>訂單已建立 SO-260830-013，Email 已通知</div></div></div><div class="sec"><span class="no num">39</span><h2>警示條 Alert</h2><span class="rule"></span></div><div class="use"><b>警示條常駐、Toast 會消失</b>——權限不足、資料過期、維護公告這類「使用者需要一直看到」的訊息用警示條。四個語意色各一種，圖示與標題同色、內文一律墨色，可帶一顆動作鈕或關閉鍵。　標題是選用的，一句話講得完就不要拆成標題加內文；動作最多一顆、用文字按鈕不用實心鈕；錯誤與警告不給關閉鈕，只有成功與中性提示可以關。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px;display:flex;flex-direction:column;gap:0.8rem">
 <div class="cap">警示條 ALERT ─ 四個語意色各一種</div>
 <div class="alert err"><i>!</i><div><b>匯入失敗</b><p>第 12 列的料號不存在，整批未寫入。修正後重新上傳即可。</p></div></div>
 <div class="alert wrn"><i>!</i><div><b>價格表已過期</b><p>目前顯示的是 2026 Q2 版本，下單前請先更新。</p></div><button class="btn sm">更新</button></div>
 <div class="alert ok"><i>✓</i><div><b>已同步</b><p>36 筆訂單於 09:42 同步完成。</p></div><button aria-label="關閉" class="x">×</button></div>
 <div class="alert info"><i>i</i><div><b>系統維護</b><p>9 月 20 日（六）02:00–04:00 暫停服務。</p></div></div>
-</div></div></div><div class="sec"><span class="no num">40</span><h2>提示框 Notice</h2><span class="rule"></span></div><div class="use">提示框是段落內的說明區塊：中性灰底塊、淡字內文、關鍵字加粗；用在「這個區塊為什麼是這樣」的背景說明，不放操作、不會消失。 <b>本風格：</b>中性的背景說明，用灰底塊標示——提示框不帶語意色也不帶品牌色，一眼就看得出「這只是說明，不用處理」。與警示條的差別：提示框不代表「有事情要處理」，只是補充脈絡。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="notice">您的專屬價已套用：<b>A級經銷 92 折</b>＋數量階梯價。價格未登入不公開。</div></div></div><div class="sec"><span class="no num">41</span><h2>空狀態 Empty</h2><span class="rule"></span></div><div class="use">空狀態是邀請不是報告：一句話說明現在沒有什麼、一句話說可以做什麼、一顆行動鈕。首次使用的純空與篩選後無結果要分開處理，後者給「清除篩選」。 <b>本風格：</b>空狀態是邀請不是報告。一定要給出口——告訴人接下來可以做什麼，而不只是說「沒有資料」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="empty"><b>還沒有訂單</b><br/>分享你的門市連結給客戶，或用「代客下單」建立第一張<br/><br/><button class="btn ghost sm" style="border-radius:999px">＋ 代客下單</button></div></div></div><div class="sec"><span class="no num">42</span><h2>骨架屏 Skeleton</h2><span class="rule"></span></div><div class="use">表格與清單一律用骨架屏（內容形狀的灰色閃爍佔位），不用轉圈圈——骨架屏先把版面撐開，內容到位時不會跳動。轉圈圈只留給按鈕內與整頁初次載入。 <b>本風格：</b>用在「知道即將出現什麼形狀」的等待，形狀要對得上真實內容。不知道結果長什麼樣時用轉圈，不要用骨架屏騙人。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="skel">
+</div></div></div><div class="sec"><span class="no num">40</span><h2>提示框 Notice</h2><span class="rule"></span></div><div class="use">提示框是段落內的說明區塊：中性灰底塊、淡字內文、關鍵字加粗；用在「這個區塊為什麼是這樣」的背景說明，不放操作、不會消失。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="notice">您的專屬價已套用：<b>A級經銷 92 折</b>＋數量階梯價。價格未登入不公開。</div></div></div><div class="sec"><span class="no num">41</span><h2>空狀態 Empty</h2><span class="rule"></span></div><div class="use">空狀態是邀請不是報告：一句話說明現在沒有什麼、一句話說可以做什麼、一顆行動鈕。首次使用的純空與篩選後無結果要分開處理，後者給「清除篩選」。 <b>本風格：</b>虛線直角框＋行動指引，標題用明體。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="empty"><b>還沒有訂單</b><br/>分享你的門市連結給客戶，或用「代客下單」建立第一張<br/><br/><button class="btn ghost sm" style="border-radius:999px">＋ 代客下單</button></div></div></div><div class="sec"><span class="no num">42</span><h2>骨架屏 Skeleton</h2><span class="rule"></span></div><div class="use">表格與清單一律用骨架屏（內容形狀的灰色閃爍佔位），不用轉圈圈——骨架屏先把版面撐開，內容到位時不會跳動。轉圈圈只留給按鈕內與整頁初次載入。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="skel">
 <span class="cap">骨架屏 SKELETON（表格載入中）</span>
 <div class="skrow"><div class="sk" style="width:110px"></div><div class="sk" style="width:70px"></div><div class="sk" style="flex:1"></div><div class="sk" style="width:52px"></div></div>
 <div class="skrow"><div class="sk" style="width:110px"></div><div class="sk" style="width:70px"></div><div class="sk" style="flex:1"></div><div class="sk" style="width:52px"></div></div>
-</div><div class="spin" style="margin-top:0.4rem"></div></div></div><div class="sec"><span class="no num">43</span><h2>通知鈴 Bell</h2><span class="rule"></span></div><div class="use">通知鈴掛在頂列右側，未讀數用<b>數字角標一律 error 紅</b>——它表達的是「有事情等你」而不是品牌識別，不隨品牌色改變。點開是通知清單：未讀帶圓點、已讀變灰、最上方「全部標為已讀」。 <b>本風格：</b>未讀用小圓點標示，不要整列變色。每則都要能點進去處理，時間用等寬字靠右對齊。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div><div class="spin" style="margin-top:0.4rem"></div></div></div><div class="sec"><span class="no num">43</span><h2>通知鈴 Bell</h2><span class="rule"></span></div><div class="use">通知鈴掛在頂列右側，未讀數用<b>數字角標一律 error 紅</b>——它表達的是「有事情等你」而不是品牌識別，不隨品牌色改變。點開是通知清單：未讀帶圓點、已讀變灰、最上方「全部標為已讀」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">通知鈴 BELL</div>
 <div style="margin-top:0.8rem"><span class="bell">🔔<b class="num">3</b></span></div>
 </div><div class="noti">
@@ -977,28 +969,28 @@ body{background:#F4F4F4}
 <div class="nrow"><span class="dot2"></span><span>大同機械 送出新訂單 <b class="num">SO-260907-003</b><br/><span class="tm">3 分鐘前</span></span></div>
 <div class="nrow"><span class="dot2"></span><span>AI 解析完成，1 筆低信心待確認<br/><span class="tm">18 分鐘前</span></span></div>
 <div class="nrow read"><span class="dot2"></span><span>詮宏精密 訂單已出貨<br/><span class="tm">昨天 17:42</span></span></div>
-</div></div></div><div class="sec"><span class="no num">44</span><h2>進度條 Progress</h2><span class="rule"></span></div><div class="use">進度條講「做到哪」：純主色不用漸層，旁邊寫百分比與可否離開；不確定時長時用不定式條紋。與量表不同：量表講「還剩多少」。 <b>本風格：</b>單色進度用主色。分段用語意色時每段都要在旁邊寫出名稱與比例，不能只看顏色猜。分段之間留 2px 底色縫隙。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">44</span><h2>進度條 Progress</h2><span class="rule"></span></div><div class="use">進度條講「做到哪」：純主色不用漸層，旁邊寫百分比與可否離開；不確定時長時用不定式條紋。與量表不同：量表講「還剩多少」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">進度條 PROGRESS ─ 上傳中</div>
 <div class="bar" style="margin-top:1.2rem"><i style="width:62%"></i></div>
 <div class="num" style="font-size:var(--fs-l1);color:var(--muted);margin-top:0.8rem;line-height:var(--lh-l1)">62% ─ 可離開此頁</div>
-</div></div></div><div class="sec"><span class="no num">45</span><h2>搜尋無結果 No result</h2><span class="rule"></span></div><div class="use">搜尋無結果要給出口：一行說明找不到什麼、一顆清除搜尋鍵，留白會讓人以為壞了。與空狀態的差別是它一定伴隨使用者剛輸入的關鍵字。 <b>本風格：</b>與空狀態不同：要把使用者輸入的關鍵字寫出來，並猜測他真正想找什麼、給替代路徑。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
+</div></div></div><div class="sec"><span class="no num">45</span><h2>搜尋無結果 No result</h2><span class="rule"></span></div><div class="use">搜尋無結果要給出口：一行說明找不到什麼、一顆清除搜尋鍵，留白會讓人以為壞了。與空狀態的差別是它一定伴隨使用者剛輸入的關鍵字。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="dd">
 <div class="cap">搜尋無結果 ─ 要給出口</div>
 <div class="trg">選擇群組 <span class="car">▼</span></div>
 <div class="menu">
 <div class="noresult">找不到符合「<b>零售</b>」的群組<br/>
 <button class="btn sm" style="margin-top:0.8rem">清除搜尋</button></div>
 </div>
-</div></div></div><div class="tierbar"><b>選用元件</b>17 項 ─ 依系統類型勾選，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">46</span><h2>工具列 Toolbar</h2><span class="rule"></span></div><div class="use">工具列是一組按鈕的鍵盤導覽群組：Tab 只停一次、方向鍵在按鈕間移動；分組用直式分隔線。只在編輯器與批次操作列使用。 <b>本風格：</b>用在資料表格上方，把檢視相關的控制集中在一條。功能分群用垂直分隔線，不要每個都做成外框按鈕。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">工具列 TOOLBAR ─ 一組按鈕、一個 Tab 停留點</div><div style="margin-top:0.8rem"><span aria-label="格式" class="toolbar" role="toolbar">
+</div></div></div><div class="tierbar"><b>選用元件</b>17 項 ─ 依系統類型勾選，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">46</span><h2>工具列 Toolbar</h2><span class="rule"></span></div><div class="use">工具列是一組按鈕的鍵盤導覽群組：Tab 只停一次、方向鍵在按鈕間移動；分組用直式分隔線。只在編輯器與批次操作列使用。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div><div class="cap">工具列 TOOLBAR ─ 一組按鈕、一個 Tab 停留點</div><div style="margin-top:0.8rem"><span aria-label="格式" class="toolbar" role="toolbar">
 <button class="tb on">B</button><button class="tb" style="font-style:italic">I</button><button class="tb" style="text-decoration:underline">U</button>
 <span class="vdiv"></span><button class="tb">≡</button><button class="tb">☰</button><button class="tb">⋮≡</button>
-<span class="vdiv"></span><button class="tb w">H2</button><button class="tb w">連結</button><button class="tb">⌧</button></span></div></div></div></div><div class="sec"><span class="no num">47</span><h2>滑桿 Slider</h2><span class="rule"></span></div><div class="use">滑桿只給「大概就好」的數值（價格區間、透明度），要精確輸入一律配輸入框；拇指 21px、拖曳時顯示數值氣泡、兩端標刻度。 <b>本風格：</b>滑桿只給「大概就好」的篩選。需要精確數值時一定同時提供輸入框，不要逼人拖到剛好。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 300px">
+<span class="vdiv"></span><button class="tb w">H2</button><button class="tb w">連結</button><button class="tb">⌧</button></span></div></div></div></div><div class="sec"><span class="no num">47</span><h2>滑桿 Slider</h2><span class="rule"></span></div><div class="use">滑桿只給「大概就好」的數值（價格區間、透明度），要精確輸入一律配輸入框；拇指 21px、拖曳時顯示數值氣泡、兩端標刻度。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 300px">
 <div class="cap" style="margin-top:2.4rem">滑桿 SLIDER ─ 單值與區間</div>
 <div class="slider"><div class="tr"></div><div class="fl" style="left:0;width:62%"></div><div class="th" style="left:62%"><span class="tt">62</span></div>
 <span class="tk" style="left:0">0</span><span class="tk" style="left:50%">50</span><span class="tk" style="left:100%">100</span></div>
 <div class="slider" style="margin-top:3.2rem"><div class="tr"></div><div class="fl" style="left:20%;width:45%"></div>
 <div class="th" style="left:20%"><span class="tt">NT$ 200</span></div><div class="th" style="left:65%"><span class="tt">NT$ 650</span></div>
 <span class="tk" style="left:0">0</span><span class="tk" style="left:100%">1,000</span></div>
-</div></div></div><div class="sec"><span class="no num">48</span><h2>級聯選擇 Cascader</h2><span class="rule"></span></div><div class="use">級聯選擇：每一層一欄、選到最後一層才算完成；觸發框顯示完整路徑、最後一層加粗。三層以上或項目超過三十個就改用搜尋式自動完成。 <b>本風格：</b>用在層級固定且每層選項不多的分類。層級超過三層或某層超過 20 項時改用樹狀加搜尋。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">48</span><h2>級聯選擇 Cascader</h2><span class="rule"></span></div><div class="use">級聯選擇：每一層一欄、選到最後一層才算完成；觸發框顯示完整路徑、最後一層加粗。三層以上或項目超過三十個就改用搜尋式自動完成。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">級聯選擇 CASCADER ─ 多層分類</div>
 <div class="dd" style="width:300px;max-width:100%;margin-top:0.8rem"><div class="trg">五金 / 緊固件 / <b>內六角螺絲</b><span class="car">▼</span></div></div>
 <div class="casc">
@@ -1006,7 +998,7 @@ body{background:#F4F4F4}
 <ul><li>手工具<span class="car">›</span></li><li class="on">緊固件<span class="car">›</span></li><li>軸承<span class="car">›</span></li></ul>
 <ul><li>螺帽</li><li class="pick">內六角螺絲</li><li>自攻螺絲</li><li>華司</li></ul>
 </div>
-</div></div></div><div class="sec"><span class="no num">49</span><h2>穿梭框 Transfer</h2><span class="rule"></span></div><div class="use">穿梭框：左邊可選、右邊已選，標題列帶全選與計數；只有在「一次挑很多個」時才用它，挑一兩個用多選下拉。 <b>本風格：</b>用在欄位設定、權限指派這類「從一堆裡挑一組」的場合。兩邊都要顯示數量，右邊要能調整順序。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">49</span><h2>穿梭框 Transfer</h2><span class="rule"></span></div><div class="use">穿梭框：左邊可選、右邊已選，標題列帶全選與計數；只有在「一次挑很多個」時才用它，挑一兩個用多選下拉。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">穿梭框 TRANSFER ─ 權限指派</div>
 <div class="transfer" style="margin-top:0.8rem">
 <div class="tlist"><div class="th2"><span class="check on"><i></i></span>可選成員<small>2 / 5</small></div>
@@ -1015,19 +1007,19 @@ body{background:#F4F4F4}
 <div class="tlist"><div class="th2"><span class="check"><i></i></span>訂單審核組<small>2</small></div>
 <div class="tb2"><span class="check"><i></i>周雅婷</span><span class="check"><i></i>黃建宏</span></div></div>
 </div>
-</div></div></div><div class="sec"><span class="no num">50</span><h2>摘要方塊 Summary box</h2><span class="rule"></span></div><div class="use">摘要方塊是小計、稅、合計的結算塊：標題列、逐項兩端對齊、合計列上加線並放大字級；全站共用同一個元件，不要每頁重寫。只有交易型系統需要。 <b>本風格：</b>金額全部靠右、位數對齊。總額用 N2 字級與上方分隔線區隔。折讓與退款用 error 紅並帶負號。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="cardx">
+</div></div></div><div class="sec"><span class="no num">50</span><h2>摘要方塊 Summary box</h2><span class="rule"></span></div><div class="use">摘要方塊是小計、稅、合計的結算塊：標題列、逐項兩端對齊、合計列上加線並放大字級；全站共用同一個元件，不要每頁重寫。只有交易型系統需要。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div class="cardx">
 <div class="ct">金額摘要 <span class="hint">Pricing Service</span></div>
 <div class="cb">
 <div class="sumrow"><span>商品小計</span><span class="price"><small>NT$</small>28,926</span></div>
 <div class="sumrow"><span>營業稅 5%</span><span class="price"><small>NT$</small>1,446</span></div>
 <div class="sumrow total"><span>合計</span><span class="price"><small>NT$</small>30,372</span></div>
 </div>
-</div></div></div><div class="sec"><span class="no num">51</span><h2>來源標記 Source badge</h2><span class="rule"></span></div><div class="use">來源標記標示資料由 AI 解析或匯入產生：深型副色填色配白字（淺型副色配墨字），每頁最多三處；同一列與 warning 狀態並存時改用主色，避免兩種黃分不清。 <b>本風格：</b>標示「這筆資料不是人輸入的」。深型色系用 <code>--acc2-deep</code> 配白字；淺型（SC1）用 <code>--acc2</code> 配主文字，且同列有 warning 時改用主色，避免被誤讀成待處理。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="aibadge" style="font-size:var(--fs-l1);font-weight:700;border-radius:999px;padding:0.4rem 1.2rem;line-height:var(--lh-l1)">◆ AI 解析</span></div></div><div class="sec"><span class="no num">52</span><h2>百分比膠囊 Percent pill</h2><span class="rule"></span></div><div class="use">百分比膠囊顯示信心度或達成率，三段色階（高綠、中琥珀、低紅）走語意色；與來源標記成對出現，數字用 Arial。 <b>本風格：</b>升降一律箭頭加數字。注意「升」不一定是好事——出貨天數上升是壞事，所以顏色跟的是好壞不是方向，要依情境決定。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="conf hi num">98%</span><span class="conf md num">71%</span><span class="conf lo num">42%</span></div></div><div class="sec"><span class="no num">53</span><h2>量表 Meter</h2><span class="rule"></span></div><div class="use">量表與進度條不同：進度條講「做到哪」、只有主色；量表講「還剩多少」，顏色隨水位走語意色（安全綠、注意琥珀、危險紅），並畫出門檻線。 <b>本風格：</b>量表一定要寫出分母與「還差多少」，只給百分比等於沒給。接近臨界時轉 warning 並給建議動作。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 280px">
+</div></div></div><div class="sec"><span class="no num">51</span><h2>來源標記 Source badge</h2><span class="rule"></span></div><div class="use">來源標記標示資料由 AI 解析或匯入產生：深型副色填色配白字（淺型副色配墨字），每頁最多三處；同一列與 warning 狀態並存時改用主色，避免兩種黃分不清。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="aibadge" style="font-size:var(--fs-l1);font-weight:700;border-radius:999px;padding:0.4rem 1.2rem;line-height:var(--lh-l1)">◆ AI 解析</span></div></div><div class="sec"><span class="no num">52</span><h2>百分比膠囊 Percent pill</h2><span class="rule"></span></div><div class="use">百分比膠囊顯示信心度或達成率，三段色階（高綠、中琥珀、低紅）走語意色；與來源標記成對出現，數字用 Arial。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="conf hi num">98%</span><span class="conf md num">71%</span><span class="conf lo num">42%</span></div></div><div class="sec"><span class="no num">53</span><h2>量表 Meter</h2><span class="rule"></span></div><div class="use">量表與進度條不同：進度條講「做到哪」、只有主色；量表講「還剩多少」，顏色隨水位走語意色（安全綠、注意琥珀、危險紅），並畫出門檻線。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:0 0 280px">
 <div class="cap">量表 METER ─ 講「還剩多少」</div>
 <div class="meter" style="margin-top:1.2rem"><div class="mh"><span>庫存水位 AL-2040</span><b>72%</b></div><div class="mt"><i style="width:72%"></i><em style="left:20%"></em></div><small>安全庫存線 20%</small></div>
 <div class="meter wrn" style="margin-top:1.6rem"><div class="mh"><span>本月 API 配額</span><b>88%</b></div><div class="mt"><i style="width:88%"></i><em style="left:80%"></em></div><small>超過 80% 提醒、100% 暫停</small></div>
 <div class="meter err" style="margin-top:1.6rem"><div class="mh"><span>附件空間</span><b>97%</b></div><div class="mt"><i style="width:97%"></i><em style="left:90%"></em></div><small>剩 0.6 GB，上傳將失敗</small></div>
-</div></div></div><div class="sec"><span class="no num">54</span><h2>樹狀 Tree</h2><span class="rule"></span></div><div class="use">樹狀：縮排線用虛線、展開箭頭固定 14px 寬、計數靠右；選中節點淡底主色字。表格做不出父子關係時才用樹。 <b>本風格：</b>用在深度不固定的階層（商品分類、組織、檔案）。每個節點帶數量，收合的節點顯示底下的總數。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">54</span><h2>樹狀 Tree</h2><span class="rule"></span></div><div class="use">樹狀：縮排線用虛線、展開箭頭固定 14px 寬、計數靠右；選中節點淡底主色字。表格做不出父子關係時才用樹。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">樹狀 TREE ─ 分類管理</div>
 <ul class="tree" style="margin-top:0.8rem">
 <li><div class="nd"><span class="tw">▼</span>全部商品<span class="count cnt">312</span></div>
@@ -1041,7 +1033,7 @@ body{background:#F4F4F4}
 <li><div class="nd"><span class="tw"></span>包材<span class="count cnt gray">50</span></div></li>
 </ul></li>
 </ul>
-</div></div></div><div class="sec"><span class="no num">55</span><h2>時間軸 Timeline</h2><span class="rule"></span></div><div class="use">時間軸最新在最上面、節點顏色跟語意色走、每筆一定有時間戳；只放事件，不放可操作的東西。 <b>本風格：</b>已完成用 success、目前用主色、未來用灰。目前這一步要寫「已等待多久」，那是最常被追問的資訊。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 300px">
+</div></div></div><div class="sec"><span class="no num">55</span><h2>時間軸 Timeline</h2><span class="rule"></span></div><div class="use">時間軸最新在最上面、節點顏色跟語意色走、每筆一定有時間戳；只放事件，不放可操作的東西。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 300px">
 <div class="cap">時間軸 TIMELINE ─ 歷程</div>
 <ul class="tl" style="margin-top:1.2rem">
 <li class="acc"><span class="tt">備貨中</span><span class="tm">09/10 14:20</span><p>倉管 王大明 完成揀貨 2 / 3 項</p></li>
@@ -1049,7 +1041,7 @@ body{background:#F4F4F4}
 <li class="err"><span class="tt">價格異議</span><span class="tm">09/07 17:40</span><p>客戶回覆：AL-2040 單價高於上季報價</p></li>
 <li><span class="tt">建立訂單</span><span class="tm">09/07 11:02</span><p>由 AI 解析傳真單建立，信心度 98%</p></li>
 </ul>
-</div></div></div><div class="sec"><span class="no num">56</span><h2>圖表 Chart</h2><span class="rule"></span></div><div class="use">圖表不指定圖表庫，只定規則：第一序列主色、第二序列深副色（副色本身太亮，當線條會看不清）、第三序列以後用灰階；語意色只給「好壞」有意義的圖；座標軸字 10px Arial 灰、格線用框線色、關鍵值直接標在圖上。統計卡可以放一條迷你趨勢線。 <b>本風格：</b>兩個數列以下用主色與深副色；三個以上一律改用第四層資料視覺化色板（八色固定順序，與品牌色無關，換色系不會變）。語意色不得當數列色——綠色數列會被讀成「成功」。永遠只有一條 Y 軸，兩個量級不同的指標要畫成兩張圖。超過八個數列改分組或併為「其他」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px">
+</div></div></div><div class="sec"><span class="no num">56</span><h2>圖表 Chart</h2><span class="rule"></span></div><div class="use">圖表不指定圖表庫，只定規則：第一序列主色、第二序列深副色（副色本身太亮，當線條會看不清）、第三序列以後用灰階；語意色只給「好壞」有意義的圖；座標軸字 10px Arial 灰、格線用框線色、關鍵值直接標在圖上。統計卡可以放一條迷你趨勢線。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px">
 <div class="cap">圖表 CHART ─ 主色第一序列、深副色折線、灰階第三序列</div>
 <div class="chart" style="margin-top:0.8rem">
 <div class="chh">每月出貨<small>2026 上半年 · 千件</small></div>
@@ -1060,7 +1052,7 @@ body{background:#F4F4F4}
 <div class="spark"><div class="k">本週訂單</div><div class="v">128</div><svg preserveaspectratio="none" viewbox="0 0 120 28"><polygon class="sa" points="0,28 0,26 20,18 40,22 60,12 80,16 100,7 120,4 120,28"></polygon><polyline class="sl" points="0,26 20,18 40,22 60,12 80,16 100,7 120,4"></polyline></svg></div>
 <div class="spark"><div class="k">平均交期</div><div class="v">4.2 <small style="font-size:var(--fs-l1);color:var(--muted);line-height:var(--lh-l1)">天</small></div><svg preserveaspectratio="none" viewbox="0 0 120 28"><polygon class="sa" points="0,28 0,4 20,10 40,6 60,16 80,21 100,24 120,26 120,28"></polygon><polyline class="sl" points="0,4 20,10 40,6 60,16 80,21 100,24 120,26"></polyline></svg></div>
 </div>
-</div><div style="flex:1 1 320px"><div class="cap">圖表 CHART ─ 三個數列以上改用第四層色板（固定順序，換色系不會變）</div><div class="chart" style="margin-top:0.8rem"><div class="chh">各區產品線出貨<small>2026 上半年 · 千件</small></div><svg aria-label="各區五條產品線出貨比較" role="img" viewbox="0 0 400 172"><line class="gd" x1="28" x2="400" y1="150" y2="150"></line><text class="ax" text-anchor="end" x="22" y="153">0</text><line class="gd" x1="28" x2="400" y1="115" y2="115"></line><text class="ax" text-anchor="end" x="22" y="118">25</text><line class="gd" x1="28" x2="400" y1="80" y2="80"></line><text class="ax" text-anchor="end" x="22" y="83">50</text><line class="gd" x1="28" x2="400" y1="45" y2="45"></line><text class="ax" text-anchor="end" x="22" y="48">75</text><line class="gd" x1="28" x2="400" y1="10" y2="10"></line><text class="ax" text-anchor="end" x="22" y="13">100</text><rect class="d1" height="103" rx="3" width="16" x="46" y="47"></rect><rect class="d2" height="81" rx="3" width="16" x="64" y="69"></rect><rect class="d3" height="57" rx="3" width="16" x="82" y="93"></rect><rect class="d4" height="42" rx="3" width="16" x="100" y="108"></rect><rect class="d5" height="26" rx="3" width="16" x="118" y="124"></rect><text class="ax" text-anchor="middle" x="90" y="166">北區</text><rect class="d1" height="88" rx="3" width="16" x="158" y="62"></rect><rect class="d2" height="73" rx="3" width="16" x="176" y="77"></rect><rect class="d3" height="64" rx="3" width="16" x="194" y="86"></rect><rect class="d4" height="35" rx="3" width="16" x="212" y="115"></rect><rect class="d5" height="23" rx="3" width="16" x="230" y="127"></rect><text class="ax" text-anchor="middle" x="202" y="166">中區</text><rect class="d1" height="73" rx="3" width="16" x="270" y="77"></rect><rect class="d2" height="59" rx="3" width="16" x="288" y="91"></rect><rect class="d3" height="49" rx="3" width="16" x="306" y="101"></rect><rect class="d4" height="32" rx="3" width="16" x="324" y="118"></rect><rect class="d5" height="18" rx="3" width="16" x="342" y="132"></rect><text class="ax" text-anchor="middle" x="314" y="166">南區</text></svg><div class="lg"><span><i style="background:var(--d1)"></i>藍</span><span><i style="background:var(--d2)"></i>橘</span><span><i style="background:var(--d3)"></i>綠</span><span><i style="background:var(--d4)"></i>紫</span><span><i style="background:var(--d5)"></i>橄欖</span></div></div></div></div><div class="rowset"><span class="cap">兩個數列以下用主色與深副色；三個以上一律改用第四層八色，固定順序取用。語意色不得當數列色，綠色數列會被讀成「成功」。</span></div></div><div class="sec"><span class="no num">57</span><h2>媒體與輪播 Media / Carousel</h2><span class="rule"></span></div><div class="use">媒體：圖片固定比例（商品 4:3、影片 16:9）、載入前先佔位不跳版；輪播不自動播放、圓點與箭頭都可鍵盤操作、下方縮圖列標示目前張；影片顯示時長與海報圖，點了才載入播放器。 <b>本風格：</b>橫向捲動不用箭頭輪播——手機上手勢更自然，桌機上捲軸就夠。圖片維持固定長寬比，不要讓圖高度參差。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div><div style="flex:1 1 320px"><div class="cap">圖表 CHART ─ 三個數列以上改用第四層色板（固定順序，換色系不會變）</div><div class="chart" style="margin-top:0.8rem"><div class="chh">各區產品線出貨<small>2026 上半年 · 千件</small></div><svg aria-label="各區五條產品線出貨比較" role="img" viewbox="0 0 400 172"><line class="gd" x1="28" x2="400" y1="150" y2="150"></line><text class="ax" text-anchor="end" x="22" y="153">0</text><line class="gd" x1="28" x2="400" y1="115" y2="115"></line><text class="ax" text-anchor="end" x="22" y="118">25</text><line class="gd" x1="28" x2="400" y1="80" y2="80"></line><text class="ax" text-anchor="end" x="22" y="83">50</text><line class="gd" x1="28" x2="400" y1="45" y2="45"></line><text class="ax" text-anchor="end" x="22" y="48">75</text><line class="gd" x1="28" x2="400" y1="10" y2="10"></line><text class="ax" text-anchor="end" x="22" y="13">100</text><rect class="d1" height="103" rx="3" width="16" x="46" y="47"></rect><rect class="d2" height="81" rx="3" width="16" x="64" y="69"></rect><rect class="d3" height="57" rx="3" width="16" x="82" y="93"></rect><rect class="d4" height="42" rx="3" width="16" x="100" y="108"></rect><rect class="d5" height="26" rx="3" width="16" x="118" y="124"></rect><text class="ax" text-anchor="middle" x="90" y="166">北區</text><rect class="d1" height="88" rx="3" width="16" x="158" y="62"></rect><rect class="d2" height="73" rx="3" width="16" x="176" y="77"></rect><rect class="d3" height="64" rx="3" width="16" x="194" y="86"></rect><rect class="d4" height="35" rx="3" width="16" x="212" y="115"></rect><rect class="d5" height="23" rx="3" width="16" x="230" y="127"></rect><text class="ax" text-anchor="middle" x="202" y="166">中區</text><rect class="d1" height="73" rx="3" width="16" x="270" y="77"></rect><rect class="d2" height="59" rx="3" width="16" x="288" y="91"></rect><rect class="d3" height="49" rx="3" width="16" x="306" y="101"></rect><rect class="d4" height="32" rx="3" width="16" x="324" y="118"></rect><rect class="d5" height="18" rx="3" width="16" x="342" y="132"></rect><text class="ax" text-anchor="middle" x="314" y="166">南區</text></svg><div class="lg"><span><i style="background:var(--d1)"></i>藍</span><span><i style="background:var(--d2)"></i>橘</span><span><i style="background:var(--d3)"></i>綠</span><span><i style="background:var(--d4)"></i>紫</span><span><i style="background:var(--d5)"></i>橄欖</span></div></div></div></div><div class="rowset"><span class="cap">兩個數列以下用主色與深副色；三個以上一律改用第四層八色，固定順序取用。語意色不得當數列色，綠色數列會被讀成「成功」。</span></div></div><div class="sec"><span class="no num">57</span><h2>媒體與輪播 Media / Carousel</h2><span class="rule"></span></div><div class="use">媒體：圖片固定比例（商品 4:3、影片 16:9）、載入前先佔位不跳版；輪播不自動播放、圓點與箭頭都可鍵盤操作、下方縮圖列標示目前張；影片顯示時長與海報圖，點了才載入播放器。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">媒體與輪播 MEDIA ─ 圖片、影片、縮圖列</div>
 <div class="media" style="margin-top:0.8rem">
 <div class="thumb"><span class="lab">商品圖 4:3</span><button aria-label="上一張" class="arr l">‹</button><button aria-label="下一張" class="arr r">›</button><div class="dots"><i class="on"></i><i></i><i></i><i></i></div></div>
@@ -1071,7 +1063,7 @@ body{background:#F4F4F4}
 <div class="thumb" style="aspect-ratio:16/9"><span class="play">▶</span><span class="dur">03:24</span></div>
 <div class="capn">安裝教學影片 ─ 有時長、有海報圖、點了才載入。</div>
 </div>
-</div></div></div><div class="sec"><span class="no num">58</span><h2>動態列表 Feed</h2><span class="rule"></span></div><div class="use">動態列表是無限捲動的動態牆：每筆帶頭像、動作、對象、相對時間；底部常駐載入提示，不用「載入更多」按鈕。 <b>本風格：</b>主詞在前、時間靠右。人名與物件都要可點。不要用「使用者 A 執行了操作」這種系統語氣。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
+</div></div></div><div class="sec"><span class="no num">58</span><h2>動態列表 Feed</h2><span class="rule"></span></div><div class="use">動態列表是無限捲動的動態牆：每筆帶頭像、動作、對象、相對時間；底部常駐載入提示，不用「載入更多」按鈕。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div>
 <div class="cap">動態列表 FEED ─ 無限捲動</div>
 <div class="feed" style="margin-top:1.2rem">
 <div class="fi"><span class="avatar">林</span><div><b>林佳穎</b> 確認了訂單 <b class="num">SO-260907-003</b><small>3 分鐘前</small></div></div>
@@ -1080,15 +1072,15 @@ body{background:#F4F4F4}
 <div class="fi"><span class="avatar gray">系</span><div>價格表 2026 Q3 已發佈<small>昨天 17:42</small></div></div>
 <div class="more"><span class="spin"></span>往下捲動自動載入</div>
 </div>
-</div></div></div><div class="sec"><span class="no num">59</span><h2>步驟精靈 Stepper wizard</h2><span class="rule"></span></div><div class="use">步驟精靈是可操作的多步表單：已完成實心打勾、目前步驟外圈光暈、未到步驟灰；每步都能往回改，最後一步才真正送出。 <b>本風格：</b>已完成的步驟用勾號並且可以點回去修改。步驟數固定顯示，不要做成「還有幾步」的驚喜。三步以下不需要精靈。</div><div class="board"><div><div class="cap">步驟精靈 STEPPER ─ 可操作的多步表單</div><div class="stepper" style="margin-top:1.2rem">
+</div></div></div><div class="sec"><span class="no num">59</span><h2>步驟精靈 Stepper wizard</h2><span class="rule"></span></div><div class="use">步驟精靈是可操作的多步表單：已完成實心打勾、目前步驟外圈光暈、未到步驟灰；每步都能往回改，最後一步才真正送出。</div><div class="board"><div><div class="cap">步驟精靈 STEPPER ─ 可操作的多步表單</div><div class="stepper" style="margin-top:1.2rem">
 <div class="sp done"><span class="dot">✓</span><b>基本資料</b><small>已完成</small></div>
 <div class="sp done"><span class="dot">✓</span><b>品項與數量</b><small>3 項</small></div>
 <div class="sp cur"><span class="dot">3</span><b>送貨與付款</b><small>進行中</small></div>
 <div class="sp"><span class="dot">4</span><b>確認送出</b><small> </small></div>
 </div><div class="stepnav"><button class="btn sm">‹ 上一步</button><button class="btn primary sm">下一步 ›</button></div><div class="rowset" style="align-items:flex-start;gap:3.2rem;flex-wrap:wrap;margin-top:2.4rem">
-</div></div></div><div class="sec"><span class="no num">60</span><h2>唯讀步驟 Read-only steps</h2><span class="rule"></span></div><div class="use">唯讀步驟是步驟精靈的唯讀態：顯示訂單、簽核走到哪一步，不能點；走過的實心、目前的高亮、未到的灰。 <b>本風格：</b>與步驟精靈的差別：這是看進度不是填表單，所以不可點、沒有上下一步。目前節點用主色，已完成用 success。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="flow">
+</div></div></div><div class="sec"><span class="no num">60</span><h2>唯讀步驟 Read-only steps</h2><span class="rule"></span></div><div class="use">唯讀步驟是步驟精靈的唯讀態：顯示訂單、簽核走到哪一步，不能點；走過的實心、目前的高亮、未到的灰。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><span class="flow">
 <span class="stp done">待確認</span><span class="arr">→</span><span class="stp done">已確認</span><span class="arr">→</span><span class="stp cur">備貨中</span><span class="arr">→</span><span class="stp">已出貨</span><span class="arr">→</span><span class="stp">已完成</span>
-</span></div></div><div class="sec"><span class="no num">61</span><h2>分割面板 Splitter</h2><span class="rule"></span></div><div class="use">分割面板給主從版型：左清單右詳情、中間 9px 可拖曳把手；記住使用者調過的寬度。 <b>本風格：</b>用在「清單加明細」且兩邊都要一直看得到的場合。寬度可拖曳並記住使用者的設定。手機上改為上下堆疊或改用側滑面板。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px">
+</span></div></div><div class="sec"><span class="no num">61</span><h2>分割面板 Splitter</h2><span class="rule"></span></div><div class="use">分割面板給主從版型：左清單右詳情、中間 9px 可拖曳把手；記住使用者調過的寬度。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px">
 <div class="cap">分割面板 SPLITTER ─ 主從版型、可拖曳</div>
 <div class="split" style="margin-top:0.8rem">
 <div class="pa">
@@ -1106,7 +1098,7 @@ body{background:#F4F4F4}
 <div class="row"><span>到貨</span><span class="num">2026/09/15</span></div>
 </div>
 </div>
-</div></div></div><div class="sec"><span class="no num">62</span><h2>結果頁 Result</h2><span class="rule"></span></div><div class="use">結果頁與空狀態不同：空狀態是「還沒有資料」，結果頁是「這件事的結局」——成功、失敗、無權限各一種，圖示用語意色淡底圓、標題一句話說結局、內文說接下來會發生什麼、最多兩顆動作鈕。多數後台用 Toast 加導回即可。 <b>本風格：</b>結果頁要回答三件事：成功了嗎、產生了什麼（單號）、接下來會發生什麼。至少給兩個出口，其中一個是「再做一次」。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px;display:flex;flex-direction:column;gap:1.6rem">
+</div></div></div><div class="sec"><span class="no num">62</span><h2>結果頁 Result</h2><span class="rule"></span></div><div class="use">結果頁與空狀態不同：空狀態是「還沒有資料」，結果頁是「這件事的結局」——成功、失敗、無權限各一種，圖示用語意色淡底圓、標題一句話說結局、內文說接下來會發生什麼、最多兩顆動作鈕。多數後台用 Toast 加導回即可。</div><div class="board"><div class="rowset" style="align-items:flex-start;gap:2.4rem;flex-wrap:wrap"><div style="flex:1 1 320px;display:flex;flex-direction:column;gap:1.6rem">
 <div class="cap">結果頁 RESULT ─ 這件事的結局</div>
 <div class="result ok">
 <div class="ic">✓</div>
@@ -1123,7 +1115,7 @@ body{background:#F4F4F4}
 </div>
 </div></div></div></div>
 <div class="foot">
-  <b>管理者工作室 設計系統元件庫 ─ S6 石墨。</b>元件規則以《網頁設計規範》與《色彩系統定義》為準；本頁每個元件在十二組核心 ＋ SC1 色系下皆通過 WCAG AA 對比稽核。核心元件每個專案必備，選用元件依系統類型勾選。N4 級（料號、單號、日期、追蹤碼）在本風格改用等寬字，金額仍用 Arial。
+  <b>管理者工作室 設計系統元件庫 ─ S7 編輯。</b>元件規則以《網頁設計規範》與《色彩系統定義》為準；本頁每個元件在十二組核心 ＋ SC1〜SC3 色系下皆通過 WCAG AA 對比稽核。標題在本風格改用明體，內文、標籤、按鈕仍是黑體，金額仍是 Arial。
 </div>
 
 <script>
@@ -1146,7 +1138,7 @@ function setAcc(a1,s1,a2,s2,btn){
 
 <script>
 /* ══ 色系橋接：十二組核心 ＋ SC1。可獨立使用，也可被外層瀏覽器以 hash / postMessage 控制 ══ */
-const STYLE='s6';
+const STYLE='s7';
 const THEMES={
  c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
  c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
@@ -1182,7 +1174,7 @@ function setPair(k,btn){
  r.setProperty('--acc',t.acc);   r.setProperty('--accsoft',t.accSoft);  r.setProperty('--acc-soft',t.accSoft);  r.setProperty('--acc-deep',t.accDeep);
  r.setProperty('--acc2',t.acc2); r.setProperty('--acc2soft',t.acc2Soft); r.setProperty('--acc2-soft',t.acc2Soft); r.setProperty('--acc2-deep',t.acc2Deep);
  /* 深型副色：填色上白字；淺型副色：填色上主文字 */
- const ink=(getComputedStyle(document.documentElement).getPropertyValue('--ink')||'#171717').trim();
+ const ink=(getComputedStyle(document.documentElement).getPropertyValue('--ink')||'#26292E').trim();
  r.setProperty('--acc2-text', t.acc2Type==='light' ? ink : '#FFFFFF');
  const cl=document.documentElement.classList;
  cl.toggle('sc-light', t.acc2Type==='light');
