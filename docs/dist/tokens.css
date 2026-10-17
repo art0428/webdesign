@@ -1,0 +1,27 @@
+/* ══ 管理者工作室 設計系統 22.0.0 ══ tokens.css（字級、間距、圓角、高度、動態、層級）
+   由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。 */
+/* ══ 字級、行距、間距 tokens v2 ══ 與 code/type_system/typography.css 同源；改這裡要同步改那裡 */
+html{font-size:62.5%}
+:root,[data-type="productive"]{
+ --fs-d1:3.0rem;--lh-d1:1.15;--ls-d1:-0.01em; --fs-h0:2.6rem;--lh-h0:1.30;--ls-h0:0.02em; --fs-h1:2.1rem;--lh-h1:1.40;--ls-h1:0.03em;
+ --fs-h2:1.7rem;--lh-h2:1.45;--ls-h2:0.06em;  --fs-h3:1.4rem;--lh-h3:1.50;--ls-h3:0.08em;
+ --fs-b1:1.4rem;--lh-b1:1.80; --fs-b2:1.25rem;--lh-b2:1.70; --fs-b3:1.2rem;--lh-b3:1.70;
+ --fs-l1:1.2rem;--lh-l1:1.50;--ls-l1:0.08em; --fs-l2:1.1rem;--lh-l2:1.50;--ls-l2:0.15em;
+ --fs-n1:2.3rem;--lh-n1:1.20; --fs-n2:1.9rem;--lh-n2:1.25; --fs-n3:1.25rem;--lh-n3:1.60; --fs-n4:1.25rem;--lh-n4:1.60;--ls-n4:0.02em;
+ --sp-1:0.4rem;--sp-2:0.8rem;--sp-3:1.2rem;--sp-4:1.6rem;--sp-5:2.0rem;--sp-6:2.4rem;--sp-7:3.2rem;--sp-8:4.0rem;--sp-9:4.8rem;--sp-10:6.4rem;
+ --r-lg:16px;--r-sm:12px;--r-pill:999px;--bw:1px;--bw-on:1.5px}
+[data-type="expressive"]{
+ --fs-d1:4.4rem;--lh-d1:1.10; --fs-h0:4.0rem;--lh-h0:1.25; --fs-h1:3.0rem;--lh-h1:1.35; --fs-h2:2.2rem;--lh-h2:1.40; --fs-h3:1.6rem;--lh-h3:1.50;
+ --fs-b1:1.6rem;--lh-b1:1.90; --fs-b2:1.4rem;--lh-b2:1.80; --fs-b3:1.3rem;--lh-b3:1.90;
+ --fs-l1:1.2rem;--lh-l1:1.50; --fs-l2:1.1rem;--lh-l2:1.50;
+ --fs-n1:3.0rem;--lh-n1:1.15; --fs-n2:2.3rem;--lh-n2:1.20; --fs-n3:1.4rem;--lh-n3:1.60; --fs-n4:1.3rem;--lh-n4:1.60}
+@media (max-width:767px){[data-type="expressive"]{--fs-d1:3.6rem;--fs-h0:3.2rem}}
+/* 動態（規範 5.5）：時長與緩動，不得寫死秒數；減少動態時三個時長歸零 */
+:root{--dur-1:120ms;--dur-2:200ms;--dur-3:320ms;--ease-out:cubic-bezier(.2,0,0,1);--ease-in:cubic-bezier(.4,0,1,1)}
+@media (prefers-reduced-motion:reduce){:root{--dur-1:0ms;--dur-2:0ms;--dur-3:0ms}}
+.num,.amt,.price{font-variant-numeric:tabular-nums}
+/* 元件結構尺寸（規範 5.4，v17）：高度 token，七套共用；768px 以下可點元件升到 44px 觸控下限 */
+:root{--h-btn-primary:4.0rem;--h-btn:3.8rem;--h-btn-sm:3.2rem;--h-input:4.0rem;--h-qty:3.4rem;--h-pill:2.4rem;--h-nav:3.8rem;--h-tag:2.0rem}
+@media (max-width:767px){:root{--h-btn-primary:4.4rem;--h-btn:4.4rem;--h-btn-sm:4.0rem;--h-input:4.4rem;--h-qty:4.4rem}}
+/* 層級表（規範 5.6，v18）：五層，不得出現表外的 z-index */
+:root{--z-sticky:10;--z-pop:20;--z-drawer:30;--z-modal:40;--z-toast:50}

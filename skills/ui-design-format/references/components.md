@@ -1,4 +1,4 @@
-> 本檔是《網頁設計規範 v16》的一部分，全文見倉庫的 docs/spec.md。
+> 本檔是《網頁設計規範 v22》的一部分，全文見倉庫的 docs/spec.md。
 
 ## 七、元件規範
 
@@ -9,7 +9,7 @@
 | # | 元件 | 必須實作的狀態 |
 |---|------|----------------|
 | 1 | 按鈕 Button | 預設／hover／active 按下／disabled 停用／loading 處理中 |
-| 2 | 輸入框 Input | 預設／focus 聚焦／error 錯誤／disabled／唯讀／有值與 placeholder |
+| 2 | 輸入框 Input | 預設／focus 聚焦（2px 主色外框，見 10.3）／error 錯誤／disabled／唯讀／有值與 placeholder（佔位文字用 `--muted`，見 10.1） |
 | 3 | 下拉選單 Select | 收合／展開／已選／多選計數／搜尋中／無結果 |
 | 4 | 選項標籤 Chip | 可選／已選／不可選（半透明劃線）／disabled |
 | 5 | 數量調整器 Stepper | 預設／達下限（減號停用）／達上限／不符級距 |

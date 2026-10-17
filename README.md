@@ -1,7 +1,7 @@
 # 管理者工作室 網頁設計系統 · ui-design-format
 
 一套可以直接裝進 Claude 的網頁介面設計系統（以 Agent Skill 形式提供：裝好之後，Claude 做網頁時會自動照這套規範）。
-七套風格（S6 另有深色模式）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、62 項元件、前台示範頁，外加四支交付前的自動檢查腳本。
+七套風格（S6 另有深色模式）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、12 欄欄格、62 項元件、可直接引用的 CSS（`dist/`）、前台示範頁，外加四支交付前的自動檢查腳本。
 
 **A Claude Agent Skill for building web UIs: 7 visual styles (plus a dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 62 components, and 4 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow). Docs are in Traditional Chinese.**
 
@@ -62,6 +62,20 @@ cp -r webdesign/skills/ui-design-format ~/.claude/skills/
 
 色系由使用者在系統內切換：十二組核心 C1〜C12 加三組特殊色系 SC1〜SC3。七套 × 十五組共 105 種，扣掉鎖住的 S2 × SC1、S2 × SC2，共 103 種可用組合；加上 S6 深色模式的 15 種，合計 118 種。
 
+## 開發時引用 CSS
+
+`dist/` 是可以直接引用的樣式檔，每個檔頭都有版號，與規範同版。載三個檔加一支切換色系的腳本，全站只換風格那一行：
+
+```html
+<html lang="zh-Hant" data-style="s1">
+<link rel="stylesheet" href="dist/tokens.css">
+<link rel="stylesheet" href="dist/base.css">
+<link rel="stylesheet" href="dist/style-s1.css">
+<script src="dist/theme.js"></script>
+```
+
+工程師手冊是 [`dist/USAGE.md`](dist/USAGE.md)（每個元件怎麼寫、欄格怎麼用、禁止事項）。七套風格各有一張只引用 `dist/` 寫成的範例頁：[線上看](https://art0428.github.io/webdesign/dist/examples/)。
+
 ## 四項交付前檢查
 
 腳本放在 `skills/ui-design-format/scripts/`，對任何 HTML 檔或網址都能跑。不合規時結束碼為 1，可以直接接進 CI（持續整合：每次提交時自動跑的檢查）。
@@ -86,11 +100,12 @@ skills/ui-design-format/      ← 這一整個資料夾就是 skill，複製走�
 ├── references/               規範全文依章節拆開，需要細節時才讀
 ├── assets/                   tokens.css、各風格元件庫、前台示範頁、通用規範頁（當範本複製）
 └── scripts/                  四項交付前檢查
-docs/                         線上預覽（GitHub Pages）、規範全文 spec.md、調研 research/
+dist/                         可引用的 CSS（tokens、base、style-s1〜s7、theme.js）、USAGE.md、examples/
 dist/ui-design-format.zip     給 claude.ai 上傳用的打包檔
+docs/                         線上預覽（GitHub Pages）、規範全文 spec.md、調研 research/
 ```
 
-規範全文：[docs/spec.md](docs/spec.md)（v16）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
+規範全文：[docs/spec.md](docs/spec.md)（v22）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
 
 ## 授權
 

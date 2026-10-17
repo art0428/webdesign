@@ -18,3 +18,8 @@ html{font-size:62.5%}
 :root{--dur-1:120ms;--dur-2:200ms;--dur-3:320ms;--ease-out:cubic-bezier(.2,0,0,1);--ease-in:cubic-bezier(.4,0,1,1)}
 @media (prefers-reduced-motion:reduce){:root{--dur-1:0ms;--dur-2:0ms;--dur-3:0ms}}
 .num,.amt,.price{font-variant-numeric:tabular-nums}
+/* 元件結構尺寸（規範 5.4，v17）：高度 token，七套共用；768px 以下可點元件升到 44px 觸控下限 */
+:root{--h-btn-primary:4.0rem;--h-btn:3.8rem;--h-btn-sm:3.2rem;--h-input:4.0rem;--h-qty:3.4rem;--h-pill:2.4rem;--h-nav:3.8rem;--h-tag:2.0rem}
+@media (max-width:767px){:root{--h-btn-primary:4.4rem;--h-btn:4.4rem;--h-btn-sm:4.0rem;--h-input:4.4rem;--h-qty:4.4rem}}
+/* 層級表（規範 5.6，v18）：五層，不得出現表外的 z-index */
+:root{--z-sticky:10;--z-pop:20;--z-drawer:30;--z-modal:40;--z-toast:50}

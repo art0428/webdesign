@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-style="s6">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S6 石墨 · 監控儀表板 — 管理者工作室 設計系統 22.0.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style-s6.css">
+<style>
+/* 本頁只做排版，一律用 token；元件外觀全部來自 dist/ */
+.ic{flex:none;vertical-align:middle}
+.topnav{display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap;font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.topnav .brand{font-weight:900;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);display:flex;align-items:center;gap:var(--sp-2)}
+.topnav .brand i{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2);display:inline-block}
+.topnav .links{display:flex;gap:var(--sp-5);font-weight:500}
+.topnav .links a{color:var(--ink);text-decoration:none}
+.topnav .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+.row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.foot-note{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.foot-note a{color:var(--acc)}
+/* 下面兩條是版面層的保護，不改元件外觀：窄欄裡按鈕文字不得折行；表格標題列在手機上允許換行 */
+.t .btn.sm,.t .dt{white-space:nowrap}
+@media (max-width:767px){.tcap{flex-wrap:wrap}.tcap .sp{flex-wrap:wrap;margin-left:0;width:100%}}
+
+.shell{display:grid;grid-template-columns:226px 1fr;min-height:100vh}
+.side{padding:var(--sp-5) var(--sp-3);display:flex;flex-direction:column;gap:var(--sp-1);border-right:1px solid var(--line)}
+.side .grp{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted);padding:var(--sp-4) var(--sp-4) var(--sp-1)}
+.side .nitem{width:100%;justify-content:flex-start}
+.main{padding:var(--sp-5) var(--sp-6) var(--sp-9);display:grid;gap:var(--sp-5);align-content:start}
+.ph{display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+.ph h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);font-weight:900;margin:0}
+.ph .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:var(--sp-3)}
+.two{display:grid;grid-template-columns:1.4fr 1fr;gap:var(--sp-4)}
+.chart{max-width:none}
+.chart svg{width:100%;height:auto;display:block}
+.kv{display:grid;grid-template-columns:auto 1fr auto;gap:var(--sp-2) var(--sp-3);align-items:center;font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.kv .bar{width:auto}
+@media (max-width:1023px){.shell{grid-template-columns:1fr}.side{display:none}.two{grid-template-columns:1fr}}
+
+/* 規範 6.2（v22）：容器左右內距＝欄格外邊距，寬以上 24、平板 20、手機 16；放在頁面排版之後，各頁一致 */
+.main,.wrap{padding-left:var(--sp-6);padding-right:var(--sp-6)}
+@media (max-width:1023px){.main,.wrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}}
+@media (max-width:767px){.main,.wrap{padding-left:var(--sp-4);padding-right:var(--sp-4)}}
+</style>
+</head>
+<body data-type="productive">
+
+<div class="shell">
+  <aside class="side" aria-label="主選單">
+    <div class="topnav" style="padding:0 var(--sp-4) var(--sp-3)"><span class="brand"><i></i>管理者工作室 · Ops</span></div>
+    <div class="grp">監控</div>
+    <button class="nitem on">總覽</button><button class="nitem">服務</button><button class="nitem">佇列</button><button class="nitem">告警<span class="count err" style="margin-left:auto">2</span></button>
+    <div class="grp">設定</div>
+    <button class="nitem">門檻</button><button class="nitem">通知</button><button class="nitem">API 金鑰</button>
+  </aside>
+  <main class="main">
+    <div class="ph"><h1>系統總覽</h1><span class="st ok">● 全部正常</span>
+      <span class="sp"><span class="seg"><button>1h</button><button class="on">24h</button><button>7d</button></span>
+        <label class="foot-note" style="display:flex;gap:var(--sp-1);align-items:center">深淺 <select id="scheme" aria-label="深淺模式" style="min-height:3.2rem;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);color:var(--ink);font:inherit;padding:0 var(--sp-2)"><option value="system">跟隨系統</option><option value="light">淺</option><option value="dark">深</option></select></label></span></div>
+    <div class="kpis">
+      <div class="statc hero"><div class="k">請求／分鐘</div><div class="v num">4,812</div><div class="delta up">▲ 6.2% vs 昨日</div></div>
+      <div class="statc"><div class="k">p95 延遲</div><div class="v num">212<small>ms</small></div><div class="delta up">▼ 18ms</div></div>
+      <div class="statc"><div class="k">錯誤率</div><div class="v num">0.31<small>%</small></div><div class="delta dn">▲ 0.08</div></div>
+      <div class="statc"><div class="k">佇列積壓</div><div class="v num">37</div><div class="delta">持平</div></div>
+      <div class="statc"><div class="k">解析信心 &lt; 80%</div><div class="v num">14<small>筆</small></div><div class="delta dn">▲ 5</div></div>
+    </div>
+    <div class="alert err"><i>!</i><div><b>佇列 parse-fax 連續 3 次重試失敗</b><p>最近一次 10:42:17，錯誤碼 E_TIMEOUT；受影響 2 筆訂單尚未入庫。</p></div><button class="btn sm">查看</button></div>
+    <div class="two">
+      <div class="chart"><div class="chh">請求量與錯誤<small>24 小時 · 每 15 分鐘</small></div>
+        <svg viewBox="0 0 640 200" role="img" aria-label="24 小時請求量折線與錯誤柱狀">
+          <line x1="40" y1="160" x2="640" y2="160" stroke="var(--line)"/><line x1="40" y1="100" x2="640" y2="100" stroke="var(--line)"/><line x1="40" y1="40" x2="640" y2="40" stroke="var(--line)"/>
+          <text x="34" y="164" text-anchor="end" font-size="11" fill="var(--muted)">0</text><text x="34" y="104" text-anchor="end" font-size="11" fill="var(--muted)">3k</text><text x="34" y="44" text-anchor="end" font-size="11" fill="var(--muted)">6k</text>
+          <polyline fill="none" stroke="var(--acc)" stroke-width="2" points="40,120 90,110 140,118 190,96 240,88 290,92 340,70 390,64 440,72 490,58 540,66 590,60 640,68"/>
+          <g fill="var(--err)"><rect x="236" y="150" width="8" height="10"/><rect x="386" y="146" width="8" height="14"/><rect x="536" y="140" width="8" height="20"/><rect x="586" y="152" width="8" height="8"/></g>
+          <text x="40" y="190" font-size="11" fill="var(--muted)">00:00</text><text x="340" y="190" font-size="11" fill="var(--muted)">12:00</text><text x="600" y="190" font-size="11" fill="var(--muted)">24:00</text>
+        </svg></div>
+      <div class="card"><div class="card-title">服務健康</div><div class="card-body kv">
+        <span class="dt">api-gateway</span><div class="bar"><i style="width:99%"></i></div><span class="st ok">● 99.9</span>
+        <span class="dt">parse-fax</span><div class="bar"><i style="width:91%;background:var(--err)"></i></div><span class="st err">● 91.2</span>
+        <span class="dt">pricing</span><div class="bar"><i style="width:98%"></i></div><span class="st ok">● 98.4</span>
+        <span class="dt">notify</span><div class="bar"><i style="width:96%"></i></div><span class="st wrn">● 96.0</span>
+      </div></div>
+    </div>
+    <div class="tblwrap"><div class="tcap"><b>最近告警</b><span class="cnt">24 小時 · 6 筆</span><span class="sp"><button class="pillf on">全部</button><button class="pillf">未處理<span class="n">2</span></button></span></div>
+      <table class="t"><thead><tr><th>時間</th><th>服務</th><th>事件</th><th>等級</th><th style="text-align:right">持續</th><th></th></tr></thead><tbody>
+        <tr><td class="dt">10:42:17</td><td class="dt">parse-fax</td><td>重試失敗 ×3，E_TIMEOUT</td><td><span class="st err">● 嚴重</span></td><td class="amt">18m</td><td><button class="btn sm">認領</button></td></tr>
+        <tr><td class="dt">09:58:03</td><td class="dt">notify</td><td>SMTP 回應緩慢 &gt; 2s</td><td><span class="st wrn">● 警告</span></td><td class="amt">41m</td><td><button class="btn sm">認領</button></td></tr>
+        <tr><td class="dt">07:12:40</td><td class="dt">api-gateway</td><td>憑證將於 14 天後到期</td><td><span class="st acc">● 資訊</span></td><td class="amt">—</td><td><button class="btn sm">排程</button></td></tr>
+        <tr><td class="dt">02:00:00</td><td class="dt">pricing</td><td>排程重算完成，1,284 SKU</td><td><span class="st gray">● 已結</span></td><td class="amt">6m</td><td></td></tr>
+      </tbody></table></div>
+    <p class="foot-note">範例：S6 石墨 × 資料密集儀表板（監控；右上角可切深淺） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p>
+  </main>
+</div>
+<script>document.addEventListener('DOMContentLoaded',()=>{const s=document.getElementById('scheme');s.onchange=e=>DS.setColorScheme(e.target.value);try{s.value=localStorage.getItem('ds.scheme')||'system'}catch(_){}});</script>
+
+<script src="../theme.js"></script>
+</body>
+</html>

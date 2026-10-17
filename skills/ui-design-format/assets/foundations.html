@@ -218,14 +218,16 @@ td.sample{width:46%}
   </div></div>
 
   <div class="sec"><span class="no">06</span><h2>元件高度與觸控目標</h2><span class="rule"></span><span class="en">SIZING</span></div>
-  <p class="use">所有元件禁止固定 <code>height</code>，一律 <code>min-height</code>（rem）：字級放大時框跟著長高，文字才不會被裁切。<b>手機 44px（4.4rem）觸控下限</b>來自 Apple 人機介面指南；相鄰可點元件之間至少留 space-2。</p>
+  <p class="use">所有元件禁止固定 <code>height</code>，一律 <code>min-height</code>（rem）：字級放大時框跟著長高，文字才不會被裁切。高度由 <code>--h-*</code> token 鎖定、垂直內距歸零、flex 置中，所以框線粗細與有無陰影都不會改變高度——七套風格的同一個元件一樣高。<b>手機 44px（4.4rem）觸控下限</b>來自 Apple 人機介面指南；相鄰可點元件之間至少留 space-2。</p>
   <div class="board"><div class="hgt">
     <figure><span class="h p" style="min-height:4.0rem">送出訂單</span><figcaption>主按鈕 4.0 → 手機 4.4</figcaption></figure>
     <figure><span class="h" style="min-height:3.8rem">下載 Excel</span><figcaption>一般按鈕 3.8 → 4.4</figcaption></figure>
     <figure><span class="h" style="min-height:3.2rem;font-size:var(--fs-b3)">小按鈕</span><figcaption>小按鈕 3.2 → 4.0</figcaption></figure>
     <figure><span class="h i" style="min-height:4.0rem">PO-2026-xxxx</span><figcaption>輸入框 4.0 → 4.4（字 16px）</figcaption></figure>
     <figure><span class="h s" style="min-height:2.4rem;padding:0 1.2rem">● 待確認</span><figcaption>狀態膠囊 2.4</figcaption></figure>
-    <figure><span class="h" style="min-height:4.4rem;border-radius:var(--r-sm);width:22rem;justify-content:flex-start;font-weight:400">表格列</span><figcaption>表格列 4.4</figcaption></figure>
+    <figure><span class="h" style="min-height:4.6rem;border-radius:var(--r-sm);width:22rem;justify-content:flex-start;font-weight:400">表格列</span><figcaption>表格列 ≈4.6（儲存格內距 12 ＋ B2 行框，不另設）</figcaption></figure>
+    <figure><span class="h" style="min-height:3.2rem;font-size:var(--fs-b3)">篩選膠囊</span><figcaption>篩選膠囊 3.2 → 4.0</figcaption></figure>
+    <figure><span class="h" style="min-height:2.0rem;font-size:var(--fs-l2);padding:0 0.8rem;border-radius:6px">TAG</span><figcaption>屬性 tag 2.0</figcaption></figure>
     <figure><span class="h" style="min-height:3.8rem;border-radius:var(--r-sm);width:16rem;justify-content:flex-start">▤ 訂單管理</span><figcaption>側欄項目 3.8</figcaption></figure>
   </div></div>
 

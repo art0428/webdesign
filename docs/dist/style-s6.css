@@ -1,0 +1,227 @@
+/* ══ 管理者工作室 設計系統 22.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+   由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
+   風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第五項檢查會擋）。 */
+
+/* S1 有、本套沒有的規則或屬性：歸零（unset），等於本套原本沒寫 */
+.alert .btn.sm:hover{opacity:unset}
+/* 本套材質（相對於 S1 基準的屬性層級差異） */
+:root{--ink:#171717;--line:#E3E3E3;--muted:#6A6A6A;--paperc:#F6F6F6}
+.st.gray{background:#F1F1F1}
+.t td{border-bottom:1px solid #F0F0F0}
+.toast i{background:#2A722E}
+.sk{background:linear-gradient(90deg,#EFEFEF 25%,#F6F6F6 50%,#EFEFEF 75%)}
+.nrow{border-bottom:1px solid #F0F0F0}
+.desc dt{background:var(--paperc,#F6F6F6)}
+.count.gray{background:var(--paperc,#F6F6F6)}
+.drawerdemo{background:#F4F4F4}
+.tlist .th2{background:var(--paperc,#F6F6F6)}
+.split .pa{background:var(--paperc,#F6F6F6)}
+.thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,#F6F6F6) 7px 14px)}
+.result .dl{background:var(--paperc,#F6F6F6)}
+:root{--line-2:#D9D9D9;--sel:#F2F2F2;--dark:#3B3B3B;--mono:"SF Mono",Menlo,Consolas,"Liberation Mono",monospace}
+body{background:#F4F4F4}
+.btn,.btn.primary,.btn.ghost,.btn.danger,.kebab,.msearch,.p2,.cal .ch button,.cal .quick button,.p4 button{border-radius:6px}
+.field input,.field select,.field textarea,.search,.txa textarea,.p5 input,.dd .trg,.qty,.seg,.upfile,.tokcell,.mck,.chip{border-radius:6px}
+.board,.tblwrap,.cardx,.card,.empty,.cal,.desc,.drawerdemo,.noti,.acc-p,.feed,.chart,.split,.result,.upload{border-radius:12px}
+.cardx .ct,.card .card-title{border-radius:12px 12px 0 0}
+.dt,.t td.num{font-family:var(--mono);letter-spacing:var(--ls-n4)}
+.t tbody tr:hover td{background:var(--sel)}
+.t tbody tr:hover td:first-child{border-radius:6px 0 0 6px}
+.t tbody tr:hover td:last-child{border-radius:0 6px 6px 0}
+.pillf.on{background:var(--sel);border-color:var(--line-2);color:var(--ink)}
+.seg button.on{background:var(--sel);color:var(--ink)}
+.nitem:hover{background:var(--sel)}
+:root{--d1:#1F4F9E;--d2:#C9781F;--d3:#00806A;--d4:#8659CC;--d5:#5E7A12;--d6:#C7466E;--d7:#0E82A8;--d8:#B5651D}
+.notice{background:#F4F4F4}
+
+/* ══ 深色模式（規範 8.8）：由 components_s6d 與 components_s6 的屬性層級差異產生。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
+html[data-theme="dark"]{color-scheme:dark}
+:where(html[data-theme="dark"]) .board{background:var(--card)}
+:where(html[data-theme="dark"]) .btn{background:var(--card)}
+:where(html[data-theme="dark"]) .btn.primary{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .btn.ghost{background:var(--card)}
+:where(html[data-theme="dark"]) .btn.danger{background:var(--card)}
+:where(html[data-theme="dark"]) .field input,:where(html[data-theme="dark"]) .field select,:where(html[data-theme="dark"]) .field textarea{background:var(--card)}
+:where(html[data-theme="dark"]) .search{background:var(--card)}
+:where(html[data-theme="dark"]) .check i{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .chip{background:var(--card)}
+:where(html[data-theme="dark"]) .pillf{background:var(--card)}
+:where(html[data-theme="dark"]) .seg button{background:var(--card)}
+:where(html[data-theme="dark"]) .st.gray{background:var(--sel)}
+:where(html[data-theme="dark"]) .tblwrap{background:var(--card)}
+:where(html[data-theme="dark"]) .t td{border-bottom:1px solid var(--line)}
+:where(html[data-theme="dark"]) .statc{background:var(--card)}
+:where(html[data-theme="dark"]) .cardx{background:var(--card)}
+:where(html[data-theme="dark"]) .p1 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p1 button.on{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .p2 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p2 button.on{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .p2 .dots{background:var(--card)}
+:where(html[data-theme="dark"]) .p3 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p5 button{background:var(--card)}
+:where(html[data-theme="dark"]) .modal{background:var(--card)}
+:where(html[data-theme="dark"]) .toast{color:var(--on-ink)}
+:where(html[data-theme="dark"]) .toast i{background:var(--ok)}
+:where(html[data-theme="dark"]) .flow .stp{background:var(--card)}
+:where(html[data-theme="dark"]) .dd .trg{background:var(--card)}
+:where(html[data-theme="dark"]) .menu{background:var(--card)}
+:where(html[data-theme="dark"]) .kebab{background:var(--card)}
+:where(html[data-theme="dark"]) .mck i{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .sw2 .tk::after{background:var(--card)}
+:where(html[data-theme="dark"]) .txa textarea{background:var(--card)}
+:where(html[data-theme="dark"]) .tip{color:var(--on-ink)}
+:where(html[data-theme="dark"]) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,#EFEFEF 75%)}
+:where(html[data-theme="dark"]) .noti{background:var(--card)}
+:where(html[data-theme="dark"]) .nrow{border-bottom:1px solid var(--line)}
+:where(html[data-theme="dark"]) .acc-p{background:var(--card)}
+:where(html[data-theme="dark"]) .bell{background:var(--card)}
+:where(html[data-theme="dark"]) .bell b{color:var(--on-err);border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .alert.err{background:var(--err-soft,var(--err-soft))}
+:where(html[data-theme="dark"]) .alert.wrn{background:var(--wrn-soft,var(--wrn-soft))}
+:where(html[data-theme="dark"]) .alert.ok{background:var(--ok-soft,var(--ok-soft))}
+:where(html[data-theme="dark"]) .alert.info{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+:where(html[data-theme="dark"]) .pop{background:var(--card)}
+:where(html[data-theme="dark"]) .pop .pt i{background:var(--wrn-soft,var(--wrn-soft))}
+:where(html[data-theme="dark"]) .cal{background:var(--card)}
+:where(html[data-theme="dark"]) .cal .cg .sel{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .cal .quick button.on{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .tab.on .cnt{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .desc{background:var(--card)}
+:where(html[data-theme="dark"]) .desc dt{background:var(--paperc,var(--paperc))}
+:where(html[data-theme="dark"]) .avatar{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .avatar .dot{border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .avstack .avatar{border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .badge>b{color:var(--on-err);border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .count.err{background:var(--err-soft,var(--err-soft))}
+:where(html[data-theme="dark"]) .count.gray{background:var(--paperc,var(--paperc))}
+:where(html[data-theme="dark"]) .drawerdemo{background:var(--page)}
+:where(html[data-theme="dark"]) .drawerdemo .scrim{background:rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .drawer{background:var(--card);box-shadow:-12px 0 32px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .toolbar{background:var(--card)}
+:where(html[data-theme="dark"]) .slider .th{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .slider .tt{color:var(--on-ink)}
+:where(html[data-theme="dark"]) .casc{background:var(--card)}
+:where(html[data-theme="dark"]) .casc li.pick{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .tlist{background:var(--card)}
+:where(html[data-theme="dark"]) .tlist .th2{background:var(--paperc,var(--paperc))}
+:where(html[data-theme="dark"]) .stepper .sp .dot{background:var(--card)}
+:where(html[data-theme="dark"]) .stepper .sp.done .dot{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .tl li::before{border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .feed{background:var(--card)}
+:where(html[data-theme="dark"]) .chart{background:var(--card)}
+:where(html[data-theme="dark"]) .spark{background:var(--card)}
+:where(html[data-theme="dark"]) .split{background:var(--card)}
+:where(html[data-theme="dark"]) .split .pa{background:var(--paperc,var(--paperc))}
+:where(html[data-theme="dark"]) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
+:where(html[data-theme="dark"]) .thumb .lab{background:rgba(26,26,26,.95)}
+:where(html[data-theme="dark"]) .thumb .arr{background:rgba(26,26,26,.95);box-shadow:0 2px 8px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .thumb .dots i{background:rgba(26,26,26,.8);border:1px solid rgba(255,255,255,.15)}
+:where(html[data-theme="dark"]) .strip .thumb small{background:rgba(26,26,26,.95)}
+:where(html[data-theme="dark"]) .result{background:var(--card)}
+:where(html[data-theme="dark"]) .result.ok .ic{background:var(--ok-soft,var(--ok-soft))}
+:where(html[data-theme="dark"]) .result.err .ic{background:var(--err-soft,var(--err-soft))}
+:where(html[data-theme="dark"]) .result.info .ic{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+:where(html[data-theme="dark"]) .result .dl{background:var(--paperc,var(--paperc))}
+html[data-theme="dark"].sc-light .rowset:has(.st.wrn) .aibadge,html[data-theme="dark"].sc-light tr:has(.st.wrn) .aibadge,html[data-theme="dark"].sc-light .nitem:has(.st.wrn) .aibadge{color:var(--on-acc) !important}
+:where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .card{background:var(--card)}
+:where(html[data-theme="dark"]) body{background:var(--page)}
+:where(html[data-theme="dark"]) .check.ind i{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .notice{background:var(--page)}
+html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED}
+@media (prefers-color-scheme:dark){
+html:not([data-theme="light"]){color-scheme:dark}
+:where(html:not([data-theme="light"])) .board{background:var(--card)}
+:where(html:not([data-theme="light"])) .btn{background:var(--card)}
+:where(html:not([data-theme="light"])) .btn.primary{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .btn.ghost{background:var(--card)}
+:where(html:not([data-theme="light"])) .btn.danger{background:var(--card)}
+:where(html:not([data-theme="light"])) .field input,:where(html:not([data-theme="light"])) .field select,:where(html:not([data-theme="light"])) .field textarea{background:var(--card)}
+:where(html:not([data-theme="light"])) .search{background:var(--card)}
+:where(html:not([data-theme="light"])) .check i{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .chip{background:var(--card)}
+:where(html:not([data-theme="light"])) .pillf{background:var(--card)}
+:where(html:not([data-theme="light"])) .seg button{background:var(--card)}
+:where(html:not([data-theme="light"])) .st.gray{background:var(--sel)}
+:where(html:not([data-theme="light"])) .tblwrap{background:var(--card)}
+:where(html:not([data-theme="light"])) .t td{border-bottom:1px solid var(--line)}
+:where(html:not([data-theme="light"])) .statc{background:var(--card)}
+:where(html:not([data-theme="light"])) .cardx{background:var(--card)}
+:where(html:not([data-theme="light"])) .p1 button{background:var(--card)}
+:where(html:not([data-theme="light"])) .p1 button.on{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .p2 button{background:var(--card)}
+:where(html:not([data-theme="light"])) .p2 button.on{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .p2 .dots{background:var(--card)}
+:where(html:not([data-theme="light"])) .p3 button{background:var(--card)}
+:where(html:not([data-theme="light"])) .p5 button{background:var(--card)}
+:where(html:not([data-theme="light"])) .modal{background:var(--card)}
+:where(html:not([data-theme="light"])) .toast{color:var(--on-ink)}
+:where(html:not([data-theme="light"])) .toast i{background:var(--ok)}
+:where(html:not([data-theme="light"])) .flow .stp{background:var(--card)}
+:where(html:not([data-theme="light"])) .dd .trg{background:var(--card)}
+:where(html:not([data-theme="light"])) .menu{background:var(--card)}
+:where(html:not([data-theme="light"])) .kebab{background:var(--card)}
+:where(html:not([data-theme="light"])) .mck i{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .sw2 .tk::after{background:var(--card)}
+:where(html:not([data-theme="light"])) .txa textarea{background:var(--card)}
+:where(html:not([data-theme="light"])) .tip{color:var(--on-ink)}
+:where(html:not([data-theme="light"])) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,#EFEFEF 75%)}
+:where(html:not([data-theme="light"])) .noti{background:var(--card)}
+:where(html:not([data-theme="light"])) .nrow{border-bottom:1px solid var(--line)}
+:where(html:not([data-theme="light"])) .acc-p{background:var(--card)}
+:where(html:not([data-theme="light"])) .bell{background:var(--card)}
+:where(html:not([data-theme="light"])) .bell b{color:var(--on-err);border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .alert.err{background:var(--err-soft,var(--err-soft))}
+:where(html:not([data-theme="light"])) .alert.wrn{background:var(--wrn-soft,var(--wrn-soft))}
+:where(html:not([data-theme="light"])) .alert.ok{background:var(--ok-soft,var(--ok-soft))}
+:where(html:not([data-theme="light"])) .alert.info{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+:where(html:not([data-theme="light"])) .pop{background:var(--card)}
+:where(html:not([data-theme="light"])) .pop .pt i{background:var(--wrn-soft,var(--wrn-soft))}
+:where(html:not([data-theme="light"])) .cal{background:var(--card)}
+:where(html:not([data-theme="light"])) .cal .cg .sel{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .cal .quick button.on{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .tab.on .cnt{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .desc{background:var(--card)}
+:where(html:not([data-theme="light"])) .desc dt{background:var(--paperc,var(--paperc))}
+:where(html:not([data-theme="light"])) .avatar{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .avatar .dot{border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .avstack .avatar{border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .badge>b{color:var(--on-err);border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .count.err{background:var(--err-soft,var(--err-soft))}
+:where(html:not([data-theme="light"])) .count.gray{background:var(--paperc,var(--paperc))}
+:where(html:not([data-theme="light"])) .drawerdemo{background:var(--page)}
+:where(html:not([data-theme="light"])) .drawerdemo .scrim{background:rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .drawer{background:var(--card);box-shadow:-12px 0 32px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .toolbar{background:var(--card)}
+:where(html:not([data-theme="light"])) .slider .th{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .slider .tt{color:var(--on-ink)}
+:where(html:not([data-theme="light"])) .casc{background:var(--card)}
+:where(html:not([data-theme="light"])) .casc li.pick{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .tlist{background:var(--card)}
+:where(html:not([data-theme="light"])) .tlist .th2{background:var(--paperc,var(--paperc))}
+:where(html:not([data-theme="light"])) .stepper .sp .dot{background:var(--card)}
+:where(html:not([data-theme="light"])) .stepper .sp.done .dot{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .tl li::before{border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .feed{background:var(--card)}
+:where(html:not([data-theme="light"])) .chart{background:var(--card)}
+:where(html:not([data-theme="light"])) .spark{background:var(--card)}
+:where(html:not([data-theme="light"])) .split{background:var(--card)}
+:where(html:not([data-theme="light"])) .split .pa{background:var(--paperc,var(--paperc))}
+:where(html:not([data-theme="light"])) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
+:where(html:not([data-theme="light"])) .thumb .lab{background:rgba(26,26,26,.95)}
+:where(html:not([data-theme="light"])) .thumb .arr{background:rgba(26,26,26,.95);box-shadow:0 2px 8px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .thumb .dots i{background:rgba(26,26,26,.8);border:1px solid rgba(255,255,255,.15)}
+:where(html:not([data-theme="light"])) .strip .thumb small{background:rgba(26,26,26,.95)}
+:where(html:not([data-theme="light"])) .result{background:var(--card)}
+:where(html:not([data-theme="light"])) .result.ok .ic{background:var(--ok-soft,var(--ok-soft))}
+:where(html:not([data-theme="light"])) .result.err .ic{background:var(--err-soft,var(--err-soft))}
+:where(html:not([data-theme="light"])) .result.info .ic{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+:where(html:not([data-theme="light"])) .result .dl{background:var(--paperc,var(--paperc))}
+html:not([data-theme="light"]).sc-light .rowset:has(.st.wrn) .aibadge,html:not([data-theme="light"]).sc-light tr:has(.st.wrn) .aibadge,html:not([data-theme="light"]).sc-light .nitem:has(.st.wrn) .aibadge{color:var(--on-acc) !important}
+:where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .card{background:var(--card)}
+:where(html:not([data-theme="light"])) body{background:var(--page)}
+:where(html:not([data-theme="light"])) .check.ind i{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .notice{background:var(--page)}
+html:not([data-theme="light"]){color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED}
+}

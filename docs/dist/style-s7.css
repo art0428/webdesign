@@ -1,0 +1,25 @@
+/* ══ 管理者工作室 設計系統 22.0.0 ══ style-s7.css（編輯 EDITORIAL 材質層：只有與 S1 不同的規則）
+   由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
+   風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第五項檢查會擋）。 */
+
+/* 本套材質（相對於 S1 基準的屬性層級差異） */
+:root{--ink:#1A1814;--line:#E2DDD3;--muted:#615C54;--paperc:#F3F0E9}
+body{background:#FAF8F3}
+.st.gray{background:#EFECE5}
+.t td{border-bottom:1px solid #ECE8E0}
+.sk{background:linear-gradient(90deg,#EAE6DD 25%,#F5F2EC 50%,#EAE6DD 75%)}
+.nrow{border-bottom:1px solid #ECE8E0}
+.desc dt{background:var(--paperc,#F3F0E9)}
+.count.gray{background:var(--paperc,#F3F0E9)}
+.drawerdemo{background:#FAF8F3}
+.tlist .th2{background:var(--paperc,#F3F0E9)}
+.split .pa{background:var(--paperc,#F3F0E9)}
+.thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,#F3F0E9) 7px 14px)}
+.result .dl{background:var(--paperc,#F3F0E9)}
+:root{--serif:'Noto Serif TC','Songti TC','Source Han Serif TC','PMingLiU',serif;--r-lg:0px;--r-sm:2px}
+.notice{background:var(--paperc)}
+.head h1,.sec h2,.card .card-title,.cardx .ct,.modal .mh,.drawer .dh,.tcap b,.chart .chh,.result h3,.empty b,.acd .hd,.sf-h1,.sf-h2,.sf-pname,.sf-feat h3,.sf-logo{font-family:var(--serif)}
+.board{background:transparent;border:none;border-top:2px solid var(--ink);border-radius:0;padding:var(--sp-6) 0 var(--sp-2)}
+.card,.cardx,.tblwrap,.empty,.cal,.desc,.drawerdemo,.noti,.acc-p,.feed,.chart,.split,.result,.upload,.modal,.menu,.pop,.notice,.alert,.statc,.toast,.tip,.drawer,.dd .menu,.tlist,.casc,.spark{border-radius:0}
+.card .card-title,.cardx .ct{border-radius:0}
+.btn,.btn.primary,.btn.ghost,.btn.danger,.btn.sm,.kebab,.msearch,.p2,.p4 button,.cal .ch button,.cal .quick button,.field input,.field select,.field textarea,.search,.txa textarea,.p5 input,.dd .trg,.qty,.seg,.seg button,.upfile,.tokcell,.mck,.chip,.pillf,.st,.tag,.count,.tabs,.tab,.nitem,.aibadge,.bar,.bar i{border-radius:2px}

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-style="s1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S1 奶油 · 後台管理 — 管理者工作室 設計系統 22.0.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style-s1.css">
+<style>
+/* 本頁只做排版，一律用 token；元件外觀全部來自 dist/ */
+.ic{flex:none;vertical-align:middle}
+.topnav{display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap;font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.topnav .brand{font-weight:900;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);display:flex;align-items:center;gap:var(--sp-2)}
+.topnav .brand i{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2);display:inline-block}
+.topnav .links{display:flex;gap:var(--sp-5);font-weight:500}
+.topnav .links a{color:var(--ink);text-decoration:none}
+.topnav .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+.row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.foot-note{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.foot-note a{color:var(--acc)}
+/* 下面兩條是版面層的保護，不改元件外觀：窄欄裡按鈕文字不得折行；表格標題列在手機上允許換行 */
+.t .btn.sm,.t .dt{white-space:nowrap}
+@media (max-width:767px){.tcap{flex-wrap:wrap}.tcap .sp{flex-wrap:wrap;margin-left:0;width:100%}}
+
+.shell{display:grid;grid-template-columns:226px 1fr;min-height:100vh}
+.side{padding:var(--sp-5) var(--sp-3);display:flex;flex-direction:column;gap:var(--sp-1);border-right:1px solid var(--line);background:var(--card)}
+.side .grp{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted);padding:var(--sp-4) var(--sp-4) var(--sp-1)}
+.side .nitem{width:100%;justify-content:flex-start}
+.main{padding:var(--sp-6) var(--sp-7) var(--sp-9);display:grid;gap:var(--sp-6);align-content:start;max-width:1060px}
+.ph{display:flex;align-items:flex-end;gap:var(--sp-4);flex-wrap:wrap}
+.ph h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);font-weight:900;margin:0}
+.ph .cnt{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.ph .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+.filters{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.filters .search{flex:1 1 260px;width:auto}
+@media (max-width:1023px){.shell{grid-template-columns:1fr}.side{display:none}.main{padding:var(--sp-5) var(--sp-4)}}
+
+/* 規範 6.2（v22）：容器左右內距＝欄格外邊距，寬以上 24、平板 20、手機 16；放在頁面排版之後，各頁一致 */
+.main,.wrap{padding-left:var(--sp-6);padding-right:var(--sp-6)}
+@media (max-width:1023px){.main,.wrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}}
+@media (max-width:767px){.main,.wrap{padding-left:var(--sp-4);padding-right:var(--sp-4)}}
+</style>
+</head>
+<body data-type="productive">
+
+<div class="shell">
+  <aside class="side" aria-label="主選單">
+    <div class="topnav" style="padding:0 var(--sp-4) var(--sp-3)"><span class="brand"><i></i>管理者工作室</span></div>
+    <div class="grp">銷售</div>
+    <button class="nitem on"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg>訂單管理<span class="count err" style="margin-left:auto">3</span></button>
+    <button class="nitem"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2"/><path d="M15 18H9"/><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14"/><circle cx="17" cy="18" r="2"/><circle cx="7" cy="18" r="2"/></svg>出貨與物流</button>
+    <button class="nitem"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>客戶</button>
+    <div class="grp">商品</div>
+    <button class="nitem"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg>商品與規格</button>
+    <button class="nitem"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>價格表</button>
+  </aside>
+  <main class="main">
+    <span class="crumb">管理者工作室 ／ 銷售 ／ <b>訂單管理</b></span>
+    <div class="ph"><div><h1>訂單管理</h1><div class="cnt">36 筆 · 本週新增 9</div></div>
+      <div class="sp"><button class="btn">匯出 Excel</button><button class="btn primary"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>新增訂單</button></div></div>
+    <div class="grid">
+      <div class="statc hero col-3"><div class="k">待確認</div><div class="v num">3<small>張</small></div><div class="delta up">▲ 2 vs 昨日</div></div>
+      <div class="statc col-3"><div class="k">備貨中</div><div class="v num">12<small>張</small></div><div class="delta dn">▼ 3 vs 上週</div></div>
+      <div class="statc col-3"><div class="k">逾期未出貨</div><div class="v num">2<small>張</small></div><div class="delta dn">▲ 1 vs 昨日</div></div>
+      <div class="statc col-3"><div class="k">本月出貨</div><div class="v num"><small>NT$</small>1.84M</div><div class="delta up">▲ 12.4% 比上月</div></div>
+    </div>
+    <div class="alert wrn"><i>!</i><div><p>價格表為 2026 Q2 版本，10 月 15 日起自動改用 Q4 版，下單前請先確認。</p></div><button class="btn sm">查看差異</button></div>
+    <div class="tblwrap">
+      <div class="tcap"><b>訂單</b><span class="cnt">36 筆 · 篩選 3</span>
+        <span class="sp"><button class="pillf on">全部<span class="n">36</span></button><button class="pillf">待確認<span class="n">3</span></button><button class="pillf">備貨中<span class="n">12</span></button><button class="pillf">逾期<span class="n">2</span></button></span></div>
+      <div class="filters" style="padding:var(--sp-3) var(--sp-5);border-bottom:1px solid var(--line)">
+        <div class="search"><svg class="ic" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg><input placeholder="搜尋 單號 / 客戶 / 料號 / PO"></div>
+        <span class="seg"><button class="on">列表</button><button>看板</button></span>
+        <div class="field" style="width:200px"><select aria-label="到貨區間"><option>到貨：本週</option><option>到貨：本月</option></select></div>
+      </div>
+      <table class="t">
+        <thead><tr><th class="ck"><span class="check"><i></i></span></th><th>單號</th><th>客戶</th><th>品項</th><th>狀態</th><th style="text-align:right">金額</th><th style="text-align:right">到貨</th><th></th></tr></thead>
+        <tbody>
+          <tr><td class="ck"><span class="check on"><i></i></span></td><td class="dt">SO-261010-021</td><td>大同機械</td><td>AL-2040 ×100 他 1 項</td><td><span class="st wrn">● 待確認</span></td><td class="amt">28,166</td><td class="dt">10/14</td><td><button class="btn sm">確認</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261010-019</td><td>永信自動化</td><td>SB-1100 ×800</td><td><span class="st acc">● 備貨中</span></td><td class="amt">6,460</td><td class="dt">10/13</td><td><button class="btn sm">預覽</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261009-008</td><td>詮宏精密</td><td>AL-2040 ×500（刻印）</td><td><span class="st ok">● 已出貨</span></td><td class="amt">96,140</td><td class="dt">10/09</td><td><button class="btn sm">預覽</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261006-003</td><td>青禾工業</td><td>MG-300 ×24</td><td><span class="st err">● 逾期</span></td><td class="amt">12,800</td><td class="dt">10/06</td><td><button class="btn sm">催單</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261003-014</td><td>宏達金屬</td><td>AL-6063 ×60</td><td><span class="st gray">● 已結案</span></td><td class="amt">41,900</td><td class="dt">10/03</td><td><button class="btn sm">預覽</button></td></tr>
+        </tbody>
+      </table>
+      <div class="tfoot"><span class="p4"><button>‹</button><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>8</button><button>›</button></span></div>
+    </div>
+    <p class="foot-note">範例：S1 奶油 × 後台管理（訂單） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p>
+  </main>
+</div>
+
+<script src="../theme.js"></script>
+</body>
+</html>

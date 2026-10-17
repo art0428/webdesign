@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-style="s5">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S5 極光 · 預約中心 — 管理者工作室 設計系統 22.0.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style-s5.css">
+<style>
+/* 本頁只做排版，一律用 token；元件外觀全部來自 dist/ */
+.ic{flex:none;vertical-align:middle}
+.topnav{display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap;font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.topnav .brand{font-weight:900;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);display:flex;align-items:center;gap:var(--sp-2)}
+.topnav .brand i{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2);display:inline-block}
+.topnav .links{display:flex;gap:var(--sp-5);font-weight:500}
+.topnav .links a{color:var(--ink);text-decoration:none}
+.topnav .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+.row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.foot-note{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.foot-note a{color:var(--acc)}
+/* 下面兩條是版面層的保護，不改元件外觀：窄欄裡按鈕文字不得折行；表格標題列在手機上允許換行 */
+.t .btn.sm,.t .dt{white-space:nowrap}
+@media (max-width:767px){.tcap{flex-wrap:wrap}.tcap .sp{flex-wrap:wrap;margin-left:0;width:100%}}
+
+.wrap{max-width:1060px;margin:0 auto;padding:var(--sp-6) var(--sp-5) var(--sp-9);display:grid;gap:var(--sp-6)}
+.two{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--sp-5);align-items:start}
+.hero h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);font-weight:900;margin:0 0 var(--sp-2)}
+.hero p{font-size:var(--fs-b1);line-height:var(--lh-b1);color:var(--muted);margin:0}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(96px,1fr));gap:var(--sp-2)}
+.sec-h{font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900;margin:var(--sp-4) 0 var(--sp-3)}
+.sum{display:grid;gap:var(--sp-3)}
+.txa{width:auto}
+.txa textarea{width:100%}
+@media (max-width:767px){.two{grid-template-columns:1fr}}
+.foot-note{color:var(--ink)}   /* v22：S5 頁尾直接落在暈染背景上，--muted 只有 3.7〜4.1；改主文字色 */
+
+/* 規範 6.2（v22）：容器左右內距＝欄格外邊距，寬以上 24、平板 20、手機 16；放在頁面排版之後，各頁一致 */
+.main,.wrap{padding-left:var(--sp-6);padding-right:var(--sp-6)}
+@media (max-width:1023px){.main,.wrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}}
+@media (max-width:767px){.main,.wrap{padding-left:var(--sp-4);padding-right:var(--sp-4)}}
+</style>
+</head>
+<body data-type="expressive">
+
+<div class="wrap">
+  <div class="topnav"><span class="brand"><i></i>管理者工作室 · 預約中心</span><span class="links"><a href="#">預約</a><a href="#">我的紀錄</a><a href="#">會員</a></span><span class="sp"><span class="avatar">林</span></span></div>
+  <section class="board hero"><h1>預約到府保養</h1><p>選日期、選時段、確認地址，三步完成。保養師會在前一天簡訊確認。</p>
+    <div class="stepper" style="margin-top:var(--sp-5)">
+      <div class="sp done"><span class="dot">✓</span><b>服務項目</b><small>年度保養</small></div>
+      <div class="sp cur"><span class="dot">2</span><b>日期與時段</b><small>進行中</small></div>
+      <div class="sp"><span class="dot">3</span><b>地址與確認</b><small> </small></div>
+    </div></section>
+  <div class="two">
+    <section class="board">
+      <div class="sec-h" style="margin-top:0">選擇日期</div>
+      <div class="row"><span class="pillf on">10/14 二</span><span class="pillf">10/15 三</span><span class="pillf">10/16 四</span><span class="pillf">10/17 五</span><span class="pillf">10/18 六<span class="n">滿</span></span></div>
+      <div class="sec-h">選擇時段</div>
+      <div class="slots"><span class="chip">09:00</span><span class="chip">10:30</span><span class="chip on">13:30</span><span class="chip">15:00</span><span class="chip off">16:30</span><span class="chip">18:00</span></div>
+      <div class="sec-h">備註</div>
+      <div class="txa"><textarea rows="3" placeholder="例如：機器在二樓，需要先打電話" aria-label="備註"></textarea></div>
+      <div class="row" style="margin-top:var(--sp-4)"><span class="check on"><i></i>同意保養師進入室內拍攝設備照片<span class="sub">僅用於保養紀錄</span></span></div>
+    </section>
+    <aside class="card">
+      <div class="card-title">預約摘要</div>
+      <div class="card-body sum">
+        <dl class="desc"><dt>項目</dt><dd>年度保養</dd><dt>日期</dt><dd class="num">2026/10/14（二）</dd><dt>時段</dt><dd class="num">13:30–15:00</dd><dt>保養師</dt><dd><span class="avatar sm">陳</span> 陳師傅（五星）</dd></dl>
+        <div class="statc hero"><div class="k">預估費用</div><div class="v num"><small>NT$</small>2,400</div><div class="delta">會員價，已含來回車資</div></div>
+        <button class="btn primary" style="width:100%"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>下一步：地址與確認</button>
+        <div class="foot-note">前一天 18:00 前可免費改期。</div>
+      </div>
+    </aside>
+  </div>
+  <div class="alert ok"><i>✓</i><div><p>您的會員等級已升為金卡，本次保養享 9 折。</p></div><button class="x" aria-label="關閉">×</button></div>
+  <p class="foot-note">範例：S5 極光 × 服務型前台（預約與會員中心） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p>
+</div>
+
+<script src="../theme.js"></script>
+</body>
+</html>

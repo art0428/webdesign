@@ -99,7 +99,7 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 
 /* ═══ FORMS ═══ */
 .field{width:220px}
-.field label{display:block;font-size:var(--fs-l1);font-weight:700;color:var(--muted);letter-spacing:0.08em;margin-bottom:0.4rem;line-height:var(--lh-l1)}
+.field label{display:block;font-size:var(--fs-l1);font-weight:700;color:var(--muted);letter-spacing:0.08em;margin-bottom:0.8rem;line-height:var(--lh-l1)}
 .field label .req{color:var(--err)}
 .field input,.field select,.field textarea{width:100%;border:1px solid var(--line);border-radius:12px;padding:0.8rem 1.2rem;background:#fff}
 .field input:focus,.field textarea:focus,.field select:focus{outline:none;border:1.5px solid var(--acc)}
@@ -149,13 +149,13 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 
 /* ═══ TABLE ═══ */
 .tblwrap{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff}
-.tcap{display:flex;align-items:center;gap:0.8rem;padding:1.2rem 1.6rem;background:var(--paperc);border-bottom:1px solid var(--line)}
+.tcap{display:flex;align-items:center;gap:0.8rem;padding:1.2rem 2rem;background:var(--paperc);border-bottom:1px solid var(--line)}
 .tcap b{font-size:var(--fs-h3);font-weight:900;letter-spacing:0.08em;line-height:var(--lh-h3)}
 .tcap .cnt{font-family:Arial,sans-serif;font-size:var(--fs-l1);color:var(--muted);line-height:var(--lh-l1)}
 .tcap .sp{margin-left:auto;display:flex;gap:0.8rem}
 table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:var(--lh-b2)}
-.t th{font-size:var(--fs-l2);letter-spacing:0.15em;color:var(--muted);text-align:left;padding:0.8rem 1.6rem;font-weight:700;border-bottom:1px solid var(--line);line-height:var(--lh-l2)}
-.t td{padding:1.2rem 1.6rem;border-bottom:1px solid #ECE8E0;vertical-align:middle}
+.t th{font-size:var(--fs-l2);letter-spacing:0.15em;color:var(--muted);text-align:left;padding:0.8rem 2rem;font-weight:700;border-bottom:1px solid var(--line);line-height:var(--lh-l2)}
+.t td{padding:1.2rem 2rem;border-bottom:1px solid #ECE8E0;vertical-align:middle}
 .t tr:last-child td{border-bottom:none}
 .t tbody tr{transition:background var(--dur-1) var(--ease-out)}
 .t tbody tr:hover td{background:var(--accsoft)}
@@ -364,7 +364,7 @@ html.embedded .accbar{display:none}
 .alert .btn.sm{margin-left:auto;flex:0 0 auto;align-self:center}
 /* ── 核心補件：就地確認 Popconfirm ── */
 .popwrap{position:relative;display:inline-block}
-.pop{position:absolute;top:calc(100% + 10px);left:0;width:260px;padding:1.2rem 1.2rem;font-size:var(--fs-b2);line-height:1.7;z-index:6;border-radius:12px;border:1px solid var(--line);background:#fff;box-shadow:none}
+.pop{position:absolute;top:calc(100% + 10px);left:0;width:260px;padding:1.2rem 1.2rem;font-size:var(--fs-b2);line-height:1.7;z-index:var(--z-pop);border-radius:12px;border:1px solid var(--line);background:#fff;box-shadow:none}
 .pop .pt{font-weight:700;display:flex;gap:0.8rem;align-items:center;color:var(--ink)}
 .pop .pt i{font-style:normal;width:18px;min-height:1.8rem;border-radius:50%;background:var(--wrn-soft,#F3EFE6);color:var(--wrn);display:inline-flex;align-items:center;justify-content:center;font-size:var(--fs-l1);font-weight:900;flex:0 0 auto;line-height:var(--lh-l1)}
 .pop .pb{color:var(--muted);margin:0.4rem 0 0 2.4rem;font-size:var(--fs-b3);line-height:var(--lh-b3)}
@@ -779,6 +779,51 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
  .sf-rc,.sf-addtxt{display:none}
  .sf-add{width:auto;min-width:44px;min-height:4.4rem;align-self:flex-end;padding:0}
 }
+
+/* ══ 元件結構尺寸（規範 5.4，v17）：高度由 token 鎖定、垂直內距歸零、flex 置中；七套共用，風格層不得覆寫 ══ */
+/* 元件結構尺寸（規範 5.4，v17）：高度 token，七套共用；768px 以下可點元件升到 44px 觸控下限 */
+:root{--h-btn-primary:4.0rem;--h-btn:3.8rem;--h-btn-sm:3.2rem;--h-input:4.0rem;--h-qty:3.4rem;--h-pill:2.4rem;--h-nav:3.8rem;--h-tag:2.0rem}
+@media (max-width:767px){:root{--h-btn-primary:4.4rem;--h-btn:4.4rem;--h-btn-sm:4.0rem;--h-input:4.4rem;--h-qty:4.4rem}}
+.btn.btn{min-height:var(--h-btn);padding-top:0;padding-bottom:0;padding-left:var(--sp-5);padding-right:var(--sp-5);display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-2);vertical-align:middle}
+.btn.btn.primary{min-height:var(--h-btn-primary);padding-left:var(--sp-6);padding-right:var(--sp-6)}
+.btn.btn.sm{min-height:var(--h-btn-sm);padding-left:var(--sp-3);padding-right:var(--sp-3)}
+.alert .btn.sm{min-height:0;padding:0}   /* 7.3：警示條內的文字動作與內文共用行框，豁免 */
+.field input,.field select{min-height:var(--h-input);padding-top:0;padding-bottom:0;padding-left:var(--sp-3);padding-right:var(--sp-3)}
+.st{min-height:var(--h-pill);padding-top:0;padding-bottom:0;padding-left:var(--sp-3);padding-right:var(--sp-3);display:inline-flex;align-items:center;gap:var(--sp-1);vertical-align:middle}
+.tag{min-height:var(--h-tag);padding-top:0;padding-bottom:0;padding-left:var(--sp-2);padding-right:var(--sp-2);display:inline-flex;align-items:center;vertical-align:middle}
+.pillf{min-height:var(--h-btn-sm);padding-top:0;padding-bottom:0;padding-left:var(--sp-4);padding-right:var(--sp-4);display:inline-flex;align-items:center;gap:var(--sp-1);vertical-align:middle}
+.chip{min-height:var(--h-btn);padding-top:0;padding-bottom:0;padding-left:var(--sp-4);padding-right:var(--sp-4);display:inline-flex;align-items:center;gap:var(--sp-2);vertical-align:middle}
+.nitem{min-height:var(--h-nav);padding-top:0;padding-bottom:0;padding-left:var(--sp-4);padding-right:var(--sp-4)}
+.qty{min-height:var(--h-qty)}
+.qty button{width:3.2rem;min-height:3.0rem}   /* 3.0 ＋ 容器框線，S4 的 2px 框也裝得進 3.4rem */
+
+/* ══ 焦點環、佔位文字、層級（規範 v18）：七套共用，風格層不得覆寫 ══ */
+/* 層級表（規範 5.6，v18）：五層，不得出現表外的 z-index */
+:root{--z-sticky:10;--z-pop:20;--z-drawer:30;--z-modal:40;--z-toast:50}
+/* 10.3 焦點環：鍵盤到達的每個可互動元件都是 2px 主色外框；滑鼠點擊不顯示（:focus-visible） */
+.btn:focus-visible,.chip:focus-visible,.pillf:focus-visible,.tabs .tab:focus-visible,.nitem:focus-visible,.seg button:focus-visible,
+.p4 a:focus-visible,.p4 button:focus-visible,.qty button:focus-visible,.bell:focus-visible,.x:focus-visible,.accbtn:focus-visible,
+a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.field input:focus-visible,.field select:focus-visible,.field textarea:focus-visible,.txa textarea:focus-visible,
+.p5 input:focus-visible,.qty input:focus-visible,.srch input:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--acc);outline-offset:0}
+/* 10.1 佔位文字：用次要文字色，不用瀏覽器預設的 #757575（在 S2 底、S6 深色、S1 頁面底都不到 4.5） */
+::placeholder{color:var(--muted);opacity:1}
+/* 5.6 層級 */
+.pop{z-index:var(--z-pop)}
+.tip{z-index:var(--z-toast)}
+.toast{z-index:var(--z-toast)}
+.drawer{z-index:var(--z-drawer)}
+.modal{z-index:var(--z-modal)}
+
+/* ══ 數量調整器輸入格（規範 v20）：與 ± 鈕同為 3.0rem，外框 1px 或 2px 的風格都由 --h-qty 決定高度 ══ */
+.qty input{min-height:3.0rem}
+
+/* ══ 欄格系統（規範 v22，6.5）：12 欄流體格，平板以下 8 欄、480 以下 4 欄；欄距標準 --sp-6、緊湊 --sp-3 ══ */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--sp-6);row-gap:var(--sp-6)}
+.col-3{grid-column:span 3}.col-4{grid-column:span 4}.col-6{grid-column:span 6}.col-8{grid-column:span 8}.col-12{grid-column:span 12}
+.grid.dense{column-gap:var(--sp-3);row-gap:var(--sp-3)}
+@media (max-width:1023px){.grid{grid-template-columns:repeat(8,minmax(0,1fr))}.col-3,.col-4{grid-column:span 4}.col-6,.col-8,.col-12{grid-column:span 8}}
+@media (max-width:479px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--sp-3);row-gap:var(--sp-3)}.col-3,.col-4,.col-6,.col-8,.col-12{grid-column:span 4}}
 </style>
 </head>
 <body data-type="expressive">

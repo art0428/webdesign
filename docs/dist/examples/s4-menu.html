@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-style="s4">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S4 手帳 · 點餐 — 管理者工作室 設計系統 22.0.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style-s4.css">
+<style>
+/* 本頁只做排版，一律用 token；元件外觀全部來自 dist/ */
+.ic{flex:none;vertical-align:middle}
+.topnav{display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap;font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.topnav .brand{font-weight:900;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);display:flex;align-items:center;gap:var(--sp-2)}
+.topnav .brand i{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2);display:inline-block}
+.topnav .links{display:flex;gap:var(--sp-5);font-weight:500}
+.topnav .links a{color:var(--ink);text-decoration:none}
+.topnav .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+.row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.foot-note{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.foot-note a{color:var(--acc)}
+/* 下面兩條是版面層的保護，不改元件外觀：窄欄裡按鈕文字不得折行；表格標題列在手機上允許換行 */
+.t .btn.sm,.t .dt{white-space:nowrap}
+@media (max-width:767px){.tcap{flex-wrap:wrap}.tcap .sp{flex-wrap:wrap;margin-left:0;width:100%}}
+
+.wrap{max-width:1060px;margin:0 auto;padding:var(--sp-6) var(--sp-5) var(--sp-9);display:grid;gap:var(--sp-6)}
+.hero h1{font-size:var(--fs-h0);line-height:var(--lh-h0);font-weight:900;margin:0 0 var(--sp-2);text-wrap:balance}
+.hero p{font-size:var(--fs-b1);line-height:var(--lh-b1);color:var(--muted);margin:0 0 var(--sp-4)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-5)}
+.dish .pic{aspect-ratio:4/3;border-radius:var(--r-sm);background:var(--paperc,var(--band,#F3F0E9));display:flex;align-items:center;justify-content:center;color:var(--muted);margin-bottom:var(--sp-3)}
+.dish .nm{font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;display:flex;justify-content:space-between;gap:var(--sp-2)}
+.dish .ds{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);margin:var(--sp-1) 0 var(--sp-3)}
+.dish .ft{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-2);flex-wrap:wrap}
+
+.cartbar{position:sticky;bottom:0;display:flex;align-items:center;gap:var(--sp-3) var(--sp-4);padding:var(--sp-3) var(--sp-5);flex-wrap:wrap}
+.cartbar .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+@media (max-width:479px){.menu{grid-template-columns:1fr 1fr;gap:var(--sp-3)}.dish .ds{display:none}.dish .ft .btn{flex:1 1 100%}}
+.dish .price small,.cartbar small{font-size:.68em;color:var(--muted);font-weight:400}   /* v22：貨幣前綴照 4.6 縮 0.68 倍，原本落在瀏覽器預設的 13.33px */
+
+/* 規範 6.2（v22）：容器左右內距＝欄格外邊距，寬以上 24、平板 20、手機 16；放在頁面排版之後，各頁一致 */
+.main,.wrap{padding-left:var(--sp-6);padding-right:var(--sp-6)}
+@media (max-width:1023px){.main,.wrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}}
+@media (max-width:767px){.main,.wrap{padding-left:var(--sp-4);padding-right:var(--sp-4)}}
+</style>
+</head>
+<body data-type="expressive">
+
+<div class="wrap">
+  <div class="topnav"><span class="brand"><i></i>巷口豆花 · 內用 7 號桌</span><span class="sp"><button class="btn sm"><svg class="ic" aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>會員</button></span></div>
+  <section class="board hero">
+    <h1>今天想吃什麼？</h1>
+    <p>點完直接送到桌，不用排隊。招牌是手工豆花與古早味粉圓。</p>
+    <div class="row"><span class="pillf on">全部</span><span class="pillf">豆花</span><span class="pillf">冰品</span><span class="pillf">熱飲</span><span class="pillf">季節限定<span class="n">3</span></span></div>
+  </section>
+  <section class="menu">
+    <div class="card dish"><div class="card-body"><div class="pic"><svg class="ic" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div><div class="nm">招牌手工豆花<span class="price num"><small>NT$</small>55</span></div><div class="ds">黃豆每日現磨，配料任選兩種</div>
+      <div class="row" style="margin-bottom:var(--sp-3)"><span class="chip on">粉圓</span><span class="chip">花生</span><span class="chip">紅豆</span><span class="chip off">芋圓（售完）</span></div>
+      <div class="ft"><span class="qty"><button aria-label="減少">－</button><input class="num" value="1"><button aria-label="增加">＋</button></span><button class="btn primary sm">加入</button></div></div></div>
+    <div class="card dish"><div class="card-body"><div class="pic"><svg class="ic" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div><div class="nm">黑糖粉圓冰<span class="price num"><small>NT$</small>65</span></div><div class="ds">黑糖現熬，粉圓 Q 彈</div>
+      <div class="row" style="margin-bottom:var(--sp-3)"><span class="radio on"><i></i>正常甜</span><span class="radio"><i></i>少甜</span></div>
+      <div class="ft"><span class="qty"><button aria-label="減少" disabled>－</button><input class="num" value="1"><button aria-label="增加">＋</button></span><button class="btn primary sm">加入</button></div></div></div>
+    <div class="card dish"><div class="card-body"><div class="pic"><svg class="ic" aria-hidden="true" focusable="false" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/></svg></div><div class="nm">薑汁熱豆花<span class="price num"><small>NT$</small>60</span></div><div class="ds">老薑熬煮兩小時，冬季限定</div>
+      <div class="row" style="margin-bottom:var(--sp-3)"><span class="tag acc">季節限定</span><span class="st wrn">● 剩 4 份</span></div>
+      <div class="ft"><span class="qty"><button aria-label="減少">－</button><input class="num" value="2"><button aria-label="增加">＋</button></span><button class="btn primary sm">加入</button></div></div></div>
+  </section>
+  <div class="notice">內用每桌低消一份，加點配料每樣 <b>NT$ 10</b>。</div>
+  <div class="board cartbar"><span><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10a4 4 0 0 1-8 0"/><path d="M3.103 6.034h17.794"/><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z"/></svg> 已點 <b class="num">3</b> 樣</span><span class="num" style="font-weight:700">小計 <small>NT$</small>240</span><span class="sp"><button class="btn primary">送出餐點</button></span></div>
+  <p class="foot-note">範例：S4 手帳 × 餐飲前台（點餐） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p>
+</div>
+
+<script src="../theme.js"></script>
+</body>
+</html>

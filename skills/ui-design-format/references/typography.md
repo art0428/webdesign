@@ -1,4 +1,4 @@
-> 本檔是《網頁設計規範 v16》的一部分，全文見倉庫的 docs/spec.md。
+> 本檔是《網頁設計規範 v22》的一部分，全文見倉庫的 docs/spec.md。
 
 ## 四、字型、字級與行距
 
@@ -191,7 +191,7 @@ body{ font-size:1.4rem; line-height:1.8; }    /* B1 */
 
 ```css
 /* 錯誤 */ .btn{ height:40px; padding:0 24px; font-size:13px; }
-/* 正確 */ .btn{ min-height:4.0rem; padding:1.0rem 2.4rem; font-size:1.3rem; }
+/* 正確 */ .btn{ min-height:var(--h-btn); padding:0 var(--sp-5); display:inline-flex; align-items:center; font-size:var(--fs-b2); line-height:var(--lh-b2); }
 ```
 
 **驗收條件**：在瀏覽器預設字級 100%、125%、150% 三種設定下各檢查一輪，確認沒有文字被裁切或溢出、按鈕與輸入框跟著長高、表格的數值欄不換行、側欄選單文字不換成兩行、版面沒有出現水平捲軸。

@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-10 v16 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S6 另有深色模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD、62 項元件清單與四項自動檢查；動態 token 與 Lucide 圖示規則；六張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-10 v22 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S6 另有深色模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單與六項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；六張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v16》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，六套元件庫與 `tokens.css` 在 `assets/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v22》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -14,7 +14,7 @@ description: "通用的網頁介面設計系統（2026-10 v16 規範）。凡是
 一、**工程師選一套風格開發，全站只有一套風格**；風格是「殼」，只覆寫表面材質，不碰結構、色彩變數、字級。
 二、**系統內建十二組核心色系 ＋ SC1〜SC3 特殊色系讓使用者切換**，切換只換第一層七個 CSS 變數；第二層灰階、第三層語意色、第四層資料視覺化色板永不隨色系變。不適用於該風格的色系要鎖住，不合法組合退回 C1 並提示，不靜默套用。
 三、色彩、字級、間距、圓角一律引用 token，**不寫死數字**；字級與間距用 rem（1rem ＝ 10px），圓角框線斷點用 px；所有元件 `min-height` 不用 `height`。
-四、交付前跑四項檢查：對比稽核（每個文字節點 ≥4.5）、標尺合規（字級、行距、間距、字距全在表上）、**行高配對**（字級與行距必須同代號）、390px 不橫向溢出。
+四、交付前跑六項檢查：對比稽核（每個文字節點 ≥4.5）、標尺合規（字級、行距、間距、字距全在表上）、**行高配對**（字級與行距必須同代號）、390px 不橫向溢出、**元件結構尺寸**（按鈕、輸入框、膠囊的高度與規範值差 ≤1px，七套一致）、**拆檔無損與風格層純度**（dist 與示範頁逐元素相同、風格層不含結構屬性）。
 五、**框線色不得拿來當文字色**。`--line` 與 `--line-2` 是給線條用的，拿來寫「不重要的字」（月曆的非本月日期、麵包屑的分隔符）對比只有 1.4，必然不及格；要淡就用 `--muted`。
 六、**半透明面板上不放彩色小字**。琉璃與極光的面板是半透明的，彩色小字壓上去只剩 3.4〜4.2，改用主文字色；方向用箭頭符號加文字表達，不靠顏色。
 
@@ -24,7 +24,7 @@ description: "通用的網頁介面設計系統（2026-10 v16 規範）。凡是
 2. **選預設色系**：從 C1〜C12 選一組當預設（新專案預設 C1 深海藍）；SC 系列只在不鎖、不需調整的風格可當預設：SC1 為 S1、S3、S5、S6；SC2 為 S1、S3、S5、S6（高彩度，給零售、消費品、活動頁）；SC3 為 S1、S3、S5、S6（冷灰藍，給金融、資安、監控）。
 3. **起手**：載入 tokens（第 5 節）＋ 該風格的表面層（第 3 節）＋ THEMES 與切換器（第 4 節）。
 4. **元件**：只用第 8 節清單裡的元件與 class 語彙，狀態齊全（預設、hover、focus、disabled、錯誤、空、載入）。
-5. **檢查**：第 9 節四項檢查通過才算完成。
+5. **檢查**：第 9 節六項檢查通過才算完成。
 
 ## 2. 七套風格與選型
 
@@ -75,17 +75,17 @@ description: "通用的網頁介面設計系統（2026-10 v16 規範）。凡是
 
 ## 3. 各風格的表面層（只覆寫材質）
 
-S1 為基準（不掛 class），其餘五套以 `html.sty-emboss / sty-glaze / sty-doodle / sty-aurora / sty-graphite` 覆寫。所有風格共用同一份元件 HTML 與 class。
+S1 為基準，其餘六套各有一個只含材質的風格層（`dist/style-s2`〜`s7.css`，頁面以 `<html data-style="s3">` 宣告）。七套共用同一份元件 HTML 與 class（v20 起 S2〜S5 也以 S1 為基底），頁面不加 `.up`、`.glass`、`.wob`、`.org` 這類修飾 class，`.board`、`.card`、`.statc` 本身就帶著該套材質。
 
 **S1 奶油**：`--page:#F6F5F2 --card:#FFFFFF --line:#E4E2DE --band:#FBFAF8 --ink:#26292E --muted:#6F6B64`。所有卡片、輸入框、按鈕 `border:1px solid var(--line)`、零陰影；容器 16px、輸入框與小卡 12px、按鈕與狀態膠囊 999px。
 
 **S2 浮雕**：`--bg:#E6EAF0`（底即卡）`--ink:#333B49 --muted:#5F6673 --shD:rgba(163,177,198,.62) --shL:rgba(255,255,255,.95)`。凸（可按）`box-shadow:5px 5px 11px var(--shD),-5px -5px 11px var(--shL)`；凹（已選、輸入區）`inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)`；不用框線；主按鈕仍實心主色配白字。CSS 變數名大小寫有別（`--shD` 不是 `--shd`）。
 
-**S3 琉璃**：`body{background:linear-gradient(133deg,var(--acc),var(--acc2))}`；`--ink:#232936 --muted:#454C59`；亮玻璃 `rgba(255,255,255,.70)`＋`backdrop-filter:blur(24px)`＋`1px solid rgba(255,255,255,.7)`；深玻璃 `rgba(22,26,42,.66)` 配白字，只給深玻璃卡與深玻璃按鈕。鐵則：**文字不落在漸層上（一律墊玻璃）、彩色字不落在 70% 玻璃上（一律墊白）**。
+**S3 琉璃**：`body{background:linear-gradient(133deg,var(--acc),var(--acc2))}`；`--ink:#232936 --muted:#454C59`；亮玻璃 `rgba(255,255,255,.70)`＋`backdrop-filter:blur(24px)`＋`1px solid rgba(255,255,255,.7)`；深玻璃 `rgba(22,26,42,.66)` 配白字，只用在示範頁的導覽（v20 起元件不用深玻璃；統計卡 hero 是亮玻璃配主色數字）。鐵則：**文字不落在漸層上（一律墊玻璃）、彩色字不落在 70% 玻璃上（一律墊白）**。
 
 **S4 手帳**：`--paper:#FAF3E4 --card:#FFFDF7 --line:#D8CDB8 --ink:#2E2A24 --muted:#6E6656`。容器 `border:2px solid var(--ink)`＋歪框 `border-radius:255px 18px 225px 18px/18px 225px 18px 255px`（交錯用 `18px 225px 18px 255px/255px 18px 225px 18px`）；按鈕硬影 `box-shadow:2.5px 2.5px 0 var(--ink)`、按下位移歸零；分隔線 2px 虛線；裝飾限紙膠帶與麥克筆畫重點；表格資料區保持乾淨。
 
-**S5 極光**：`--page:#FCFCFD --line:#E9E9EF --ink:#22262E --muted:#686E78 --dark:#1C1F27`。背景 `body::before` 三個 `radial-gradient(color-mix(in srgb,var(--acc) 30%,transparent))` 暈染加 `blur(6px)`；面板 `rgba(255,255,255,.92)`、圓角 `26px 26px 26px 8px`（小件 `18px 18px 18px 6px`）；主按鈕墨色深丸；漸層只出現在強調按鈕 `linear-gradient(95deg,var(--acc),var(--acc2-deep))`、AI 標記、hero 數字或目前狀態節點三處。
+**S5 極光**：`--page:#FCFCFD --line:#E9E9EF --ink:#22262E --muted:#686E78 --dark:#1C1F27`。背景 `body::before` 三個 `radial-gradient(color-mix(in srgb,var(--acc) 30%,transparent))` 暈染加 `blur(6px)`；面板 `rgba(255,255,255,.92)`、圓角 `26px 26px 26px 8px`（小件 `18px 18px 18px 6px`）；漸層只出現在強調按鈕、AI 標記、hero 數字或目前狀態節點三處；**強調按鈕就是實心主按鈕 `.btn.primary`**（`linear-gradient(95deg,var(--acc),var(--acc2-deep))`，停用時回到灰底灰字，v20）。
 
 **S6 石墨**：`--page:#F4F4F4 --card:#FFFFFF --band:#F6F6F6 --sel:#F2F2F2 --line:#E3E3E3 --line-2:#D9D9D9 --ink:#171717 --muted:#6A6A6A --dark:#3B3B3B`；圓角 `--r-lg:12px --r-sm:6px --r-pill:999px`。所有卡片、輸入框、按鈕 `1px solid var(--line)`、零陰影。三條鐵則：
 
@@ -136,21 +136,21 @@ S1 為基準（不掛 class），其餘五套以 `html.sty-emboss / sty-glaze / 
 
 ```js
 const THEMES={
- c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6"],"adjust":[],"series":"C"},
- sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","accDeep":"#35463D","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC"},
- sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6"],"adjust":["s4"],"series":"SC","accDeep":"#2449E8"},
- sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6"],"adjust":["s2"],"series":"SC","accDeep":"#3D4C5E"}
+ c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
+ sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","accDeep":"#35463D","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC"},
+ sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#2449E8"},
+ sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6","s7"],"adjust":["s2"],"series":"SC","accDeep":"#3D4C5E"}
 };
 const STYLE='s1';                                   // 本系統選定的風格，建置時決定
 function themeAllowed(k){const t=THEMES[k];return !!t&&(t.styles.includes(STYLE)||t.adjust.includes(STYLE));}
@@ -243,13 +243,39 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 **行距一定要跟字級配成同一代號**，不可以拿 B2 的字級去配 B3 的行距。每個值單獨看都在表上，所以肉眼與只看宣告值的檢查都抓不出來。沒有自己指定行距的元素會往上繼承，所以 `body` 一定要寫 `line-height:var(--lh-b1)`——漏掉的話整份文件的預設行距會退回瀏覽器的 `normal`（約 1.2 倍）。兩個例外是規範自己要求的、不算違規：貨幣前綴縮小 0.68 倍、768px 以下輸入框 16px 防 iOS 放大。見規範 4.2。
 
-間距：所有 margin、padding、gap 只取 `--sp-1`〜`--sp-10`（4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64px），負 margin 不用（堆疊頭像、資料夾頁籤例外）。卡片內距 16 / 20、儲存格 12 / 20、標籤到元件 8、元件之間 12、區塊之間 24。
+間距：所有 margin、padding、gap 只取 `--sp-1`〜`--sp-10`（4 / 8 / 12 / 16 / 20 / 24 / 32 / 40 / 48 / 64px），負 margin 不用（堆疊頭像、資料夾頁籤例外）。卡片內距 16 / 20、儲存格與表頭與表格標題列 12 / 20（勾選欄 `.ck` 右內距 0 例外）、欄位標籤到輸入框 8（`.field label{margin-bottom:var(--sp-2)}`）、說明文字到輸入框 4、元件之間 12、區塊之間 24。token 連號命名，`--sp-7` 是 32px、`--sp-8` 是 40px（規範 v18 前的 space-8＝32 寫法已廢）。
+
+**焦點環（規範 10.3，v18）**：鍵盤到達的每個可互動元件 `:focus-visible{outline:2px solid var(--acc);outline-offset:2px}`，輸入框、下拉、多行輸入 `outline-offset:0`；不得 `outline:none` 而不補，換框線色不算替代。滑鼠點擊不顯示（`:focus-visible` 自然如此）。
+
+**佔位文字（規範 10.1，v18）**：`::placeholder{color:var(--muted);opacity:1}`。瀏覽器預設的 `#757575` 在 S2 底、S6 深色、S1 頁面底都不到 4.5。
+
+**層級（規範 5.6，v18）**：只有五層 `--z-sticky:10`（吸附表頭、頂列、底部固定條）、`--z-pop:20`（下拉、就地確認、自動完成）、`--z-drawer:30`、`--z-modal:40`、`--z-toast:50`（Toast、提示氣泡）。不得出現表外的 `z-index`；元件內局部堆疊用 `z-index:1` 加 `isolation:isolate`。
 
 圓角四級固定、維持 px：18px 焦點框與大面板、16px 卡片與表格容器、12px 輸入框小卡選單、999px 所有按鈕與狀態膠囊；框線 1px、選中 1.5px。陰影由各風格定義（奶油、極光、石墨零陰影，浮雕雙向柔影，琉璃面板投影，手帳硬影）。
 
 **風格層例外只有 S6 石墨與 S7 編輯**：S6 按鈕與輸入框 6px、卡片與表格容器 12px、N4 級改等寬字；S7 容器 0、按鈕與輸入元件 2px、標題用明體。其餘五套一律照上表。
 
-元件高度一律 `min-height`（rem）：主按鈕 4.0（手機 4.4）、一般按鈕 3.8（4.4）、小按鈕 3.2（4.0）、輸入框 4.0（4.4，字 16px 防 iOS 放大）、狀態膠囊 2.4、表格列 4.4、側欄項目 3.8；相鄰可點元件至少留 8px。正圓元件（頭像、圓點、播放鈕）加 `aspect-ratio:1/1` 以免在 flex 列被拉成橢圓。
+**元件高度是結構層，七套共用（規範 5.4，v17）**：高度做成 token、`min-height` 鎖定、**垂直內距歸零、flex 置中**，框線粗細與陰影有無都不會改變高度；**風格層不得出現 `min-height` 與 `padding`**。
+
+```css
+:root{--h-btn-primary:4.0rem;--h-btn:3.8rem;--h-btn-sm:3.2rem;--h-input:4.0rem;--h-qty:3.4rem;--h-pill:2.4rem;--h-nav:3.8rem;--h-tag:2.0rem}
+@media (max-width:767px){:root{--h-btn-primary:4.4rem;--h-btn:4.4rem;--h-btn-sm:4.0rem;--h-input:4.4rem;--h-qty:4.4rem}}
+.btn{min-height:var(--h-btn);padding:0 var(--sp-5);display:inline-flex;align-items:center;justify-content:center}
+```
+
+| 元件 | 高度 | 水平內距 |
+|---|---|---|
+| 主按鈕 `.btn.primary` | 4.0rem（手機 4.4） | `--sp-6` |
+| 一般按鈕 `.btn`、危險鈕 `.btn.danger`、選項 chip `.chip` | 3.8rem（4.4） | 按鈕 `--sp-5`、chip `--sp-4` |
+| 小按鈕 `.btn.sm`、篩選膠囊 `.pillf` | 3.2rem（4.0） | 小按鈕 `--sp-3`、膠囊 `--sp-4` |
+| 輸入框、下拉選單 | 4.0rem（4.4，字 16px 防 iOS 放大） | `--sp-3` |
+| 數量調整器 `.qty` | 3.4rem（4.4），加減鈕 3.2rem 寬 | — |
+| 狀態膠囊 `.st` | 2.4rem（不放大） | `--sp-3` |
+| 屬性 tag `.tag` | 2.0rem | `--sp-2` |
+| 側欄項目 `.nitem` | 3.8rem | `--sp-4` |
+| 表格列 | **不另設**，由儲存格內距 `--sp-3` 與內容決定：純文字 ≈46px、含狀態膠囊約 50px | 儲存格 `--sp-5` |
+
+為什麼這樣寫：v16 以前這張表只是數字沒落到 CSS，七套實測同一顆按鈕有三到四種高度（S1 39、S2 45、S4 41px）。警示條內的 `.btn.sm` 依 7.3 豁免（`min-height:0`）。相鄰可點元件至少留 8px。正圓元件（頭像、圓點、播放鈕）加 `aspect-ratio:1/1` 以免在 flex 列被拉成橢圓。
 
 **動態（規範 5.5）**：轉場時長只用 `--dur-1` 120ms（顏色、框線、陰影、按下：滑過與聚焦）、`--dur-2` 200ms（元件內位移與展開：開關滑塊、折疊、下拉、提示氣泡）、`--dur-3` 320ms（彈窗、側滑面板、Toast），進場與狀態變化用 `--ease-out`、退場用 `--ease-in` 且短一級；不寫死秒數、不寫 `transition:all`；只轉場顏色、背景、框線色、陰影、`opacity`、`transform`，不轉場 `width`、`height`、`top`、`left`、`margin`、`padding`（移動用 `translate`）。骨架屏與轉圈等迴圈動畫不受此限。
 
@@ -257,9 +283,17 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 斷點 1024 / 768 / 480（px，描述裝置）。768 以下：側欄改覆蓋式抽屜加遮罩、漢堡鈕 44px；表格轉卡片列（每格 `data-l` 帶欄名，不做水平捲動）；輸入框 16px；商品規格頁計價面板改底部固定條；主要動作滿版。480 以下單欄，**例外是商品卡列表維持兩欄**（卡片與欄間距收為 `--sp-3`、名稱最多兩行 `-webkit-line-clamp:2`、評價只留星等、加入購物車改右下角 44px 圖示鈕並以 `aria-label` 寫明商品名稱；見規範 6.3）。任何寬度 body 不得橫向捲動（flex 子項記得 `min-width:0`）。
 
+**級別與欄格（規範 6.1、6.5，v22）**：五個級別緊湊 <480、中 480〜767、平板 768〜1023、寬 1024〜1279、特寬 ≥1280。頁面上不同區塊怎麼分寬度一律用 `base.css` 的 12 欄格：`<div class="grid">` 裡放 `.col-12`、`.col-6`×2、`.col-8`＋`.col-4`、`.col-4`×3、`.col-3`×4 五種跨欄，不開其他分法；平板與中自動 8 欄、緊湊 4 欄全部堆疊。欄距標準 `--sp-6`、緊湊 `--sp-3`（加 `.dense`；480 以下自動）。固定寬的側欄 226px、摘要面板 340px、側滑面板不佔欄格（混合格）。同一種卡片排幾欄照上面的網格清單，不必套欄格。容器左右內距寬以上 `--sp-6`、平板 `--sp-5`、768 以下 `--sp-4`（規範 6.2；舊條文的 26px 已改正）。
+
 ## 7. 版型與文案（摘要）
 
 後台：側欄式框架（側欄 226px、頂列麵包屑與通知鈴、內容區最大 1060px）。前台：頂部分頁式。每頁最多一顆實心主按鈕；危險動作二次確認且寫明後果；空狀態是邀請不是報告（給出口）；錯誤訊息說怎麼修；語氣是專業同事，不用驚嘆號與語尾助詞。詳見規範第九、十一章。
+
+**線條與框線的兩條結構規則（規範 9.3 第六、七條，v21）**——每個元件單看都對、放在一起卻線條打架，是 AI 產頁面最常見的錯：
+一、**一處分隔只用一條線。** 區塊標題用了延伸細線，下方就不再放分隔線或卡片標題列的底線；`.card-title` 已有底線，標題就不再用延伸細線；兩個有框線的容器相鄰時不再加分隔線。判斷法：兩條線之間只有空白、沒有任何文字或元件，其中一條就是多餘的。
+二、**有框線的元件相鄰時最小間距 `--sp-3`（12px）。** 按鈕列與輸出框、卡片與卡片、輸入框與按鈕邊緣到邊緣至少 12px；並排的小按鈕、chip、膠囊可用 `--sp-2`；低於 8px 視為貼合。刻意共用框線的組件不在此限：分段控制、數量調整器、分頁器、頁籤、表格內部，以及下拉選單與觸發元件之間的 `--sp-1`。
+
+**間距三原則（規範 9.3 第八至十條，v22）**：內部間距 ≤ 外部間距（卡片內距 16／20，卡片之間至少 `--sp-6`）；區塊之間一律大於區塊內部（區塊內 `--sp-3`〜`--sp-4`、區塊之間 `--sp-6` 以上、頁面大區段 `--sp-7`〜`--sp-8`）；`--sp-1`、`--sp-2` 只用在元件內部與同一組並排小元件之間，獨立元件或組與組之間最小 `--sp-3`（就是上面第二條）。
 
 ## 8. 元件清單（62 項：核心 45 必備、選用 17 依系統勾選）
 
@@ -271,7 +305,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 **警示條與提示框（v7 定案、v8 補對齊守則，七套一致）**：警示條 `.alert` 不用左側 4px 色條，改 `border:1px solid color-mix(in srgb,currentColor 32%,transparent)` 一圈細框，框線顏色自動跟著語意色走；標題與內文同一行（`b` 與 `p` 都 `display:inline`），圖示保留，背景仍是該語意的 `-soft` 淡底。四條使用守則：**標題是選用的**（一句話講得完就不要標題）、**動作最多一顆**且做成帶底線的文字連結而非按鈕（`.alert .btn.sm` 去底去框去陰影）、**錯誤與警告不給關閉鈕**（使用者關掉就看不到問題了，只有 info 與 ok 可關）、**文字動作與關閉鈕要跟內文站在同一條基線上**（和內文共用同一個行框：同字級、同行距、`align-self:flex-start`，不要再給它 `min-height`——按鈕那個 32px 會把整列撐高，差將近 6px）。提示框 `.notice` 去掉左側主色條與彩色底，S1 與 S6 直接用頁面灰底無框、S2 用凹面無框、S3 是 1px 玻璃框、S4 是 2px 虛線框、S5 是淡線框加淡底——它只是「順便一提」，不該比旁邊的內容搶眼。
 
-七套**共用同一份元件 HTML**：S1 奶油是基準，其餘六套只覆寫材質（S6、S7 由產生器以 S1 為基底重建，S6 深色再由 S6 產生）；七套的 62 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（七套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
+七套**共用同一份元件 HTML**：S1 奶油是基準，其餘六套只覆寫材質（S2〜S5 由 `build_from_s1.py` 以 S1 ＋ `material/<套>.css` 產生，v20；S6、S7 由各自的產生器以 S1 為基底重建，S6 深色再由 S6 產生）；七套的 62 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（七套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
 
 **圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；七套風格共用同一組圖示。
 
@@ -279,7 +313,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 ## 9. 交付前四項自動檢查（腳本在本 skill 的 `scripts/`）
 
-四項都通過才算完成。腳本對任何 HTML 檔或網址都能跑，有不合規時結束碼為 1，可以直接接進 CI（持續整合：每次提交自動跑檢查）。第一、四項與第三項的 `--render` 需要先裝依賴：`pip install -r scripts/requirements.txt && playwright install chromium`（Playwright 是自動操控瀏覽器的工具）。
+四項都通過才算完成。（第 0 節提到的第五、六項——元件結構尺寸與拆檔無損——只在維護元件庫本身時跑，腳本不隨公開版發佈；照 `dist/` 引用 CSS、不覆寫元件尺寸的產品，這兩項自然成立。）腳本對任何 HTML 檔或網址都能跑，有不合規時結束碼為 1，可以直接接進 CI（持續整合：每次提交自動跑檢查）。第一、四項與第三項的 `--render` 需要先裝依賴：`pip install -r scripts/requirements.txt && playwright install chromium`（Playwright 是自動操控瀏覽器的工具）。
 
 | 檢查 | 指令 | 標準 |
 |---|---|---|
@@ -292,26 +326,26 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 批次改動後，所選風格的每個頁面都要截圖對照，不抽樣。若無法執行腳本（例如沒有 Python 環境），至少逐條人工核對：所有字級與行距都引用 `var(--fs-xx)` ＋ 同代號 `var(--lh-xx)`、間距只用 `--sp-*`、沒有寫死的色碼。
 
-## 10. 起手式
+## 10. 起手式：引用 dist/，不要複製示範頁的 CSS（規範第十二章）
+
+元件樣式的唯一來源是公開倉庫根目錄的 `dist/`（由 `emit_css.py` 自七套元件庫產生，檔頭有版號，與規範同版）。工程師手冊 `dist/USAGE.md`（＝《設計系統使用說明 v4》）、範例頁 `dist/examples/`（七套風格各一張、各在 8.7 的首選情境：S1 後台、S2 控制面板、S3 品牌官網、S4 點餐、S5 預約、S6 監控儀表板、S7 說明中心；`same-markup.html` 是同一份標記換七套殼，只說明「風格是殼」）。幫人起新頁面時，照情境挑一張範例當起點，不要七套都拿訂單後台換皮。**不要**從 `components_s*.html` 複製 `<style>`——複製那一刻起產品與元件庫就分家。
+
+七套載法相同（三檔 ＋ theme.js，順序不能換；v20 起 S2〜S5 也以 S1 為基底，七套共用同一份元件 HTML）：
 
 ```html
+<html lang="zh-Hant" data-style="s1">              <!-- 全站只選一套風格，建置時決定 -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="tokens.css">          <!-- 從本 skill 的 assets/tokens.css 複製到專案 -->
-<style>
-:root{ /* 第一層由 applyTheme() 注入；第二層依所選風格；第三、四層固定 */
-  --acc:#2B5FB8;--acc-soft:#EDF1F9;--acc-deep:#2B5FB8;--acc2:#C2377B;--acc2-soft:#FAEEF4;--acc2-deep:#BA3576;--acc2-text:#FFFFFF;
-  --ink:#26292E;--muted:#6F6B64;--line:#E4E2DE;--band:#FBFAF8;--page:#F6F5F2;--card:#FFFFFF;
-  --err:#B23F2F;--err-soft:#F7ECEA;--wrn:#846200;--wrn-soft:#F3EFE6;--ok:#2A722E;--ok-soft:#EAF1EA;--info:#1A66AA;--info-soft:#E8F0F6;
-  --d1:#1F4F9E;--d2:#C9781F;--d3:#00806A;--d4:#8659CC;--d5:#5E7A12;--d6:#C7466E;--d7:#0E82A8;--d8:#B5651D}
-*{box-sizing:border-box}
-body{margin:0;background:var(--page);color:var(--ink)}
-.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg)}
-.btn{min-height:3.8rem;padding:0.9rem 2.0rem;border-radius:var(--r-pill);border:1px solid var(--line);background:#fff;font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:700}
-.btn.primary{min-height:4.0rem;padding:1.0rem 2.4rem;background:var(--acc);border-color:var(--acc);color:#fff}
-.btn:disabled{background:var(--line);color:var(--muted);border-color:transparent;opacity:1}
-</style>
-<body data-type="productive">   <!-- 前台閱讀型頁面改 expressive -->
+<link rel="stylesheet" href="dist/tokens.css">     <!-- 字級、間距、圓角、高度、動態、層級 -->
+<link rel="stylesheet" href="dist/base.css">       <!-- 結構層 ＋ S1 材質：62 項元件、焦點環、佔位文字、RWD -->
+<link rel="stylesheet" href="dist/style-s1.css">   <!-- 這一套的材質層；換風格只換這一行（s1〜s7） -->
+<body data-type="productive">                      <!-- 前台閱讀型頁面改 expressive -->
+  …元件 HTML 照第 8 節的 class 語彙寫…
+<script src="dist/theme.js"></script>              <!-- DS.applyTheme('c1')、DS.setColorScheme('dark'|'light'|'system') -->
 ```
+
+v19 的 S2〜S5 過渡版（兩檔、不載 base.css）已退場。頁面不加 `.up`、`.glass`、`.wob`、`.org` 之類的修飾 class——`.board`、`.card`、`.statc` 本身就帶著該套材質；數量調整器一律用 `<input>`。S5 的漸層強調按鈕就是 `.btn.primary`。
+
+深色（目前只有 S6）：`<html data-theme="dark">` 強制深、`light` 強制淺、不寫跟隨系統，切換不換檔，品牌色深色值由 theme.js 的 DARK 表套用。產品可用任何框架，但元件 HTML 照元件庫 class、樣式只來自 dist；**不混第三方 UI 庫的元件外觀**，需要行為就用 headless 庫。瀏覽器基線 Chrome／Edge 111+、Safari 16.4+（iOS 16.4+）、Firefox 121+。
 
 任何元件的 CSS 不得寫死色碼與字級，一律引用變數；唯一例外是純黑純白與陰影用的半透明黑。
 
@@ -321,14 +355,15 @@ body{margin:0;background:var(--page);color:var(--ink)}
 |---|---|
 | 名詞對照表、文件目的、五條設計總則 | `references/overview.md` |
 | 第三章 色彩四層、十二組核心與 SC 特殊色系色碼、副色深型與淺型、著色面上的文字 | `references/color.md` |
-| 第四章 字型、十三級字級、行距配對、金額與數字格式 | `references/typography.md` |
-| 第五章 間距標尺、圓角、框線、元件高度、動態（時長與緩動） | `references/spacing-radius.md` |
-| 第六章 斷點、側欄抽屜、表格轉卡片列 | `references/rwd.md` |
+| 第四章 字型、十四級字級、行距配對、金額與數字格式 | `references/typography.md` |
+| 第五章 間距標尺、圓角、框線、元件高度、動態（時長與緩動）、層級 | `references/spacing-radius.md` |
+| 第六章 斷點與級別、容器寬度與內距、12 欄欄格系統、側欄抽屜、表格轉卡片列 | `references/rwd.md` |
 | 第七章 元件規範（含警示條與提示框守則、Lucide 圖示規範） | `references/components.md` |
 | 第八章 各風格定義、風格 × 色系矩陣、風格 × 系統類型選型、S6 深色模式 | `references/styles.md` |
-| 第九章 後台與前台版型 | `references/layout.md` |
+| 第九章 後台與前台版型、頁面結構、線條與間距原則 | `references/layout.md` |
 | 第十章 對比、焦點、鍵盤操作 | `references/accessibility.md` |
 | 第十一章 介面文案（按鈕、錯誤訊息、空狀態的寫法） | `references/copywriting.md` |
+| 第十二章 開發對接：引用 dist/ 的 CSS、theme.js、瀏覽器支援基線 | `references/dev-handoff.md` |
 | 附錄 已退場的歷年色系 | `references/legacy-colors.md` |
 | 某個元件的完整 HTML 與 CSS | `assets/components/<風格>.html`，搜尋該元件的節標題 |
 | 前台頁面的結構範例（選物店首頁，Expressive 字級） | `assets/storefront/<風格>.html` |

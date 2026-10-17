@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-style="s1">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>同一份標記換七套殼 — 管理者工作室 設計系統</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../base.css" id="lnk-base">
+<link rel="stylesheet" href="../style-s1.css" id="lnk-style">
+<style>
+/* 本頁自己的排版：只用 token，不碰元件 */
+.page{max-width:1060px;margin:0 auto;padding:var(--sp-6) var(--sp-5) var(--sp-9);display:grid;gap:var(--sp-6)}
+.hdr{display:flex;align-items:center;gap:var(--sp-4);flex-wrap:wrap}
+.hdr h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);font-weight:900;margin:0}
+.hdr .sub{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.hdr .sp{margin-left:auto;display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--sp-5)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--sp-4)}
+.sec-h{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);font-weight:900;margin:0 0 var(--sp-4)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--sp-3) var(--sp-5)}
+.form .field{width:auto}
+.actions{display:flex;gap:var(--sp-2);justify-content:flex-end;align-items:center;margin-top:var(--sp-5)}
+.switcher{display:flex;gap:var(--sp-1);align-items:center;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.switcher select{min-height:3.2rem;padding:0 var(--sp-2);border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);color:var(--ink);font:inherit}
+.demo-note{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.t .btn.sm{white-space:nowrap}
+@media (max-width:767px){.tcap{flex-wrap:wrap}.tcap .sp{flex-wrap:wrap;margin-left:0;width:100%}}
+</style>
+</head>
+<body data-type="productive">
+<div class="page">
+
+  <div class="hdr">
+    <div><h1>訂單管理</h1><div class="sub">管理者工作室 設計系統 20.0.0 · 同一份元件標記換七套殼的示範——說明「風格是殼」，不代表每一套都適合這個情境；各套適合的情境見 index.html</div></div>
+    <div class="sp">
+      <label class="switcher">風格
+        <select id="pickStyle">
+          <option value="s1">S1 奶油</option><option value="s2">S2 浮雕</option><option value="s3">S3 琉璃</option>
+          <option value="s4">S4 手帳</option><option value="s5">S5 極光</option><option value="s6">S6 石墨</option><option value="s7">S7 編輯</option>
+        </select></label>
+      <label class="switcher">色系
+        <select id="pickTheme"></select></label>
+      <label class="switcher" id="schemeWrap">深淺
+        <select id="pickScheme"><option value="system">跟隨系統</option><option value="light">淺</option><option value="dark">深</option></select></label>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="statc hero"><div class="k">待確認</div><div class="v num">3<small>張</small></div><div class="delta up">▲ 2 vs 昨日</div></div>
+    <div class="statc"><div class="k">備貨中</div><div class="v num">12<small>張</small></div><div class="delta dn">▼ 3 vs 上週</div></div>
+    <div class="statc"><div class="k">本月出貨</div><div class="v num"><small>NT$</small>1.84M</div><div class="delta up">▲ 12.4% 比上月</div></div>
+  </div>
+
+  <div class="alert wrn"><i>!</i><div><p>價格表為 2026 Q2 版本，下單前請先更新。</p></div><button class="btn sm">更新</button></div>
+
+  <div class="board">
+    <div class="sec-h">新增訂單</div>
+    <div class="form">
+      <div class="field"><label for="po">貴司採購單號 <span class="req">*</span></label><input id="po" class="num" placeholder="PO-2026-xxxx"></div>
+      <div class="field"><label for="cust">客戶</label><input id="cust" value="大同機械"></div>
+      <div class="field err"><label for="len">裁切長度 mm <span class="req">*</span></label><input id="len" class="num" value="7500"><div class="msg">超出範圍：100–6000 mm</div></div>
+      <div class="field"><label for="addr">送貨地址</label><select id="addr"><option>桃園廠｜觀音區工業二路 88 號</option><option>台中倉｜西屯區工業區一路 22 號</option></select></div>
+      <div class="field dis"><label>建立者</label><input disabled value="陳品妤（採購）"><div class="msg">由 Email 解析建立，不可修改</div></div>
+      <div class="field"><label for="date">期望到貨日 <span class="req">*</span></label><input id="date" class="num" type="date" value="2026-09-15"></div>
+    </div>
+    <div class="row" style="margin-top:var(--sp-4)">
+      <span class="radio on"><i></i>月結 30 天 <span class="sub">貴司核定條件</span></span>
+      <span class="radio"><i></i>貨到付款</span>
+      <span class="check on"><i></i>端蓋 ×2</span>
+      <span class="check"><i></i>防震墊片組</span>
+      <span class="sw2 on"><span class="tk"></span>Email 通知</span>
+      <span class="qty"><button aria-label="減少">－</button><input class="num" value="100"><button aria-label="增加">＋</button></span>
+    </div>
+    <div class="row" style="margin-top:var(--sp-3)">
+      <span class="chip on">鋁合金 6061</span><span class="chip">不鏽鋼 304</span><span class="chip off">電解拋光</span>
+      <span class="seg"><button class="on">列表</button><button>看板</button><button>行事曆</button></span>
+    </div>
+    <div class="actions"><button class="btn">取消</button><button class="btn ghost">存為草稿</button><button class="btn primary">送出訂單</button></div>
+  </div>
+
+  <div class="tblwrap">
+    <div class="tcap"><b>訂單</b><span class="cnt">36 筆 · 篩選 3</span>
+      <span class="sp"><button class="pillf on">全部<span class="n">36</span></button><button class="pillf">待確認<span class="n">3</span></button><button class="pillf">逾期<span class="n">2</span></button><button class="btn sm">下載 Excel</button></span></div>
+    <table class="t">
+      <thead><tr><th class="ck"><span class="check"><i></i></span></th><th>單號</th><th>客戶</th><th>品項</th><th>狀態</th><th style="text-align:right">金額</th><th style="text-align:right">到貨</th><th></th></tr></thead>
+      <tbody>
+        <tr><td class="ck"><span class="check on"><i></i></span></td><td class="dt">SO-260830-012</td><td>大同機械</td><td>AL-2040 ×100 他 1 項</td><td><span class="st wrn">● 待確認</span></td><td class="amt">28,166</td><td class="dt">09/08</td><td><button class="btn sm">預覽</button></td></tr>
+        <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-260830-011</td><td>永信自動化</td><td>SB-1100 ×800</td><td><span class="st acc">● 備貨中</span></td><td class="amt">6,460</td><td class="dt">09/05</td><td><button class="btn sm">預覽</button></td></tr>
+        <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-260829-008</td><td>詮宏精密</td><td>AL-2040 ×500（刻印）</td><td><span class="st ok">● 已出貨</span></td><td class="amt">96,140</td><td class="dt">09/02</td><td><button class="btn sm">預覽</button></td></tr>
+        <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-260828-003</td><td>青禾工業</td><td>MG-300 ×24</td><td><span class="st err">● 已取消</span></td><td class="amt">-12,800</td><td class="dt">08/30</td><td><button class="btn sm">預覽</button></td></tr>
+      </tbody>
+    </table>
+    <div class="tfoot"><span class="p4"><button>‹</button><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>9</button><button>›</button></span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card"><div class="card-title">出貨備註<span class="hint">選填</span></div><div class="card-body">交貨請先電聯倉管王先生，貨車限 3.5 噸以下；夜間與假日不收貨。<div class="row" style="margin-top:var(--sp-3)"><span class="tag acc">3 屬性 18 SKU</span><span class="tag gray">可加購</span><span class="tag err">必選</span></div></div></div>
+    <div class="card"><div class="card-title">聯絡人</div><div class="card-body"><dl class="desc"><dt>負責人</dt><dd><span class="avatar sm">林</span> 林佳穎</dd><dt>電話</dt><dd class="num">02-2345-6789</dd><dt>付款</dt><dd>月結 30 天</dd></dl></div></div>
+    <div class="modal" style="position:static;width:auto"><div class="mh">確認出貨？</div><div class="mb">SO-260829-008 · 詮宏精密 · NT$ 96,140<br>出貨後將無法修改品項與數量。</div><div class="mf"><button class="btn">返回</button><button class="btn primary">確認出貨</button></div></div>
+    <div class="empty"><b>還沒有退貨單</b><br>客戶提出退貨申請後會出現在這裡<br><br><button class="btn ghost sm">了解退貨流程</button></div>
+  </div>
+
+  <div class="notice">您的專屬價已套用：<b>A級經銷 92 折</b>＋數量階梯價。價格未登入不公開。</div>
+  <div class="demo-note">這張頁面的 CSS 只有上方 `&lt;style&gt;` 的排版（grid、flex、gap），所有元件外觀來自 dist/。右上角切換風格會換掉 style-s*.css 並重設 data-style；七套都是 tokens ＋ base ＋ 一個風格檔。</div>
+</div>
+
+<script src="../theme.js"></script>
+<script>
+(function(){
+  const FULL=new Set();   /* v20 起七套都載 base.css */
+  const root=document.documentElement, base=document.getElementById('lnk-base'), lnk=document.getElementById('lnk-style');
+  const pS=document.getElementById('pickStyle'), pT=document.getElementById('pickTheme'), pC=document.getElementById('pickScheme'), wrap=document.getElementById('schemeWrap');
+  for(const k in DS.THEMES){ const o=document.createElement('option'); o.value=k; o.textContent=DS.THEMES[k].id+' '+DS.THEMES[k].name; pT.appendChild(o); }
+  function setStyle(s){
+    root.dataset.style=s; lnk.href='../style-'+s+'.css'; base.disabled=FULL.has(s);
+    wrap.style.display = (s==='s6') ? '' : 'none';
+    /* theme.js 的 STYLE 在載入時讀取；換風格後重新載入腳本最乾淨 */
+    const old=document.querySelector('script[src="../theme.js"]'); const n=document.createElement('script'); n.src='../theme.js';
+    old.replaceWith(n); n.onload=()=>{ refreshThemeOptions(); pT.value=root.dataset.theme_key||'c1'; };
+  }
+  function refreshThemeOptions(){ for(const o of pT.options){ o.disabled=!DS.allowed(o.value); } }
+  pS.onchange=e=>setStyle(e.target.value);
+  pT.onchange=e=>{ const used=DS.applyTheme(e.target.value); if(used!==e.target.value){ pT.value=used; alert(DS.THEMES[e.target.value].id+' 不適用於此風格，已切回 C1'); } };
+  pC.onchange=e=>DS.setColorScheme(e.target.value);
+  const q=new URLSearchParams(location.search); if(q.get('style')){ pS.value=q.get('style'); setStyle(q.get('style')); } else { wrap.style.display='none'; refreshThemeOptions(); }
+  pT.value=root.dataset.theme_key||'c1';
+})();
+</script>
+</body>
+</html>
