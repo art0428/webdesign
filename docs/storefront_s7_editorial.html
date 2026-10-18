@@ -376,7 +376,6 @@ html.embedded .accbar{display:none}
 .hr{border:0;border-top:1px solid var(--line);margin:1.2rem 0;width:100%}
 .vdiv{display:inline-block;width:1px;height:16px;background:var(--line);margin:0 1.2rem;vertical-align:middle}
 
-
 /* ── 核心補件：日期選擇器 Date picker ── */
 .cal{width:262px;max-width:100%;padding:1.2rem;border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:none}
 .cal .ch{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:var(--fs-b2);padding:0 0 0.8rem;line-height:var(--lh-b2)}
@@ -405,7 +404,6 @@ html.embedded .accbar{display:none}
 .ac .hint kbd{font-family:Arial,sans-serif;border:1px solid var(--line);border-radius:4px;padding:0 0.4rem;font-size:var(--fs-l2);line-height:var(--lh-l2)}
 .tab .cnt{font-family:Arial,sans-serif;font-size:var(--fs-l2);font-weight:700;border-radius:999px;padding:0 0.8rem;background:var(--accsoft,var(--acc-soft));color:var(--acc);line-height:var(--lh-l2)}
 .tab.on .cnt{background:var(--acc);color:#fff}
-
 
 /* ── 核心補件：描述清單 Descriptions ── */
 .desc{display:grid;grid-template-columns:max-content 1fr max-content 1fr;font-size:var(--fs-b2);width:100%;max-width:640px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:none;line-height:var(--lh-b2)}
@@ -707,78 +705,6 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
 .btn,.btn.primary,.btn.ghost,.btn.danger,.btn.sm,.kebab,.msearch,.p2,.p4 button,.cal .ch button,.cal .quick button,
 .field input,.field select,.field textarea,.search,.txa textarea,.p5 input,.dd .trg,.qty,.seg,.seg button,.upfile,
 .tokcell,.mck,.chip,.pillf,.st,.tag,.count,.tabs,.tab,.nitem,.aibadge,.bar,.bar i{border-radius:2px}
-</style>
-<style>
-/* ══ 前台示範頁的版面（只寫排版；材質交給各套的 .board .card .btn） ══ */
-.ic{flex:none;vertical-align:middle}
-.sf{display:flex;flex-direction:column;gap:var(--sp-6)}
-.sf a{color:inherit;text-decoration:none}
-.sf-nav{display:flex;align-items:center;gap:var(--sp-6)}
-.sf-logo{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;letter-spacing:var(--ls-h3)}
-.sf-mark{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2)}
-.sf-links{display:flex;gap:var(--sp-5);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:500}
-.sf-links a:hover{color:var(--acc)}
-.sf-tools{margin-left:auto;display:flex;align-items:center;gap:var(--sp-1)}
-.sf-ib{min-width:44px;min-height:4.4rem;display:inline-flex;align-items:center;justify-content:center;border:none;background:none;color:var(--ink);border-radius:var(--r-pill);cursor:pointer;padding:0;transition:background var(--dur-1) var(--ease-out)}
-.sf-ib:hover{background:var(--accsoft)}
-.sf-ib:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.sf-menu{display:none}
-.sf-hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:var(--sp-8);align-items:center}
-.sf-eyebrow{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted);text-transform:uppercase}
-.sf-h1{margin:var(--sp-3) 0 var(--sp-4);font-size:var(--fs-h0);line-height:var(--lh-h0);letter-spacing:var(--ls-h0);font-weight:900;text-wrap:balance}
-.sf-h2{margin:0;font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);font-weight:900}
-.sf-lead{margin:0 0 var(--sp-6);color:var(--muted);max-width:34em}
-.sf-cta{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
-.sf-cta .btn{display:inline-flex;align-items:center;gap:var(--sp-2)}
-.sf-media{aspect-ratio:4/3;border-radius:var(--r-lg);background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
-.sf-sechead{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-4)}
-.sf-more{display:inline-flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:700;color:var(--acc)}
-.sf-filter{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-5)}
-.sf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-5)}
-.sf-prod{display:flex;flex-direction:column;overflow:hidden;min-width:0}
-.sf-thumb{position:relative;aspect-ratio:1/1;background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
-.sf-thumb .tag{position:absolute;top:var(--sp-3);left:var(--sp-3)}
-.sf-fav{position:absolute;top:var(--sp-1);right:var(--sp-1)}
-.sf-pbody{display:flex;flex-direction:column;gap:var(--sp-2);flex:1}
-.sf-pname{margin:0;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
-.sf-meta{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
-.sf-pricing{display:flex;align-items:baseline;flex-wrap:wrap;gap:var(--sp-2);margin-top:auto}
-.sf-pricing .price{font-family:Arial,sans-serif;font-weight:700;color:var(--ink);font-size:var(--fs-n2);line-height:var(--lh-n2)}
-.sf-pricing .price small{font-size:.68em;color:var(--muted);font-weight:400}
-.sf-was{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);text-decoration:line-through}
-.sf-add{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);width:100%}
-.sf-feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-6)}
-.sf-feat{display:flex;gap:var(--sp-2);align-items:flex-start}
-.sf-feat .ic{color:var(--acc)}
-.sf-feat h3{margin:0 0 var(--sp-1);font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
-.sf-feat p{margin:0;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
-.sf-article{display:flex;flex-direction:column;gap:var(--sp-4)}
-.sf-article .sf-body{max-width:36em}
-.sf-article .sf-body p{margin:0 0 var(--sp-4)}
-.sf-news{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);align-items:end}
-.sf-news p{margin:var(--sp-2) 0 0;font-size:var(--fs-b2);line-height:var(--lh-b2);color:var(--muted)}
-.sf-form{display:flex;gap:var(--sp-3);align-items:flex-end}
-.sf-form .field{flex:1;min-width:0}
-.sf-foot{display:flex;flex-wrap:wrap;gap:var(--sp-5);justify-content:space-between;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);padding:0 var(--sp-2)}
-.sf-foot nav{display:flex;flex-wrap:wrap;gap:var(--sp-4)}
-.sf-foot.board{padding:var(--sp-4) var(--sp-5)}
-@media (max-width:1023px){.sf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:767px){
- .sf-links{display:none}.sf-menu{display:inline-flex}
- .sf-hero,.sf-feats,.sf-news{grid-template-columns:1fr}
- .sf-hero{gap:var(--sp-6)}.sf-media{order:-1}
- .sf-form{flex-direction:column;align-items:stretch}
- .sf-cta .btn{flex:1;justify-content:center}
-}
-/* 規範 6.3 的例外：商品卡列表在 480 以下維持兩欄——單欄時一屏只看得到一件商品。
-   條件：卡片內距收為 --sp-3、名稱最多兩行、評價數只留星等、加入購物袋改成右下角的圖示鈕 */
-@media (max-width:479px){
- .sf-grid{gap:var(--sp-3)}
- .card .sf-pbody{padding:var(--sp-3)}
- .sf-pname{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
- .sf-rc,.sf-addtxt{display:none}
- .sf-add{width:auto;min-width:44px;min-height:4.4rem;align-self:flex-end;padding:0}
-}
 
 /* ══ 元件結構尺寸（規範 5.4，v17）：高度由 token 鎖定、垂直內距歸零、flex 置中；七套共用，風格層不得覆寫 ══ */
 /* 元件結構尺寸（規範 5.4，v17）：高度 token，七套共用；768px 以下可點元件升到 44px 觸控下限 */
@@ -842,13 +768,108 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
 :where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
 }
 </style>
+<style>
+/* ══ 前台示範頁的版面（只寫排版；材質交給各套的 .board .card .btn） ══ */
+.ic{flex:none;vertical-align:middle}
+.sf{display:flex;flex-direction:column;gap:var(--sp-6)}
+.sf a{color:inherit;text-decoration:none}
+.sf-nav{display:flex;align-items:center;gap:var(--sp-6)}
+.sf-logo{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;letter-spacing:var(--ls-h3)}
+.sf-mark{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2)}
+.sf-links{display:flex;gap:var(--sp-5);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:500}
+.sf-links a:hover{color:var(--acc)}
+.sf-tools{margin-left:auto;display:flex;align-items:center;gap:var(--sp-1)}
+.sf-ib{min-width:44px;min-height:4.4rem;display:inline-flex;align-items:center;justify-content:center;border:none;background:none;color:var(--ink);border-radius:var(--r-pill);cursor:pointer;padding:0;transition:background var(--dur-1) var(--ease-out)}
+.sf-ib:hover{background:var(--accsoft)}
+.sf-ib:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sf-menu{display:none}
+.sf-hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:var(--sp-8);align-items:center}
+.sf-eyebrow{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted);text-transform:uppercase}
+.sf-h1{margin:var(--sp-3) 0 var(--sp-4);font-size:var(--fs-h0);line-height:var(--lh-h0);letter-spacing:var(--ls-h0);font-weight:900;text-wrap:balance}
+.sf-h2{margin:0;font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);font-weight:900}
+.sf-lead{margin:0 0 var(--sp-6);color:var(--muted);max-width:34em}
+.sf-cta{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.sf-cta .btn{display:inline-flex;align-items:center;gap:var(--sp-2)}
+.sf-media{aspect-ratio:4/3;border-radius:var(--r-lg);background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.sf-sechead{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-4)}
+.sf-more{display:inline-flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:700;color:var(--acc)}
+.sf-filter{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-5)}
+.sf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-5)}
+.sf-prod{display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.sf-thumb{position:relative;aspect-ratio:1/1;background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.sf-thumb .tag{position:absolute;top:var(--sp-3);left:var(--sp-3)}
+.sf-fav{position:absolute;top:var(--sp-1);right:var(--sp-1)}
+.sf-pbody{display:flex;flex-direction:column;gap:var(--sp-2);flex:1}
+.sf-pname{margin:0;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-meta{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-pricing{display:flex;align-items:baseline;flex-wrap:wrap;gap:var(--sp-2);margin-top:auto}
+.sf-pricing .price{font-family:Arial,sans-serif;font-weight:700;color:var(--ink);font-size:var(--fs-n2);line-height:var(--lh-n2)}
+.sf-pricing .price small{font-size:.68em;color:var(--muted);font-weight:400}
+.sf-was{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);text-decoration:line-through}
+.sf-add{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);width:100%}
+.sf-feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-6)}
+.sf-feat{display:flex;gap:var(--sp-2);align-items:flex-start}
+.sf-feat .ic{color:var(--acc)}
+.sf-feat h3{margin:0 0 var(--sp-1);font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-feat p{margin:0;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-article{display:flex;flex-direction:column;gap:var(--sp-4)}
+.sf-article .sf-body{max-width:36em}
+.sf-article .sf-body p{margin:0 0 var(--sp-4)}
+.sf-news{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);align-items:end}
+.sf-news p{margin:var(--sp-2) 0 0;font-size:var(--fs-b2);line-height:var(--lh-b2);color:var(--muted)}
+.sf-form{display:flex;gap:var(--sp-3);align-items:flex-end}
+.sf-form .field{flex:1;min-width:0}
+.sf-foot{display:flex;flex-wrap:wrap;gap:var(--sp-5);justify-content:space-between;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);padding:0 var(--sp-2)}
+.sf-foot nav{display:flex;flex-wrap:wrap;gap:var(--sp-4)}
+.sf-foot.board{padding:var(--sp-4) var(--sp-5)}
+/* v25 起七套各做自己最適合的前台（規範 8.7），以下是另外幾種版面用到的排版 */
+.sf .grid>.card,.sf-hero>.card,.sf-split>.card{max-width:none}
+.sf-hero>*,.sf-split>*{min-width:0}   /* 程式碼區塊 pre 不換行，不設 0 會把格子撐出畫面 */   /* 元件庫的 .card 預設最寬 360px，放進欄格就跟著欄寬 */
+.sf-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3)}
+.sf-col{display:flex;flex-direction:column;gap:var(--sp-3);min-width:0}
+.sf-split{display:grid;grid-template-columns:1.2fr 0.8fr;gap:var(--sp-6);align-items:start}
+.sf-p{margin:0;font-size:var(--fs-b2);line-height:var(--lh-b2);color:var(--muted)}
+.sf-h3{margin:0;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-big{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n1);line-height:var(--lh-n1)}
+.sf-big small{font-size:.68em;color:var(--muted);font-weight:400}
+.sf-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--sp-2);font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.sf-list li{display:flex;align-items:center;gap:var(--sp-2)}
+.sf-list .ic{color:var(--acc)}
+.sf-code{margin:0;padding:var(--sp-4);overflow-x:auto;font-family:"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;font-size:var(--fs-n4);line-height:var(--lh-n4);color:var(--ink);background:var(--paperc,var(--band));white-space:pre}
+.sf-menuitem{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-3)}
+.sf-menuitem .price{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n3);line-height:var(--lh-n3)}
+.sf-date{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-byline{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-quote{margin:0;padding-left:var(--sp-5);border-left:2px solid var(--line);font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:700}
+.sf-kiosk .btn{min-height:4.4rem}
+.sf-machine{display:flex;flex-direction:column;gap:var(--sp-2)}
+.sf-machine .sf-mno{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n2);line-height:var(--lh-n2)}
+@media (max-width:1023px){.sf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sf-split{grid-template-columns:1fr}}
+@media (max-width:767px){
+ .sf-links{display:none}.sf-menu{display:inline-flex}
+ .sf-hero,.sf-feats,.sf-news{grid-template-columns:1fr}
+ .sf-hero{gap:var(--sp-6)}.sf-media{order:-1}
+ .sf-form{flex-direction:column;align-items:stretch}
+ .sf-cta .btn{flex:1;justify-content:center}
+}
+/* 規範 6.3 的例外：商品卡列表在 480 以下維持兩欄——單欄時一屏只看得到一件商品。
+   條件：卡片內距收為 --sp-3、名稱最多兩行、評價數只留星等、加入購物袋改成右下角的圖示鈕 */
+@media (max-width:479px){
+ .sf-grid{gap:var(--sp-3)}
+ .card .sf-pbody{padding:var(--sp-3)}
+ .sf-pname{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+ .sf-rc,.sf-addtxt{display:none}
+ .sf-add{width:auto;min-width:44px;min-height:4.4rem;align-self:flex-end;padding:0}
+}
+</style>
 </head>
 <body data-type="expressive">
 
 <div class="head">
   <div class="kick">管理者工作室 — STOREFRONT DEMO · S7 EDITORIAL · EXPRESSIVE</div>
-  <h1>S7 編輯 前台示範</h1>
-  <p>同一套風格拿來做前台長什麼樣：選物店首頁，字級掛 <b>Expressive 表現型</b>。只用元件庫既有的 class 組成，材質與色系切換都與元件庫同源；選型依據見規範 8.7。</p>
+  <h1>S7 編輯 前台示範：內容與閱讀</h1>
+  <p>示範內容是線上雜誌「慢讀誌」的首頁。每套風格的前台示範都做它最適合的那一種網站（規範 8.7），字級掛 <b>Expressive 表現型</b>，只用元件庫既有的 class 組成，材質與色系切換都與元件庫同源。</p>
+  <p><b>適合</b>：雜誌與媒體、品牌誌、內容多的品牌官網、說明中心與長文——眼睛要舒服、要讀得下去。<br><b>不適合</b>：資料密集的儀表板與開發者工具、表格多的後台（明體標題與多一級的留白會降低資訊密度）。</p>
 </div>
 
 <div class="accbar">
@@ -873,13 +894,12 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
 </div>
 
 <div class="wrap sf">
-<header class="board sf-nav"><a class="sf-logo" href="#"><span class="sf-mark" aria-hidden="true"></span>器物日常</a><nav class="sf-links" aria-label="主要分類"><a href="#">新品</a><a href="#">餐桌</a><a href="#">收納</a><a href="#">布織品</a><a href="#">選物誌</a></nav><div class="sf-tools"><button class="sf-ib" type="button" aria-label="搜尋"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg></button><button class="sf-ib" type="button" aria-label="會員"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg></button><span class="badge"><button class="sf-ib" type="button" aria-label="購物袋，2 件商品"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M16 10a4 4 0 0 1-8 0" /><path d="M3.103 6.034h17.794" /><path d="M3.4 5.467a2 2 0 0 0-.4 1.2V20a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6.667a2 2 0 0 0-.4-1.2l-2-2.667A2 2 0 0 0 17 2H7a2 2 0 0 0-1.6.8z" /></svg></button><b class="num">2</b></span><button class="sf-ib sf-menu" type="button" aria-label="開啟選單"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg></button></div></header>
-<section class="board sf-hero"><div><div class="sf-eyebrow">秋季選物 · 2026</div><h1 class="sf-h1">把每天用的東西，換成喜歡的樣子</h1><p class="sf-lead">手作陶器、木質餐具與布織品，每一件都經過三十天實際使用才上架。</p><div class="sf-cta"><button class="btn primary" type="button">逛新品<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></button><button class="btn" type="button">看選物誌</button></div></div><div class="sf-media" role="img" aria-label="商品情境照（示意）"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg></div></section>
-<section class="board" aria-labelledby="sf-new"><div class="sf-sechead"><h2 class="sf-h2" id="sf-new">本週新品</h2><a class="sf-more" href="#">全部商品<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></div><div class="sf-filter"><button class="pillf on" type="button">全部</button><button class="pillf" type="button">餐桌</button><button class="pillf" type="button">收納</button><button class="pillf" type="button">布織品</button></div><div class="sf-grid"><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><span class="tag acc">新品</span><button class="sf-ib sf-fav" type="button" aria-label="收藏 粗陶湯碗 · 霧白"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">粗陶湯碗 · 霧白</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.8</span><span class="sf-rc">（126 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>680</span><span class="sf-was num">NT$ 850</span></div><button class="btn sm sf-add" type="button" aria-label="將 粗陶湯碗 · 霧白 加入購物袋"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg><span class="sf-addtxt">加入購物袋</span></button></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><span class="tag gray">限量</span><button class="sf-ib sf-fav" type="button" aria-label="收藏 胡桃木餐盤 24cm"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">胡桃木餐盤 24cm</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.9</span><span class="sf-rc">（88 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>1,280</span></div><button class="btn sm sf-add" type="button" aria-label="將 胡桃木餐盤 24cm 加入購物袋"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg><span class="sf-addtxt">加入購物袋</span></button></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><button class="sf-ib sf-fav" type="button" aria-label="收藏 亞麻餐墊兩入"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">亞麻餐墊兩入</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.6</span><span class="sf-rc">（203 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>540</span></div><button class="btn sm sf-add" type="button" aria-label="將 亞麻餐墊兩入 加入購物袋"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg><span class="sf-addtxt">加入購物袋</span></button></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg><span class="tag acc">新品</span><button class="sf-ib sf-fav" type="button" aria-label="收藏 手吹玻璃水杯"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5" /></svg></button></div><div class="card-body sf-pbody"><h3 class="sf-pname">手吹玻璃水杯</h3><div class="sf-meta"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.525 2.295a.53.53 0 0 1 .95 0l2.31 4.679a2.123 2.123 0 0 0 1.595 1.16l5.166.756a.53.53 0 0 1 .294.904l-3.736 3.638a2.123 2.123 0 0 0-.611 1.878l.882 5.14a.53.53 0 0 1-.771.56l-4.618-2.428a2.122 2.122 0 0 0-1.973 0L6.396 21.01a.53.53 0 0 1-.77-.56l.881-5.139a2.122 2.122 0 0 0-.611-1.879L2.16 9.795a.53.53 0 0 1 .294-.906l5.165-.755a2.122 2.122 0 0 0 1.597-1.16z" /></svg><span class="num">4.7</span><span class="sf-rc">（64 則評價）</span></div><div class="sf-pricing"><span class="price"><small>NT$</small>420</span></div><button class="btn sm sf-add" type="button" aria-label="將 手吹玻璃水杯 加入購物袋"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="M12 5v14" /></svg><span class="sf-addtxt">加入購物袋</span></button></div></article></div></section>
-<section class="board sf-feats" aria-label="購物保障"><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M14 18V6a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v11a1 1 0 0 0 1 1h2" /><path d="M15 18H9" /><path d="M19 18h2a1 1 0 0 0 1-1v-3.65a1 1 0 0 0-.22-.624l-3.48-4.35A1 1 0 0 0 17.52 8H14" /><circle cx="17" cy="18" r="2" /><circle cx="7" cy="18" r="2" /></svg><div><h3>滿 NT$1,500 免運</h3><p>本島三天內送達，離島另計運費。</p></div></div><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" /><path d="M3 3v5h5" /></svg><div><h3>七天內可退換</h3><p>未使用、包裝完整即可，運費由我們負擔。</p></div></div><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg><div><h3>安心付款</h3><p>支援信用卡、行動支付與超商取貨付款。</p></div></div></section>
-<article class="board sf-article"><div class="sf-eyebrow">選物誌</div><h2 class="sf-h2">一只碗為什麼要用三十天</h2><div class="sf-body"><p>照片裡好看的碗，放進洗碗機第二週就開始掉釉；拿在手上剛好的杯子，裝滿熱水卻燙到握不住。這些事在店裡看不出來，只有天天用才會知道。</p><p>所以每一件商品上架前，我們都會在自己的廚房用滿三十天：微波、冷藏、洗碗機、疊放收納都試過一輪，再把觀察寫進商品頁的「使用筆記」。</p></div><div class="notice">陶器每一件的釉色與氣孔都略有不同，屬於手作的正常樣貌，不列入瑕疵退換。</div><a class="sf-more" href="#">繼續閱讀<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></article>
-<section class="board sf-news" aria-labelledby="sf-mail"><div><h2 class="sf-h2" id="sf-mail">每月一封選物信</h2><p>新品、補貨與選物誌，一個月只寄一次，可隨時取消。</p></div><form class="sf-form" onsubmit="return false"><div class="field"><label for="sf-email">電子郵件</label><input id="sf-email" type="email" placeholder="name@example.com" autocomplete="email"/></div><button class="btn primary" type="submit">訂閱</button></form></section>
-<footer class="sf-foot"><span>© 2026 器物日常（示範品牌）</span><nav aria-label="頁尾"><a href="#">關於我們</a><a href="#">運送與退換</a><a href="#">常見問題</a><a href="#">聯絡我們</a></nav></footer>
+<header class="board sf-nav"><a class="sf-logo" href="#"><span class="sf-mark" aria-hidden="true"></span>慢讀誌</a><nav class="sf-links" aria-label="主要連結"><a href="#">專題</a><a href="#">生活</a><a href="#">食物</a><a href="#">書</a><a href="#">Podcast</a></nav><div class="sf-tools"><button class="sf-ib" type="button" aria-label="搜尋"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg></button><button class="btn primary" type="button">訂閱</button><button class="sf-ib sf-menu" type="button" aria-label="開啟選單"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg></button></div></header>
+<article class="board sf-hero"><div><div class="sf-eyebrow">本期專題 · 第 42 期</div><h1 class="sf-h1">慢下來，不是為了更有效率</h1><p class="sf-lead">我們訪問了五個把生活刻意放慢的人：一位每天走路上班的工程師、一間只開四小時的早餐店，還有一位十年沒換手機的作家。</p><div class="sf-byline"><span class="avatar sm">編</span>慢讀誌編輯部・<span class="num">2026/10/18</span>・<span class="num">15 分鐘</span></div><div class="sf-cta" style="margin-top:var(--sp-5)"><button class="btn primary" type="button"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M12 5v16" /><path d="M20.001 19A2 2 0 0022 17V5a2 2 0 00-1.999-2L16 3.002A5 5 0 0012 5a5 5 0 00-4-2H4a2 2 0 00-2 2v12a2 2 0 001.999 2H8a5 5 0 014 2 5 5 0 014-2z" /></svg>開始閱讀</button><button class="btn" type="button"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M17 3a2 2 0 0 1 2 2v15a1 1 0 0 1-1.496.868l-4.512-2.578a2 2 0 0 0-1.984 0l-4.512 2.578A1 1 0 0 1 5 20V5a2 2 0 0 1 2-2z" /></svg>稍後讀</button></div></div><div class="sf-media" role="img" aria-label="專題主圖（示意）"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><rect width="18" height="18" x="3" y="3" rx="2" ry="2" /><circle cx="9" cy="9" r="2" /><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21" /></svg></div></article>
+<section class="board" aria-labelledby="sf-latest"><div class="sf-sechead"><h2 class="sf-h2" id="sf-latest">最新文章</h2><a class="sf-more" href="#">全部文章<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></div><div class="sf-filter"><button class="pillf on" type="button">全部</button><button class="pillf" type="button">生活</button><button class="pillf" type="button">食物</button><button class="pillf" type="button">書</button></div><div class="grid"><article class="col-4 card"><div class="card-body sf-col"><span><span class="tag gray">生活</span></span><h3 class="sf-h3">搬家十次之後，我只留下這三十樣東西</h3><p class="sf-p">一份不打算說服任何人的清單。</p><span class="sf-byline">林予安・<span class="num">8 分鐘</span></span></div></article><article class="col-4 card"><div class="card-body sf-col"><span><span class="tag gray">食物</span></span><h3 class="sf-h3">市場阿姨教我的四種醃菜</h3><p class="sf-p">鹽、糖、時間，和一點不慌不忙。</p><span class="sf-byline">陳靜・<span class="num">6 分鐘</span></span></div></article><article class="col-4 card"><div class="card-body sf-col"><span><span class="tag gray">書</span></span><h3 class="sf-h3">為什麼我們越來越難讀完一本書</h3><p class="sf-p">不是手機的錯，至少不全是。</p><span class="sf-byline">周以恆・<span class="num">12 分鐘</span></span></div></article></div></section>
+<section class="board sf-article" aria-label="本期摘句"><div class="sf-eyebrow">本期摘句</div><blockquote class="sf-quote">「慢不是一種速度，是一種注意力放在哪裡的選擇。」</blockquote><div class="sf-body"><p>受訪的工程師說，走路的四十分鐘是他一天裡唯一沒有被通知打斷的時間。他不聽 Podcast、不回訊息，只是走。</p></div><a class="sf-more" href="#">讀完整篇<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></section>
+<section class="board sf-news" aria-labelledby="sf-mail"><div><h2 class="sf-h2" id="sf-mail">每週日早上一封信</h2><p>三篇值得慢慢讀的文章，不追熱門、不放廣告。</p></div><form class="sf-form" onsubmit="return false"><div class="field"><label for="sf-email">電子郵件</label><input id="sf-email" type="email" placeholder="name@example.com" autocomplete="email"/></div><button class="btn primary" type="submit">訂閱</button></form></section>
+<footer class="sf-foot"><span>© 2026 慢讀誌（示範品牌）</span><nav aria-label="頁尾"><a href="#">關於我們</a><a href="#">投稿</a><a href="#">廣告合作</a><a href="#">隱私權</a></nav></footer>
 </div>
 
 <script>

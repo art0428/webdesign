@@ -376,7 +376,6 @@ html.embedded .accbar{display:none}
 .hr{border:0;border-top:1px solid var(--line);margin:1.2rem 0;width:100%}
 .vdiv{display:inline-block;width:1px;height:16px;background:var(--line);margin:0 1.2rem;vertical-align:middle}
 
-
 /* ── 核心補件：日期選擇器 Date picker ── */
 .cal{width:262px;max-width:100%;padding:1.2rem;border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:none}:where(html[data-theme="dark"]) .cal{background:#232838}
 .cal .ch{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:var(--fs-b2);padding:0 0 0.8rem;line-height:var(--lh-b2)}
@@ -405,7 +404,6 @@ html.embedded .accbar{display:none}
 .ac .hint kbd{font-family:Arial,sans-serif;border:1px solid var(--line);border-radius:4px;padding:0 0.4rem;font-size:var(--fs-l2);line-height:var(--lh-l2)}
 .tab .cnt{font-family:Arial,sans-serif;font-size:var(--fs-l2);font-weight:700;border-radius:999px;padding:0 0.8rem;background:var(--accsoft,var(--acc-soft));color:var(--acc);line-height:var(--lh-l2)}
 .tab.on .cnt{background:var(--acc);color:#fff}:where(html[data-theme="dark"]) .tab.on .cnt{color:var(--on-acc)}
-
 
 /* ── 核心補件：描述清單 Descriptions ── */
 .desc{display:grid;grid-template-columns:max-content 1fr max-content 1fr;font-size:var(--fs-b2);width:100%;max-width:640px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:none;line-height:var(--lh-b2)}:where(html[data-theme="dark"]) .desc{background:#232838}
@@ -998,21 +996,12 @@ button{font-family:inherit;color:var(--ink)}
 .p3 .cnt b{background:#fff;border-radius:5px;box-shadow:0 0 0 .3rem #fff}:where(html[data-theme="dark"]) .p3 .cnt b{background:#232838;box-shadow:0 0 0 .3rem #232838}
 .cap[style*="--acc"]{color:var(--ink) !important}
 
-
 /* ══ 欄格系統（規範 v22，6.5）：12 欄流體格，平板以下 8 欄、480 以下 4 欄；欄距標準 --sp-6、緊湊 --sp-3 ══ */
 .grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--sp-6);row-gap:var(--sp-6)}
 .col-3{grid-column:span 3}.col-4{grid-column:span 4}.col-6{grid-column:span 6}.col-8{grid-column:span 8}.col-12{grid-column:span 12}
 .grid.dense{column-gap:var(--sp-3);row-gap:var(--sp-3)}
 @media (max-width:1023px){.grid{grid-template-columns:repeat(8,minmax(0,1fr))}.col-3,.col-4{grid-column:span 4}.col-6,.col-8,.col-12{grid-column:span 8}}
 @media (max-width:479px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--sp-3);row-gap:var(--sp-3)}.col-3,.col-4,.col-6,.col-8,.col-12{grid-column:span 4}}
-
-
-
-
-
-
-
-
 
 /* ══ 密集模式（規範 v24，5.7）：<html data-density="compact">；只改尺寸、不改顏色；768px 以下不生效（觸控下限優先） ══ */
 @media (min-width:768px){
@@ -1030,7 +1019,6 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
 :where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
 :where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
 }
-
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--tk-232936:#0B0D14;--tk-e3c94e:var(--wrn);--tk-rgba25525525562:rgba(255,255,255,.10);--tk-rgba909011035:rgba(255,255,255,.28);--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
@@ -1533,15 +1521,6 @@ addEventListener('message',function(e){
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
 </script>
-
-
-
-
-
-
-
-
-
 <script>/* ds-dark:begin */
 /* 深色模式（規範 8.8）：<html data-theme="dark"> 切深色。由 build_dark.py 產生，不要手改。 */
 const DARK={"c1":{"acc":"#76A9FF","accSoft":"#2D3954","accDeep":"#76A9FF","acc2":"#C2377B","acc2Soft":"#39273F","acc2Deep":"#FF7EB6","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c2":{"acc":"#6FB3BB","accSoft":"#2C3B49","accDeep":"#6FB3BB","acc2":"#C4663A","acc2Soft":"#392F34","acc2Deep":"#E7936E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c3":{"acc":"#9AA2F5","accSoft":"#333852","accDeep":"#9AA2F5","acc2":"#8C7AE6","acc2Soft":"#303250","acc2Deep":"#A89DF5","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c4":{"acc":"#B09AFF","accSoft":"#363754","accDeep":"#B09AFF","acc2":"#0F8A99","acc2Soft":"#1C3443","acc2Deep":"#60B6C4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c5":{"acc":"#77B690","accSoft":"#2D3B42","accDeep":"#77B690","acc2":"#A16207","acc2Soft":"#342E2C","acc2Deep":"#DB9C56","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c6":{"acc":"#C6A087","accSoft":"#3A3840","accDeep":"#C6A087","acc2":"#54755F","acc2Soft":"#27313A","acc2Deep":"#8DB098","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c7":{"acc":"#F18A62","accSoft":"#41343B","accDeep":"#F18A62","acc2":"#6E6E6E","acc2Soft":"#2C303C","acc2Deep":"#A9A9A9","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c8":{"acc":"#ABA7A4","accSoft":"#353945","accDeep":"#ABA7A4","acc2":"#D95F1E","acc2Soft":"#3D2D30","acc2Deep":"#F68D5E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c9":{"acc":"#FF7D84","accSoft":"#433240","accDeep":"#FF7D84","acc2":"#447684","acc2Soft":"#253140","acc2Deep":"#7DB0BF","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c10":{"acc":"#F67DB7","accSoft":"#413248","accDeep":"#F67DB7","acc2":"#5C97CB","acc2Soft":"#29364B","acc2Deep":"#72ADE4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c11":{"acc":"#ADA990","accSoft":"#363942","accDeep":"#ADA990","acc2":"#C65D52","acc2Soft":"#3A2D38","acc2Deep":"#FB8778","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c12":{"acc":"#CA9BA0","accSoft":"#3A3744","accDeep":"#CA9BA0","acc2":"#BA797D","acc2Soft":"#38323F","acc2Deep":"#E59194","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc1":{"acc":"#9AAEA3","accSoft":"#333A45","accDeep":"#9AAEA3","acc2":"#DACD65","acc2Soft":"#3D3F3B","acc2Deep":"#B4AA62","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc2":{"acc":"#82A6FF","accSoft":"#2F3954","accDeep":"#82A6FF","acc2":"#FF7A1A","acc2Soft":"#43322F","acc2Deep":"#FA8C59","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc3":{"acc":"#99AABF","accSoft":"#333949","accDeep":"#99AABF","acc2":"#5FB4C9","acc2Soft":"#293B4B","acc2Deep":"#74B1C4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"}};

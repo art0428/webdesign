@@ -376,7 +376,6 @@ html.embedded .accbar{display:none}
 .hr{border:0;border-top:1px solid var(--line);margin:1.2rem 0;width:100%}
 .vdiv{display:inline-block;width:1px;height:16px;background:var(--line);margin:0 1.2rem;vertical-align:middle}
 
-
 /* ── 核心補件：日期選擇器 Date picker ── */
 .cal{width:262px;max-width:100%;padding:1.2rem;border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:none}:where(html[data-theme="dark"]) .cal{background:#1E212C}
 .cal .ch{display:flex;align-items:center;justify-content:space-between;font-weight:700;font-size:var(--fs-b2);padding:0 0 0.8rem;line-height:var(--lh-b2)}
@@ -405,7 +404,6 @@ html.embedded .accbar{display:none}
 .ac .hint kbd{font-family:Arial,sans-serif;border:1px solid var(--line);border-radius:4px;padding:0 0.4rem;font-size:var(--fs-l2);line-height:var(--lh-l2)}
 .tab .cnt{font-family:Arial,sans-serif;font-size:var(--fs-l2);font-weight:700;border-radius:999px;padding:0 0.8rem;background:var(--accsoft,var(--acc-soft));color:var(--acc);line-height:var(--lh-l2)}
 .tab.on .cnt{background:var(--acc);color:#fff}:where(html[data-theme="dark"]) .tab.on .cnt{color:var(--on-acc)}
-
 
 /* ── 核心補件：描述清單 Descriptions ── */
 .desc{display:grid;grid-template-columns:max-content 1fr max-content 1fr;font-size:var(--fs-b2);width:100%;max-width:640px;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:#fff;box-shadow:none;line-height:var(--lh-b2)}:where(html[data-theme="dark"]) .desc{background:#1E212C}
@@ -894,6 +892,29 @@ button{font-family:inherit;color:var(--ink)}
 .board:has(>.blob)>*:not(.blob){position:relative;z-index:1}
 @media (max-width:767px){.board .blob{display:none}}
 
+/* ══ 欄格系統（規範 v22，6.5）：12 欄流體格，平板以下 8 欄、480 以下 4 欄；欄距標準 --sp-6、緊湊 --sp-3 ══ */
+.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--sp-6);row-gap:var(--sp-6)}
+.col-3{grid-column:span 3}.col-4{grid-column:span 4}.col-6{grid-column:span 6}.col-8{grid-column:span 8}.col-12{grid-column:span 12}
+.grid.dense{column-gap:var(--sp-3);row-gap:var(--sp-3)}
+@media (max-width:1023px){.grid{grid-template-columns:repeat(8,minmax(0,1fr))}.col-3,.col-4{grid-column:span 4}.col-6,.col-8,.col-12{grid-column:span 8}}
+@media (max-width:479px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--sp-3);row-gap:var(--sp-3)}.col-3,.col-4,.col-6,.col-8,.col-12{grid-column:span 4}}
+
+/* ══ 密集模式（規範 v24，5.7）：<html data-density="compact">；只改尺寸、不改顏色；768px 以下不生效（觸控下限優先） ══ */
+@media (min-width:768px){
+html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.8rem;--h-input:3.2rem;--h-qty:2.8rem;--h-pill:2.0rem;--h-nav:3.2rem;--h-tag:1.8rem}
+:where(html[data-density="compact"]) .t td{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .t th{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .tcap{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .qty button,:where(html[data-density="compact"]) .qty input{min-height:2.6rem}
+:where(html[data-density="compact"]) .seg button{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .search{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .board{padding:var(--sp-4)}
+:where(html[data-density="compact"]) .statc{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .card .card-title,:where(html[data-density="compact"]) .card .card-body,:where(html[data-density="compact"]) .cardx .ct,:where(html[data-density="compact"]) .cardx .cb{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .desc dt,:where(html[data-density="compact"]) .desc dd{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
+:where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
+}
 </style>
 <style>
 /* ══ 前台示範頁的版面（只寫排版；材質交給各套的 .board .card .btn） ══ */
@@ -949,7 +970,29 @@ button{font-family:inherit;color:var(--ink)}
 .sf-foot{display:flex;flex-wrap:wrap;gap:var(--sp-5);justify-content:space-between;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);padding:0 var(--sp-2)}
 .sf-foot nav{display:flex;flex-wrap:wrap;gap:var(--sp-4)}
 .sf-foot.board{padding:var(--sp-4) var(--sp-5)}
-@media (max-width:1023px){.sf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* v25 起七套各做自己最適合的前台（規範 8.7），以下是另外幾種版面用到的排版 */
+.sf .grid>.card,.sf-hero>.card,.sf-split>.card{max-width:none}
+.sf-hero>*,.sf-split>*{min-width:0}   /* 程式碼區塊 pre 不換行，不設 0 會把格子撐出畫面 */   /* 元件庫的 .card 預設最寬 360px，放進欄格就跟著欄寬 */
+.sf-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3)}
+.sf-col{display:flex;flex-direction:column;gap:var(--sp-3);min-width:0}
+.sf-split{display:grid;grid-template-columns:1.2fr 0.8fr;gap:var(--sp-6);align-items:start}
+.sf-p{margin:0;font-size:var(--fs-b2);line-height:var(--lh-b2);color:var(--muted)}
+.sf-h3{margin:0;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-big{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n1);line-height:var(--lh-n1)}
+.sf-big small{font-size:.68em;color:var(--muted);font-weight:400}
+.sf-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--sp-2);font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.sf-list li{display:flex;align-items:center;gap:var(--sp-2)}
+.sf-list .ic{color:var(--acc)}
+.sf-code{margin:0;padding:var(--sp-4);overflow-x:auto;font-family:"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;font-size:var(--fs-n4);line-height:var(--lh-n4);color:var(--ink);background:var(--paperc,var(--band));white-space:pre}
+.sf-menuitem{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-3)}
+.sf-menuitem .price{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n3);line-height:var(--lh-n3)}
+.sf-date{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-byline{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-quote{margin:0;padding-left:var(--sp-5);border-left:2px solid var(--line);font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:700}
+.sf-kiosk .btn{min-height:4.4rem}
+.sf-machine{display:flex;flex-direction:column;gap:var(--sp-2)}
+.sf-machine .sf-mno{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n2);line-height:var(--lh-n2)}
+@media (max-width:1023px){.sf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sf-split{grid-template-columns:1fr}}
 @media (max-width:767px){
  .sf-links{display:none}.sf-menu{display:inline-flex}
  .sf-hero,.sf-feats,.sf-news{grid-template-columns:1fr}
@@ -966,35 +1009,6 @@ button{font-family:inherit;color:var(--ink)}
  .sf-rc,.sf-addtxt{display:none}
  .sf-add{width:auto;min-width:44px;min-height:4.4rem;align-self:flex-end;padding:0}
 }
-
-/* ══ 欄格系統（規範 v22，6.5）：12 欄流體格，平板以下 8 欄、480 以下 4 欄；欄距標準 --sp-6、緊湊 --sp-3 ══ */
-.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--sp-6);row-gap:var(--sp-6)}
-.col-3{grid-column:span 3}.col-4{grid-column:span 4}.col-6{grid-column:span 6}.col-8{grid-column:span 8}.col-12{grid-column:span 12}
-.grid.dense{column-gap:var(--sp-3);row-gap:var(--sp-3)}
-@media (max-width:1023px){.grid{grid-template-columns:repeat(8,minmax(0,1fr))}.col-3,.col-4{grid-column:span 4}.col-6,.col-8,.col-12{grid-column:span 8}}
-@media (max-width:479px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--sp-3);row-gap:var(--sp-3)}.col-3,.col-4,.col-6,.col-8,.col-12{grid-column:span 4}}
-
-
-
-
-
-/* ══ 密集模式（規範 v24，5.7）：<html data-density="compact">；只改尺寸、不改顏色；768px 以下不生效（觸控下限優先） ══ */
-@media (min-width:768px){
-html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.8rem;--h-input:3.2rem;--h-qty:2.8rem;--h-pill:2.0rem;--h-nav:3.2rem;--h-tag:1.8rem}
-:where(html[data-density="compact"]) .t td{padding:var(--sp-1) var(--sp-3)}
-:where(html[data-density="compact"]) .t th{padding:var(--sp-1) var(--sp-3)}
-:where(html[data-density="compact"]) .tcap{padding:var(--sp-2) var(--sp-3)}
-:where(html[data-density="compact"]) .qty button,:where(html[data-density="compact"]) .qty input{min-height:2.6rem}
-:where(html[data-density="compact"]) .seg button{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
-:where(html[data-density="compact"]) .search{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
-:where(html[data-density="compact"]) .board{padding:var(--sp-4)}
-:where(html[data-density="compact"]) .statc{padding:var(--sp-2) var(--sp-3)}
-:where(html[data-density="compact"]) .card .card-title,:where(html[data-density="compact"]) .card .card-body,:where(html[data-density="compact"]) .cardx .ct,:where(html[data-density="compact"]) .cardx .cb{padding:var(--sp-2) var(--sp-3)}
-:where(html[data-density="compact"]) .desc dt,:where(html[data-density="compact"]) .desc dd{padding:var(--sp-1) var(--sp-3)}
-:where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
-:where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
-}
-
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--tk-fff:#1E212C;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
@@ -1003,8 +1017,9 @@ html[data-theme="dark"]{color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc
 
 <div class="head">
   <div class="kick">管理者工作室 — STOREFRONT DEMO · S5 AURORA · EXPRESSIVE</div>
-  <h1>S5 極光 前台示範</h1>
-  <p>同一套風格拿來做前台長什麼樣：選物店首頁，字級掛 <b>Expressive 表現型</b>。只用元件庫既有的 class 組成，材質與色系切換都與元件庫同源；選型依據見規範 8.7。</p>
+  <h1>S5 極光 前台示範：電商前台</h1>
+  <p>示範內容是生活選物店「器物日常」的首頁。每套風格的前台示範都做它最適合的那一種網站（規範 8.7），字級掛 <b>Expressive 表現型</b>，只用元件庫既有的 class 組成，材質與色系切換都與元件庫同源。</p>
+  <p><b>適合</b>：電商首頁與商品列表、預約與會員等服務型前台、品牌官網——要讓商品好看、流程親切。<br><b>不適合</b>：開發者工具與內部工具（背景暈染對長時間專注是干擾）。</p>
 </div>
 
 <div class="accbar">
@@ -1137,11 +1152,6 @@ addEventListener('message',function(e){
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
 </script>
-
-
-
-
-
 <script>/* ds-dark:begin */
 /* 深色模式（規範 8.8）：<html data-theme="dark"> 切深色。由 build_dark.py 產生，不要手改。 */
 const DARK={"c1":{"acc":"#81B0FF","accSoft":"#353F56","accDeep":"#81B0FF","acc2":"#C93E81","acc2Soft":"#402D42","acc2Deep":"#FF8BBB","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c2":{"acc":"#77BBC3","accSoft":"#33414D","accDeep":"#77BBC3","acc2":"#C4663A","acc2Soft":"#3F3437","acc2Deep":"#EF9B76","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c3":{"acc":"#A2AAFE","accSoft":"#3A3E56","accDeep":"#A2AAFE","acc2":"#8C7AE6","acc2Soft":"#363752","acc2Deep":"#B1A6FF","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c4":{"acc":"#B7A4FF","accSoft":"#3D3E56","accDeep":"#B7A4FF","acc2":"#0F8A99","acc2Soft":"#223946","acc2Deep":"#68BECC","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c5":{"acc":"#7FBE98","accSoft":"#344246","accDeep":"#7FBE98","acc2":"#A4650E","acc2Soft":"#3A3330","acc2Deep":"#E3A35E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c6":{"acc":"#CEA88F","accSoft":"#413E44","accDeep":"#CEA88F","acc2":"#597B64","acc2Soft":"#2E373D","acc2Deep":"#96BAA1","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c7":{"acc":"#FC936B","accSoft":"#483B3E","accDeep":"#FC936B","acc2":"#737373","acc2Soft":"#323640","acc2Deep":"#B1B1B1","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c8":{"acc":"#B3AFAC","accSoft":"#3D3F49","accDeep":"#B3AFAC","acc2":"#D95F1E","acc2Soft":"#433232","acc2Deep":"#FF9565","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c9":{"acc":"#FF8F93","accSoft":"#493A45","accDeep":"#FF8F93","acc2":"#497A89","acc2Soft":"#2C3743","acc2Deep":"#85B8C7","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c10":{"acc":"#FF87C1","accSoft":"#49394C","accDeep":"#FF87C1","acc2":"#5C97CB","acc2Soft":"#2F3B4E","acc2Deep":"#7AB5ED","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c11":{"acc":"#B5B197","accSoft":"#3D4046","accDeep":"#B5B197","acc2":"#C65D52","acc2Soft":"#40323A","acc2Deep":"#FF9587","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c12":{"acc":"#D4A5A9","accSoft":"#423E48","accDeep":"#D4A5A9","acc2":"#BA797D","acc2Soft":"#3E3741","acc2Deep":"#EF9A9E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc1":{"acc":"#A2B6AB","accSoft":"#3A4049","accDeep":"#A2B6AB","acc2":"#DACD65","acc2Soft":"#43443E","acc2Deep":"#BCB26A","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc2":{"acc":"#8CAEFF","accSoft":"#363F56","accDeep":"#8CAEFF","acc2":"#FF7A1A","acc2Soft":"#493732","acc2Deep":"#FF9666","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc3":{"acc":"#A2B3C8","accSoft":"#3A404D","accDeep":"#A2B3C8","acc2":"#5FB4C9","acc2Soft":"#2F404E","acc2Deep":"#7DBBCD","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"}};

@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-10 v24 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S3、S5、S6 另有深色模式、S6 另有密集模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單與六項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；七張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-10 v25 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S3、S5、S6 另有深色模式、S6 另有密集模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單與六項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；七張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v24》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v25》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -311,7 +311,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 **圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；七套風格共用同一組圖示。
 
-**前台長什麼樣**：`assets/storefront/*.html` 七張選物店首頁（掛 Expressive，只用元件庫 class；S3、S5、S6 同一頁可切深色），設計系統瀏覽器的「前台示範」檢視可切換風格、模式與色系。做前台時照它的結構起手。
+**前台長什麼樣**：`assets/storefront/*.html` 七張前台示範頁（掛 Expressive，只用元件庫 class；S3、S5、S6 同一頁可切深色）。v25 起每套各做它最適合的那一種網站：S1 會員中心、S2 自助機台、S3 產品發表、S4 咖啡館官網、S5 選物電商、S6 開發者產品官網、S7 線上雜誌，頁頂寫明「適合」與「不適合」（規範 8.7「每套風格的前台示範」）。設計系統瀏覽器的「前台示範」檢視可切換風格、模式與色系。做前台時挑跟自己最接近的一張照它的結構起手。
 
 ## 9. 交付前四項自動檢查（腳本在本 skill 的 `scripts/`）
 
@@ -368,6 +368,6 @@ v19 的 S2〜S5 過渡版（兩檔、不載 base.css）已退場。頁面不加 
 | 第十二章 開發對接：引用 dist/ 的 CSS、theme.js、瀏覽器支援基線 | `references/dev-handoff.md` |
 | 附錄 已退場的歷年色系 | `references/legacy-colors.md` |
 | 某個元件的完整 HTML 與 CSS | `assets/components/<風格>.html`，搜尋該元件的節標題 |
-| 前台頁面的結構範例（選物店首頁，Expressive 字級） | `assets/storefront/<風格>.html` |
+| 前台頁面的結構範例（每套風格各做它最適合的網站，Expressive 字級） | `assets/storefront/<風格>.html` |
 | 各風格共用的數值一覽（字級、間距、圓角、色彩、斷點） | `assets/foundations.html` |
 | 字級、間距、造型 token | `assets/tokens.css` |

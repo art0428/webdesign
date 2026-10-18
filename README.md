@@ -6,7 +6,7 @@
 **A Claude Agent Skill for building web UIs: 7 visual styles (3 with dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 62 components, and 4 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow). Docs are in Traditional Chinese.**
 
 **線上預覽** → <https://art0428.github.io/webdesign/>
-左側切換風格、模式（S3、S5、S6 可切淺色／深色）、密度（S6 可切密集）與色系，右側即時換裝；「前台示範」檢視是一張完整的選物店首頁，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
+左側切換風格、模式（S3、S5、S6 可切淺色／深色）、密度（S6 可切密集）與色系，右側即時換裝；「前台示範」檢視是每套風格各做一個它最適合的網站（S1 會員中心、S2 自助機台、S3 產品發表、S4 咖啡館官網、S5 選物電商、S6 開發者產品官網、S7 線上雜誌），頁頂寫明適合與不適合的用途，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
 
 ---
 
@@ -105,7 +105,7 @@ dist/ui-design-format.zip     給 claude.ai 上傳用的打包檔
 docs/                         線上預覽（GitHub Pages）、規範全文 spec.md、調研 research/
 ```
 
-規範全文：[docs/spec.md](docs/spec.md)（v24）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
+規範全文：[docs/spec.md](docs/spec.md)（v25）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
 
 ## 授權
 

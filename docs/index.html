@@ -265,6 +265,8 @@ let curStyle="s1", curPair="c1", curMode="light";   /* curMode 是使用者選�
 const effMode=()=>(curMode==="dark" && DARK_STYLES.includes(curStyle) && curView!=="found") ? "dark" : "light";
 /* 密集模式（規範 5.7）：只改尺寸、不改顏色；目前只有 S6 開放，只在元件庫檢視（前台與通用規範不分密度） */
 const DENSE_STYLES=["s6"];
+/* 前台示範：每套風格做它最適合的網站（規範 8.7），說明跟著風格換 */
+const STORE_HINT={"s1": "服務型前台・會員中心：咖啡豆訂閱品牌「山嵐咖啡」的會員中心。適合會員中心、預約與點餐等服務型前台、SaaS 產品的對外頁面與說明中心、內容型網站。", "s2": "少資料、多操作的介面・自助機台：自助洗衣店「泡泡洗衣坊」的機台操作畫面。適合自助機台、點餐機、控制面板、設定精靈、智慧家電的操作畫面——畫面以大按鈕與開關為主、幾乎沒有表格。", "s3": "品牌官網・產品發表：耳機品牌「Lumen 聲學」的新品發表與預購頁。適合品牌官網、產品發表、活動頁、一次性瀏覽、要讓人記住的頁面。", "s4": "餐飲・文創前台：社區咖啡館「巷口晨光」的官網首頁。適合咖啡館與餐廳、手作與文創品牌、市集與工作坊、年輕客群的電商——品牌個性本身就是賣點。", "s5": "電商前台：生活選物店「器物日常」的首頁。適合電商首頁與商品列表、預約與會員等服務型前台、品牌官網——要讓商品好看、流程親切。", "s6": "開發者產品官網：Webhook 中繼服務「Relay API」的官網首頁。適合開發者產品的官網與文件、技術文件、狀態頁。", "s7": "內容與閱讀：線上雜誌「慢讀誌」的首頁。適合雜誌與媒體、品牌誌、內容多的品牌官網、說明中心與長文——眼睛要舒服、要讀得下去。"};
 let curDens="normal";
 const effDens=()=>(curDens==="compact" && DENSE_STYLES.includes(curStyle) && curView==="lib") ? "compact" : "normal";
 const frame=document.getElementById("stage");
@@ -348,6 +350,7 @@ function syncMode(){
 }
 function sync(){
   lockChips(); syncMode(); syncDens();
+  if(curView==="store") document.getElementById("viewHint").textContent=STORE_HINT[curStyle]+"說明與不適合的情境寫在示範頁頂端。";
   try{ history.replaceState(null,"",ownHash()); }catch(_){}
   styleRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curStyle)));
   pairRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curPair)));
@@ -371,7 +374,7 @@ document.getElementById("viewSeg").addEventListener("click",e=>{
   document.getElementById("idx").hidden = true; idxOpen=false;
   document.getElementById("idxBtn").setAttribute("aria-expanded","false");
   document.getElementById("viewHint").textContent = curView==="store"
-    ? "同一套風格做前台：選物店首頁，字級掛 Expressive；只用元件庫既有的 class 組成。"
+    ? STORE_HINT[curStyle]+"說明與不適合的情境寫在示範頁頂端。"
     : curView==="found"
     ? "七套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
     : "六十二項元件一項一節，依風格、模式與色系即時換裝。";
