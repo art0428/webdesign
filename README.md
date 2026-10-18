@@ -1,12 +1,12 @@
 # 管理者工作室 網頁設計系統 · ui-design-format
 
 一套可以直接裝進 Claude 的網頁介面設計系統（以 Agent Skill 形式提供：裝好之後，Claude 做網頁時會自動照這套規範）。
-七套風格（S3、S5、S6 另有深色模式）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、12 欄欄格、62 項元件、可直接引用的 CSS（`dist/`）、前台示範頁，外加四支交付前的自動檢查腳本。
+七套風格（S3、S5、S6 另有深色模式，S6 另有密集模式）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、12 欄欄格、62 項元件、可直接引用的 CSS（`dist/`）、前台示範頁，外加四支交付前的自動檢查腳本。
 
 **A Claude Agent Skill for building web UIs: 7 visual styles (3 with dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 62 components, and 4 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow). Docs are in Traditional Chinese.**
 
 **線上預覽** → <https://art0428.github.io/webdesign/>
-左側切換風格、模式（S3、S5、S6 可切淺色／深色）與色系，右側即時換裝；「前台示範」檢視是一張完整的選物店首頁，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
+左側切換風格、模式（S3、S5、S6 可切淺色／深色）、密度（S6 可切密集）與色系，右側即時換裝；「前台示範」檢視是一張完整的選物店首頁，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
 
 ---
 
@@ -57,10 +57,10 @@ cp -r webdesign/skills/ui-design-format ~/.claude/skills/
 | S3 | 琉璃 GLAZE | 雙色漸層背景 ＋ 毛玻璃面板；另有深色模式 | 品牌展示、前台首頁 |
 | S4 | 手帳 DOODLE | 暖紙底、手繪歪框、硬影 | 餐飲、文創、電商 |
 | S5 | 極光 AURORA | 雙色柔霧暈染、有機圓角；另有深色模式 | 品牌故事、服務型前台 |
-| S6 | 石墨 GRAPHITE | 純灰階、1px 細線、小圓角；另有深色模式 | 資料密集後台、開發者工具 |
+| S6 | 石墨 GRAPHITE | 純灰階、1px 細線、小圓角；另有深色與密集模式 | 資料密集後台、開發者工具 |
 | S7 | 編輯 EDITORIAL | 暖白紙、明體標題、欄線分段、直角 | 內容網站、品牌官網、長文閱讀 |
 
-色系由使用者在系統內切換：十二組核心 C1〜C12 加三組特殊色系 SC1〜SC3。七套 × 十五組共 105 種，扣掉鎖住的 S2 × SC1、S2 × SC2，共 103 種可用組合；S3、S5、S6 的深色模式各另有 15 種，合計 148 種。深色是同一套風格的夜間版本，只換顏色、不換結構，需要夜間模式的專案從這三套選。
+色系由使用者在系統內切換：十二組核心 C1〜C12 加三組特殊色系 SC1〜SC3。七套 × 十五組共 105 種，扣掉鎖住的 S2 × SC1、S2 × SC2，共 103 種可用組合；S3、S5、S6 的深色模式各另有 15 種，合計 148 種。深色是同一套風格的夜間版本，只換顏色、不換結構，需要夜間模式的專案從這三套選。S6 另有密集模式（元件高度與表格內距各縮一級，一屏看得到更多列，只改尺寸不改顏色），給大量清單的後台用。
 
 ## 開發時引用 CSS
 
@@ -105,7 +105,7 @@ dist/ui-design-format.zip     給 claude.ai 上傳用的打包檔
 docs/                         線上預覽（GitHub Pages）、規範全文 spec.md、調研 research/
 ```
 
-規範全文：[docs/spec.md](docs/spec.md)（v23）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
+規範全文：[docs/spec.md](docs/spec.md)（v24）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
 
 ## 授權
 

@@ -725,6 +725,23 @@ a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid
 .grid.dense{column-gap:var(--sp-3);row-gap:var(--sp-3)}
 @media (max-width:1023px){.grid{grid-template-columns:repeat(8,minmax(0,1fr))}.col-3,.col-4{grid-column:span 4}.col-6,.col-8,.col-12{grid-column:span 8}}
 @media (max-width:479px){.grid{grid-template-columns:repeat(4,minmax(0,1fr));column-gap:var(--sp-3);row-gap:var(--sp-3)}.col-3,.col-4,.col-6,.col-8,.col-12{grid-column:span 4}}
+
+/* ══ 密集模式（規範 v24，5.7）：<html data-density="compact">；只改尺寸、不改顏色；768px 以下不生效（觸控下限優先） ══ */
+@media (min-width:768px){
+html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.8rem;--h-input:3.2rem;--h-qty:2.8rem;--h-pill:2.0rem;--h-nav:3.2rem;--h-tag:1.8rem}
+:where(html[data-density="compact"]) .t td{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .t th{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .tcap{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .qty button,:where(html[data-density="compact"]) .qty input{min-height:2.6rem}
+:where(html[data-density="compact"]) .seg button{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .search{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .board{padding:var(--sp-4)}
+:where(html[data-density="compact"]) .statc{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .card .card-title,:where(html[data-density="compact"]) .card .card-body,:where(html[data-density="compact"]) .cardx .ct,:where(html[data-density="compact"]) .cardx .cb{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .desc dt,:where(html[data-density="compact"]) .desc dd{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
+:where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
+}
 </style>
 </head>
 <body>

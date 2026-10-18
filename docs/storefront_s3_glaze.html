@@ -1083,6 +1083,24 @@ button{font-family:inherit;color:var(--ink)}
 
 
 
+
+/* ══ 密集模式（規範 v24，5.7）：<html data-density="compact">；只改尺寸、不改顏色；768px 以下不生效（觸控下限優先） ══ */
+@media (min-width:768px){
+html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.8rem;--h-input:3.2rem;--h-qty:2.8rem;--h-pill:2.0rem;--h-nav:3.2rem;--h-tag:1.8rem}
+:where(html[data-density="compact"]) .t td{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .t th{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .tcap{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .qty button,:where(html[data-density="compact"]) .qty input{min-height:2.6rem}
+:where(html[data-density="compact"]) .seg button{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .search{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .board{padding:var(--sp-4)}
+:where(html[data-density="compact"]) .statc{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .card .card-title,:where(html[data-density="compact"]) .card .card-body,:where(html[data-density="compact"]) .cardx .ct,:where(html[data-density="compact"]) .cardx .cb{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .desc dt,:where(html[data-density="compact"]) .desc dd{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
+:where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
+}
+
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--tk-232936:#0B0D14;--tk-e3c94e:var(--wrn);--tk-rgba25525525562:rgba(255,255,255,.10);--tk-rgba909011035:rgba(255,255,255,.28);--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
@@ -1225,6 +1243,7 @@ addEventListener('message',function(e){
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
 </script>
+
 
 
 

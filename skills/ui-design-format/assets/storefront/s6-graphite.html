@@ -836,6 +836,25 @@ a:focus-visible,summary:focus-visible,[tabindex]:focus-visible{outline:2px solid
 
 
 
+
+/* ══ 密集模式（規範 v24，5.7）：<html data-density="compact">；只改尺寸、不改顏色；768px 以下不生效（觸控下限優先） ══ */
+@media (min-width:768px){
+html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.8rem;--h-input:3.2rem;--h-qty:2.8rem;--h-pill:2.0rem;--h-nav:3.2rem;--h-tag:1.8rem}
+:where(html[data-density="compact"]) .t td{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .t th{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .tcap{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .qty button,:where(html[data-density="compact"]) .qty input{min-height:2.6rem}
+:where(html[data-density="compact"]) .seg button{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .search{padding-top:var(--sp-1);padding-bottom:var(--sp-1)}
+:where(html[data-density="compact"]) .board{padding:var(--sp-4)}
+:where(html[data-density="compact"]) .statc{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .card .card-title,:where(html[data-density="compact"]) .card .card-body,:where(html[data-density="compact"]) .cardx .ct,:where(html[data-density="compact"]) .cardx .cb{padding:var(--sp-2) var(--sp-3)}
+:where(html[data-density="compact"]) .desc dt,:where(html[data-density="compact"]) .desc dd{padding:var(--sp-1) var(--sp-3)}
+:where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
+:where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
+}
+
+
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-171717:var(--ink);--tk-6a6a6a:var(--muted);--tk-e3e3e3:var(--line);--tk-f6f6f6:var(--paperc);--tk-e9c94a:var(--wrn);--tk-3b3b3b:var(--dark);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
@@ -978,6 +997,8 @@ addEventListener('message',function(e){
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
 </script>
+
+
 
 
 
