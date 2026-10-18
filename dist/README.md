@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 22.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 23.0.0 — 可引用的 CSS
 
 由 `emit_css.py` 自七套元件庫示範頁產生，**不要手改**；改元件庫後重跑，並以 `verify_css_split.py` 確認示範頁改成引用這些檔之後每個元素的計算樣式一字不差。
 
@@ -16,15 +16,15 @@
 
 v20 起七套元件庫全部以 S1 為基底（共用同一份元件 HTML 與結構），`style-s1.css`〜`style-s7.css` 都是只有材質的薄檔，載法一律三檔。v19 的 S2〜S5「過渡版完整樣式表、不配 base.css」已退場——從 19.x 升上來的產品，S2〜S5 要把 `base.css` 加回去，數量調整器改用 S1 的 `<input>` 標記。
 
-## 深色模式（目前只有 S6）
+## 深色模式（S3 琉璃、S5 極光、S6 石墨）
 
-`style-s6.css` 內含深色：`<html data-theme="dark">` 強制深色、`data-theme="light"` 強制淺色、不寫則跟隨系統（`prefers-color-scheme`）。切換不換檔。品牌色的深色值由 `theme.js` 的 `DARK` 表套用。日後奶油等其他風格要加深色，同樣放進各自的 `style-s*.css`。
+深色是風格的**模式**，不是另一套風格：`style-s3.css`、`style-s5.css`、`style-s6.css` 各自內含深色。`<html data-theme="dark">` 強制深色、`data-theme="light"` 強制淺色、不寫則跟隨系統（`prefers-color-scheme`）。切換不換檔、不重載。品牌色的深色值由 `theme.js` 的 `DARK` 表（依風格分表）套用。其他四套（S1、S2、S4、S7）沒有深色，`data-theme="dark"` 對它們無效果（理由見規範 8.8）。
 
 ## theme.js
 
 ```js
 DS.applyTheme('c3')              // 切換色系 c1〜c12、sc1〜sc3；不適用於本風格的組合退回 c1，回傳實際套用的 key
-DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（目前 s6）有效
+DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s3、s5、s6）有效
 DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切回 C1')   // 選配：退回時通知使用者
 ```
 
@@ -46,15 +46,15 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
 | `base.css` | 結構層 ＋ S1 材質 | 54.1 KB |
-| `style-s1.css` | S1 奶油（材質在 base，保留給深色模式） | 0.3 KB |
+| `style-s1.css` | S1 奶油（材質在 base，空殼） | 0.3 KB |
 | `style-s2.css` | S2 浮雕 | 14.9 KB |
-| `style-s3.css` | S3 琉璃 | 16.5 KB |
+| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 80.0 KB |
 | `style-s4.css` | S4 手帳 | 11.1 KB |
-| `style-s5.css` | S5 極光 | 9.7 KB |
-| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 18.1 KB |
+| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 48.2 KB |
+| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 28.4 KB |
 | `style-s7.css` | S7 編輯 | 2.1 KB |
-| `theme.js` | 色系與深淺模式 | 9.7 KB |
+| `theme.js` | 色系與深淺模式 | 15.1 KB |
 
 ## 版本
 
-`22.0.0` 與《網頁設計規範 v22》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`23.0.0` 與《網頁設計規範 v23》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

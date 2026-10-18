@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-10 v22 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S6 另有深色模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單與六項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；六張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-10 v23 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S3、S5、S6 另有深色模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單與六項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；七張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v22》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v23》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -20,7 +20,7 @@ description: "通用的網頁介面設計系統（2026-10 v22 規範）。凡是
 
 ## 1. 工作流程
 
-1. **選風格**：依系統類型從七套選一（見第 2 節矩陣）。後台、資料密集預設 S1 奶油；要「工具感」而不是「文件感」的後台、開發者介面、資料密集儀表板選 S6 石墨；內容網站、品牌官網、長文閱讀選 S7 編輯；不確定就 S1。
+1. **選風格**：依系統類型從七套選一（見第 2 節矩陣）。後台、資料密集預設 S1 奶油；要「工具感」而不是「文件感」的後台、開發者介面、資料密集儀表板選 S6 石墨；內容網站、品牌官網、長文閱讀選 S7 編輯；需求裡有深色或夜間模式，只能從 S3、S5、S6 選（第 2 節深色模式）；不確定就 S1。
 2. **選預設色系**：從 C1〜C12 選一組當預設（新專案預設 C1 深海藍）；SC 系列只在不鎖、不需調整的風格可當預設：SC1 為 S1、S3、S5、S6；SC2 為 S1、S3、S5、S6（高彩度，給零售、消費品、活動頁）；SC3 為 S1、S3、S5、S6（冷灰藍，給金融、資安、監控）。
 3. **起手**：載入 tokens（第 5 節）＋ 該風格的表面層（第 3 節）＋ THEMES 與切換器（第 4 節）。
 4. **元件**：只用第 8 節清單裡的元件與 class 語彙，狀態齊全（預設、hover、focus、disabled、錯誤、空、載入）。
@@ -69,9 +69,9 @@ description: "通用的網頁介面設計系統（2026-10 v22 規範）。凡是
 
 △ 的調整方式：S2 遇暖色改暖灰底 `#EDE8E0`；S4 遇冷色建議改選 S1；S5 遇 C7、C8 暈染只取彩色端。
 
-**S6 深色模式（規範 8.8）**：深色是 S6 的模式不是第七套風格，結構、圓角、細線、等寬字不變，色系可用規則沿用 S6；只有 S6 有深色。灰階 `--page:#121212 --card:#1A1A1A --band/paperc:#202020 --sel:#262626 --line:#2E2E2E --line-2:#3A3A3A --ink:#EDEDED --muted:#A3A3A3`；語意色 `--err:#F28B82 --wrn:#E2B341 --ok:#74C483 --info:#7DB6EE`（淡底為該色 16% 混入卡片色）；`--d1` 改 `#6E97DB`。品牌色深色值：主色在 OKLab 只加明度到卡片上 ≥4.6、淡底上 ≥4.8，**填色上一律放深色字**（`--on-acc`、`--on-acc2`、`--on-err`、`--on-ink` 都是 `#121212`），十五組數值見規範 8.8 或 `assets/components/s6d-graphite-dark.html` 的 `DARK`。宣告 `color-scheme:dark`；預設跟隨系統並提供淺／深／跟隨三選一；不用 `filter:invert()`。新寫的元件不要寫死 `#fff`，白字改引用上述四個變數。
+**深色模式（規範 8.8，v23）**：深色是風格的「模式」不是另一套風格——同一套風格的白天與夜間，結構、圓角、陰影形狀、框線粗細、字型、字級、間距全部不變，只換第二層灰階、第三層語意色、第四層資料色，第一層品牌色另有一組深色值；色系可用規則沿用該風格的淺色。**只有 S3 琉璃、S5 極光、S6 石墨有深色**：資料密集後台、監控、開發者工具要深色選 S6；品牌官網、活動頁要深色選 S3；前台、預約、會員中心要深色選 S5。S1、S2、S4、S7 沒有深色（暖紙色、凸凹柔影、手繪硬影、白紙黑字都是淺底上的身分），需求有夜間模式就不要選這四套。三套共用：語意色 `--err:#F28B82 --wrn:#E2B341 --ok:#74C483 --info:#7DB6EE`；`--d1` 改 `#6E97DB`；主色在 OKLab 只加明度、保留色相，加到本套最亮面板上 ≥4.6、自己淡底上 ≥4.8，**填色上一律放深色字**（`--on-acc`、`--on-acc2`、`--on-err`、`--on-ink` 都是 `#121212`），所以同一組色系在三套的深色主色不同，數值見規範 8.8 或 `dist/theme.js` 的 `DARK` 表（依風格分表）。S6：`--page:#121212 --card:#1A1A1A --band/paperc:#202020 --sel:#262626 --line:#2E2E2E --line-2:#3A3A3A --ink:#EDEDED --muted:#A3A3A3`（與 v14〜v22 相同）。S3：深玻璃升格為主材質——放資料的面板 `rgba(18,21,34,.80)`、疊在面板上的小件改白 5〜9% 薄霧、墊白處改實心面 `#232838`、背景漸層兩端各 40% 混入 `#0B0D14`，框線降為白 10〜18%，`--ink:#EDEDED --muted:#B5B8C2`；兩條鐵則照舊（文字不落在漸層上、彩色字不落在玻璃上）。S5：近黑底 `#0F1117` 上三團提亮的主副色暈染，面板 `rgba(26,29,39,.84〜.96)`、`--card:#1A1D27`、純白小件改實心面 `#1E212C`、`--line:#2C303C`、`--ink:#EDEDED --muted:#ADB1BB`、`--dark` 改 `#E4E6EC` 配深字，漸層主按鈕上的字改深色。寫法：深色規則掛在 `html[data-theme="dark"]` 底下、宣告 `color-scheme:dark`，寫在同一份元件 HTML 與同一張樣式表裡（不另做一份深色頁）；預設跟隨系統並提供淺／深／跟隨三選一、記住使用者的選擇；不用 `filter:invert()`。新寫的元件不要寫死 `#fff`，白字改引用上述四個變數。
 
-**S1 與 S6 是一對**：奶油暖而軟，給文件與對外畫面；石墨冷而硬，給工程師與內部工具。兩套的辨識度靠底色拉開：S1 是暖白 `#F6F5F2`、S6 是中性灰 `#F4F4F4`，卡片都是純白。S6 是對色系最寬容的一套（沒有任何一格需調整或鎖住，S7 同樣如此），因為它把品牌色壓到最少。七套 × 十五組 ＝ 105，扣掉鎖住的 S2 × SC1、S2 × SC2，可用 **103 種**；S6 深色另 15 種，合計 118 種。
+**S1 與 S6 是一對**：奶油暖而軟，給文件與對外畫面；石墨冷而硬，給工程師與內部工具。兩套的辨識度靠底色拉開：S1 是暖白 `#F6F5F2`、S6 是中性灰 `#F4F4F4`，卡片都是純白。S6 是對色系最寬容的一套（沒有任何一格需調整或鎖住，S7 同樣如此），因為它把品牌色壓到最少。七套 × 十五組 ＝ 105，扣掉鎖住的 S2 × SC1、S2 × SC2，可用 **103 種**；S3、S5、S6 的深色模式各另 15 種，共 45 種，合計 **148 種**。
 
 ## 3. 各風格的表面層（只覆寫材質）
 
@@ -305,11 +305,11 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 **警示條與提示框（v7 定案、v8 補對齊守則，七套一致）**：警示條 `.alert` 不用左側 4px 色條，改 `border:1px solid color-mix(in srgb,currentColor 32%,transparent)` 一圈細框，框線顏色自動跟著語意色走；標題與內文同一行（`b` 與 `p` 都 `display:inline`），圖示保留，背景仍是該語意的 `-soft` 淡底。四條使用守則：**標題是選用的**（一句話講得完就不要標題）、**動作最多一顆**且做成帶底線的文字連結而非按鈕（`.alert .btn.sm` 去底去框去陰影）、**錯誤與警告不給關閉鈕**（使用者關掉就看不到問題了，只有 info 與 ok 可關）、**文字動作與關閉鈕要跟內文站在同一條基線上**（和內文共用同一個行框：同字級、同行距、`align-self:flex-start`，不要再給它 `min-height`——按鈕那個 32px 會把整列撐高，差將近 6px）。提示框 `.notice` 去掉左側主色條與彩色底，S1 與 S6 直接用頁面灰底無框、S2 用凹面無框、S3 是 1px 玻璃框、S4 是 2px 虛線框、S5 是淡線框加淡底——它只是「順便一提」，不該比旁邊的內容搶眼。
 
-七套**共用同一份元件 HTML**：S1 奶油是基準，其餘六套只覆寫材質（S2〜S5 由 `build_from_s1.py` 以 S1 ＋ `material/<套>.css` 產生，v20；S6、S7 由各自的產生器以 S1 為基底重建，S6 深色再由 S6 產生）；七套的 62 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（七套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
+七套**共用同一份元件 HTML**：S1 奶油是基準，其餘六套只覆寫材質（S2〜S5 由 `build_from_s1.py` 以 S1 ＋ `material/<套>.css` 產生，v20；S6、S7 由各自的產生器以 S1 為基底重建；S3、S5、S6 的深色規則由 `build_dark.py` 插進同一份元件庫，v23）；七套的 62 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（七套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
 
 **圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；七套風格共用同一組圖示。
 
-**前台長什麼樣**：`assets/storefront/*.html` 八張選物店首頁（掛 Expressive，只用元件庫 class），設計系統瀏覽器的「前台示範」檢視可切換風格與色系。做前台時照它的結構起手。
+**前台長什麼樣**：`assets/storefront/*.html` 七張選物店首頁（掛 Expressive，只用元件庫 class；S3、S5、S6 同一頁可切深色），設計系統瀏覽器的「前台示範」檢視可切換風格、模式與色系。做前台時照它的結構起手。
 
 ## 9. 交付前四項自動檢查（腳本在本 skill 的 `scripts/`）
 
@@ -345,7 +345,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 v19 的 S2〜S5 過渡版（兩檔、不載 base.css）已退場。頁面不加 `.up`、`.glass`、`.wob`、`.org` 之類的修飾 class——`.board`、`.card`、`.statc` 本身就帶著該套材質；數量調整器一律用 `<input>`。S5 的漸層強調按鈕就是 `.btn.primary`。
 
-深色（目前只有 S6）：`<html data-theme="dark">` 強制深、`light` 強制淺、不寫跟隨系統，切換不換檔，品牌色深色值由 theme.js 的 DARK 表套用。產品可用任何框架，但元件 HTML 照元件庫 class、樣式只來自 dist；**不混第三方 UI 庫的元件外觀**，需要行為就用 headless 庫。瀏覽器基線 Chrome／Edge 111+、Safari 16.4+（iOS 16.4+）、Firefox 121+。
+深色（只有 S3、S5、S6）：`<html data-theme="dark">` 強制深、`light` 強制淺、不寫跟隨系統；這三套的風格檔同時含 `html[data-theme="dark"]` 與 `@media (prefers-color-scheme:dark)` 兩段，切換不換檔、不重載，品牌色深色值由 theme.js 的 DARK 表（依風格分表）套用。產品可用任何框架，但元件 HTML 照元件庫 class、樣式只來自 dist；**不混第三方 UI 庫的元件外觀**，需要行為就用 headless 庫。瀏覽器基線 Chrome／Edge 111+、Safari 16.4+（iOS 16.4+）、Firefox 121+。
 
 任何元件的 CSS 不得寫死色碼與字級，一律引用變數；唯一例外是純黑純白與陰影用的半透明黑。
 
@@ -359,7 +359,7 @@ v19 的 S2〜S5 過渡版（兩檔、不載 base.css）已退場。頁面不加 
 | 第五章 間距標尺、圓角、框線、元件高度、動態（時長與緩動）、層級 | `references/spacing-radius.md` |
 | 第六章 斷點與級別、容器寬度與內距、12 欄欄格系統、側欄抽屜、表格轉卡片列 | `references/rwd.md` |
 | 第七章 元件規範（含警示條與提示框守則、Lucide 圖示規範） | `references/components.md` |
-| 第八章 各風格定義、風格 × 色系矩陣、風格 × 系統類型選型、S6 深色模式 | `references/styles.md` |
+| 第八章 各風格定義、風格 × 色系矩陣、風格 × 系統類型選型、深色模式（S3、S5、S6） | `references/styles.md` |
 | 第九章 後台與前台版型、頁面結構、線條與間距原則 | `references/layout.md` |
 | 第十章 對比、焦點、鍵盤操作 | `references/accessibility.md` |
 | 第十一章 介面文案（按鈕、錯誤訊息、空狀態的寫法） | `references/copywriting.md` |

@@ -102,6 +102,10 @@ body{
 .opt.locked .lk{display:inline}
 .opt.locked:hover{border-color:var(--line)}
 .opt.adjust .cc::after{content:" △";color:var(--fail,#C24A3A)}
+.opt.nodark{opacity:.4;cursor:not-allowed}
+.opt.nodark:hover{border-color:var(--line)}
+.opt .moon{display:inline-block;width:9px;height:9px;border-radius:50%;box-shadow:inset -3px -1px 0 0 currentColor;opacity:.75}
+.modehint{font-size:11.5px;color:var(--muted)}
 .pairnote{font-size:11.5px;font-weight:700;color:var(--fail,#C24A3A);padding-left:59px;transition:opacity .4s}
 .pairnote[hidden]{display:none}
 /* ── 檢視切換 ── */
@@ -162,6 +166,8 @@ body{
   .row[aria-label="色系"] .opt{padding:5px 8px;gap:5px;font-size:11.5px}
   .row[aria-label="色系"] .opt .cc{display:none}
   .row[aria-label="風格"] .opt{padding:5px 10px}
+  .row[aria-label="模式"]{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+  .row[aria-label="模式"] .lb,.row[aria-label="模式"] .modehint{grid-column:1/-1}
   .pairsep{width:auto;height:1px;margin:4px 0 0}
   .lb.sclb{margin:0}
   .pairnote{padding-left:0;line-height:1.5}
@@ -194,6 +200,7 @@ body{
       <span class="viewhint" id="viewHint">六十二項元件一項一節，依風格與色系即時換裝。</span>
     </div>
     <div class="row" role="group" aria-label="風格"><span class="lb">風格</span><span id="styleRow" style="display:contents"></span></div>
+    <div class="row" role="group" aria-label="模式"><span class="lb">模式</span><span id="modeRow" style="display:contents"></span><span class="modehint" id="modeHint"></span></div>
     <div class="row" role="group" aria-label="色系"><span class="lb">色系</span><span id="pairRow" style="display:contents"></span></div>
     <div class="pairnote" id="pairNote" role="status" aria-live="polite" hidden></div>
     <div class="row" id="idxRow"><span class="lb">元件</span>
@@ -202,8 +209,8 @@ body{
     </div>
     <div class="idx" id="idx" hidden></div>
     <div class="foot">
-  <span>六套風格 × 十二組核心 ＋ SC1，共 <b class="num">77</b> 種可用組合（SC1 不適用於浮雕）。</span>
-  <span>換色系不重載，換風格才重載；「通用規範」檢視兩者都不重載。</span>
+  <span>七套風格 × 十二組核心 ＋ SC1〜SC3，淺色共 <b class="num">103</b> 種可用組合；S3、S5、S6 另有深色模式，再加 <b class="num">45</b> 種，共 <b class="num">148</b> 種。</span>
+  <span>換色系、換模式不重載，換風格才重載；「通用規範」檢視都不重載。</span>
   <span>第二層結構灰階與第三層四個語意色<b>不隨色系改變</b>。</span>
 </div>
   </div>
@@ -214,7 +221,7 @@ body{
 
 <script>
 
-const FILES={s1:"components_s1_cream.html",s2:"components_s2_emboss.html",s3:"components_s3_glaze.html",s4:"components_s4_doodle.html",s5:"components_s5_aurora.html",s6:"components_s6_graphite.html",s6d:"components_s6d_graphite_dark.html",s7:"components_s7_editorial.html",found:"foundations.html"};
+const FILES={s1:"components_s1_cream.html",s2:"components_s2_emboss.html",s3:"components_s3_glaze.html",s4:"components_s4_doodle.html",s5:"components_s5_aurora.html",s6:"components_s6_graphite.html",s7:"components_s7_editorial.html",found:"foundations.html"};
 const STYLES=[
  {k:"s1",cd:"S1",nm:"奶油",hint:"零陰影"},
  {k:"s2",cd:"S2",nm:"浮雕",hint:"凸凹柔影"},
@@ -222,7 +229,6 @@ const STYLES=[
  {k:"s4",cd:"S4",nm:"手帳",hint:"手繪硬影"},
  {k:"s5",cd:"S5",nm:"極光",hint:"暈染有機角"},
  {k:"s6",cd:"S6",nm:"石墨",hint:"無彩灰細線"},
- {k:"s6d",cd:"S6D",nm:"石墨深色",hint:"深色模式"},
  {k:"s7",cd:"S7",nm:"編輯",hint:"明體直角"}
 ];
 const THEMES={
@@ -242,18 +248,20 @@ const THEMES={
  sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#2449E8"},
  sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6","s7"],"adjust":["s2"],"series":"SC","accDeep":"#3D4C5E"}
 };
-const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s6d": "石墨深色", "s7": "編輯"};
+const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s7": "編輯"};
 const PAIRS=Object.entries(THEMES).map(([k,t])=>({k,cd:t.id,nm:t.name,a1:t.acc,a2:t.acc2,t}));
-/* S6D 是 S6 的深色模式，色系的可用與調整規則沿用 S6 */
-const baseStyle=s=>s==="s6d"?"s6":s;
-function allowed(k,style){ const t=THEMES[k]; style=baseStyle(style); return !!t && (t.styles.includes(style) || (t.adjust||[]).includes(style)); }
+/* 深色是風格的模式，不是另一套風格（規範 8.8）：只有這三套有深色，色系的可用與調整規則跟淺色相同 */
+const DARK_STYLES=["s3","s5","s6"];
+function allowed(k,style){ const t=THEMES[k]; return !!t && (t.styles.includes(style) || (t.adjust||[]).includes(style)); }
 function note(msg){
   const n=document.getElementById("pairNote"); n.textContent=msg; n.hidden=false; n.style.opacity="1";
   clearTimeout(note.t); note.t=setTimeout(()=>{ n.style.opacity="0"; setTimeout(()=>{n.hidden=true;},400); },3000);
 }
 
-let curStyle="s1", curPair="c1";
+let curStyle="s1", curPair="c1", curMode="light";   /* curMode 是使用者選的模式；風格沒有深色時實際顯示淺色 */
+const effMode=()=>(curMode==="dark" && DARK_STYLES.includes(curStyle) && curView!=="found") ? "dark" : "light";
 const frame=document.getElementById("stage");
+let curView="lib";
 
 const styleRow=document.getElementById("styleRow");
 STYLES.forEach(s=>{
@@ -265,6 +273,14 @@ STYLES.forEach(s=>{
   styleRow.appendChild(b);
 });
 
+const modeRow=document.getElementById("modeRow");
+[["light","淺色","白天"],["dark","深色","夜間"]].forEach(([m,nm,hint])=>{
+  const b=document.createElement("button");
+  b.type="button"; b.className="opt"; b.dataset.m=m;
+  b.innerHTML=(m==="dark"?'<span class="moon" aria-hidden="true"></span>':'')+nm+'<span class="hint">'+hint+'</span>';
+  b.addEventListener("click",()=>pickMode(m));
+  modeRow.appendChild(b);
+});
 const pairRow=document.getElementById("pairRow");
 PAIRS.forEach((p,i)=>{
   if(p.t.series==="SC" && (i===0 || PAIRS[i-1].t.series!=="SC")){   /* 分隔線與標題只放在第一組 SC 前 */
@@ -282,7 +298,7 @@ PAIRS.forEach((p,i)=>{
 });
 function lockChips(){
   pairRow.querySelectorAll(".opt").forEach(b=>{
-    const ok=allowed(b.dataset.k,curStyle), adj=(THEMES[b.dataset.k].adjust||[]).includes(baseStyle(curStyle));
+    const ok=allowed(b.dataset.k,curStyle), adj=(THEMES[b.dataset.k].adjust||[]).includes(curStyle);
     b.disabled=!ok; b.classList.toggle("locked",!ok); b.classList.toggle("adjust",adj);
     b.tabIndex = ok ? 0 : -1;
     const t=THEMES[b.dataset.k];
@@ -290,22 +306,35 @@ function lockChips(){
   });
 }
 
+const ownHash=()=>"#"+curStyle+"/"+curPair+(effMode()==="dark"?"/dark":"");
+function syncMode(){
+  const has=DARK_STYLES.includes(curStyle), found=curView==="found", eff=effMode();
+  modeRow.querySelectorAll(".opt").forEach(b=>{
+    const off=b.dataset.m==="dark" && (!has||found);
+    b.disabled=off; b.classList.toggle("nodark",off); b.tabIndex=off?-1:0;
+    b.setAttribute("aria-pressed",String(b.dataset.m===eff));
+    b.title=off?(found?"通用規範只有淺色":STYLE_NAME[curStyle]+"沒有深色模式"):"";
+  });
+  document.getElementById("modeHint").textContent = found ? "通用規範不分模式。"
+    : has ? "同一套風格切白天／夜間：結構、圓角、字型不變，只換灰階、語意色與品牌色的深色值。"
+    : "深色模式只有 S3 琉璃、S5 極光、S6 石墨"+(curMode==="dark"?"；"+STYLE_NAME[curStyle]+"顯示淺色。":"。");
+}
 function sync(){
-  lockChips();
-  try{ history.replaceState(null,"","#"+curStyle+"/"+curPair); }catch(_){}
+  lockChips(); syncMode();
+  try{ history.replaceState(null,"",ownHash()); }catch(_){}
   styleRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curStyle)));
   pairRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curPair)));
   const s=STYLES.find(x=>x.k===curStyle), p=PAIRS.find(x=>x.k===curPair);
-  document.getElementById("nowTxt").textContent=s.cd+" "+s.nm+" × "+p.cd+" "+p.nm;
+  document.getElementById("nowTxt").textContent=s.cd+" "+s.nm+(effMode()==="dark"?"（深色）":"")+" × "+p.cd+" "+p.nm;
   document.getElementById("nowA1").style.background=p.a1;
   document.getElementById("nowA2").style.background=p.a2;
 }
-let curView="lib";
 /* 前台示範頁：倉庫版由 FILES 換前綴，線上版沿用 sf_s1.html 這種短檔名 */
 const storeFile=k=>(typeof FILES!=="undefined" ? FILES[k].replace("components_","storefront_") : "sf_"+k+".html");
 function load(){
-  if(curView==="store"){ frame.src=storeFile(curStyle)+"#"+curPair; return; }
-  frame.src = curView==="found" ? (FILES.found+"#"+curPair+"."+curStyle) : (FILES[curStyle]+"#"+curPair);
+  const md=effMode()==="dark"?".dark":"";
+  if(curView==="store"){ frame.src=storeFile(curStyle)+"#"+curPair+md; return; }
+  frame.src = curView==="found" ? (FILES.found+"#"+curPair+"."+curStyle) : (FILES[curStyle]+"#"+curPair+md);
 }
 document.getElementById("viewSeg").addEventListener("click",e=>{
   const b=e.target.closest("button"); if(!b||b.dataset.v===curView) return;
@@ -317,9 +346,9 @@ document.getElementById("viewSeg").addEventListener("click",e=>{
   document.getElementById("viewHint").textContent = curView==="store"
     ? "同一套風格做前台：選物店首頁，字級掛 Expressive；只用元件庫既有的 class 組成。"
     : curView==="found"
-    ? "六套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
-    : "六十二項元件一項一節，依風格與色系即時換裝。";
-  load();
+    ? "七套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
+    : "六十二項元件一項一節，依風格、模式與色系即時換裝。";
+  sync(); load();
 });
 function pickStyle(k){
   if(k===curStyle) return;
@@ -327,7 +356,7 @@ function pickStyle(k){
   if(!allowed(curPair,curStyle)){
     const t=THEMES[curPair]; curPair="c1";
     note(t.id+" 不適用於"+STYLE_NAME[curStyle]+"風格，已切回 C1");
-  } else if((THEMES[curPair].adjust||[]).includes(baseStyle(curStyle))){
+  } else if((THEMES[curPair].adjust||[]).includes(curStyle)){
     note(STYLE_NAME[curStyle]+"風格下副色填色自動加框線");
   }
   sync();
@@ -336,22 +365,30 @@ function pickStyle(k){
 }
 function pickPair(k){
   if(!allowed(k,curStyle)){ note(THEMES[k].id+" 不適用於"+STYLE_NAME[curStyle]+"風格，已切回 C1"); k="c1"; }
-  else if((THEMES[k].adjust||[]).includes(baseStyle(curStyle))){ note(STYLE_NAME[curStyle]+"風格下副色填色自動加框線"); }
+  else if((THEMES[k].adjust||[]).includes(curStyle)){ note(STYLE_NAME[curStyle]+"風格下副色填色自動加框線"); }
   curPair=k; sync();
   /* 換色不重載，直接通知內層 */
   try{ frame.contentWindow.postMessage({pair:k},"*"); }
   catch(_){ load(); }
 }
+function pickMode(m){
+  if(m===curMode && effMode()===m) return;
+  if(m==="dark" && !DARK_STYLES.includes(curStyle)){ note(STYLE_NAME[curStyle]+"沒有深色模式"); return; }
+  curMode=m; sync();
+  /* 換模式不重載，直接通知內層 */
+  try{ frame.contentWindow.postMessage({mode:effMode()},"*"); }catch(_){ load(); }
+}
 function fromHash(){
   const parts=(location.hash||"").replace("#","").split(/[\/.,|]/);
-  parts.forEach(p=>{ if(STYLES.some(x=>x.k===p)) curStyle=p; if(THEMES[p]) curPair=p; });
+  /* 舊連結 #s6d/… 視為 S6 的深色 */
+  parts.forEach(p=>{ if(p==="s6d"){ curStyle="s6"; curMode="dark"; } if(STYLES.some(x=>x.k===p)) curStyle=p; if(THEMES[p]) curPair=p; if(p==="dark"||p==="light") curMode=p; });
   if(!allowed(curPair,curStyle)){ const t=THEMES[curPair]; curPair="c1"; setTimeout(()=>note(t.id+" 不適用於"+STYLE_NAME[curStyle]+"風格，已切回 C1"),200); }
 }
 fromHash(); sync(); load();
 addEventListener("hashchange",()=>{
-  const want="#"+curStyle+"/"+curPair; if(location.hash===want) return;   /* 自己寫的 hash 不處理 */
-  const ps=curStyle, pp=curPair; fromHash();
-  if(curStyle!==ps || curPair!==pp){ sync(); if(curStyle!==ps) load(); else try{ frame.contentWindow.postMessage({pair:curPair},"*"); }catch(_){ load(); } }
+  if(location.hash===ownHash()) return;   /* 自己寫的 hash 不處理 */
+  const ps=curStyle, pp=curPair, pm=effMode(); fromHash();
+  if(curStyle!==ps || curPair!==pp || effMode()!==pm){ sync(); if(curStyle!==ps) load(); else try{ frame.contentWindow.postMessage({pair:curPair},"*"); frame.contentWindow.postMessage({mode:effMode()},"*"); }catch(_){ load(); } }
 });
 
 /* ══ 元件清單：六套共用的完整清冊，逐項標示本風格有沒有 ══ */
