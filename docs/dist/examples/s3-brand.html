@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S3 琉璃 · 品牌官網 — 管理者工作室 設計系統 22.0.0</title>
+<title>S3 琉璃 · 品牌官網 — 管理者工作室 設計系統 26.0.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../base.css">
@@ -42,6 +42,11 @@
 
 /* 規範 6.2（v22）：容器左右內距＝欄格外邊距，寬以上 24、平板 20、手機 16；放在頁面排版之後，各頁一致 */
 .main,.wrap{padding-left:var(--sp-6);padding-right:var(--sp-6)}
+/* 規範 v26 5.7：寬鬆密度（S1〜S5、S7 的預設）的頁面層——區段之間 --sp-7、頁首上方 --sp-8、側欄群組之間 --sp-6；S6 預設標準，不套 */
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .main,
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .wrap{gap:var(--sp-7);padding-top:var(--sp-8)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density])) .side .grp{padding-top:var(--sp-6)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density])) .side .grp:first-child{padding-top:var(--sp-2)}
 @media (max-width:1023px){.main,.wrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}}
 @media (max-width:767px){.main,.wrap{padding-left:var(--sp-4);padding-right:var(--sp-4)}}
 </style>

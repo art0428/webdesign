@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 24.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 26.0.0 — 可引用的 CSS
 
 由 `emit_css.py` 自七套元件庫示範頁產生，**不要手改**；改元件庫後重跑，並以 `verify_css_split.py` 確認示範頁改成引用這些檔之後每個元素的計算樣式一字不差。
 
@@ -20,16 +20,16 @@ v20 起七套元件庫全部以 S1 為基底（共用同一份元件 HTML 與結
 
 深色是風格的**模式**，不是另一套風格：`style-s3.css`、`style-s5.css`、`style-s6.css` 各自內含深色。`<html data-theme="dark">` 強制深色、`data-theme="light"` 強制淺色、不寫則跟隨系統（`prefers-color-scheme`）。切換不換檔、不重載。品牌色的深色值由 `theme.js` 的 `DARK` 表（依風格分表）套用。其他四套（S1、S2、S4、S7）沒有深色，`data-theme="dark"` 對它們無效果（理由見規範 8.8）。
 
-## 密集模式（S6 石墨）
+## 密度三檔（comfortable 寬鬆／normal 標準／compact 緊湊）
 
-`<html data-density="compact">`（或 `DS.setDensity('compact')`）把元件高度、表格儲存格與卡片內距、欄距各縮一級，**只改尺寸、不改顏色**，可與深色模式並用。規則在 `base.css`（結構層），768px 以下不生效（觸控下限 44px 優先）。目前只開放 S6（規範 5.7）。
+密度是第四條軸，三檔的數值全站只有一份（`base.css`），每套風格各有**預設檔**與**可選範圍**（規範 5.7 的矩陣）：S6 預設 normal，其餘六套預設 comfortable；S2、S4、S5、S7 鎖 compact。**不寫 `data-density` 就是該套的預設**（CSS 自己判斷，不靠 JS）；`<html data-density="normal">` 才回到標準，`"compact"` 緊湊。寬鬆把元件高度升到手機的觸控尺寸（44／44／40／44）、卡片與板內距 24、儲存格 16／20（列高 ≥56）、表格內文 B1、卡片與表格標題 H2；緊湊各縮一級（按鈕 32、儲存格 4／12）。**只改尺寸、不改顏色**，可與深色並用；768px 以下三檔收斂成一檔（normal）。密度是系統層的決定，頁面層只准往緊的方向覆寫一次。
 
 ## theme.js
 
 ```js
 DS.applyTheme('c3')              // 切換色系 c1〜c12、sc1〜sc3；不適用於本風格的組合退回 c1，回傳實際套用的 key
 DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s3、s5、s6）有效
-DS.setDensity('compact')         // 'compact' | 'normal'；密集模式，只對 DENSE_STYLES（s6）有效
+DS.setDensity('compact')         // 'comfortable' | 'normal' | 'compact'；不在本風格可選範圍的檔退回該套預設，回傳實際套用的檔
 DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切回 C1')   // 選配：退回時通知使用者
 ```
 
@@ -50,7 +50,7 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | 檔 | 內容 | 大小 |
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
-| `base.css` | 結構層 ＋ S1 材質 | 55.6 KB |
+| `base.css` | 結構層 ＋ S1 材質 | 63.9 KB |
 | `style-s1.css` | S1 奶油（材質在 base，空殼） | 0.3 KB |
 | `style-s2.css` | S2 浮雕 | 14.9 KB |
 | `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 80.0 KB |
@@ -58,8 +58,8 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | `style-s5.css` | S5 極光 淺色 ＋ 深色 | 48.2 KB |
 | `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 28.4 KB |
 | `style-s7.css` | S7 編輯 | 2.1 KB |
-| `theme.js` | 色系與深淺模式 | 15.9 KB |
+| `theme.js` | 色系、深淺模式與密度 | 16.9 KB |
 
 ## 版本
 
-`24.0.0` 與《網頁設計規範 v24》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`26.0.0` 與《網頁設計規範 v26》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

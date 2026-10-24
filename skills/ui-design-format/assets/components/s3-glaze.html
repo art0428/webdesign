@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-style="s3">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1021,6 +1021,32 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
 }
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--tk-232936:#0B0D14;--tk-e3c94e:var(--wrn);--tk-rgba25525525562:rgba(255,255,255,.10);--tk-rgba909011035:rgba(255,255,255,.28);--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
+
+/* ══ 密度三檔（規範 v26，5.7）：comfortable 寬鬆；<html data-density="comfortable">，或該套的預設（S1〜S5、S7 不寫 data-density 即是）；
+   只改尺寸、不改顏色；768px 以下不生效（三檔在手機收斂成一檔） ══ */
+@media (min-width:768px){
+html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density]){--h-btn-primary:4.4rem;--h-btn:4.4rem;--h-btn-sm:3.6rem;--h-input:4.4rem;--h-qty:4.0rem;--h-pill:2.8rem;--h-nav:4.4rem;--h-tag:2.4rem}
+:where(html[data-density="comfortable"]:not([data-style="s7"]),html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density])) .board{padding:var(--sp-6)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .card .card-title{padding:var(--sp-4) var(--sp-6)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .card .card-body{padding:var(--sp-6)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .cardx .ct,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .cardx .cb{padding:var(--sp-4) var(--sp-4)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .statc{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .notice,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .alert{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) table.t{font-size:var(--fs-b1);line-height:var(--lh-b1)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .t td{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .t th{padding:var(--sp-3) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .tcap{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .desc dt,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .desc dd{padding:var(--sp-3) var(--sp-3)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .sumrow{padding:var(--sp-2) 0}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .card .card-title,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .tcap b,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .cardx .ct{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .field label{color:var(--ink)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .field input,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .field select{padding-left:var(--sp-4);padding-right:var(--sp-4)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .search{padding-left:var(--sp-5);padding-right:var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .seg button{padding-top:0;padding-bottom:0;padding-left:var(--sp-5);padding-right:var(--sp-5);min-height:calc(var(--h-btn) - 2px)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .tab{padding:var(--sp-3) var(--sp-5)}
+}
+/* 規範 6.3（v26）：描述清單放進卡片一律兩欄 */
+.card .desc,.cardx .desc{grid-template-columns:max-content 1fr}
 </style>
 </head>
 <body>
@@ -1050,7 +1076,7 @@ html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc
   <button class="accbtn" type="button" data-k="sc2" onclick="setPair('sc2',this)" title="SC2 鈷藍 × 亮橘"><i style="background:#2449E8"></i><i style="background:#FF7A1A;margin-left:0"></i><span class="cc">SC2</span>鈷藍 × 亮橘</button>
   <button class="accbtn" type="button" data-k="sc3" onclick="setPair('sc3',this)" title="SC3 石板藍 × 冰川青"><i style="background:#3D4C5E"></i><i style="background:#5FB4C9;margin-left:0"></i><span class="cc">SC3</span>石板藍 × 冰川青</button>
   <span class="accnote" id="accnote" role="status" aria-live="polite" hidden></span>
-<!-- ds-dark:begin --><span class="accsep" aria-hidden="true"></span><span class="lb">模式</span><button class="accbtn modebtn on" type="button" data-m="light" onclick="setMode('light')">淺色</button><button class="accbtn modebtn" type="button" data-m="dark" onclick="setMode('dark')">深色</button><!-- ds-dark:end --></div>
+<!-- ds-dark:begin --><span class="accsep" aria-hidden="true"></span><span class="lb">模式</span><button class="accbtn modebtn on" type="button" data-m="light" onclick="setMode('light')">淺色</button><button class="accbtn modebtn" type="button" data-m="dark" onclick="setMode('dark')">深色</button><!-- ds-dark:end --><!-- ds-density-bar:begin --><span class="accsep" aria-hidden="true"></span><span class="lb">密度</span><button class="accbtn densbtn on" type="button" data-d="comfortable" onclick="setDensity('comfortable')">寬鬆</button><button class="accbtn densbtn" type="button" data-d="normal" onclick="setDensity('normal')">標準</button><button class="accbtn densbtn" type="button" data-d="compact" onclick="setDensity('compact')">緊湊</button><!-- ds-density-bar:end --></div>
 
 <div class="wrap"><div class="tierbar"><b>核心元件</b>45 項 ─ 每個專案必備，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">01</span><h2>設計 Token</h2><p class="ds-darknote" style="font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);margin:var(--sp-2) 0 0">深色模式：色票顯示深色值，色碼文字為淺色值；深色值見規範 8.8。</p><span class="rule"></span></div><div class="use">Token（設計變數：把顏色、圓角、陰影統一成可替換的參數）分三層：第一層品牌雙色由色系切換注入，第二層結構灰階每套風格一組，第三層四個語意色固定不變。任何元件都只能引用這裡的變數，不得寫死色碼。 本風格：亮玻璃白 70%＋blur 24 放資料、深玻璃墨色 66% 放導覽；文字不落在漸層上、彩色字不落在玻璃上。</div><div class="board glass">
 <div class="tok">
@@ -1555,6 +1581,30 @@ const DARK={"c1":{"acc":"#76A9FF","accSoft":"#2D3954","accDeep":"#76A9FF","acc2"
  fromHash();
 })();
 /* ds-dark:end */
+</script>
+<script>/* ds-density:begin */
+/* 密度三檔（規範 5.7）：<html data-density="comfortable|normal|compact">；本套預設 comfortable、可選 comfortable／normal／compact。由 build_density.py 產生，不要手改。 */
+(function(){
+ const root=document.documentElement, DEF="comfortable", ALLOWED=["comfortable", "normal", "compact"], HASH={comfortable:'cozy',normal:'normal',compact:'dense'};
+ const cur=()=>root.getAttribute('data-density')||DEF;
+ const sync=()=>document.querySelectorAll('.densbtn').forEach(b=>b.classList.toggle('on',b.dataset.d===cur()));
+ const base=window.setPair;
+ if(base) window.setPair=function(k,btn){ base(k,btn); sync(); };   /* 色系鈕會清掉同列 .accbtn 的 on，這裡補回 */
+ window.setDensity=function(m){
+  if(ALLOWED.includes(m)){ if(m===DEF) root.removeAttribute('data-density'); else root.setAttribute('data-density',m); }
+  sync();
+  try{ if(window.self!==window.top) parent.postMessage({densityAck:cur()},'*'); }catch(_){}
+  return cur();
+ };
+ const fromHash=()=>{ const p=(location.hash||'').replace('#','').split(/[./|]/);
+  let hit=false; for(const lv of Object.keys(HASH)) if(p.includes(HASH[lv])){ window.setDensity(lv); hit=true; }
+  if(!hit) window.setDensity(DEF);   /* 網址沒帶密度就回該套預設 */
+  sync(); };
+ addEventListener('hashchange',fromHash);
+ addEventListener('message',e=>{ const d=e.data; if(d&&d.density) window.setDensity(d.density); });
+ fromHash();
+})();
+/* ds-density:end */
 </script>
 </body>
 </html>

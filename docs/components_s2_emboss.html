@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-Hant" data-style="s2">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -1007,6 +1007,32 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
 :where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
 :where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
 }
+
+/* ══ 密度三檔（規範 v26，5.7）：comfortable 寬鬆；<html data-density="comfortable">，或該套的預設（S1〜S5、S7 不寫 data-density 即是）；
+   只改尺寸、不改顏色；768px 以下不生效（三檔在手機收斂成一檔） ══ */
+@media (min-width:768px){
+html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density]){--h-btn-primary:4.4rem;--h-btn:4.4rem;--h-btn-sm:3.6rem;--h-input:4.4rem;--h-qty:4.0rem;--h-pill:2.8rem;--h-nav:4.4rem;--h-tag:2.4rem}
+:where(html[data-density="comfortable"]:not([data-style="s7"]),html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density])) .board{padding:var(--sp-6)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .card .card-title{padding:var(--sp-4) var(--sp-6)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .card .card-body{padding:var(--sp-6)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .cardx .ct,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .cardx .cb{padding:var(--sp-4) var(--sp-4)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .statc{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .notice,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .alert{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) table.t{font-size:var(--fs-b1);line-height:var(--lh-b1)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .t td{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .t th{padding:var(--sp-3) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .tcap{padding:var(--sp-4) var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .desc dt,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .desc dd{padding:var(--sp-3) var(--sp-3)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .sumrow{padding:var(--sp-2) 0}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .card .card-title,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .tcap b,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .cardx .ct{font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .field label{color:var(--ink)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .field input,:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .field select{padding-left:var(--sp-4);padding-right:var(--sp-4)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .search{padding-left:var(--sp-5);padding-right:var(--sp-5)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .seg button{padding-top:0;padding-bottom:0;padding-left:var(--sp-5);padding-right:var(--sp-5);min-height:calc(var(--h-btn) - 2px)}
+:where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .tab{padding:var(--sp-3) var(--sp-5)}
+}
+/* 規範 6.3（v26）：描述清單放進卡片一律兩欄 */
+.card .desc,.cardx .desc{grid-template-columns:max-content 1fr}
 </style>
 </head>
 <body>
@@ -1037,7 +1063,7 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
   <button class="accbtn locked" type="button" data-k="sc2" onclick="setPair('sc2',this)" title="SC2 鈷藍 × 亮橘（此風格不適用）" disabled aria-disabled="true" tabindex="-1"><i style="background:#2449E8"></i><i style="background:#FF7A1A;margin-left:0"></i><span class="cc">SC2</span>鈷藍 × 亮橘<span class=lk>鎖</span></button>
   <button class="accbtn" type="button" data-k="sc3" onclick="setPair('sc3',this)" title="SC3 石板藍 × 冰川青"><i style="background:#3D4C5E"></i><i style="background:#5FB4C9;margin-left:0"></i><span class="cc">SC3</span>石板藍 × 冰川青</button>
   <span class="accnote" id="accnote" role="status" aria-live="polite" hidden></span>
-</div>
+<!-- ds-density-bar:begin --><span class="accsep" aria-hidden="true"></span><span class="lb">密度</span><button class="accbtn densbtn on" type="button" data-d="comfortable" onclick="setDensity('comfortable')">寬鬆</button><button class="accbtn densbtn" type="button" data-d="normal" onclick="setDensity('normal')">標準</button><button class="accbtn densbtn" type="button" data-d="compact" disabled title="此風格不適用" onclick="setDensity('compact')">緊湊</button><!-- ds-density-bar:end --></div>
 
 <div class="wrap"><div class="tierbar"><b>核心元件</b>45 項 ─ 每個專案必備，六套風格皆已實作<span class="rule"></span></div><div class="sec"><span class="no num">01</span><h2>設計 Token</h2><span class="rule"></span></div><div class="use">Token（設計變數：把顏色、圓角、陰影統一成可替換的參數）分三層：第一層品牌雙色由色系切換注入，第二層結構灰階每套風格一組，第三層四個語意色固定不變。任何元件都只能引用這裡的變數，不得寫死色碼。 本風格：一組底色＋兩道陰影；凸＝可按、凹＝已選與輸入區，互動語意固定。</div><div class="board up">
 <div class="tok">
@@ -1513,6 +1539,30 @@ addEventListener('message',function(e){
  const list=[...document.querySelectorAll('h2')].map(h=>h.textContent.trim());
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
+</script>
+<script>/* ds-density:begin */
+/* 密度三檔（規範 5.7）：<html data-density="comfortable|normal|compact">；本套預設 comfortable、可選 comfortable／normal。由 build_density.py 產生，不要手改。 */
+(function(){
+ const root=document.documentElement, DEF="comfortable", ALLOWED=["comfortable", "normal"], HASH={comfortable:'cozy',normal:'normal',compact:'dense'};
+ const cur=()=>root.getAttribute('data-density')||DEF;
+ const sync=()=>document.querySelectorAll('.densbtn').forEach(b=>b.classList.toggle('on',b.dataset.d===cur()));
+ const base=window.setPair;
+ if(base) window.setPair=function(k,btn){ base(k,btn); sync(); };   /* 色系鈕會清掉同列 .accbtn 的 on，這裡補回 */
+ window.setDensity=function(m){
+  if(ALLOWED.includes(m)){ if(m===DEF) root.removeAttribute('data-density'); else root.setAttribute('data-density',m); }
+  sync();
+  try{ if(window.self!==window.top) parent.postMessage({densityAck:cur()},'*'); }catch(_){}
+  return cur();
+ };
+ const fromHash=()=>{ const p=(location.hash||'').replace('#','').split(/[./|]/);
+  let hit=false; for(const lv of Object.keys(HASH)) if(p.includes(HASH[lv])){ window.setDensity(lv); hit=true; }
+  if(!hit) window.setDensity(DEF);   /* 網址沒帶密度就回該套預設 */
+  sync(); };
+ addEventListener('hashchange',fromHash);
+ addEventListener('message',e=>{ const d=e.data; if(d&&d.density) window.setDensity(d.density); });
+ fromHash();
+})();
+/* ds-density:end */
 </script>
 </body>
 </html>

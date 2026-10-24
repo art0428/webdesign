@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>設計系統瀏覽器</title>
+<link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
 <style>
@@ -261,14 +263,49 @@ function note(msg){
   clearTimeout(note.t); note.t=setTimeout(()=>{ n.style.opacity="0"; setTimeout(()=>{n.hidden=true;},400); },3000);
 }
 
+/* ══ 分頁圖示（favicon）：主色方塊、白色 D、D 的空心處填副色；換色系即換。
+   分頁列跟隨瀏覽器的深淺，不跟頁面模式，所以深色值寫在 SVG 的 prefers-color-scheme 裡 ══ */
+const FAV={
+  c1:{sq:"#2B5FB8",ctr:"#C2377B",sqDark:"#2C61BA"},
+  c2:{sq:"#0F5C63",ctr:"#C4663A",sqDark:"#2F6C73"},
+  c3:{sq:"#2C2A72",ctr:"#8C7AE6",sqDark:"#515BBC"},
+  c4:{sq:"#6D28D9",ctr:"#0F8A99",sqDark:"#7538E9"},
+  c5:{sq:"#1F5E3D",ctr:"#A16207",sqDark:"#366E4D"},
+  c6:{sq:"#6B4A33",ctr:"#4A6B55",sqDark:"#7D5C45"},
+  c7:{sq:"#A8481F",ctr:"#2B2B2B",sqDark:"#A8481F"},
+  c8:{sq:"#23201E",ctr:"#D95F1E",sqDark:"#666361"},
+  c9:{sq:"#9F2436",ctr:"#2A5C6A",sqDark:"#B33840"},
+  c10:{sq:"#9E2C6A",ctr:"#5C97CB",sqDark:"#AA3870"},
+  c11:{sq:"#646049",ctr:"#C65D52",sqDark:"#68644D"},
+  c12:{sq:"#80565B",ctr:"#BA797D",sqDark:"#84585D"},
+  sc1:{sq:"#35463D",ctr:"#6F6519",sqDark:"#56675E"},
+  sc2:{sq:"#2449E8",ctr:"#B0490A",sqDark:"#2851F0"},
+  sc3:{sq:"#3D4C5E",ctr:"#296778",sqDark:"#566577"}
+};
+function favSvg(k){
+  const f=FAV[k]||FAV.c1;
+  return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><style>.sq{fill:'+f.sq+'}'
+    +'@media (prefers-color-scheme:dark){.sq{fill:'+f.sqDark+'}}</style>'
+    +'<rect class="sq" x="0.5" y="0.5" width="15" height="15" rx="3.5"/>'
+    +'<path d="M3.5 3H7.5A5 5 0 0 1 7.5 13H3.5Z" fill="#FFFFFF"/>'
+    +'<path d="M5.25 4.75H7.5A3.25 3.25 0 0 1 7.5 11.25H5.25Z" fill="'+f.ctr+'"/></svg>';
+}
+function setFavicon(k){
+  let l=document.getElementById("favicon");
+  if(!l){ l=document.createElement("link"); l.id="favicon"; l.rel="icon"; l.type="image/svg+xml"; document.head.appendChild(l); }
+  const href="data:image/svg+xml,"+encodeURIComponent(favSvg(k));
+  if(l.getAttribute("href")!==href) l.setAttribute("href",href);
+}
 let curStyle="s1", curPair="c1", curMode="light";   /* curMode 是使用者選的模式；風格沒有深色時實際顯示淺色 */
 const effMode=()=>(curMode==="dark" && DARK_STYLES.includes(curStyle) && curView!=="found") ? "dark" : "light";
-/* 密集模式（規範 5.7）：只改尺寸、不改顏色；目前只有 S6 開放，只在元件庫檢視（前台與通用規範不分密度） */
-const DENSE_STYLES=["s6"];
+/* 密度三檔（規範 v26，5.7）：只改尺寸、不改顏色；每套有預設檔與可選範圍，只在元件庫檢視切換（前台示範顯示該套預設、通用規範不分密度） */
+const DENSITY={"s1":{"default":"comfortable","allowed":["comfortable","normal","compact"]},"s2":{"default":"comfortable","allowed":["comfortable","normal"]},"s3":{"default":"comfortable","allowed":["comfortable","normal","compact"]},"s4":{"default":"comfortable","allowed":["comfortable","normal"]},"s5":{"default":"comfortable","allowed":["comfortable","normal"]},"s6":{"default":"normal","allowed":["comfortable","normal","compact"]},"s7":{"default":"comfortable","allowed":["comfortable","normal"]}};
+const DENSE_STYLES=Object.keys(DENSITY).filter(k=>DENSITY[k].allowed.includes("compact"));
+const DENS_HASH={comfortable:"cozy",normal:"normal",compact:"dense"};
 /* 前台示範：每套風格做它最適合的網站（規範 8.7），說明跟著風格換 */
 const STORE_HINT={"s1": "服務型前台・會員中心：咖啡豆訂閱品牌「山嵐咖啡」的會員中心。適合會員中心、預約與點餐等服務型前台、SaaS 產品的對外頁面與說明中心、內容型網站。", "s2": "少資料、多操作的介面・自助機台：自助洗衣店「泡泡洗衣坊」的機台操作畫面。適合自助機台、點餐機、控制面板、設定精靈、智慧家電的操作畫面——畫面以大按鈕與開關為主、幾乎沒有表格。", "s3": "品牌官網・產品發表：耳機品牌「Lumen 聲學」的新品發表與預購頁。適合品牌官網、產品發表、活動頁、一次性瀏覽、要讓人記住的頁面。", "s4": "餐飲・文創前台：社區咖啡館「巷口晨光」的官網首頁。適合咖啡館與餐廳、手作與文創品牌、市集與工作坊、年輕客群的電商——品牌個性本身就是賣點。", "s5": "電商前台：生活選物店「器物日常」的首頁。適合電商首頁與商品列表、預約與會員等服務型前台、品牌官網——要讓商品好看、流程親切。", "s6": "開發者產品官網：Webhook 中繼服務「Relay API」的官網首頁。適合開發者產品的官網與文件、技術文件、狀態頁。", "s7": "內容與閱讀：線上雜誌「慢讀誌」的首頁。適合雜誌與媒體、品牌誌、內容多的品牌官網、說明中心與長文——眼睛要舒服、要讀得下去。"};
-let curDens="normal";
-const effDens=()=>(curDens==="compact" && DENSE_STYLES.includes(curStyle) && curView==="lib") ? "compact" : "normal";
+let curDens=null;   /* null ＝ 跟該套預設 */
+const effDens=()=>{ const d=DENSITY[curStyle]; return (curView==="lib" && curDens && d.allowed.includes(curDens)) ? curDens : d.default; };
 const frame=document.getElementById("stage");
 let curView="lib";
 
@@ -291,7 +328,7 @@ const modeRow=document.getElementById("modeRow");
   modeRow.appendChild(b);
 });
 const densRow=document.getElementById("densRow");
-[["normal","標準","預設"],["compact","密集","列高 30"]].forEach(([m,nm,hint])=>{
+[["comfortable","寬鬆","列高 56"],["normal","標準","列高 46"],["compact","緊湊","列高 30"]].forEach(([m,nm,hint])=>{
   const b=document.createElement("button");
   b.type="button"; b.className="opt"; b.dataset.d=m;
   b.innerHTML=nm+'<span class="hint">'+hint+'</span>';
@@ -323,18 +360,17 @@ function lockChips(){
   });
 }
 
-const ownHash=()=>"#"+curStyle+"/"+curPair+(effMode()==="dark"?"/dark":"")+(effDens()==="compact"?"/dense":"");
+const ownHash=()=>"#"+curStyle+"/"+curPair+(effMode()==="dark"?"/dark":"")+(effDens()!==DENSITY[curStyle].default?"/"+DENS_HASH[effDens()]:"");
 function syncDens(){
-  const has=DENSE_STYLES.includes(curStyle), lib=curView==="lib", eff=effDens();
+  const d=DENSITY[curStyle], lib=curView==="lib", eff=effDens(), LB={comfortable:"寬鬆",normal:"標準",compact:"緊湊"};
   densRow.querySelectorAll(".opt").forEach(b=>{
-    const off=b.dataset.d==="compact" && (!has||!lib);
+    const off=!lib || !d.allowed.includes(b.dataset.d);
     b.disabled=off; b.classList.toggle("nodark",off); b.tabIndex=off?-1:0;
     b.setAttribute("aria-pressed",String(b.dataset.d===eff));
-    b.title=off?(!lib?"只有元件庫檢視分密度":STYLE_NAME[curStyle]+"沒有密集模式"):"";
+    b.title=off?(!lib?"只有元件庫檢視分密度":STYLE_NAME[curStyle]+"不開放"+LB[b.dataset.d]):(b.dataset.d===d.default?"本風格的預設":"");
   });
-  document.getElementById("densHint").textContent = !lib ? "前台示範與通用規範不分密度。"
-    : has ? "同一套風格切標準／密集：高度、表格與卡片內距、欄距各縮一級，顏色不變；768px 以下不生效。"
-    : "密集模式目前只有 S6 石墨"+(curDens==="compact"?"；"+STYLE_NAME[curStyle]+"顯示標準。":"。");
+  document.getElementById("densHint").textContent = !lib ? "前台示範顯示該套的預設密度，通用規範不分密度。"
+    : STYLE_NAME[curStyle]+"預設"+LB[d.default]+"、可選"+d.allowed.map(x=>LB[x]).join("／")+"：三檔只改高度與內距，顏色不變；768px 以下收斂成一檔。";
 }
 function syncMode(){
   const has=DARK_STYLES.includes(curStyle), found=curView==="found", eff=effMode();
@@ -349,13 +385,13 @@ function syncMode(){
     : "深色模式只有 S3 琉璃、S5 極光、S6 石墨"+(curMode==="dark"?"；"+STYLE_NAME[curStyle]+"顯示淺色。":"。");
 }
 function sync(){
-  lockChips(); syncMode(); syncDens();
+  lockChips(); syncMode(); syncDens(); setFavicon(curPair);
   if(curView==="store") document.getElementById("viewHint").textContent=STORE_HINT[curStyle]+"說明與不適合的情境寫在示範頁頂端。";
   try{ history.replaceState(null,"",ownHash()); }catch(_){}
   styleRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curStyle)));
   pairRow.querySelectorAll(".opt").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.k===curPair)));
   const s=STYLES.find(x=>x.k===curStyle), p=PAIRS.find(x=>x.k===curPair);
-  document.getElementById("nowTxt").textContent=s.cd+" "+s.nm+((t=>t.length?"（"+t.join("・")+"）":"")([effMode()==="dark"?"深色":"",effDens()==="compact"?"密集":""].filter(Boolean)))+" × "+p.cd+" "+p.nm;
+  document.getElementById("nowTxt").textContent=s.cd+" "+s.nm+((t=>t.length?"（"+t.join("・")+"）":"")([effMode()==="dark"?"深色":"",effDens()!==DENSITY[curStyle].default?{comfortable:"寬鬆",normal:"標準",compact:"緊湊"}[effDens()]:""].filter(Boolean)))+" × "+p.cd+" "+p.nm;
   document.getElementById("nowA1").style.background=p.a1;
   document.getElementById("nowA2").style.background=p.a2;
 }
@@ -364,7 +400,7 @@ const storeFile=k=>(typeof FILES!=="undefined" ? FILES[k].replace("components_",
 function load(){
   const md=effMode()==="dark"?".dark":"";
   if(curView==="store"){ frame.src=storeFile(curStyle)+"#"+curPair+md; return; }
-  frame.src = curView==="found" ? (FILES.found+"#"+curPair+"."+curStyle) : (FILES[curStyle]+"#"+curPair+md+(effDens()==="compact"?".dense":""));
+  frame.src = curView==="found" ? (FILES.found+"#"+curPair+"."+curStyle) : (FILES[curStyle]+"#"+curPair+md+"."+DENS_HASH[effDens()]);
 }
 document.getElementById("viewSeg").addEventListener("click",e=>{
   const b=e.target.closest("button"); if(!b||b.dataset.v===curView) return;
@@ -402,8 +438,8 @@ function pickPair(k){
   catch(_){ load(); }
 }
 function pickDensity(m){
-  if(m===curDens && effDens()===m) return;
-  if(m==="compact" && !DENSE_STYLES.includes(curStyle)){ note(STYLE_NAME[curStyle]+"沒有密集模式"); return; }
+  if(effDens()===m) return;
+  if(!DENSITY[curStyle].allowed.includes(m)){ note(STYLE_NAME[curStyle]+"不開放這一檔密度"); return; }
   curDens=m; sync();
   /* 換密度不重載，直接通知內層 */
   try{ frame.contentWindow.postMessage({density:effDens()},"*"); }catch(_){ load(); }
@@ -418,7 +454,7 @@ function pickMode(m){
 function fromHash(){
   const parts=(location.hash||"").replace("#","").split(/[\/.,|]/);
   /* 舊連結 #s6d/… 視為 S6 的深色 */
-  parts.forEach(p=>{ if(p==="s6d"){ curStyle="s6"; curMode="dark"; } if(STYLES.some(x=>x.k===p)) curStyle=p; if(THEMES[p]) curPair=p; if(p==="dark"||p==="light") curMode=p; if(p==="dense") curDens="compact"; if(p==="normal") curDens="normal"; });
+  parts.forEach(p=>{ if(p==="s6d"){ curStyle="s6"; curMode="dark"; } if(STYLES.some(x=>x.k===p)) curStyle=p; if(THEMES[p]) curPair=p; if(p==="dark"||p==="light") curMode=p; if(p==="dense") curDens="compact"; if(p==="normal") curDens="normal"; if(p==="cozy") curDens="comfortable"; });
   if(!allowed(curPair,curStyle)){ const t=THEMES[curPair]; curPair="c1"; setTimeout(()=>note(t.id+" 不適用於"+STYLE_NAME[curStyle]+"風格，已切回 C1"),200); }
 }
 fromHash(); sync(); load();

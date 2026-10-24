@@ -1,11 +1,11 @@
-/* ══ 管理者工作室 設計系統 24.0.0 ══ theme.js
+/* ══ 管理者工作室 設計系統 26.0.0 ══ theme.js
    色系切換（規範 3.8、4.2）與深淺模式（規範 8.8）。由 emit_css.py 產生，THEMES 表取自元件庫。
    用法：
      <html data-style="s1">                         本系統選定的風格（建置時決定，全站只有一套）
      <script src="theme.js"></script>
      DS.applyTheme('c1')                            切換色系；不合法組合退回 c1 並回傳實際套用的 key
      DS.setColorScheme('dark'|'light'|'system')     只有 S3、S5、S6 有深色（DARK_STYLES）；其他風格呼叫無效果
-     DS.setDensity('compact'|'normal')              密集模式，只有 S6 開放（DENSE_STYLES）
+     DS.setDensity('comfortable'|'normal'|'compact') 密度三檔；不在本風格可選範圍的檔退回該套預設（DENSITY 矩陣）
      跟隨系統時會監聽 prefers-color-scheme 的變化並重套品牌色
    色系與深淺偏好以 localStorage 記住（鍵 ds.theme、ds.scheme），網址參數 ?theme=c3 優先。 */
 (function(){
@@ -67,21 +67,26 @@ function setColorScheme(mode){
   /* 深型／淺型副色的字色跟著 --ink 走，換模式後重算 */
   const k=root.dataset.theme_key; if(k) applyTheme(k);
 }
-/* 密集模式（規範 5.7）：只改尺寸、不改顏色；只對 DENSE_STYLES 有效，768px 以下 CSS 本身不生效（觸控下限優先） */
-const DENSE_STYLES=["s6"];
+/* 密度三檔（規範 5.7）：只改尺寸、不改顏色；每套風格有預設檔與可選範圍（DENSITY 矩陣），不寫 data-density 就是預設；
+   不在可選範圍的檔退回該套預設並回傳；768px 以下 CSS 本身收斂成一檔（觸控下限優先） */
+const DENSITY={"s1": {"default": "comfortable", "allowed": ["comfortable", "normal", "compact"]}, "s2": {"default": "comfortable", "allowed": ["comfortable", "normal"]}, "s3": {"default": "comfortable", "allowed": ["comfortable", "normal", "compact"]}, "s4": {"default": "comfortable", "allowed": ["comfortable", "normal"]}, "s5": {"default": "comfortable", "allowed": ["comfortable", "normal"]}, "s6": {"default": "normal", "allowed": ["comfortable", "normal", "compact"]}, "s7": {"default": "comfortable", "allowed": ["comfortable", "normal"]}};
+const DENSE_STYLES=Object.keys(DENSITY).filter(k=>DENSITY[k].allowed.includes('compact'));
+function density(){ const d=DENSITY[STYLE]||DENSITY.s1; return root.getAttribute('data-density')||d.default; }
 function setDensity(mode){
-  if(mode==='compact'&&DENSE_STYLES.includes(STYLE)) root.setAttribute('data-density','compact'); else root.removeAttribute('data-density');
-  try{ localStorage.setItem('ds.density',mode==='compact'?'compact':'normal'); }catch(_){}
-  return root.getAttribute('data-density')==='compact'?'compact':'normal';
+  const d=DENSITY[STYLE]||DENSITY.s1;
+  if(!d.allowed.includes(mode)){ if(typeof DS.onDensityFallback==='function') DS.onDensityFallback(mode,d.default); mode=d.default; }
+  if(mode===d.default) root.removeAttribute('data-density'); else root.setAttribute('data-density',mode);
+  try{ localStorage.setItem('ds.density',mode); }catch(_){}
+  return density();
 }
 function init(){
   let k=null, mode=null, dens=null;
   try{ k=new URLSearchParams(location.search).get('theme'); }catch(_){}
   try{ k=k||localStorage.getItem('ds.theme'); mode=localStorage.getItem('ds.scheme'); dens=localStorage.getItem('ds.density'); }catch(_){}
   if(mode&&mode!=='system') root.setAttribute('data-theme',mode);
-  if(dens==='compact'&&DENSE_STYLES.includes(STYLE)&&!root.hasAttribute('data-density')) root.setAttribute('data-density','compact');
+  if(dens&&!root.hasAttribute('data-density')){ const d=DENSITY[STYLE]||DENSITY.s1; if(d.allowed.includes(dens)&&dens!==d.default) root.setAttribute('data-density',dens); }
   root.dataset.theme_key=applyTheme(k||'c1');
 }
-window.DS={THEMES,STYLE,allowed,applyTheme:function(k){root.dataset.theme_key=k;return applyTheme(k);},setColorScheme,setDensity,init};
+window.DS={THEMES,STYLE,DENSITY,allowed,applyTheme:function(k){root.dataset.theme_key=k;return applyTheme(k);},setColorScheme,setDensity,density,init};
 init();
 })();

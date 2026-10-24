@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-10 v25 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S3、S5、S6 另有深色模式、S6 另有密集模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單與六項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；七張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-10 v26 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S3、S5、S6 另有深色模式、S6 另有密集模式；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單與六項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；七張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v25》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v26》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，四項交付前檢查的腳本在 `scripts/`（索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -275,7 +275,22 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 | 側欄項目 `.nitem` | 3.8rem | `--sp-4` |
 | 表格列 | **不另設**，由儲存格內距 `--sp-3` 與內容決定：純文字 ≈46px、含狀態膠囊約 50px | 儲存格 `--sp-5` |
 
-**密集模式（規範 5.7，v24，目前只開放 S6 石墨）**：密集和深色一樣是同一套風格的「模式」，不是另一套風格。`<html data-density="compact">`（或 `DS.setDensity('compact')`）把高度 token 各縮一級：主按鈕、一般按鈕、輸入框、側欄項目 32px，小按鈕、篩選膠囊、數量調整器 28px，狀態膠囊 20px，屬性 tag 18px；表格儲存格與表頭內距上下 4（`--sp-1`）左右 12（`--sp-3`），純文字列高約 30px；表格標題列 8／12、板 16、卡片標題列與內容和統計卡 8／12、描述清單 4／12；欄格自動改緊湊欄距 `--sp-3`。**只改尺寸，字級、行距、顏色、圓角、框線粗細都不變**，可與深色並用（`data-theme="dark" data-density="compact"`）。用在一屏要看大量列、用滑鼠操作的後台（訂單與庫存清單、監控與日誌、對帳、權限表）；預設一律標準、不跟隨系統，使用者的選擇記在 `localStorage` 的 `ds.density`。768px 以下不生效（44px 觸控下限優先，CSS 本身包在 `@media (min-width:768px)` 裡）。規則在 `base.css`、七套共用，開放與否由 `theme.js` 的 `DENSE_STYLES` 決定；S1 的留白、S2〜S5 與 S7 的材質在 28〜32px 的元件上會擠，先不開放。風格層不得出現密集規則。
+**密度三檔（規範 5.7，v26）**：密度是風格、字級套、色系之外的**第四條軸**——comfortable 寬鬆／normal 標準／compact 緊湊，管元件多高、內距多寬、一屏放幾列；字級層級、字型、顏色、圓角、框線都不變，可與深色並用。三檔的數值全站只有一份（`base.css`），**每套風格只決定預設哪一檔、能選哪幾檔**：S6 石墨預設標準（可選三檔）；S1、S3 預設寬鬆（可選三檔）；S2、S4、S5、S7 預設寬鬆、鎖緊湊（柔影、手繪框、有機圓角、明體留白在 32px 元件上會壞）。**不寫 `data-density` 就是該套的預設**（CSS 以 `html[data-style="s1"]:not([data-density])` 判斷，不靠 JS），S1 要標準要明寫 `data-density="normal"`。
+
+| 項目 | 寬鬆 | 標準 | 緊湊 |
+|---|---|---|---|
+| 主按鈕／一般按鈕、chip／小按鈕、篩選膠囊 | 44／44／36 | 40／38／32 | 32／32／28 |
+| 輸入框／數量調整器／側欄項目 | 44／40／44 | 40／34／38 | 32／28／32 |
+| 狀態膠囊／屬性 tag | 28／24 | 24／20 | 20／18 |
+| 儲存格內距（純文字列高） | 16／20（≥56） | 12／20（46） | 4／12（約 30） |
+| 表格內文字級 | B1 | B2 | B2 |
+| 板／卡片內容／統計卡內距 | 24／24／16－20 | 20／12－16／12－16 | 16／8－12／8－12 |
+| 卡片與表格標題 | H2 | H3 | H3 |
+| 表單標籤色／輸入框左右內距 | `--ink`／16 | `--muted`／12 | `--muted`／12 |
+| 欄格欄距 | 標準 | 標準 | 緊湊 `--sp-3` |
+| 頁面層：區段之間／頁首上方 | 32／40 | 24／24 | 24／24 |
+
+寬鬆只有一個原則：桌機直接採用手機的觸控尺寸、外距比內距大一級；標準是 v24 以前的值，緊湊是 v24 的密集，都沒動。S7 的 `.board` 左右 0、上緣欄線照它自己的規則，不吃寬鬆的板內距。三條配套：一、密度是系統層的決定，建置時寫在 `<html data-density>`，頁面層只准往緊的方向覆寫一次（報表頁開緊湊可以），不准往鬆；二、768px 以下三檔收斂成一檔（寬鬆在手機上等於標準的手機值，緊湊不生效）；三、鎖住的組合由 `theme.js` 擋——`DS.setDensity()` 收到不可選的檔退回該套預設並回傳實際套用的檔，`DS.DENSITY` 是矩陣、`DS.density()` 是目前生效的檔；CSS 本身不擋，寫錯第五項檢查會量到。描述清單 `.desc` 放進 `.card`、`.cardx` 時 `base.css` 固定兩欄（規範 6.3，v26）。使用者的選擇記在 `localStorage` 的 `ds.density`；示範頁網址 `.cozy`／`.normal`／`.dense`，設計系統瀏覽器「密度」列鎖住的檔反灰。
 
 為什麼這樣寫：v16 以前這張表只是數字沒落到 CSS，七套實測同一顆按鈕有三到四種高度（S1 39、S2 45、S4 41px）。警示條內的 `.btn.sm` 依 7.3 豁免（`min-height:0`）。相鄰可點元件至少留 8px。正圓元件（頭像、圓點、播放鈕）加 `aspect-ratio:1/1` 以免在 flex 列被拉成橢圓。
 
@@ -335,14 +350,14 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 七套載法相同（三檔 ＋ theme.js，順序不能換；v20 起 S2〜S5 也以 S1 為基底，七套共用同一份元件 HTML）：
 
 ```html
-<html lang="zh-Hant" data-style="s1">              <!-- 全站只選一套風格，建置時決定 -->
+<html lang="zh-Hant" data-style="s1">              <!-- 全站只選一套風格，建置時決定；密度不寫就是該套預設（S6 標準、其餘寬鬆），要改才加 data-density -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="dist/tokens.css">     <!-- 字級、間距、圓角、高度、動態、層級 -->
 <link rel="stylesheet" href="dist/base.css">       <!-- 結構層 ＋ S1 材質：62 項元件、焦點環、佔位文字、RWD -->
 <link rel="stylesheet" href="dist/style-s1.css">   <!-- 這一套的材質層；換風格只換這一行（s1〜s7） -->
 <body data-type="productive">                      <!-- 前台閱讀型頁面改 expressive -->
   …元件 HTML 照第 8 節的 class 語彙寫…
-<script src="dist/theme.js"></script>              <!-- DS.applyTheme('c1')、DS.setColorScheme('dark'|'light'|'system')、DS.setDensity('compact'|'normal') -->
+<script src="dist/theme.js"></script>              <!-- DS.applyTheme('c1')、DS.setColorScheme('dark'|'light'|'system')、DS.setDensity('comfortable'|'normal'|'compact') -->
 ```
 
 v19 的 S2〜S5 過渡版（兩檔、不載 base.css）已退場。頁面不加 `.up`、`.glass`、`.wob`、`.org` 之類的修飾 class——`.board`、`.card`、`.statc` 本身就帶著該套材質；數量調整器一律用 `<input>`。S5 的漸層強調按鈕就是 `.btn.primary`。
@@ -358,7 +373,7 @@ v19 的 S2〜S5 過渡版（兩檔、不載 base.css）已退場。頁面不加 
 | 名詞對照表、文件目的、五條設計總則 | `references/overview.md` |
 | 第三章 色彩四層、十二組核心與 SC 特殊色系色碼、副色深型與淺型、著色面上的文字 | `references/color.md` |
 | 第四章 字型、十四級字級、行距配對、金額與數字格式 | `references/typography.md` |
-| 第五章 間距標尺、圓角、框線、元件高度、動態（時長與緩動）、層級、密集模式 | `references/spacing-radius.md` |
+| 第五章 間距標尺、圓角、框線、元件高度、動態（時長與緩動）、層級、密度三檔（寬鬆／標準／緊湊） | `references/spacing-radius.md` |
 | 第六章 斷點與級別、容器寬度與內距、12 欄欄格系統、側欄抽屜、表格轉卡片列 | `references/rwd.md` |
 | 第七章 元件規範（含警示條與提示框守則、Lucide 圖示規範） | `references/components.md` |
 | 第八章 各風格定義、風格 × 色系矩陣、風格 × 系統類型選型、深色模式（S3、S5、S6） | `references/styles.md` |
