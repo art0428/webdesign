@@ -867,7 +867,8 @@ button{font-family:inherit;color:var(--ink)}
 .bar i{background:var(--acc);border-radius:999px}
 .selcount button{border:none;background:none;color:var(--acc);font-family:inherit}
 .aibadge{background:var(--acc2-deep) !important;color:#fff !important}:where(html[data-theme="dark"]) .aibadge{color:var(--on-acc) !important}
-.head{background:var(--gl);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid var(--glBd);border-radius:22px;color:var(--ink);margin-top:1.6rem;padding:3.2rem 2.4rem 2rem}
+.head{background:var(--gl);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid var(--glBd);border-radius:22px;color:var(--ink);padding:3.2rem 2.4rem 2rem;max-width:1032px;margin:1.6rem max(2.4rem,calc(50% - 516px)) 0} /* S3 的 .head 本身是玻璃卡，外緣要對齊 .wrap 內的 .board（1080 − 2×2.4rem = 1032px）；窄螢幕時左右留與 .wrap 相同的 2.4rem 邊距 */
+@media (max-width:767px){.head{margin-left:1.6rem;margin-right:1.6rem}}
 .head h1{text-shadow:none}
 .head .kick{opacity:1}
 .head p{opacity:1;color:var(--ink)}
