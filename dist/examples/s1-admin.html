@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S1 奶油 · 後台管理 — 管理者工作室 設計系統 26.0.0</title>
+<title>S1 奶油 · 後台管理 — 管理者工作室 設計系統 27.0.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../base.css">
@@ -39,6 +39,9 @@
 
 /* 規範 6.2（v22）：容器左右內距＝欄格外邊距，寬以上 24、平板 20、手機 16；放在頁面排版之後，各頁一致 */
 .main,.wrap{padding-left:var(--sp-6);padding-right:var(--sp-6)}
+/* 規範 v27：頁首的導覽連結與示範用的切換下拉，手機上點擊高度 44 */
+.foot-note a{white-space:nowrap}
+@media (max-width:767px){.topnav .links a{display:inline-flex;align-items:center;min-height:4.4rem}.topnav select,.ph select{min-height:4.4rem}}
 /* 規範 v26 5.7：寬鬆密度（S1〜S5、S7 的預設）的頁面層——區段之間 --sp-7、頁首上方 --sp-8、側欄群組之間 --sp-6；S6 預設標準，不套 */
 :where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .main,
 :where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .wrap{gap:var(--sp-7);padding-top:var(--sp-8)}
@@ -83,11 +86,11 @@
       <table class="t">
         <thead><tr><th class="ck"><span class="check"><i></i></span></th><th>單號</th><th>客戶</th><th>品項</th><th>狀態</th><th style="text-align:right">金額</th><th style="text-align:right">到貨</th><th></th></tr></thead>
         <tbody>
-          <tr><td class="ck"><span class="check on"><i></i></span></td><td class="dt">SO-261010-021</td><td>大同機械</td><td>AL-2040 ×100 他 1 項</td><td><span class="st wrn">● 待確認</span></td><td class="amt">28,166</td><td class="dt">10/14</td><td><button class="btn sm">確認</button></td></tr>
-          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261010-019</td><td>永信自動化</td><td>SB-1100 ×800</td><td><span class="st acc">● 備貨中</span></td><td class="amt">6,460</td><td class="dt">10/13</td><td><button class="btn sm">預覽</button></td></tr>
-          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261009-008</td><td>詮宏精密</td><td>AL-2040 ×500（刻印）</td><td><span class="st ok">● 已出貨</span></td><td class="amt">96,140</td><td class="dt">10/09</td><td><button class="btn sm">預覽</button></td></tr>
-          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261006-003</td><td>青禾工業</td><td>MG-300 ×24</td><td><span class="st err">● 逾期</span></td><td class="amt">12,800</td><td class="dt">10/06</td><td><button class="btn sm">催單</button></td></tr>
-          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261003-014</td><td>宏達金屬</td><td>AL-6063 ×60</td><td><span class="st gray">● 已結案</span></td><td class="amt">41,900</td><td class="dt">10/03</td><td><button class="btn sm">預覽</button></td></tr>
+          <tr><td class="ck"><span class="check on"><i></i></span></td><td class="dt">SO-261010-021</td><td>大同機械</td><td>AL-2040 ×100 他 1 項</td><td><span class="st wrn">待確認</span></td><td class="amt">28,166</td><td class="dt">10/14</td><td><button class="btn sm">確認</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261010-019</td><td>永信自動化</td><td>SB-1100 ×800</td><td><span class="st acc">備貨中</span></td><td class="amt">6,460</td><td class="dt">10/13</td><td><button class="btn sm">預覽</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261009-008</td><td>詮宏精密</td><td>AL-2040 ×500（刻印）</td><td><span class="st ok">已出貨</span></td><td class="amt">96,140</td><td class="dt">10/09</td><td><button class="btn sm">預覽</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261006-003</td><td>青禾工業</td><td>MG-300 ×24</td><td><span class="st err">逾期</span></td><td class="amt">12,800</td><td class="dt">10/06</td><td><button class="btn sm">催單</button></td></tr>
+          <tr><td class="ck"><span class="check"><i></i></span></td><td class="dt">SO-261003-014</td><td>宏達金屬</td><td>AL-6063 ×60</td><td><span class="st gray">已結案</span></td><td class="amt">41,900</td><td class="dt">10/03</td><td><button class="btn sm">預覽</button></td></tr>
         </tbody>
       </table>
       <div class="tfoot"><span class="p4"><button>‹</button><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>8</button><button>›</button></span></div>

@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 26.0.0 ══ theme.js
+/* ══ 管理者工作室 設計系統 27.0.0 ══ theme.js
    色系切換（規範 3.8、4.2）與深淺模式（規範 8.8）。由 emit_css.py 產生，THEMES 表取自元件庫。
    用法：
      <html data-style="s1">                         本系統選定的風格（建置時決定，全站只有一套）
@@ -79,7 +79,15 @@ function setDensity(mode){
   try{ localStorage.setItem('ds.density',mode); }catch(_){}
   return density();
 }
+/* 表格手機卡片列的欄名（規範 6.3，v27）：每格沒有 data-l 時依表頭補上；動態新增的列再呼叫一次 DS.labelTables() */
+function labelTables(scope){
+  (scope||document).querySelectorAll('table.t').forEach(t=>{
+    const hs=[...t.querySelectorAll('thead th')].map(th=>th.textContent.replace(/[↕↓↑]/g,'').trim());
+    t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{ if(!td.hasAttribute('data-l')&&hs[i]) td.setAttribute('data-l',hs[i]); }));
+  });
+}
 function init(){
+  labelTables();
   let k=null, mode=null, dens=null;
   try{ k=new URLSearchParams(location.search).get('theme'); }catch(_){}
   try{ k=k||localStorage.getItem('ds.theme'); mode=localStorage.getItem('ds.scheme'); dens=localStorage.getItem('ds.density'); }catch(_){}
@@ -87,6 +95,6 @@ function init(){
   if(dens&&!root.hasAttribute('data-density')){ const d=DENSITY[STYLE]||DENSITY.s1; if(d.allowed.includes(dens)&&dens!==d.default) root.setAttribute('data-density',dens); }
   root.dataset.theme_key=applyTheme(k||'c1');
 }
-window.DS={THEMES,STYLE,DENSITY,allowed,applyTheme:function(k){root.dataset.theme_key=k;return applyTheme(k);},setColorScheme,setDensity,density,init};
+window.DS={THEMES,STYLE,DENSITY,allowed,applyTheme:function(k){root.dataset.theme_key=k;return applyTheme(k);},setColorScheme,setDensity,density,labelTables,init};
 init();
 })();

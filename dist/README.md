@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 26.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 27.0.0 — 可引用的 CSS
 
 由 `emit_css.py` 自七套元件庫示範頁產生，**不要手改**；改元件庫後重跑，並以 `verify_css_split.py` 確認示範頁改成引用這些檔之後每個元素的計算樣式一字不差。
 
@@ -50,7 +50,7 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | 檔 | 內容 | 大小 |
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
-| `base.css` | 結構層 ＋ S1 材質 | 63.9 KB |
+| `base.css` | 結構層 ＋ S1 材質 | 68.7 KB |
 | `style-s1.css` | S1 奶油（材質在 base，空殼） | 0.3 KB |
 | `style-s2.css` | S2 浮雕 | 14.9 KB |
 | `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 80.0 KB |
@@ -58,8 +58,8 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | `style-s5.css` | S5 極光 淺色 ＋ 深色 | 48.2 KB |
 | `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 28.4 KB |
 | `style-s7.css` | S7 編輯 | 2.1 KB |
-| `theme.js` | 色系、深淺模式與密度 | 16.9 KB |
+| `theme.js` | 色系、深淺模式與密度 | 17.4 KB |
 
 ## 版本
 
-`26.0.0` 與《網頁設計規範 v26》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`27.0.0` 與《網頁設計規範 v27》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

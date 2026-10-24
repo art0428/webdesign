@@ -1047,6 +1047,104 @@ html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[
 }
 /* 規範 6.3（v26）：描述清單放進卡片一律兩欄 */
 .card .desc,.cardx .desc{grid-template-columns:max-content 1fr}
+
+
+/* ══ 手機與平板版面（規範 v27；《手機版面稽核報告 v1》）：結構層，七套共用 ══
+   頂層規則前綴 :where(html)（權重 0）：選擇器文字與各套材質層錯開，emit_css 的逐次配對才不會把結構屬性誤搬進風格檔 */
+/* 一、單行元件不折行（待辦二十三）：999px 圓角只給永遠單行的元件；放不下時由所在的列換行，不擠壓元件本身 */
+.btn,.pillf,.chip,.st,.tag,.conf,.seg button,.tab,.nitem,.p1 button,.p2 button,.p4 button,.cal .quick button,.flow .stp,.tcap b,.tcap .cnt{white-space:nowrap}
+.batchbar,.drawer .df,.modal .mf,.stepnav,.tcap{flex-wrap:wrap}
+/* 二、表格的文字只在空白與標點斷行，不在兩個中文字之間斷（稽核 04：平板寬度「大同機械」一字一行）；放不下就讓表格容器橫捲 */
+:where(html) .t th,:where(html) .t td{word-break:keep-all;overflow-wrap:break-word}
+@media (min-width:768px){.tblwrap{overflow-x:auto}}
+/* 三、唯讀步驟（稽核 01）：高度用 token、換行時上下留 --sp-3、走過的加 ✓（不只靠顏色，10.2） */
+:where(html) .flow{row-gap:var(--sp-3)}
+:where(html) .flow .stp{display:inline-flex;align-items:center;min-height:var(--h-pill);padding-top:0;padding-bottom:0}
+:where(html) .flow .stp.done::before{content:"✓";margin-right:var(--sp-1);font-weight:700}
+/* 四、高度靠內距撐的四個元件改用 token（稽核 14） */
+:where(html) .cal .quick button{display:inline-flex;align-items:center;min-height:var(--h-btn-sm);padding-top:0;padding-bottom:0}
+:where(html) .conf{display:inline-flex;align-items:center;min-height:var(--h-tag);padding-top:0;padding-bottom:0}
+:where(html) .msearch{min-height:var(--h-btn-sm);padding-top:0;padding-bottom:0}
+/* 步驟精靈（稽核 11）：圓點回到步驟中央。v17 的正圓保護規則給了 align-self:flex-start，圓點靠左、連接線（中央到中央）就多出一截 */
+:where(html) .stepper .sp .dot{align-self:center}
+/* 五、分段控制放不下時橫滑，不換行、不折字（稽核 09） */
+:where(html) .seg{max-width:100%;overflow-x:auto;scrollbar-width:none}
+:where(html) .seg::-webkit-scrollbar{display:none}
+:where(html) .seg button{flex:none}
+@media (max-width:767px){
+:root{--h-nav:4.4rem}
+/* 唯讀步驟改直排、箭頭朝下 */
+.flow{flex-direction:column;align-items:flex-start;row-gap:var(--sp-1)}
+.flow .arr{display:inline-block;transform:rotate(90deg);padding:0;margin-left:var(--sp-4)}
+html .flow{border-radius:var(--r-lg)}
+/* 表格轉卡片列（6.3）：每列一張卡，第一行識別碼與金額，其餘每格帶欄名（data-l），狀態與列內動作在最後一行 */
+.tblwrap{overflow:hidden}
+table.t,table.t tbody,table.t tr,table.t td{display:block;width:auto;min-width:0}
+table.t thead{display:none}   /* 欄名改由每格的 data-l 顯示（螢幕報讀器讀得到 ::before 的文字） */
+table.t tbody tr{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--sp-3);row-gap:var(--sp-1);align-items:center;padding:var(--sp-4) var(--sp-4);border-bottom:1px solid var(--line)}
+table.t tbody tr:last-child{border-bottom:none}
+table.t tbody tr td,.t tr.sel td{padding:0;border:none;background:none;border-radius:0;grid-column:1 / -1;text-align:left}
+.t tbody tr.sel{background:var(--accsoft,var(--acc-soft))}
+.t tbody tr.sel td::before{color:var(--ink)}   /* 品牌淡底上的次要文字改主文字色（4.5 第四條） */
+.t tbody tr:hover td{background:none}
+table.t tbody tr td:first-child,table.t tbody tr td.ck + td{grid-column:1;grid-row:1;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+table.t tbody tr td.amt{grid-column:2;grid-row:1;text-align:right}
+table.t tbody tr td.dt{text-align:left}
+table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):not(:has(> .st)):not(:has(> .btn:only-child))::before{content:attr(data-l);display:inline-block;min-width:4.8rem;margin-right:var(--sp-3);font-size:var(--fs-l1);line-height:var(--lh-l1);font-weight:700;color:var(--muted)}
+table.t tbody tr td:has(> .st){grid-column:2;justify-self:end;order:99}
+table.t tbody tr td:has(> .btn:only-child){grid-column:1;order:98}
+table.t tbody tr:has(> td.ck){grid-template-columns:auto minmax(0,1fr) auto}
+table.t tbody tr:has(> td.ck) td{grid-column:2 / -1}
+table.t tbody tr:has(> td.ck) td.ck{grid-column:1;grid-row:1;width:auto;padding-right:0}
+table.t tbody tr:has(> td.ck) td.ck + td{grid-column:2;grid-row:1}
+table.t tbody tr:has(> td.ck) td.amt{grid-column:3;grid-row:1}
+table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
+/* 表格標題列：標題與計數一行，篩選膠囊與按鈕另起一行並橫滑 */
+.tcap .sp{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.tcap .sp::-webkit-scrollbar{display:none}
+.tcap .sp > *{flex:none}
+.batchbar .sp{margin-left:auto}
+/* 側滑面板（稽核 06）：手機全寬；單號、欄名不折行 */
+.drawer{width:100%}
+.drawerdemo{height:340px}   /* 示範框：手機上標題列換成兩行，框加高才看得到全部明細 */
+.drawer .dh{flex-wrap:wrap;white-space:nowrap}
+.drawer .dh .x{order:1}
+.drawer .dh::after{content:"";flex-basis:100%;order:1}
+.drawer .dh .st{order:2}   /* 單號與關閉鈕同一行，狀態換到第二行 */
+.drawer .db .row span:first-child{flex:none;white-space:nowrap}
+/* 級聯選擇（稽核 08）：每一層改成一列、各自橫滑，不再左右三欄 */
+.casc{display:flex;flex-direction:column;width:100%}
+.casc ul{display:flex;gap:var(--sp-1);overflow-x:auto;min-width:0;border-right:none;border-bottom:1px solid var(--line)}
+.casc ul:last-child{border-bottom:none}
+.casc li{flex:none}
+.casc li .car{display:none}
+/* 觸控目標 44（稽核 07；7.4 純圖示按鈕 44×44、5.4 輸入框 44） */
+.p1{max-width:100%;overflow-x:auto;scrollbar-width:none}
+.p1 button,.p3 button,.p5 button{width:4.4rem;min-width:4.4rem;min-height:4.4rem;flex:none}
+.p2{max-width:100%;overflow-x:auto;scrollbar-width:none}
+.p2 button{min-width:4.4rem;min-height:4.4rem;flex:none}
+.p4{gap:0;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.p4 button{min-width:4.4rem;flex:none}
+.p5 input{min-height:4.4rem}
+.kebab{width:4.4rem;min-height:4.4rem}
+.media .arr{width:4.4rem}
+.toolbar .tb{width:4.4rem;min-height:4.4rem}
+.toolbar .tb.w{width:auto}
+.drawer .dh .x,.modal .x{min-width:4.4rem;min-height:4.4rem}
+.qty{align-items:stretch}
+.qty button{width:4.4rem;min-height:0}
+.qty input{min-height:0}
+.cal .ch button{width:4.4rem;min-height:4.4rem}
+.seg button{min-height:calc(var(--h-btn) - 2px);padding-top:0;padding-bottom:0}
+.tabs .tab{min-height:4.4rem}
+.tierbar b{white-space:nowrap}
+/* 示範頁的色系／密度切換列：手機上不黏頂、改一列橫滑（稽核 10）；產品頁沒有這個元素 */
+.accbar{position:static;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start}
+.accbar > *{flex:none}
+.btn.sm,.tarr .btn.sm{min-width:4.4rem}
+.tarr .btn.sm{min-height:4.4rem}   /* 穿梭框的 ‹ › 是純圖示按鈕，44×44（7.4） */
+}
+/* v27 區塊結束 */
 </style>
 </head>
 <body>
@@ -1179,9 +1277,9 @@ html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[
 <table class="t">
 <thead><tr><th>單號</th><th>客戶</th><th>品項</th><th>狀態</th><th style="text-align:right">金額</th><th style="text-align:right">到貨</th><th></th></tr></thead>
 <tbody>
-<tr><td class="num">SO-260830-012</td><td>大同機械</td><td>AL-2040 ×100 他 1 項</td><td><span class="st wrn">待確認</span></td><td class="amt">28,166</td><td class="dt">09/08</td><td><button class="btn sm">預覽</button></td></tr>
-<tr><td class="num">SO-260830-011</td><td>永信自動化</td><td>CB-1100 ×800</td><td><span class="st wrn">待確認</span></td><td class="amt">6,460</td><td class="dt">09/05</td><td><button class="btn sm">預覽</button></td></tr>
-<tr><td class="num">SO-260829-008</td><td>詮宏精密</td><td>AL-2040 ×500（刻印）</td><td><span class="st acc">備貨中</span></td><td class="amt">96,140</td><td class="dt">09/03</td><td><button class="btn sm">預覽</button></td></tr>
+<tr><td class="num" data-l="單號">SO-260830-012</td><td data-l="客戶">大同機械</td><td data-l="品項">AL-2040 ×100 他 1 項</td><td data-l="狀態"><span class="st wrn">待確認</span></td><td class="amt" data-l="金額">28,166</td><td class="dt" data-l="到貨">09/08</td><td><button class="btn sm">預覽</button></td></tr>
+<tr><td class="num" data-l="單號">SO-260830-011</td><td data-l="客戶">永信自動化</td><td data-l="品項">CB-1100 ×800</td><td data-l="狀態"><span class="st wrn">待確認</span></td><td class="amt" data-l="金額">6,460</td><td class="dt" data-l="到貨">09/05</td><td><button class="btn sm">預覽</button></td></tr>
+<tr><td class="num" data-l="單號">SO-260829-008</td><td data-l="客戶">詮宏精密</td><td data-l="品項">AL-2040 ×500（刻印）</td><td data-l="狀態"><span class="st acc">備貨中</span></td><td class="amt" data-l="金額">96,140</td><td class="dt" data-l="到貨">09/03</td><td><button class="btn sm">預覽</button></td></tr>
 </tbody>
 </table>
 <div class="tfoot"><span>3 筆選取</span><span class="tv num">NT$ 130,766</span></div>
@@ -1191,10 +1289,10 @@ html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[
 <table class="t">
 <thead><tr><th class="ck"><span class="check on"><i></i></span></th><th>單號</th><th>客戶</th><th class="sortable">狀態<i>↕</i></th><th class="sortable on" style="text-align:right">金額<i>↓</i></th><th class="sortable" style="text-align:right">到貨<i>↕</i></th></tr></thead>
 <tbody>
-<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num">SO-260905-008</td><td>詮宏精密</td><td><span class="st acc">備貨中</span></td><td class="amt">96,140</td><td class="dt">09/10</td></tr>
-<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num">SO-260907-003</td><td>大同機械</td><td><span class="st wrn">待確認</span></td><td class="amt">28,166</td><td class="dt">09/15</td></tr>
-<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num">SO-260904-021</td><td>大同機械</td><td><span class="st ok">已出貨</span></td><td class="amt">18,920</td><td class="dt">09/06</td></tr>
-<tr><td class="ck"><span class="check"><i></i></span></td><td class="num">SO-260903-014</td><td>宏達金屬</td><td><span class="st ok">已出貨</span></td><td class="amt">12,400</td><td class="dt">09/04</td></tr>
+<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num" data-l="單號">SO-260905-008</td><td data-l="客戶">詮宏精密</td><td data-l="狀態"><span class="st acc">備貨中</span></td><td class="amt" data-l="金額">96,140</td><td class="dt" data-l="到貨">09/10</td></tr>
+<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num" data-l="單號">SO-260907-003</td><td data-l="客戶">大同機械</td><td data-l="狀態"><span class="st wrn">待確認</span></td><td class="amt" data-l="金額">28,166</td><td class="dt" data-l="到貨">09/15</td></tr>
+<tr class="sel"><td class="ck"><span class="check on"><i></i></span></td><td class="num" data-l="單號">SO-260904-021</td><td data-l="客戶">大同機械</td><td data-l="狀態"><span class="st ok">已出貨</span></td><td class="amt" data-l="金額">18,920</td><td class="dt" data-l="到貨">09/06</td></tr>
+<tr><td class="ck"><span class="check"><i></i></span></td><td class="num" data-l="單號">SO-260903-014</td><td data-l="客戶">宏達金屬</td><td data-l="狀態"><span class="st ok">已出貨</span></td><td class="amt" data-l="金額">12,400</td><td class="dt" data-l="到貨">09/04</td></tr>
 </tbody>
 </table>
 </div>

@@ -186,18 +186,34 @@ body{
 @media (max-width:900px){
   .foot{border-top:1px solid var(--line-soft);padding:8px 0 0;margin-top:4px;font-size:11px}
 }
+/* v27 手機控制區 */
+.ctlbtn{display:none}
+@media (max-width:900px){
+  html,body{height:100%}
+  .bar-in{gap:8px}
+  .brandline{flex-wrap:nowrap;align-items:center}
+  .brandline .eyebrow{display:none}
+  .brandline .now{width:auto;margin-left:auto;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+  .brandline .now > span:last-child{overflow:hidden;text-overflow:ellipsis}
+  .ctlbtn{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
+    border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:999px;padding:0 14px;min-height:40px}
+  .ctlbtn[aria-expanded="true"]{background:var(--sel);color:var(--sel-ink);border-color:var(--sel)}
+  .bar:not(.open) .bar-in > :not(.brandline){display:none}
+  .bar.open{max-height:72vh;overflow-y:auto}
+  .stage{flex:1 1 auto;min-height:0}
+}
 </style>
 </head>
 <body>
 <div class="bar">
-  <div class="bar-in">
+  <div class="bar-in" id="ctlRows">
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
-      </span>
+      </span><button type="button" class="ctlbtn" id="ctlBtn" aria-expanded="false" aria-controls="ctlRows">設定</button>
     </div>
     <div class="row" role="group" aria-label="檢視"><span class="lb">檢視</span>
       <span class="viewseg" id="viewSeg"><button type="button" class="on" data-v="lib">元件庫</button><button type="button" data-v="found">通用規範</button><button type="button" data-v="store">前台示範</button></span>
@@ -534,6 +550,12 @@ document.getElementById("idxBtn").addEventListener("click",()=>{
   if(idxOpen) askSections();
 });
 frame.addEventListener("load",()=>{ setTimeout(()=>{ if(idxOpen) askSections(); },160); });
+/* v27 手機控制區 */
+(function(){
+  const bar=document.querySelector('.bar'), btn=document.getElementById('ctlBtn');
+  if(!bar||!btn) return;
+  btn.addEventListener('click',()=>{ const o=bar.classList.toggle('open'); btn.setAttribute('aria-expanded',String(o)); btn.textContent=o?'完成':'設定'; });
+})();
 </script>
 </body>
 </html>

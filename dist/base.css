@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 26.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘六套以 style-s*.css 覆寫）
+/* ══ 管理者工作室 設計系統 27.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘六套以 style-s*.css 覆寫）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    先載 tokens.css，再載本檔，最後載一個 style-s*.css（順序不能換：風格層靠「排在後面」覆寫，權重與 S1 相同）。 */
 :root{--info:#1A66AA;--info-soft:#E8F0F6;--acc:#2B5FB8;--accsoft:#EDF1F9;--acc2:#C2377B;--acc2soft:#FAEEF4;--ink:#26292E;--line:#E4E2DE;--muted:#6F6B64;--paperc:#FBFAF8;--err:#B23F2F;--err-soft:#FAECEA;--wrn:#846200;--wrn-soft:#F8F0D8;--ok:#2A722E;--ok-soft:#E9F2EA}
@@ -604,3 +604,88 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
 :where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .seg button{padding-top:0;padding-bottom:0;padding-left:var(--sp-5);padding-right:var(--sp-5);min-height:calc(var(--h-btn) - 2px)}
 :where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .tab{padding:var(--sp-3) var(--sp-5)}}
 .card .desc,.cardx .desc{grid-template-columns:max-content 1fr}
+.btn,.pillf,.chip,.st,.tag,.conf,.seg button,.tab,.nitem,.p1 button,.p2 button,.p4 button,.cal .quick button,.flow .stp,.tcap b,.tcap .cnt{white-space:nowrap}
+.batchbar,.drawer .df,.modal .mf,.stepnav,.tcap{flex-wrap:wrap}
+:where(html) .t th,:where(html) .t td{word-break:keep-all;overflow-wrap:break-word}
+@media (min-width:768px){.tblwrap{overflow-x:auto}}
+:where(html) .flow{row-gap:var(--sp-3)}
+:where(html) .flow .stp{display:inline-flex;align-items:center;min-height:var(--h-pill);padding-top:0;padding-bottom:0}
+:where(html) .flow .stp.done::before{content:"✓";margin-right:var(--sp-1);font-weight:700}
+:where(html) .cal .quick button{display:inline-flex;align-items:center;min-height:var(--h-btn-sm);padding-top:0;padding-bottom:0}
+:where(html) .conf{display:inline-flex;align-items:center;min-height:var(--h-tag);padding-top:0;padding-bottom:0}
+:where(html) .msearch{min-height:var(--h-btn-sm);padding-top:0;padding-bottom:0}
+:where(html) .stepper .sp .dot{align-self:center}
+:where(html) .seg{max-width:100%;overflow-x:auto;scrollbar-width:none}
+:where(html) .seg::-webkit-scrollbar{display:none}
+:where(html) .seg button{flex:none}
+@media (max-width:767px){:root{--h-nav:4.4rem}
+
+.flow{flex-direction:column;align-items:flex-start;row-gap:var(--sp-1)}
+.flow .arr{display:inline-block;transform:rotate(90deg);padding:0;margin-left:var(--sp-4)}
+html .flow{border-radius:var(--r-lg)}
+
+.tblwrap{overflow:hidden}
+table.t,table.t tbody,table.t tr,table.t td{display:block;width:auto;min-width:0}
+table.t thead{display:none}   
+table.t tbody tr{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:var(--sp-3);row-gap:var(--sp-1);align-items:center;padding:var(--sp-4) var(--sp-4);border-bottom:1px solid var(--line)}
+table.t tbody tr:last-child{border-bottom:none}
+table.t tbody tr td,.t tr.sel td{padding:0;border:none;background:none;border-radius:0;grid-column:1 / -1;text-align:left}
+.t tbody tr.sel{background:var(--accsoft,var(--acc-soft))}
+.t tbody tr.sel td::before{color:var(--ink)}   
+.t tbody tr:hover td{background:none}
+table.t tbody tr td:first-child,table.t tbody tr td.ck + td{grid-column:1;grid-row:1;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+table.t tbody tr td.amt{grid-column:2;grid-row:1;text-align:right}
+table.t tbody tr td.dt{text-align:left}
+table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):not(:has(> .st)):not(:has(> .btn:only-child))::before{content:attr(data-l);display:inline-block;min-width:4.8rem;margin-right:var(--sp-3);font-size:var(--fs-l1);line-height:var(--lh-l1);font-weight:700;color:var(--muted)}
+table.t tbody tr td:has(> .st){grid-column:2;justify-self:end;order:99}
+table.t tbody tr td:has(> .btn:only-child){grid-column:1;order:98}
+table.t tbody tr:has(> td.ck){grid-template-columns:auto minmax(0,1fr) auto}
+table.t tbody tr:has(> td.ck) td{grid-column:2 / -1}
+table.t tbody tr:has(> td.ck) td.ck{grid-column:1;grid-row:1;width:auto;padding-right:0}
+table.t tbody tr:has(> td.ck) td.ck + td{grid-column:2;grid-row:1}
+table.t tbody tr:has(> td.ck) td.amt{grid-column:3;grid-row:1}
+table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
+
+.tcap .sp{margin-left:0;width:100%;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.tcap .sp::-webkit-scrollbar{display:none}
+.tcap .sp > *{flex:none}
+.batchbar .sp{margin-left:auto}
+
+.drawer{width:100%}
+.drawerdemo{height:340px}   
+.drawer .dh{flex-wrap:wrap;white-space:nowrap}
+.drawer .dh .x{order:1}
+.drawer .dh::after{content:"";flex-basis:100%;order:1}
+.drawer .dh .st{order:2}   
+.drawer .db .row span:first-child{flex:none;white-space:nowrap}
+
+.casc{display:flex;flex-direction:column;width:100%}
+.casc ul{display:flex;gap:var(--sp-1);overflow-x:auto;min-width:0;border-right:none;border-bottom:1px solid var(--line)}
+.casc ul:last-child{border-bottom:none}
+.casc li{flex:none}
+.casc li .car{display:none}
+
+.p1{max-width:100%;overflow-x:auto;scrollbar-width:none}
+.p1 button,.p3 button,.p5 button{width:4.4rem;min-width:4.4rem;min-height:4.4rem;flex:none}
+.p2{max-width:100%;overflow-x:auto;scrollbar-width:none}
+.p2 button{min-width:4.4rem;min-height:4.4rem;flex:none}
+.p4{gap:0;max-width:100%;overflow-x:auto;scrollbar-width:none}
+.p4 button{min-width:4.4rem;flex:none}
+.p5 input{min-height:4.4rem}
+.kebab{width:4.4rem;min-height:4.4rem}
+.media .arr{width:4.4rem}
+.toolbar .tb{width:4.4rem;min-height:4.4rem}
+.toolbar .tb.w{width:auto}
+.drawer .dh .x,.modal .x{min-width:4.4rem;min-height:4.4rem}
+.qty{align-items:stretch}
+.qty button{width:4.4rem;min-height:0}
+.qty input{min-height:0}
+.cal .ch button{width:4.4rem;min-height:4.4rem}
+.seg button{min-height:calc(var(--h-btn) - 2px);padding-top:0;padding-bottom:0}
+.tabs .tab{min-height:4.4rem}
+.tierbar b{white-space:nowrap}
+
+.accbar{position:static;flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start}
+.accbar > *{flex:none}
+.btn.sm,.tarr .btn.sm{min-width:4.4rem}
+.tarr .btn.sm{min-height:4.4rem}}

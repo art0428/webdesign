@@ -1,9 +1,9 @@
 # 管理者工作室 網頁設計系統 · ui-design-format
 
 一套可以直接裝進 Claude 的網頁介面設計系統（以 Agent Skill 形式提供：裝好之後，Claude 做網頁時會自動照這套規範）。
-七套風格（S3、S5、S6 另有深色模式；每套可切寬鬆、標準、緊湊三檔密度）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、12 欄欄格、62 項元件、可直接引用的 CSS（`dist/`）、前台示範頁，外加四支交付前的自動檢查腳本。
+七套風格（S3、S5、S6 另有深色模式；依風格可切寬鬆、標準、緊湊三檔密度）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、12 欄欄格、62 項元件、可直接引用的 CSS（`dist/`）、前台示範頁，外加五支交付前的自動檢查腳本。手機與平板版面有專門的規則與檢查。
 
-**A Claude Agent Skill for building web UIs: 7 visual styles (3 with dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 62 components, and 4 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow). Docs are in Traditional Chinese.**
+**A Claude Agent Skill for building web UIs: 7 visual styles (3 with dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 62 components, and 5 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow, mobile/tablet layout). Docs are in Traditional Chinese.**
 
 **線上預覽** → <https://art0428.github.io/webdesign/>
 左側切換風格、模式（S3、S5、S6 可切淺色／深色）、密度（寬鬆／標準／緊湊，依風格開放）與色系，右側即時換裝；「前台示範」檢視是每套風格各做一個它最適合的網站（S1 會員中心、S2 自助機台、S3 產品發表、S4 咖啡館官網、S5 選物電商、S6 開發者產品官網、S7 線上雜誌），頁頂寫明適合與不適合的用途，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
@@ -44,7 +44,7 @@ cp -r webdesign/skills/ui-design-format ~/.claude/skills/
 
 - 「做一個訂位系統的後台，用 S6 石墨、C2 深湖青」
 - 「幫我做一個咖啡店的品牌首頁」（沒指定風格時，Claude 會依系統類型從七套中挑選並說明理由）
-- 「檢查這個頁面有沒有符合設計規範」（會跑下面的四項檢查）
+- 「檢查這個頁面有沒有符合設計規範」（會跑下面的五項檢查）
 
 ## 七套風格
 
@@ -76,7 +76,7 @@ cp -r webdesign/skills/ui-design-format ~/.claude/skills/
 
 工程師手冊是 [`dist/USAGE.md`](dist/USAGE.md)（每個元件怎麼寫、欄格怎麼用、禁止事項）。七套風格各有一張只引用 `dist/` 寫成的範例頁：[線上看](https://art0428.github.io/webdesign/dist/examples/)。
 
-## 四項交付前檢查
+## 五項交付前檢查
 
 腳本放在 `skills/ui-design-format/scripts/`，對任何 HTML 檔或網址都能跑。不合規時結束碼為 1，可以直接接進 CI（持續整合：每次提交時自動跑的檢查）。
 
@@ -91,6 +91,7 @@ playwright install chromium
 | 標尺合規 | `python check_tokens.py page.html` | 不在標尺上的字級、行距、字距、間距 |
 | 行高配對 | `python check_lineheight.py page.html --render` | 字級與行距沒有配成同一代號（例如 B2 的字配 B3 的行距） |
 | 溢出檢查 | `python check_overflow.py page.html` | 390px、768px 寬度下的橫向捲動，並列出撐破版面的元素 |
+| 版面稽核 | `python check_layout.py page.html --shots shots/` | 360、390、768、1024 四種寬度下的元件貼合、按鈕與膠囊折行、逐字斷行、裁切、突出容器、手機觸控目標不足（圖示與輸入框 44px、文字鈕 40px）、文字重疊，並截證據圖 |
 
 ## 倉庫結構
 
@@ -99,13 +100,13 @@ skills/ui-design-format/      ← 這一整個資料夾就是 skill，複製走�
 ├── SKILL.md                  Claude 每次都會讀的核心規則（風格、色彩、字級、元件、檢查）
 ├── references/               規範全文依章節拆開，需要細節時才讀
 ├── assets/                   tokens.css、各風格元件庫、前台示範頁、通用規範頁（當範本複製）
-└── scripts/                  四項交付前檢查
+└── scripts/                  五項交付前檢查
 dist/                         可引用的 CSS（tokens、base、style-s1〜s7、theme.js）、USAGE.md、examples/
 dist/ui-design-format.zip     給 claude.ai 上傳用的打包檔
 docs/                         線上預覽（GitHub Pages）、規範全文 spec.md、調研 research/
 ```
 
-規範全文：[docs/spec.md](docs/spec.md)（v26）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
+規範全文：[docs/spec.md](docs/spec.md)（v27）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
 
 ## 授權
 

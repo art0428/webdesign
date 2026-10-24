@@ -8,7 +8,8 @@
 用法：
   python audit_contrast.py page.html [more.html https://... ] [--themes c1,c2,sc1] [--width 1280] [-v]
 
-  --themes  頁面支援用網址 hash 切換色系時（例如 page.html#c3），逐一稽核這些色系。
+  --themes  頁面支援用網址 hash 切換色系時（例如 page.html#c3），逐一稽核這些色系；
+            檔名後的片段會保留並合併，例如 page.html#dark --themes all 會跑 #c1.dark、#c2.dark……
             填 all 代表十二組核心 ＋ SC1〜SC3。不填就只稽核頁面目前的樣子。
   --width   視窗寬度，預設 1280。
 
@@ -62,10 +63,28 @@ COLLECT_JS = r"""
     const r = document.createRange(); r.selectNodeContents(n);
     const b = r.getBoundingClientRect();
     if (b.width < 4 || b.height < 4) continue;
+    // 被捲動容器或 overflow 裁到框外、畫面上看不到的文字不算
+    const cx = b.left + b.width / 2, cy = b.top + b.height / 2;
+    let clipped = false;
+    for (let p = el; p && p !== document.body; p = p.parentElement) {
+      const ps = getComputedStyle(p);
+      if (ps.overflowX === 'visible' && ps.overflowY === 'visible') continue;
+      const q = p.getBoundingClientRect();
+      if (cx < q.left || cx > q.right || cy < q.top || cy > q.bottom) { clipped = true; break; }
+    }
+    if (clipped) continue;
     const eb = el.getBoundingClientRect();
     const m = cs.color.match(/\d+(\.\d+)?/g).map(Number);
     if (m.length >= 4 && m[3] === 0) continue;
+    // 同一元素裡其他文字（例如段落中的 <b>）的框，取內距帶時要避開，免得把鄰字當底色
+    const sib = [];
+    for (const c of el.childNodes) {
+      if (c === n || !c.textContent.trim()) continue;
+      const rg = document.createRange(); rg.selectNodeContents(c);
+      for (const q of rg.getClientRects()) if (sib.length < 24) sib.push([q.left + scrollX - 1, q.top + scrollY - 1, q.right + scrollX + 1, q.bottom + scrollY + 1]);
+    }
     out.push({
+      sib,
       text: t.slice(0, 28),
       x: b.left + scrollX, y: b.top + scrollY, w: b.width, h: b.height,
       ex: eb.left + scrollX, ey: eb.top + scrollY, ew: eb.width, eh: eb.height,
@@ -91,6 +110,8 @@ def pad_estimate(img, nd):
     for j in range(max(ey0 + ins, ty0 - 6), min(ey1 - ins, ty1 + 7)):
         for i in range(max(ex0 + ins, tx0 - 6), min(ex1 - ins, tx1 + 7)):
             if tx0 <= i <= tx1 and ty0 <= j <= ty1:
+                continue
+            if any(s[0] <= i <= s[2] and s[1] <= j <= s[3] for s in nd.get("sib", ())):
                 continue
             if 0 <= i < img.width and 0 <= j < img.height:
                 band.append(px[i, j][:3])
@@ -133,12 +154,17 @@ async def audit(targets, themes, width):
     results = []
     async with async_playwright() as p:
         browser = await p.chromium.launch()
-        ctx = await browser.new_context(viewport={"width": width, "height": 900}, device_scale_factor=1)
-        pg = await ctx.new_page()
         for t in targets:
-            base = t if re.match(r"https?://", t) else pathlib.Path(t).resolve().as_uri()
+            # 每個目標用新的瀏覽器環境：頁面記在 localStorage 的深淺色、密度不會帶到下一個目標
+            ctx = await browser.new_context(viewport={"width": width, "height": 900}, device_scale_factor=1)
+            pg = await ctx.new_page()
+            # 片段（例如 page.html#dark）保留下來，與 --themes 的色系合併成 #c3.dark
+            base, _, frag = t.partition("#")
+            if not re.match(r"https?://", base):
+                base = pathlib.Path(base).resolve().as_uri()
             for th in (themes or [None]):
-                url = base + (f"#{th}" if th else "")
+                parts = [x for x in (th, frag) if x]
+                url = base + ("#" + ".".join(parts) if parts else "")
                 await pg.goto(url, wait_until="load")
                 # 固定背景在整頁截圖時會錯位，稽核時改成跟著捲動
                 await pg.add_style_tag(content="body{background-attachment:scroll !important}")
@@ -156,6 +182,7 @@ async def audit(targets, themes, width):
                     if r < need:
                         fails.append({**nd, "bg": bg, "ratio": round(r, 2), "need": need})
                 results.append((url, len(nodes), fails))
+            await ctx.close()
         await browser.close()
     return results
 

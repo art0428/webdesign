@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S6 石墨 · 監控儀表板 — 管理者工作室 設計系統 26.0.0</title>
+<title>S6 石墨 · 監控儀表板 — 管理者工作室 設計系統 27.0.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../base.css">
@@ -42,6 +42,9 @@
 
 /* 規範 6.2（v22）：容器左右內距＝欄格外邊距，寬以上 24、平板 20、手機 16；放在頁面排版之後，各頁一致 */
 .main,.wrap{padding-left:var(--sp-6);padding-right:var(--sp-6)}
+/* 規範 v27：頁首的導覽連結與示範用的切換下拉，手機上點擊高度 44 */
+.foot-note a{white-space:nowrap}
+@media (max-width:767px){.topnav .links a{display:inline-flex;align-items:center;min-height:4.4rem}.topnav select,.ph select{min-height:4.4rem}}
 /* 規範 v26 5.7：寬鬆密度（S1〜S5、S7 的預設）的頁面層——區段之間 --sp-7、頁首上方 --sp-8、側欄群組之間 --sp-6；S6 預設標準，不套 */
 :where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .main,
 :where(html[data-density="comfortable"],html[data-style="s1"]:not([data-density]),html[data-style="s2"]:not([data-density]),html[data-style="s3"]:not([data-density]),html[data-style="s4"]:not([data-density]),html[data-style="s5"]:not([data-density]),html[data-style="s7"]:not([data-density])) .wrap{gap:var(--sp-7);padding-top:var(--sp-8)}
@@ -62,9 +65,9 @@
     <button class="nitem">門檻</button><button class="nitem">通知</button><button class="nitem">API 金鑰</button>
   </aside>
   <main class="main">
-    <div class="ph"><h1>系統總覽</h1><span class="st ok">● 全部正常</span>
+    <div class="ph"><h1>系統總覽</h1><span class="st ok">全部正常</span>
       <span class="sp"><span class="seg"><button>1h</button><button class="on">24h</button><button>7d</button></span>
-        <label class="foot-note" style="display:flex;gap:var(--sp-1);align-items:center">深淺 <select id="scheme" aria-label="深淺模式" style="min-height:3.2rem;border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);color:var(--ink);font:inherit;padding:0 var(--sp-2)"><option value="system">跟隨系統</option><option value="light">淺</option><option value="dark">深</option></select></label></span></div>
+        <label class="foot-note" style="display:flex;gap:var(--sp-1);align-items:center">深淺 <select id="scheme" aria-label="深淺模式" style="min-height:var(--h-input);border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);color:var(--ink);font:inherit;padding:0 var(--sp-2)"><option value="system">跟隨系統</option><option value="light">淺</option><option value="dark">深</option></select></label></span></div>
     <div class="kpis">
       <div class="statc hero"><div class="k">請求／分鐘</div><div class="v num">4,812</div><div class="delta up">▲ 6.2% vs 昨日</div></div>
       <div class="statc"><div class="k">p95 延遲</div><div class="v num">212<small>ms</small></div><div class="delta up">▼ 18ms</div></div>
@@ -83,18 +86,18 @@
           <text x="40" y="190" font-size="11" fill="var(--muted)">00:00</text><text x="340" y="190" font-size="11" fill="var(--muted)">12:00</text><text x="600" y="190" font-size="11" fill="var(--muted)">24:00</text>
         </svg></div>
       <div class="card"><div class="card-title">服務健康</div><div class="card-body kv">
-        <span class="dt">api-gateway</span><div class="bar"><i style="width:99%"></i></div><span class="st ok">● 99.9</span>
-        <span class="dt">parse-fax</span><div class="bar"><i style="width:91%;background:var(--err)"></i></div><span class="st err">● 91.2</span>
-        <span class="dt">pricing</span><div class="bar"><i style="width:98%"></i></div><span class="st ok">● 98.4</span>
-        <span class="dt">notify</span><div class="bar"><i style="width:96%"></i></div><span class="st wrn">● 96.0</span>
+        <span class="dt">api-gateway</span><div class="bar"><i style="width:99%"></i></div><span class="st ok">99.9</span>
+        <span class="dt">parse-fax</span><div class="bar"><i style="width:91%;background:var(--err)"></i></div><span class="st err">91.2</span>
+        <span class="dt">pricing</span><div class="bar"><i style="width:98%"></i></div><span class="st ok">98.4</span>
+        <span class="dt">notify</span><div class="bar"><i style="width:96%"></i></div><span class="st wrn">96.0</span>
       </div></div>
     </div>
     <div class="tblwrap"><div class="tcap"><b>最近告警</b><span class="cnt">24 小時 · 6 筆</span><span class="sp"><button class="pillf on">全部</button><button class="pillf">未處理<span class="n">2</span></button></span></div>
       <table class="t"><thead><tr><th>時間</th><th>服務</th><th>事件</th><th>等級</th><th style="text-align:right">持續</th><th></th></tr></thead><tbody>
-        <tr><td class="dt">10:42:17</td><td class="dt">parse-fax</td><td>重試失敗 ×3，E_TIMEOUT</td><td><span class="st err">● 嚴重</span></td><td class="amt">18m</td><td><button class="btn sm">認領</button></td></tr>
-        <tr><td class="dt">09:58:03</td><td class="dt">notify</td><td>SMTP 回應緩慢 &gt; 2s</td><td><span class="st wrn">● 警告</span></td><td class="amt">41m</td><td><button class="btn sm">認領</button></td></tr>
-        <tr><td class="dt">07:12:40</td><td class="dt">api-gateway</td><td>憑證將於 14 天後到期</td><td><span class="st acc">● 資訊</span></td><td class="amt">—</td><td><button class="btn sm">排程</button></td></tr>
-        <tr><td class="dt">02:00:00</td><td class="dt">pricing</td><td>排程重算完成，1,284 SKU</td><td><span class="st gray">● 已結</span></td><td class="amt">6m</td><td></td></tr>
+        <tr><td class="dt">10:42:17</td><td class="dt">parse-fax</td><td>重試失敗 ×3，E_TIMEOUT</td><td><span class="st err">嚴重</span></td><td class="amt">18m</td><td><button class="btn sm">認領</button></td></tr>
+        <tr><td class="dt">09:58:03</td><td class="dt">notify</td><td>SMTP 回應緩慢 &gt; 2s</td><td><span class="st wrn">警告</span></td><td class="amt">41m</td><td><button class="btn sm">認領</button></td></tr>
+        <tr><td class="dt">07:12:40</td><td class="dt">api-gateway</td><td>憑證將於 14 天後到期</td><td><span class="st acc">資訊</span></td><td class="amt">—</td><td><button class="btn sm">排程</button></td></tr>
+        <tr><td class="dt">02:00:00</td><td class="dt">pricing</td><td>排程重算完成，1,284 SKU</td><td><span class="st gray">已結</span></td><td class="amt">6m</td><td></td></tr>
       </tbody></table></div>
     <p class="foot-note">範例：S6 石墨 × 資料密集儀表板（監控；右上角可切深淺） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p>
   </main>
