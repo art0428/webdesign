@@ -5,9 +5,9 @@
   python check_overflow.py page.html [more.html https://...] [--widths 390,768]
 
 找出超出視窗的元素時，最常見的原因是 flex 子項沒有寫 min-width:0、表格沒轉卡片列、
-或固定寬度的圖片與程式碼區塊。需要 Playwright。有溢出時結束碼為 1。
+或固定寬度的圖片與程式碼區塊。需要 Playwright。有溢出時結束碼為 1；檔案找不到或網址載入失敗時為 2。
 """
-import asyncio, re, sys, argparse, pathlib
+import asyncio, os, re, sys, argparse, pathlib
 
 JS = r"""() => {
   const vw = document.documentElement.clientWidth;
@@ -40,7 +40,10 @@ async def run(targets, widths):
             pg = await b.new_page(viewport={"width": w, "height": 844})
             for t in targets:
                 url = t if re.match(r"https?://", t) else pathlib.Path(t).resolve().as_uri()
-                await pg.goto(url, wait_until="load")
+                resp = await pg.goto(url, wait_until="load")
+                if resp is not None and resp.status >= 400:
+                    print(f"載入失敗：{t}（HTTP {resp.status}）", file=sys.stderr)
+                    sys.exit(2)
                 await pg.wait_for_timeout(300)
                 out.append((t, w, await pg.evaluate(JS)))
             await pg.close()
@@ -54,6 +57,10 @@ def main():
     ap.add_argument("--widths", default="390,768")
     a = ap.parse_args()
     widths = [int(x) for x in a.widths.split(",")]
+    missing = [f for f in a.targets if not re.match(r"https?://", f) and not os.path.isfile(f)]
+    if missing:
+        print("找不到檔案：" + "、".join(missing), file=sys.stderr)
+        sys.exit(2)
     bad = 0
     for t, w, r in asyncio.run(run(a.targets, widths)):
         ok = r["sw"] <= r["vw"]

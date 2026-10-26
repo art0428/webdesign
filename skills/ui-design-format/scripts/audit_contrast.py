@@ -15,10 +15,10 @@
 
 需要 Playwright 與 Pillow：
   pip install -r requirements.txt && playwright install chromium
-有任何不及格時結束碼為 1。想讓某塊區域不受稽核（例如只在開發時出現的控制列），
+有任何不及格時結束碼為 1；檔案找不到或網址載入失敗時為 2。想讓某塊區域不受稽核（例如只在開發時出現的控制列），
 在該元素加上 data-audit-skip 屬性。
 """
-import asyncio, io, re, sys, collections, argparse, pathlib
+import asyncio, io, os, re, sys, collections, argparse, pathlib
 
 ALL_THEMES = ["c1", "c2", "c3", "c4", "c5", "c6", "c7", "c8", "c9", "c10", "c11", "c12", "sc1", "sc2", "sc3"]
 
@@ -165,9 +165,16 @@ async def audit(targets, themes, width):
             for th in (themes or [None]):
                 parts = [x for x in (th, frag) if x]
                 url = base + ("#" + ".".join(parts) if parts else "")
-                await pg.goto(url, wait_until="load")
+                resp = await pg.goto(url, wait_until="load")
+                if resp is not None and resp.status >= 400:
+                    print(f"載入失敗：{url}（HTTP {resp.status}）", file=sys.stderr)
+                    sys.exit(2)
                 # 固定背景在整頁截圖時會錯位，稽核時改成跟著捲動
                 await pg.add_style_tag(content="body{background-attachment:scroll !important}")
+                # 黏頂、黏底的列（頂列、購物條）在整頁截圖裡的位置和使用者看到的不同，會蓋住底下的文字；稽核時改回文件流
+                await pg.evaluate("""() => { for (const e of document.querySelectorAll('body *')) {
+                  const p = getComputedStyle(e).position;
+                  if (p === 'fixed' || p === 'sticky') e.style.setProperty('position', 'static', 'important'); } }""")
                 await pg.wait_for_timeout(300)
                 nodes = await pg.evaluate(COLLECT_JS)
                 img = Image.open(io.BytesIO(await pg.screenshot(full_page=True))).convert("RGB")
@@ -195,6 +202,10 @@ def main():
     ap.add_argument("-v", action="store_true", help="列出每個不及格節點")
     a = ap.parse_args()
     themes = ALL_THEMES if a.themes == "all" else [x for x in a.themes.split(",") if x]
+    missing = [t for t in a.targets if not re.match(r"https?://", t) and not os.path.isfile(t.partition("#")[0])]
+    if missing:
+        print("找不到檔案：" + "、".join(missing), file=sys.stderr)
+        sys.exit(2)
 
     results = asyncio.run(audit(a.targets, themes, a.width))
     total_nodes = total_fails = 0

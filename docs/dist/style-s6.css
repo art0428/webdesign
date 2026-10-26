@@ -1,6 +1,6 @@
-/* ══ 管理者工作室 設計系統 27.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 28.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
-   風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第五項檢查會擋）。 */
+   風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
 /* S1 有、本套沒有的規則或屬性：歸零（unset），等於本套原本沒寫 */
 .alert .btn.sm:hover{opacity:unset}

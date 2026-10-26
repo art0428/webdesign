@@ -1066,6 +1066,10 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 .tarr .btn.sm{min-height:4.4rem}   /* 穿梭框的 ‹ › 是純圖示按鈕，44×44（7.4） */
 }
 /* v27 區塊結束 */
+/* ══ 表格的單號與日期不折行（規範 v28，6.6 第一條）：結構層，七套共用 ══
+   單號、日期這類識別碼斷開就讀不出來；整欄放不下時由表格容器橫捲（平板以上），手機轉卡片列（6.3）。前綴 :where(html) 同 v27 */
+:where(html) .t .dt{white-space:nowrap}
+/* v28 區塊結束 */
 </style>
 </head>
 <body>

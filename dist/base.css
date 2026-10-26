@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 27.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘六套以 style-s*.css 覆寫）
+/* ══ 管理者工作室 設計系統 28.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘六套以 style-s*.css 覆寫）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    先載 tokens.css，再載本檔，最後載一個 style-s*.css（順序不能換：風格層靠「排在後面」覆寫，權重與 S1 相同）。 */
 :root{--info:#1A66AA;--info-soft:#E8F0F6;--acc:#2B5FB8;--accsoft:#EDF1F9;--acc2:#C2377B;--acc2soft:#FAEEF4;--ink:#26292E;--line:#E4E2DE;--muted:#6F6B64;--paperc:#FBFAF8;--err:#B23F2F;--err-soft:#FAECEA;--wrn:#846200;--wrn-soft:#F8F0D8;--ok:#2A722E;--ok-soft:#E9F2EA}
@@ -689,3 +689,4 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 .accbar > *{flex:none}
 .btn.sm,.tarr .btn.sm{min-width:4.4rem}
 .tarr .btn.sm{min-height:4.4rem}}
+:where(html) .t .dt{white-space:nowrap}

@@ -3,17 +3,19 @@
 找出不在標尺上的字級、行距、字距、間距，以及負 margin、承載文字的固定 height。
 
 用法：
-  python check_tokens.py page.html [more.html style.css ...] [--type productive|expressive|all] [-v]
+  python check_tokens.py page.html [more.html style.css https://...] [--type productive|expressive|all] [-v]
 
   --type   字級標尺。productive（預設，後台、表單、結帳）、expressive（前台閱讀型頁面）、
            all（同一份檔案兩種都用時）。
   -v       列出每一條不合規宣告。
 
+掃的是頁面自己的 <style> 與 style=""；外部樣式表要把 .css 的路徑或網址一起給。給網址時讀的是伺服器回傳的原始碼，
+不含 JavaScript 之後才產生的內容。
 假設：html{font-size:62.5%}，所以 1rem = 10px；rem 會換算成 px 再比對。
 引用變數的宣告（var(--fs-b1) 這類）直接視為合規，因為值由 tokens.css 決定。
-有任何不合規時結束碼為 1，可以接進 CI（持續整合：每次提交自動跑檢查）。
+有任何不合規時結束碼為 1、檔案找不到或網址載入失敗時為 2，可以接進 CI（持續整合：每次提交自動跑檢查）。
 """
-import re, io, sys, collections, argparse
+import re, io, os, sys, collections, argparse, urllib.request, urllib.error, urllib.parse
 
 # 十四級字級（D1、H0〜H3、B1〜B3、L1〜L2、N1〜N4）不重複的值；Expressive 含 768px 以下的 D1 36、H0 32
 PRODUCTIVE = {"fs": {30, 26, 21, 17, 14, 12.5, 12, 11, 23, 19},
@@ -55,9 +57,25 @@ def px_values(v):
     return out
 
 
+def is_css(path):
+    return urllib.parse.urlparse(path).path.lower().endswith(".css")
+
+
+def read_source(path):
+    """本機檔或網址的原始碼。網址讀的是伺服器回傳的 HTML／CSS，不含 JavaScript 之後才產生的內容。"""
+    if not re.match(r"https?://", path):
+        return io.open(path, encoding="utf-8").read()
+    try:
+        with urllib.request.urlopen(path, timeout=30) as r:
+            return r.read().decode(r.headers.get_content_charset() or "utf-8", errors="replace")
+    except (urllib.error.URLError, ValueError) as e:
+        print(f"載入失敗：{path}（{e}）", file=sys.stderr)
+        sys.exit(2)
+
+
 def load(path):
-    s = io.open(path, encoding="utf-8").read()
-    if path.lower().endswith(".css"):
+    s = read_source(path)
+    if is_css(path):
         return list(decls(s))
     css = "\n".join(re.findall(r"<style[^>]*>([\s\S]*?)</style>", s))
     items = list(decls(css))
@@ -117,6 +135,10 @@ def main():
     a = ap.parse_args()
     scale = {"productive": PRODUCTIVE, "expressive": EXPRESSIVE,
              "all": {k: PRODUCTIVE[k] | EXPRESSIVE[k] for k in PRODUCTIVE}}[a.type]
+    missing = [f for f in a.files if not re.match(r"https?://", f) and not os.path.isfile(f)]
+    if missing:
+        print("找不到檔案：" + "、".join(missing), file=sys.stderr)
+        sys.exit(2)
 
     total = 0
     for f in a.files:

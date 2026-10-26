@@ -8,14 +8,16 @@
             只回報「源頭」——字級或行高與父層不同的元素；純繼承的子孫不重複計。
 
 用法：
-  python check_lineheight.py page.html [more.html ...] [--render] [--type productive|expressive|all]
+  python check_lineheight.py page.html [more.html style.css https://...] [--render] [--type productive|expressive|all]
 
   --render 需要 Playwright（pip install playwright && playwright install chromium）。
 
+第一關掃的是頁面自己的 <style> 與 style=""；外部樣式表要把 .css 的路徑或網址一起給。給網址時讀的是伺服器回傳的原始碼，
+不含 JavaScript 之後才產生的內容（那一部分由第二關量）。
 規範明訂的兩個例外不算違規：貨幣前綴縮小 0.68 倍、768px 以下輸入框 16px 防 iOS 放大。
-有任何不合規時結束碼為 1。
+有任何不合規時結束碼為 1；檔案找不到或網址載入失敗時為 2。
 """
-import asyncio, re, io, os, sys, collections, argparse, pathlib
+import asyncio, re, io, os, sys, collections, argparse, pathlib, urllib.request, urllib.error, urllib.parse
 
 # d1m、h0m 是 Expressive 在 768px 以下的 D1 與 H0（行距不變）
 LEVELS = {
@@ -87,11 +89,27 @@ def lh_kind(v):
     return "other", v
 
 
+def is_css(path):
+    return urllib.parse.urlparse(path).path.lower().endswith(".css")
+
+
+def read_source(path):
+    """本機檔或網址的原始碼。網址讀的是伺服器回傳的 HTML／CSS，不含 JavaScript 之後才產生的內容。"""
+    if not re.match(r"https?://", path):
+        return io.open(path, encoding="utf-8").read()
+    try:
+        with urllib.request.urlopen(path, timeout=30) as r:
+            return r.read().decode(r.headers.get_content_charset() or "utf-8", errors="replace")
+    except (urllib.error.URLError, ValueError) as e:
+        print(f"載入失敗：{path}（{e}）", file=sys.stderr)
+        sys.exit(2)
+
+
 def static_check(path, level, allowed, lh_table):
-    s = io.open(path, encoding="utf-8").read()
-    css = s if path.lower().endswith(".css") else "\n".join(re.findall(r"<style[^>]*>([\s\S]*?)</style>", s))
+    s = read_source(path)
+    css = s if is_css(path) else "\n".join(re.findall(r"<style[^>]*>([\s\S]*?)</style>", s))
     items = list(rules(css))
-    if not path.lower().endswith(".css"):
+    if not is_css(path):
         for st in re.findall(r'style="([^"]*)"', s):
             d = {}
             for part in st.split(";"):
@@ -174,7 +192,10 @@ async def render_all(paths):
         pg = await b.new_page(viewport={"width": 1280, "height": 900})
         for path in paths:
             url = path if re.match(r"https?://", path) else pathlib.Path(path).resolve().as_uri()
-            await pg.goto(url, wait_until="load")
+            resp = await pg.goto(url, wait_until="load")
+            if resp is not None and resp.status >= 400:
+                print(f"載入失敗：{path}（HTTP {resp.status}）", file=sys.stderr)
+                sys.exit(2)
             await pg.wait_for_timeout(500)
             res[path] = await pg.evaluate(JS)
         await b.close()
@@ -208,12 +229,14 @@ def main():
     a = ap.parse_args()
     level = LEVELS[a.type]
     allowed, lh_table = build(level)
+    missing = [f for f in a.files if not re.match(r"https?://", f) and not os.path.isfile(f)]
+    if missing:
+        print("找不到檔案：" + "、".join(missing), file=sys.stderr)
+        sys.exit(2)
 
     total = 0
     print("== 第一關 靜態：CSS 規則裡的字級與行距配對 ==")
     for f in a.files:
-        if re.match(r"https?://", f):
-            continue
         out = static_check(f, level, allowed, lh_table)
         n = sum(len(v) for v in out.values())
         total += n
@@ -225,7 +248,7 @@ def main():
 
     if a.render:
         print("\n== 第二關 動態：渲染後每個源頭文字元素的實際字級與行高 ==")
-        res = asyncio.run(render_all(a.files))
+        res = asyncio.run(render_all([f for f in a.files if not is_css(f)]))
         for f, nodes in res.items():
             bad = classify(nodes, allowed)
             n = sum(len(v) for v in bad.values())

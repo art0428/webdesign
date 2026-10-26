@@ -1,6 +1,6 @@
-# 管理者工作室 設計系統 27.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 28.0.0 — 可引用的 CSS
 
-由 `emit_css.py` 自七套元件庫示範頁產生，**不要手改**；改元件庫後重跑，並以 `verify_css_split.py` 確認示範頁改成引用這些檔之後每個元素的計算樣式一字不差。
+由七套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
 
 ## 怎麼用（七套都一樣）
 
@@ -29,6 +29,7 @@ v20 起七套元件庫全部以 S1 為基底（共用同一份元件 HTML 與結
 ```js
 DS.applyTheme('c3')              // 切換色系 c1〜c12、sc1〜sc3；不適用於本風格的組合退回 c1，回傳實際套用的 key
 DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s3、s5、s6）有效
+DS.labelTables()                 // 依表頭替表格每格補 data-l（手機卡片列的欄名，規範 6.3）；載入時自動跑一次，動態新增列後再呼叫
 DS.setDensity('compact')         // 'comfortable' | 'normal' | 'compact'；不在本風格可選範圍的檔退回該套預設，回傳實際套用的檔
 DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切回 C1')   // 選配：退回時通知使用者
 ```
@@ -52,14 +53,14 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | `tokens.css` | token | 2.5 KB |
 | `base.css` | 結構層 ＋ S1 材質 | 68.7 KB |
 | `style-s1.css` | S1 奶油（材質在 base，空殼） | 0.3 KB |
-| `style-s2.css` | S2 浮雕 | 14.9 KB |
-| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 80.0 KB |
+| `style-s2.css` | S2 浮雕 | 15.0 KB |
+| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 80.1 KB |
 | `style-s4.css` | S4 手帳 | 11.1 KB |
-| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 48.2 KB |
-| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 28.4 KB |
+| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 48.3 KB |
+| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 28.5 KB |
 | `style-s7.css` | S7 編輯 | 2.1 KB |
-| `theme.js` | 色系、深淺模式與密度 | 17.4 KB |
+| `theme.js` | 色系、深淺模式與密度 | 17.5 KB |
 
 ## 版本
 
-`27.0.0` 與《網頁設計規範 v27》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`28.0.0` 與《網頁設計規範 v28》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

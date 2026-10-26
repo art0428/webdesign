@@ -78,7 +78,7 @@ cp -r webdesign/skills/ui-design-format ~/.claude/skills/
 
 ## 五項交付前檢查
 
-腳本放在 `skills/ui-design-format/scripts/`，對任何 HTML 檔或網址都能跑。不合規時結束碼為 1，可以直接接進 CI（持續整合：每次提交時自動跑的檢查）。
+腳本放在 `skills/ui-design-format/scripts/`，對任何 HTML 檔或網址都能跑。不合規時結束碼為 1、檔案找不到或網址載入失敗時為 2，可以直接接進 CI（持續整合：每次提交時自動跑的檢查）。
 
 ```bash
 pip install -r skills/ui-design-format/scripts/requirements.txt
@@ -106,7 +106,7 @@ dist/ui-design-format.zip     給 claude.ai 上傳用的打包檔
 docs/                         線上預覽（GitHub Pages）、規範全文 spec.md、調研 research/
 ```
 
-規範全文：[docs/spec.md](docs/spec.md)（v27）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
+規範全文：[docs/spec.md](docs/spec.md)（v28）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
 
 ## 授權
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S6 石墨 · 監控儀表板 — 管理者工作室 設計系統 27.0.0</title>
+<title>S6 石墨 · 監控儀表板 — 管理者工作室 設計系統 28.0.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../base.css">
@@ -20,9 +20,6 @@
 .row{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
 .foot-note{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
 .foot-note a{color:var(--acc)}
-/* 下面兩條是版面層的保護，不改元件外觀：窄欄裡按鈕文字不得折行；表格標題列在手機上允許換行 */
-.t .btn.sm,.t .dt{white-space:nowrap}
-@media (max-width:767px){.tcap{flex-wrap:wrap}.tcap .sp{flex-wrap:wrap;margin-left:0;width:100%}}
 
 .shell{display:grid;grid-template-columns:226px 1fr;min-height:100vh}
 .side{padding:var(--sp-5) var(--sp-3);display:flex;flex-direction:column;gap:var(--sp-1);border-right:1px solid var(--line)}

@@ -230,7 +230,8 @@ def main():
         try:
             import PIL  # noqa: F401
         except ImportError:
-            sys.exit("--shots 需要 Pillow：pip install Pillow")
+            print("--shots 需要 Pillow：pip install Pillow", file=sys.stderr)
+            sys.exit(2)
         os.makedirs(a.shots, exist_ok=True)
 
     res, shot_keys = [], set()
@@ -245,7 +246,7 @@ def main():
                 pg.on("pageerror", lambda e: errs.append(str(e)))
                 resp = pg.goto(url, wait_until="load")
                 if resp is not None and resp.status >= 400:
-                    print("載入失敗：%s（HTTP %d）" % (name, resp.status))
+                    print("載入失敗：%s（HTTP %d）" % (name, resp.status), file=sys.stderr)
                     sys.exit(2)
                 pg.wait_for_timeout(700)
                 pg.add_style_tag(content="*,*::before,*::after{animation:none!important;transition:none!important} .accbar{display:none!important}")

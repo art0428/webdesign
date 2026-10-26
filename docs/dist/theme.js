@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 27.0.0 ══ theme.js
+/* ══ 管理者工作室 設計系統 28.0.0 ══ theme.js
    色系切換（規範 3.8、4.2）與深淺模式（規範 8.8）。由 emit_css.py 產生，THEMES 表取自元件庫。
    用法：
      <html data-style="s1">                         本系統選定的風格（建置時決定，全站只有一套）
@@ -6,6 +6,7 @@
      DS.applyTheme('c1')                            切換色系；不合法組合退回 c1 並回傳實際套用的 key
      DS.setColorScheme('dark'|'light'|'system')     只有 S3、S5、S6 有深色（DARK_STYLES）；其他風格呼叫無效果
      DS.setDensity('comfortable'|'normal'|'compact') 密度三檔；不在本風格可選範圍的檔退回該套預設（DENSITY 矩陣）
+     DS.labelTables()                               依表頭替表格每格補 data-l（手機卡片列的欄名）；載入時自動跑，動態新增列後再呼叫
      跟隨系統時會監聽 prefers-color-scheme 的變化並重套品牌色
    色系與深淺偏好以 localStorage 記住（鍵 ds.theme、ds.scheme），網址參數 ?theme=c3 優先。 */
 (function(){
