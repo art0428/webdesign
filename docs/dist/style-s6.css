@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 28.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 29.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -88,7 +88,7 @@ html[data-theme="dark"]{color-scheme:dark}
 :where(html[data-theme="dark"]) .sw2.on .tk{background:var(--acc)}
 :where(html[data-theme="dark"]) .txa textarea{background:var(--card)}
 :where(html[data-theme="dark"]) .tip{color:var(--on-ink)}
-:where(html[data-theme="dark"]) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,#EFEFEF 75%);background-size:200% 100%}
+:where(html[data-theme="dark"]) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,var(--sel) 75%);background-size:200% 100%}
 :where(html[data-theme="dark"]) .noti{background:var(--card)}
 :where(html[data-theme="dark"]) .nrow{border-bottom:1px solid var(--line)}
 :where(html[data-theme="dark"]) .nrow:last-child{border-bottom:none}
@@ -161,11 +161,11 @@ html[data-theme="dark"]{color-scheme:dark}
 :where(html[data-theme="dark"]) .split .pa{background:var(--paperc,var(--paperc))}
 :where(html[data-theme="dark"]) .split .pa .li.on{background:var(--accsoft,var(--acc-soft));color:var(--acc)}
 :where(html[data-theme="dark"]) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
-:where(html[data-theme="dark"]) .thumb .lab{background:rgba(26,26,26,.95)}
-:where(html[data-theme="dark"]) .thumb .arr{background:rgba(26,26,26,.95);box-shadow:0 2px 8px rgba(0,0,0,.6)}
-:where(html[data-theme="dark"]) .thumb .dots i{background:rgba(26,26,26,.8);border:1px solid rgba(255,255,255,.15)}
+:where(html[data-theme="dark"]) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
+:where(html[data-theme="dark"]) .thumb .arr{background:color-mix(in srgb,var(--card) 95%,transparent);box-shadow:0 2px 8px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .thumb .dots i{background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid rgba(255,255,255,.15)}
 :where(html[data-theme="dark"]) .thumb .dots i.on{background:var(--acc)}
-:where(html[data-theme="dark"]) .strip .thumb small{background:rgba(26,26,26,.95)}
+:where(html[data-theme="dark"]) .strip .thumb small{background:color-mix(in srgb,var(--card) 95%,transparent)}
 :where(html[data-theme="dark"]) .result{background:var(--card)}
 :where(html[data-theme="dark"]) .result.ok .ic{background:var(--ok-soft,var(--ok-soft))}
 :where(html[data-theme="dark"]) .result.err .ic{background:var(--err-soft,var(--err-soft))}
@@ -243,7 +243,7 @@ html:not([data-theme="light"]){color-scheme:dark}
 :where(html:not([data-theme="light"])) .sw2.on .tk{background:var(--acc)}
 :where(html:not([data-theme="light"])) .txa textarea{background:var(--card)}
 :where(html:not([data-theme="light"])) .tip{color:var(--on-ink)}
-:where(html:not([data-theme="light"])) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,#EFEFEF 75%);background-size:200% 100%}
+:where(html:not([data-theme="light"])) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,var(--sel) 75%);background-size:200% 100%}
 :where(html:not([data-theme="light"])) .noti{background:var(--card)}
 :where(html:not([data-theme="light"])) .nrow{border-bottom:1px solid var(--line)}
 :where(html:not([data-theme="light"])) .nrow:last-child{border-bottom:none}
@@ -316,11 +316,11 @@ html:not([data-theme="light"]){color-scheme:dark}
 :where(html:not([data-theme="light"])) .split .pa{background:var(--paperc,var(--paperc))}
 :where(html:not([data-theme="light"])) .split .pa .li.on{background:var(--accsoft,var(--acc-soft));color:var(--acc)}
 :where(html:not([data-theme="light"])) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
-:where(html:not([data-theme="light"])) .thumb .lab{background:rgba(26,26,26,.95)}
-:where(html:not([data-theme="light"])) .thumb .arr{background:rgba(26,26,26,.95);box-shadow:0 2px 8px rgba(0,0,0,.6)}
-:where(html:not([data-theme="light"])) .thumb .dots i{background:rgba(26,26,26,.8);border:1px solid rgba(255,255,255,.15)}
+:where(html:not([data-theme="light"])) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
+:where(html:not([data-theme="light"])) .thumb .arr{background:color-mix(in srgb,var(--card) 95%,transparent);box-shadow:0 2px 8px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .thumb .dots i{background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid rgba(255,255,255,.15)}
 :where(html:not([data-theme="light"])) .thumb .dots i.on{background:var(--acc)}
-:where(html:not([data-theme="light"])) .strip .thumb small{background:rgba(26,26,26,.95)}
+:where(html:not([data-theme="light"])) .strip .thumb small{background:color-mix(in srgb,var(--card) 95%,transparent)}
 :where(html:not([data-theme="light"])) .result{background:var(--card)}
 :where(html:not([data-theme="light"])) .result.ok .ic{background:var(--ok-soft,var(--ok-soft))}
 :where(html:not([data-theme="light"])) .result.err .ic{background:var(--err-soft,var(--err-soft))}

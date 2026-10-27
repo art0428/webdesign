@@ -45,7 +45,7 @@ input,select,textarea{font-family:inherit;font-size:var(--fs-b2);color:var(--ink
 .head .kick{font-size:var(--fs-l1);letter-spacing:0.15em;color:var(--muted);font-weight:700;line-height:var(--lh-l1)}
 .head h1{font-size:var(--fs-d1);font-weight:900;letter-spacing:0.03em;margin:0.8rem 0 0.8rem;line-height:var(--lh-d1)}
 .head p{font-size:var(--fs-b2);color:#3B3B3B;line-height:var(--lh-b2);max-width:780px}:where(html[data-theme="dark"]) .head p{color:var(--dark)}
-.accbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);margin:1.2rem 0 0;padding:0.8rem 2.4rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center}:where(html[data-theme="dark"]) .accbar{background:rgba(26,26,26,.93)}
+.accbar{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(9px);border-bottom:1px solid var(--line);margin:1.2rem 0 0;padding:0.8rem 2.4rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center}:where(html[data-theme="dark"]) .accbar{background:color-mix(in srgb,var(--card) 93%,transparent)}
 .accbar .acchint{width:100%;text-align:center;font-size:var(--fs-l2);color:var(--muted);letter-spacing:0.03em;line-height:var(--lh-l2)}
 .accbar .lb{font-size:var(--fs-l1);font-weight:700;letter-spacing:0.15em;color:var(--muted);line-height:var(--lh-l1)}
 .accbtn{display:flex;align-items:center;gap:0.4rem;border:1px solid var(--line);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;color:var(--ink);font-family:inherit;transition:border-color var(--dur-1) var(--ease-out);line-height:var(--lh-b3)}:where(html[data-theme="dark"]) .accbtn{background:var(--card)}
@@ -279,7 +279,7 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 .tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:var(--ink)}
 .skel{width:100%;max-width:420px}
 .skrow{display:flex;gap:1.2rem;align-items:center;padding:0.8rem 0}
-.sk{background:linear-gradient(90deg,#EFEFEF 25%,#F6F6F6 50%,#EFEFEF 75%);background-size:200% 100%;animation:sk 1.4s infinite;border-radius:8px;height:13px}:where(html[data-theme="dark"]) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,#EFEFEF 75%);background-size:200% 100%}
+.sk{background:linear-gradient(90deg,#EFEFEF 25%,#F6F6F6 50%,#EFEFEF 75%);background-size:200% 100%;animation:sk 1.4s infinite;border-radius:8px;height:13px}:where(html[data-theme="dark"]) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,var(--sel) 75%);background-size:200% 100%}
 @keyframes sk{0%{background-position:200% 0}100%{background-position:-200% 0}}
 .spin{width:22px;height:22px;border:2.5px solid var(--accsoft);border-top-color:var(--acc);border-radius:50%;animation:sp 0.8s linear infinite}
 @keyframes sp{to{transform:rotate(360deg)}}
@@ -302,7 +302,7 @@ table.t{width:100%;border-collapse:collapse;font-size:var(--fs-b2);line-height:v
 .abody b{color:var(--ink)}
 
 /* ── 十二組核心 ＋ SC1切換列（嵌入外層瀏覽器時隱藏，改由外層控制）── */
-.accbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);border-bottom:1px solid rgba(0,0,0,.09);margin:1.2rem 0 0;padding:0.8rem 2rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center;max-width:none}:where(html[data-theme="dark"]) .accbar{background:rgba(26,26,26,.93);border-bottom:1px solid rgba(255,255,255,.09)}
+.accbar{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.93);-webkit-backdrop-filter:blur(9px);backdrop-filter:blur(9px);border-bottom:1px solid rgba(0,0,0,.09);margin:1.2rem 0 0;padding:0.8rem 2rem;display:flex;align-items:center;gap:0.8rem;flex-wrap:wrap;justify-content:center;max-width:none}:where(html[data-theme="dark"]) .accbar{background:color-mix(in srgb,var(--card) 93%,transparent);border-bottom:1px solid rgba(255,255,255,.09)}
 .accbar .lb{font-size:var(--fs-l2);font-weight:700;letter-spacing:0.15em;opacity:.7;line-height:var(--lh-l2)}
 .accbtn{display:inline-flex;align-items:center;gap:0.4rem;border:1px solid rgba(0,0,0,.14);border-radius:999px;background:#fff;padding:0.4rem 1.2rem;font-size:var(--fs-b3);font-weight:700;cursor:pointer;font-family:inherit;color:#171717;transition:border-color var(--dur-1) var(--ease-out);line-height:var(--lh-b3)}:where(html[data-theme="dark"]) .accbtn{border:1px solid rgba(255,255,255,.14);border-radius:999px;background:var(--card);color:var(--ink)}
 .accbtn i{width:11px;min-height:1.1rem;border-radius:50%;border:1px solid rgba(0,0,0,.12)}:where(html[data-theme="dark"]) .accbtn i{border:1px solid rgba(255,255,255,.12)}
@@ -575,17 +575,17 @@ html.embedded .accbar{display:none}
 /* ── 選用補件：媒體與輪播 Media / Carousel ── */
 .media{width:100%;max-width:400px}
 .thumb{aspect-ratio:4/3;border-radius:12px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,#F6F6F6) 7px 14px)}:where(html[data-theme="dark"]) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
-.thumb .lab{background:rgba(255,255,255,.95);color:var(--muted);font-size:var(--fs-l2);letter-spacing:0.15em;font-weight:700;border-radius:6px;padding:0.4rem 0.8rem;line-height:var(--lh-l2)}:where(html[data-theme="dark"]) .thumb .lab{background:rgba(26,26,26,.95)}
+.thumb .lab{background:rgba(255,255,255,.95);color:var(--muted);font-size:var(--fs-l2);letter-spacing:0.15em;font-weight:700;border-radius:6px;padding:0.4rem 0.8rem;line-height:var(--lh-l2)}:where(html[data-theme="dark"]) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
 .thumb .play{width:46px;height:46px;border-radius:50%;background:rgba(20,24,32,.74);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--fs-h2);padding-left:0.4rem;line-height:var(--lh-h2)}
 .thumb .dur{position:absolute;right:8px;bottom:8px;background:rgba(20,24,32,.8);color:#fff;font-family:Arial,sans-serif;font-size:var(--fs-l2);padding:0 0.8rem;border-radius:5px;line-height:var(--lh-l2)}
-.thumb .arr{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.95);color:var(--ink);border:none;font-size:var(--fs-b1);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);line-height:var(--lh-b1)}:where(html[data-theme="dark"]) .thumb .arr{background:rgba(26,26,26,.95);box-shadow:0 2px 8px rgba(0,0,0,.6)}
+.thumb .arr{position:absolute;top:50%;transform:translateY(-50%);width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.95);color:var(--ink);border:none;font-size:var(--fs-b1);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15);line-height:var(--lh-b1)}:where(html[data-theme="dark"]) .thumb .arr{background:color-mix(in srgb,var(--card) 95%,transparent);box-shadow:0 2px 8px rgba(0,0,0,.6)}
 .thumb .arr.l{left:8px} .thumb .arr.r{right:8px}
 .thumb .dots{position:absolute;left:0;right:0;bottom:9px;display:flex;justify-content:center;gap:0.4rem}
-.thumb .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.8);border:1px solid rgba(0,0,0,.15)}:where(html[data-theme="dark"]) .thumb .dots i{background:rgba(26,26,26,.8);border:1px solid rgba(255,255,255,.15)} .thumb .dots i.on{background:var(--acc);border-color:var(--acc);width:16px;border-radius:3px}
+.thumb .dots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.8);border:1px solid rgba(0,0,0,.15)}:where(html[data-theme="dark"]) .thumb .dots i{background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid rgba(255,255,255,.15)} .thumb .dots i.on{background:var(--acc);border-color:var(--acc);width:16px;border-radius:3px}
 .strip{display:flex;gap:0.8rem;margin-top:0.8rem}
 .strip .thumb{width:60px;flex:0 0 auto;aspect-ratio:1;border-radius:8px}
 .strip .thumb.on{outline:2px solid var(--acc);outline-offset:2px}
-.strip .thumb small{font-family:Arial,sans-serif;font-size:var(--fs-l2);color:var(--muted);background:rgba(255,255,255,.95);border-radius:4px;padding:0 0.4rem;line-height:var(--lh-l2)}:where(html[data-theme="dark"]) .strip .thumb small{background:rgba(26,26,26,.95)}
+.strip .thumb small{font-family:Arial,sans-serif;font-size:var(--fs-l2);color:var(--muted);background:rgba(255,255,255,.95);border-radius:4px;padding:0 0.4rem;line-height:var(--lh-l2)}:where(html[data-theme="dark"]) .strip .thumb small{background:color-mix(in srgb,var(--card) 95%,transparent)}
 .capn{font-size:var(--fs-b3);color:var(--muted);margin-top:0.8rem;line-height:var(--lh-b3)}
 /* ── 選用補件：結果頁 Result ── */
 .result{width:100%;max-width:440px;text-align:center;padding:3.2rem 2.4rem 2.4rem;border-radius:16px;border:1px solid var(--line);background:#fff;box-shadow:none}:where(html[data-theme="dark"]) .result{background:var(--card)}
@@ -658,7 +658,7 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
 
 /* 鐵則一：頁面是灰的，只有卡片與輸入元件是白的 */
 body{background:#F4F4F4}:where(html[data-theme="dark"]) body{background:var(--page)}
-.accbar{background:rgba(244,244,244,.93)}:where(html[data-theme="dark"]) .accbar{background:rgba(18,18,18,.93)}
+.accbar{background:rgba(244,244,244,.93)}:where(html[data-theme="dark"]) .accbar{background:color-mix(in srgb,var(--page) 93%,transparent)}
 
 /* 例外一：按鈕與輸入框 6px */
 .btn,.btn.primary,.btn.ghost,.btn.danger,.kebab,.msearch,.p2,
@@ -869,8 +869,6 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
  .sf-rc,.sf-addtxt{display:none}
  .sf-add{width:auto;min-width:44px;min-height:4.4rem;align-self:flex-end;padding:0}
 }
-/* ══ 深色模式（build_dark.py 產生，不要手改）══ */
-html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-171717:var(--ink);--tk-6a6a6a:var(--muted);--tk-e3e3e3:var(--line);--tk-f6f6f6:var(--paperc);--tk-e9c94a:var(--wrn);--tk-3b3b3b:var(--dark);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 
 /* ══ 密度三檔（規範 v26，5.7）：comfortable 寬鬆；<html data-density="comfortable">，或該套的預設（S1〜S5、S7 不寫 data-density 即是）；
    只改尺寸、不改顏色；768px 以下不生效（三檔在手機收斂成一檔） ══ */
@@ -1003,6 +1001,8 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
    單號、日期這類識別碼斷開就讀不出來；整欄放不下時由表格容器橫捲（平板以上），手機轉卡片列（6.3）。前綴 :where(html) 同 v27 */
 :where(html) .t .dt{white-space:nowrap}
 /* v28 區塊結束 */
+/* ══ 深色模式（build_dark.py 產生，不要手改）══ */
+html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-171717:var(--ink);--tk-6a6a6a:var(--muted);--tk-e3e3e3:var(--line);--tk-f6f6f6:var(--paperc);--tk-e9c94a:var(--wrn);--tk-3b3b3b:var(--dark);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
 </head>
 <body data-type="expressive">
@@ -1033,7 +1033,7 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
   <button class="accbtn" type="button" data-k="sc2" onclick="setPair('sc2',this)" title="SC2 鈷藍 × 亮橘"><i style="background:#2449E8"></i><i style="background:#FF7A1A;margin-left:0"></i><span class="cc">SC2</span>鈷藍 × 亮橘</button>
   <button class="accbtn" type="button" data-k="sc3" onclick="setPair('sc3',this)" title="SC3 石板藍 × 冰川青"><i style="background:#3D4C5E"></i><i style="background:#5FB4C9;margin-left:0"></i><span class="cc">SC3</span>石板藍 × 冰川青</button>
   <span class="accnote" id="accnote" role="status" aria-live="polite" hidden></span>
-<!-- ds-dark:begin --><span class="accsep" aria-hidden="true"></span><span class="lb">模式</span><button class="accbtn modebtn on" type="button" data-m="light" onclick="setMode('light')">淺色</button><button class="accbtn modebtn" type="button" data-m="dark" onclick="setMode('dark')">深色</button><!-- ds-dark:end --></div>
+<!-- ds-dark:begin --><span class="accsep" aria-hidden="true"></span><span class="lb">模式</span><button class="accbtn modebtn on" type="button" data-m="light" onclick="setMode('light')">淺色</button><button class="accbtn modebtn" type="button" data-m="dark" onclick="setMode('dark')">深色</button><span class="accsep" aria-hidden="true"></span><span class="lb">深色底</span><button class="accbtn tintbtn on" type="button" data-t="follow" disabled title="只在深色時可切換" onclick="setTint('follow')">跟隨色系</button><button class="accbtn tintbtn" type="button" data-t="neutral" disabled title="只在深色時可切換" onclick="setTint('neutral')">中性石墨</button><!-- ds-dark:end --></div>
 
 <div class="wrap sf">
 <header class="board sf-nav"><a class="sf-logo" href="#"><span class="sf-mark" aria-hidden="true"></span>Relay API</a><nav class="sf-links" aria-label="主要連結"><a href="#">文件</a><a href="#">方案</a><a href="#">狀態</a><a href="#">更新紀錄</a></nav><div class="sf-tools"><span class="sf-row"><button class="btn" type="button">登入</button><button class="btn primary" type="button">免費開始</button></span><button class="sf-ib sf-menu" type="button" aria-label="開啟選單"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg></button></div></header>
@@ -1149,23 +1149,39 @@ addEventListener('message',function(e){
 <script>/* ds-dark:begin */
 /* 深色模式（規範 8.8）：<html data-theme="dark"> 切深色。由 build_dark.py 產生，不要手改。 */
 const DARK={"c1":{"acc":"#629AF8","accSoft":"#262E3E","accDeep":"#629AF8","acc2":"#C2377B","acc2Soft":"#351F2A","acc2Deep":"#F46BA8","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c2":{"acc":"#61A5AC","accSoft":"#253031","accDeep":"#61A5AC","acc2":"#C4663A","acc2Soft":"#35261F","acc2Deep":"#D88561","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c3":{"acc":"#8D94E6","accSoft":"#2C2E3B","accDeep":"#8D94E6","acc2":"#8C7AE6","acc2Soft":"#2C293B","acc2Deep":"#9C90E7","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c4":{"acc":"#A486FF","accSoft":"#302B3F","accDeep":"#A486FF","acc2":"#0F8A99","acc2Soft":"#182C2E","acc2Deep":"#4FA6B4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c5":{"acc":"#6BA984","accSoft":"#27312B","accDeep":"#6BA984","acc2":"#A16207","acc2Soft":"#302617","acc2Deep":"#CC8E48","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c6":{"acc":"#B9947B","accSoft":"#332E2A","accDeep":"#B9947B","acc2":"#4D6E58","acc2Soft":"#222724","acc2Deep":"#81A48C","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c7":{"acc":"#E57F57","accSoft":"#3A2A24","accDeep":"#E57F57","acc2":"#666666","acc2Soft":"#262626","acc2Deep":"#9B9B9B","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c8":{"acc":"#9F9B98","accSoft":"#2F2F2E","accDeep":"#9F9B98","acc2":"#D95F1E","acc2Soft":"#39251B","acc2Deep":"#E88051","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c9":{"acc":"#F17178","accSoft":"#3C2829","accDeep":"#F17178","acc2":"#3C6D7C","acc2Soft":"#1F272A","acc2Deep":"#71A3B3","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c10":{"acc":"#E972AC","accSoft":"#3B2831","accDeep":"#E972AC","acc2":"#5C97CB","acc2Soft":"#252E36","acc2Deep":"#659FD5","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c11":{"acc":"#A19D84","accSoft":"#302F2B","accDeep":"#A19D84","acc2":"#C65D52","acc2Soft":"#362523","acc2Deep":"#ED7B6C","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c12":{"acc":"#BD8F94","accSoft":"#342D2E","accDeep":"#BD8F94","acc2":"#BA797D","acc2Soft":"#34292A","acc2Deep":"#D78588","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc1":{"acc":"#8CA095","accSoft":"#2C2F2E","accDeep":"#8CA095","acc2":"#DACD65","acc2Soft":"#393726","acc2Deep":"#A69C55","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc2":{"acc":"#6D96FF","accSoft":"#272E3F","accDeep":"#6D96FF","acc2":"#FF7A1A","acc2Soft":"#3F291A","acc2Deep":"#EA7E4B","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc3":{"acc":"#8C9DB2","accSoft":"#2C2F32","accDeep":"#8C9DB2","acc2":"#5FB4C9","acc2Soft":"#253336","acc2Deep":"#68A5B7","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"}};
+/* 深色底「跟隨色系」（規範 8.8，v29）：深色且沒有寫 <html data-dark-tint="neutral"> 時，六個面與淡底帶目前色系主色的色調。
+   預設跟隨；網址 .neutral 切中性石墨；外層 postMessage({tint:'follow'|'neutral'})。 */
+const DARK_TINT={"c1":{"s":{"page":"#0F1217","card":"#171A20","paperc":"#1D2026","sel":"#23262C","line":"#2B2E34","line-2":"#373A41","err-soft":"#3A2C30","wrn-soft":"#373225","ok-soft":"#263530","info-soft":"#273341"},"b":{"acc":"#629AF8","accSoft":"#232E43","accDeep":"#629AF8","acc2Soft":"#321F2F","acc2Deep":"#F46BA8"}},"c2":{"s":{"page":"#0C1415","card":"#141C1D","paperc":"#1A2223","sel":"#1F2829","line":"#273031","line-2":"#333C3D","err-soft":"#382E2D","wrn-soft":"#353423","ok-soft":"#23372D","info-soft":"#25353E"},"b":{"acc":"#62A6AD","accSoft":"#203234","accDeep":"#62A6AD","acc2Soft":"#302822","acc2Deep":"#D88561"}},"c3":{"s":{"page":"#111217","card":"#191A20","paperc":"#1F2026","sel":"#25262C","line":"#2D2E34","line-2":"#393A40","err-soft":"#3C2C30","wrn-soft":"#393225","ok-soft":"#283530","info-soft":"#293341"},"b":{"acc":"#8E95E7","accSoft":"#2C2E40","accDeep":"#8E95E7","acc2Soft":"#2B2940","acc2Deep":"#9C90E7"}},"c4":{"s":{"page":"#121117","card":"#1A191F","paperc":"#201F25","sel":"#26252C","line":"#2E2D34","line-2":"#3A3940","err-soft":"#3D2B2F","wrn-soft":"#3A3224","ok-soft":"#28342F","info-soft":"#2A3240"},"b":{"acc":"#A486FF","accSoft":"#302A43","accDeep":"#A486FF","acc2Soft":"#182B33","acc2Deep":"#4FA6B4"}},"c5":{"s":{"page":"#0E1410","card":"#161C18","paperc":"#1C221E","sel":"#212824","line":"#29302C","line-2":"#353C38","err-soft":"#392E29","wrn-soft":"#37341F","ok-soft":"#253729","info-soft":"#26353A"},"b":{"acc":"#6BA984","accSoft":"#243329","accDeep":"#6BA984","acc2Soft":"#2C2715","acc2Deep":"#CC8E48"}},"c6":{"s":{"page":"#16110D","card":"#1F1915","paperc":"#251F1B","sel":"#2B2521","line":"#332D28","line-2":"#3F3934","err-soft":"#412B26","wrn-soft":"#3E321C","ok-soft":"#2D3427","info-soft":"#2E3238"},"b":{"acc":"#B9947B","accSoft":"#382D25","accDeep":"#B9947B","acc2Soft":"#262720","acc2Deep":"#81A48C"}},"c7":{"s":{"page":"#17100E","card":"#1F1816","paperc":"#251E1C","sel":"#2B2422","line":"#342C29","line-2":"#403835","err-soft":"#412A27","wrn-soft":"#3E311D","ok-soft":"#2D3427","info-soft":"#2E3139"},"b":{"acc":"#E57F57","accSoft":"#3F2820","accDeep":"#E57F57","acc2Soft":"#2A2423","acc2Deep":"#9B9B9B"}},"c8":{"s":{"page":"#141110","card":"#1C1917","paperc":"#221F1D","sel":"#282523","line":"#312D2B","line-2":"#3D3937","err-soft":"#3E2B28","wrn-soft":"#3C321E","ok-soft":"#2A3428","info-soft":"#2C3239"},"b":{"acc":"#9F9B98","accSoft":"#312E2C","accDeep":"#9F9B98","acc2Soft":"#3A2418","acc2Deep":"#E88051"}},"c9":{"s":{"page":"#171010","card":"#1F1818","paperc":"#261E1E","sel":"#2C2424","line":"#342C2C","line-2":"#403838","err-soft":"#412A29","wrn-soft":"#3E311F","ok-soft":"#2D3429","info-soft":"#2E313A"},"b":{"acc":"#F17178","accSoft":"#412627","accDeep":"#F17178","acc2Soft":"#242628","acc2Deep":"#71A3B3"}},"c10":{"s":{"page":"#161013","card":"#1F181B","paperc":"#251E21","sel":"#2B2427","line":"#332C2F","line-2":"#3F383B","err-soft":"#412A2B","wrn-soft":"#3E3121","ok-soft":"#2D342C","info-soft":"#2E313D"},"b":{"acc":"#E972AC","accSoft":"#3F2632","accDeep":"#E972AC","acc2Soft":"#292C37","acc2Deep":"#659FD5"}},"c11":{"s":{"page":"#13120C","card":"#1B1A14","paperc":"#21201A","sel":"#272620","line":"#2F2E27","line-2":"#3B3A33","err-soft":"#3D2C26","wrn-soft":"#3B321B","ok-soft":"#293526","info-soft":"#2B3337"},"b":{"acc":"#A19D84","accSoft":"#302F26","accDeep":"#A19D84","acc2Soft":"#36251E","acc2Deep":"#ED7B6C"}},"c12":{"s":{"page":"#171011","card":"#1F1819","paperc":"#251E1F","sel":"#2C2425","line":"#342C2C","line-2":"#403838","err-soft":"#412A2A","wrn-soft":"#3E311F","ok-soft":"#2D342A","info-soft":"#2E313B"},"b":{"acc":"#BD8F94","accSoft":"#382B2D","accDeep":"#BD8F94","acc2Soft":"#382829","acc2Deep":"#D78588"}},"sc1":{"s":{"page":"#0D1410","card":"#151C18","paperc":"#1B221E","sel":"#212824","line":"#29302C","line-2":"#353C38","err-soft":"#382E29","wrn-soft":"#36341F","ok-soft":"#243729","info-soft":"#26353A"},"b":{"acc":"#8CA095","accSoft":"#28312C","accDeep":"#8CA095","acc2Soft":"#353824","acc2Deep":"#A69C55"}},"sc2":{"s":{"page":"#101218","card":"#171A20","paperc":"#1D2026","sel":"#23262C","line":"#2B2E34","line-2":"#373A41","err-soft":"#3A2C30","wrn-soft":"#373225","ok-soft":"#263530","info-soft":"#273341"},"b":{"acc":"#6D96FF","accSoft":"#252E44","accDeep":"#6D96FF","acc2Soft":"#3C291F","acc2Deep":"#EA7E4B"}},"sc3":{"s":{"page":"#0E1217","card":"#161A20","paperc":"#1C2126","sel":"#22272C","line":"#2A2F34","line-2":"#363B40","err-soft":"#392C30","wrn-soft":"#373225","ok-soft":"#253530","info-soft":"#263341"},"b":{"acc":"#8C9DB2","accSoft":"#292F37","accDeep":"#8C9DB2","acc2Soft":"#22333B","acc2Deep":"#68A5B7"}}};
+const TINT_VARS=["--page", "--card", "--paperc", "--sel", "--line", "--line-2", "--err-soft", "--wrn-soft", "--ok-soft", "--info-soft"];
+
 (function(){
  const root=document.documentElement, base=window.setPair;
  let cur='c1';
  const isDark=()=>root.getAttribute('data-theme')==='dark';
+ const tintOn=()=>!!DARK_TINT&&isDark()&&root.getAttribute('data-dark-tint')!=='neutral';
  window.setPair=function(k,btn){
   base(k,btn);
   document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',b.dataset.m===(isDark()?'dark':'light')));
+  document.querySelectorAll('.tintbtn').forEach(b=>{ b.classList.toggle('on',b.dataset.t===(root.getAttribute('data-dark-tint')==='neutral'?'neutral':'follow')); b.disabled=!isDark(); b.title=isDark()?'':'只在深色時可切換'; });
   const kk=themeAllowed(k)?k:'c1'; cur=kk;
   const r=root.style;
+  TINT_VARS.forEach(v=>r.removeProperty(v));
   if(isDark()&&DARK[kk]){
-   const t=DARK[kk];
+   let t=DARK[kk];
+   if(tintOn()&&DARK_TINT[kk]){ t=Object.assign({},t,DARK_TINT[kk].b); const s=DARK_TINT[kk].s; for(const n in s) r.setProperty('--'+n,s[n]); }
    r.setProperty('--acc',t.acc); r.setProperty('--accsoft',t.accSoft); r.setProperty('--acc-soft',t.accSoft); r.setProperty('--acc-deep',t.accDeep);
    r.setProperty('--acc2',t.acc2); r.setProperty('--acc2soft',t.acc2Soft); r.setProperty('--acc2-soft',t.acc2Soft); r.setProperty('--acc2-deep',t.acc2Deep);
    r.setProperty('--acc2-text',t.acc2Text); r.setProperty('--on-acc',t.onAcc); r.setProperty('--on-acc2',t.onAcc2);
    const e1=document.getElementById('tvAcc1'),e2=document.getElementById('tvAcc2');
    if(e1)e1.textContent=t.acc.toUpperCase(); if(e2)e2.textContent=t.acc2.toUpperCase();
   } else { r.removeProperty('--on-acc'); r.removeProperty('--on-acc2'); }
+ };
+ window.setTint=function(m){
+  if(!DARK_TINT) return 'neutral';
+  if(m==='neutral') root.setAttribute('data-dark-tint','neutral'); else root.removeAttribute('data-dark-tint');
+  window.setPair(cur);
+  try{ if(window.self!==window.top) parent.postMessage({tintAck:m==='neutral'?'neutral':'follow'},'*'); }catch(_){}
+  return m==='neutral'?'neutral':'follow';
  };
  window.setMode=function(m){
   if(m==='dark') root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme');
@@ -1174,9 +1190,10 @@ const DARK={"c1":{"acc":"#629AF8","accSoft":"#262E3E","accDeep":"#629AF8","acc2"
  };
  const fromHash=()=>{ const p=(location.hash||'').replace('#','').split(/[./|]/);
   const k=p.find(x=>THEMES[x])||'c1'; if(p.includes('dark')) root.setAttribute('data-theme','dark'); else if(p.includes('light')) root.removeAttribute('data-theme');
+  if(DARK_TINT){ if(p.includes('neutral')) root.setAttribute('data-dark-tint','neutral'); else root.removeAttribute('data-dark-tint'); }   /* 網址沒帶就是預設的跟隨 */
   window.setPair(k); };
  removeEventListener('hashchange',pairFromHash); addEventListener('hashchange',fromHash);
- addEventListener('message',e=>{ const d=e.data; if(d&&d.mode) window.setMode(d.mode); });
+ addEventListener('message',e=>{ const d=e.data; if(d&&d.mode) window.setMode(d.mode); if(d&&d.tint) window.setTint(d.tint); });
  fromHash();
 })();
 /* ds-dark:end */

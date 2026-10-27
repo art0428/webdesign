@@ -1020,8 +1020,6 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
 :where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
 :where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
 }
-/* ══ 深色模式（build_dark.py 產生，不要手改）══ */
-html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--tk-232936:#0B0D14;--tk-e3c94e:var(--wrn);--tk-rgba25525525562:rgba(255,255,255,.10);--tk-rgba909011035:rgba(255,255,255,.28);--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 
 /* ══ 密度三檔（規範 v26，5.7）：comfortable 寬鬆；<html data-density="comfortable">，或該套的預設（S1〜S5、S7 不寫 data-density 即是）；
    只改尺寸、不改顏色；768px 以下不生效（三檔在手機收斂成一檔） ══ */
@@ -1150,6 +1148,8 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
    單號、日期這類識別碼斷開就讀不出來；整欄放不下時由表格容器橫捲（平板以上），手機轉卡片列（6.3）。前綴 :where(html) 同 v27 */
 :where(html) .t .dt{white-space:nowrap}
 /* v28 區塊結束 */
+/* ══ 深色模式（build_dark.py 產生，不要手改）══ */
+html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--tk-232936:#0B0D14;--tk-e3c94e:var(--wrn);--tk-rgba25525525562:rgba(255,255,255,.10);--tk-rgba909011035:rgba(255,255,255,.28);--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
 </head>
 <body>
@@ -1649,27 +1649,39 @@ addEventListener('message',function(e){
  const list=[...document.querySelectorAll('h2')].map(h=>h.textContent.trim());
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
-</script>
-<script>/* ds-dark:begin */
+</script><script>/* ds-dark:begin */
 /* 深色模式（規範 8.8）：<html data-theme="dark"> 切深色。由 build_dark.py 產生，不要手改。 */
 const DARK={"c1":{"acc":"#76A9FF","accSoft":"#2D3954","accDeep":"#76A9FF","acc2":"#C2377B","acc2Soft":"#39273F","acc2Deep":"#FF7EB6","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c2":{"acc":"#6FB3BB","accSoft":"#2C3B49","accDeep":"#6FB3BB","acc2":"#C4663A","acc2Soft":"#392F34","acc2Deep":"#E7936E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c3":{"acc":"#9AA2F5","accSoft":"#333852","accDeep":"#9AA2F5","acc2":"#8C7AE6","acc2Soft":"#303250","acc2Deep":"#A89DF5","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c4":{"acc":"#B09AFF","accSoft":"#363754","accDeep":"#B09AFF","acc2":"#0F8A99","acc2Soft":"#1C3443","acc2Deep":"#60B6C4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c5":{"acc":"#77B690","accSoft":"#2D3B42","accDeep":"#77B690","acc2":"#A16207","acc2Soft":"#342E2C","acc2Deep":"#DB9C56","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c6":{"acc":"#C6A087","accSoft":"#3A3840","accDeep":"#C6A087","acc2":"#54755F","acc2Soft":"#27313A","acc2Deep":"#8DB098","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c7":{"acc":"#F18A62","accSoft":"#41343B","accDeep":"#F18A62","acc2":"#6E6E6E","acc2Soft":"#2C303C","acc2Deep":"#A9A9A9","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c8":{"acc":"#ABA7A4","accSoft":"#353945","accDeep":"#ABA7A4","acc2":"#D95F1E","acc2Soft":"#3D2D30","acc2Deep":"#F68D5E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c9":{"acc":"#FF7D84","accSoft":"#433240","accDeep":"#FF7D84","acc2":"#447684","acc2Soft":"#253140","acc2Deep":"#7DB0BF","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c10":{"acc":"#F67DB7","accSoft":"#413248","accDeep":"#F67DB7","acc2":"#5C97CB","acc2Soft":"#29364B","acc2Deep":"#72ADE4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c11":{"acc":"#ADA990","accSoft":"#363942","accDeep":"#ADA990","acc2":"#C65D52","acc2Soft":"#3A2D38","acc2Deep":"#FB8778","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c12":{"acc":"#CA9BA0","accSoft":"#3A3744","accDeep":"#CA9BA0","acc2":"#BA797D","acc2Soft":"#38323F","acc2Deep":"#E59194","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc1":{"acc":"#9AAEA3","accSoft":"#333A45","accDeep":"#9AAEA3","acc2":"#DACD65","acc2Soft":"#3D3F3B","acc2Deep":"#B4AA62","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc2":{"acc":"#82A6FF","accSoft":"#2F3954","accDeep":"#82A6FF","acc2":"#FF7A1A","acc2Soft":"#43322F","acc2Deep":"#FA8C59","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc3":{"acc":"#99AABF","accSoft":"#333949","accDeep":"#99AABF","acc2":"#5FB4C9","acc2Soft":"#293B4B","acc2Deep":"#74B1C4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"}};
+const DARK_TINT=null, TINT_VARS=[];
+
 (function(){
  const root=document.documentElement, base=window.setPair;
  let cur='c1';
  const isDark=()=>root.getAttribute('data-theme')==='dark';
+ const tintOn=()=>!!DARK_TINT&&isDark()&&root.getAttribute('data-dark-tint')!=='neutral';
  window.setPair=function(k,btn){
   base(k,btn);
   document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',b.dataset.m===(isDark()?'dark':'light')));
+  document.querySelectorAll('.tintbtn').forEach(b=>{ b.classList.toggle('on',b.dataset.t===(root.getAttribute('data-dark-tint')==='neutral'?'neutral':'follow')); b.disabled=!isDark(); b.title=isDark()?'':'只在深色時可切換'; });
   const kk=themeAllowed(k)?k:'c1'; cur=kk;
   const r=root.style;
+  TINT_VARS.forEach(v=>r.removeProperty(v));
   if(isDark()&&DARK[kk]){
-   const t=DARK[kk];
+   let t=DARK[kk];
+   if(tintOn()&&DARK_TINT[kk]){ t=Object.assign({},t,DARK_TINT[kk].b); const s=DARK_TINT[kk].s; for(const n in s) r.setProperty('--'+n,s[n]); }
    r.setProperty('--acc',t.acc); r.setProperty('--accsoft',t.accSoft); r.setProperty('--acc-soft',t.accSoft); r.setProperty('--acc-deep',t.accDeep);
    r.setProperty('--acc2',t.acc2); r.setProperty('--acc2soft',t.acc2Soft); r.setProperty('--acc2-soft',t.acc2Soft); r.setProperty('--acc2-deep',t.acc2Deep);
    r.setProperty('--acc2-text',t.acc2Text); r.setProperty('--on-acc',t.onAcc); r.setProperty('--on-acc2',t.onAcc2);
    const e1=document.getElementById('tvAcc1'),e2=document.getElementById('tvAcc2');
    if(e1)e1.textContent=t.acc.toUpperCase(); if(e2)e2.textContent=t.acc2.toUpperCase();
   } else { r.removeProperty('--on-acc'); r.removeProperty('--on-acc2'); }
+ };
+ window.setTint=function(m){
+  if(!DARK_TINT) return 'neutral';
+  if(m==='neutral') root.setAttribute('data-dark-tint','neutral'); else root.removeAttribute('data-dark-tint');
+  window.setPair(cur);
+  try{ if(window.self!==window.top) parent.postMessage({tintAck:m==='neutral'?'neutral':'follow'},'*'); }catch(_){}
+  return m==='neutral'?'neutral':'follow';
  };
  window.setMode=function(m){
   if(m==='dark') root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme');
@@ -1678,9 +1690,10 @@ const DARK={"c1":{"acc":"#76A9FF","accSoft":"#2D3954","accDeep":"#76A9FF","acc2"
  };
  const fromHash=()=>{ const p=(location.hash||'').replace('#','').split(/[./|]/);
   const k=p.find(x=>THEMES[x])||'c1'; if(p.includes('dark')) root.setAttribute('data-theme','dark'); else if(p.includes('light')) root.removeAttribute('data-theme');
+  if(DARK_TINT){ if(p.includes('neutral')) root.setAttribute('data-dark-tint','neutral'); else root.removeAttribute('data-dark-tint'); }   /* 網址沒帶就是預設的跟隨 */
   window.setPair(k); };
  removeEventListener('hashchange',pairFromHash); addEventListener('hashchange',fromHash);
- addEventListener('message',e=>{ const d=e.data; if(d&&d.mode) window.setMode(d.mode); });
+ addEventListener('message',e=>{ const d=e.data; if(d&&d.mode) window.setMode(d.mode); if(d&&d.tint) window.setTint(d.tint); });
  fromHash();
 })();
 /* ds-dark:end */

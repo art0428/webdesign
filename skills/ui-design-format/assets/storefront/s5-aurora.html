@@ -1009,8 +1009,6 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
  .sf-rc,.sf-addtxt{display:none}
  .sf-add{width:auto;min-width:44px;min-height:4.4rem;align-self:flex-end;padding:0}
 }
-/* ══ 深色模式（build_dark.py 產生，不要手改）══ */
-html[data-theme="dark"]{color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--tk-fff:#1E212C;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 
 /* ══ 密度三檔（規範 v26，5.7）：comfortable 寬鬆；<html data-density="comfortable">，或該套的預設（S1〜S5、S7 不寫 data-density 即是）；
    只改尺寸、不改顏色；768px 以下不生效（三檔在手機收斂成一檔） ══ */
@@ -1143,6 +1141,8 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
    單號、日期這類識別碼斷開就讀不出來；整欄放不下時由表格容器橫捲（平板以上），手機轉卡片列（6.3）。前綴 :where(html) 同 v27 */
 :where(html) .t .dt{white-space:nowrap}
 /* v28 區塊結束 */
+/* ══ 深色模式（build_dark.py 產生，不要手改）══ */
+html[data-theme="dark"]{color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--tk-fff:#1E212C;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
 </head>
 <body data-type="expressive">
@@ -1287,23 +1287,36 @@ addEventListener('message',function(e){
 <script>/* ds-dark:begin */
 /* 深色模式（規範 8.8）：<html data-theme="dark"> 切深色。由 build_dark.py 產生，不要手改。 */
 const DARK={"c1":{"acc":"#81B0FF","accSoft":"#353F56","accDeep":"#81B0FF","acc2":"#C93E81","acc2Soft":"#402D42","acc2Deep":"#FF8BBB","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c2":{"acc":"#77BBC3","accSoft":"#33414D","accDeep":"#77BBC3","acc2":"#C4663A","acc2Soft":"#3F3437","acc2Deep":"#EF9B76","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c3":{"acc":"#A2AAFE","accSoft":"#3A3E56","accDeep":"#A2AAFE","acc2":"#8C7AE6","acc2Soft":"#363752","acc2Deep":"#B1A6FF","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c4":{"acc":"#B7A4FF","accSoft":"#3D3E56","accDeep":"#B7A4FF","acc2":"#0F8A99","acc2Soft":"#223946","acc2Deep":"#68BECC","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c5":{"acc":"#7FBE98","accSoft":"#344246","accDeep":"#7FBE98","acc2":"#A4650E","acc2Soft":"#3A3330","acc2Deep":"#E3A35E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c6":{"acc":"#CEA88F","accSoft":"#413E44","accDeep":"#CEA88F","acc2":"#597B64","acc2Soft":"#2E373D","acc2Deep":"#96BAA1","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c7":{"acc":"#FC936B","accSoft":"#483B3E","accDeep":"#FC936B","acc2":"#737373","acc2Soft":"#323640","acc2Deep":"#B1B1B1","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c8":{"acc":"#B3AFAC","accSoft":"#3D3F49","accDeep":"#B3AFAC","acc2":"#D95F1E","acc2Soft":"#433232","acc2Deep":"#FF9565","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c9":{"acc":"#FF8F93","accSoft":"#493A45","accDeep":"#FF8F93","acc2":"#497A89","acc2Soft":"#2C3743","acc2Deep":"#85B8C7","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c10":{"acc":"#FF87C1","accSoft":"#49394C","accDeep":"#FF87C1","acc2":"#5C97CB","acc2Soft":"#2F3B4E","acc2Deep":"#7AB5ED","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c11":{"acc":"#B5B197","accSoft":"#3D4046","accDeep":"#B5B197","acc2":"#C65D52","acc2Soft":"#40323A","acc2Deep":"#FF9587","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c12":{"acc":"#D4A5A9","accSoft":"#423E48","accDeep":"#D4A5A9","acc2":"#BA797D","acc2Soft":"#3E3741","acc2Deep":"#EF9A9E","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc1":{"acc":"#A2B6AB","accSoft":"#3A4049","accDeep":"#A2B6AB","acc2":"#DACD65","acc2Soft":"#43443E","acc2Deep":"#BCB26A","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc2":{"acc":"#8CAEFF","accSoft":"#363F56","accDeep":"#8CAEFF","acc2":"#FF7A1A","acc2Soft":"#493732","acc2Deep":"#FF9666","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc3":{"acc":"#A2B3C8","accSoft":"#3A404D","accDeep":"#A2B3C8","acc2":"#5FB4C9","acc2Soft":"#2F404E","acc2Deep":"#7DBBCD","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"}};
+const DARK_TINT=null, TINT_VARS=[];
+
 (function(){
  const root=document.documentElement, base=window.setPair;
  let cur='c1';
  const isDark=()=>root.getAttribute('data-theme')==='dark';
+ const tintOn=()=>!!DARK_TINT&&isDark()&&root.getAttribute('data-dark-tint')!=='neutral';
  window.setPair=function(k,btn){
   base(k,btn);
   document.querySelectorAll('.modebtn').forEach(b=>b.classList.toggle('on',b.dataset.m===(isDark()?'dark':'light')));
+  document.querySelectorAll('.tintbtn').forEach(b=>{ b.classList.toggle('on',b.dataset.t===(root.getAttribute('data-dark-tint')==='neutral'?'neutral':'follow')); b.disabled=!isDark(); b.title=isDark()?'':'只在深色時可切換'; });
   const kk=themeAllowed(k)?k:'c1'; cur=kk;
   const r=root.style;
+  TINT_VARS.forEach(v=>r.removeProperty(v));
   if(isDark()&&DARK[kk]){
-   const t=DARK[kk];
+   let t=DARK[kk];
+   if(tintOn()&&DARK_TINT[kk]){ t=Object.assign({},t,DARK_TINT[kk].b); const s=DARK_TINT[kk].s; for(const n in s) r.setProperty('--'+n,s[n]); }
    r.setProperty('--acc',t.acc); r.setProperty('--accsoft',t.accSoft); r.setProperty('--acc-soft',t.accSoft); r.setProperty('--acc-deep',t.accDeep);
    r.setProperty('--acc2',t.acc2); r.setProperty('--acc2soft',t.acc2Soft); r.setProperty('--acc2-soft',t.acc2Soft); r.setProperty('--acc2-deep',t.acc2Deep);
    r.setProperty('--acc2-text',t.acc2Text); r.setProperty('--on-acc',t.onAcc); r.setProperty('--on-acc2',t.onAcc2);
    const e1=document.getElementById('tvAcc1'),e2=document.getElementById('tvAcc2');
    if(e1)e1.textContent=t.acc.toUpperCase(); if(e2)e2.textContent=t.acc2.toUpperCase();
   } else { r.removeProperty('--on-acc'); r.removeProperty('--on-acc2'); }
+ };
+ window.setTint=function(m){
+  if(!DARK_TINT) return 'neutral';
+  if(m==='neutral') root.setAttribute('data-dark-tint','neutral'); else root.removeAttribute('data-dark-tint');
+  window.setPair(cur);
+  try{ if(window.self!==window.top) parent.postMessage({tintAck:m==='neutral'?'neutral':'follow'},'*'); }catch(_){}
+  return m==='neutral'?'neutral':'follow';
  };
  window.setMode=function(m){
   if(m==='dark') root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme');
@@ -1312,9 +1325,10 @@ const DARK={"c1":{"acc":"#81B0FF","accSoft":"#353F56","accDeep":"#81B0FF","acc2"
  };
  const fromHash=()=>{ const p=(location.hash||'').replace('#','').split(/[./|]/);
   const k=p.find(x=>THEMES[x])||'c1'; if(p.includes('dark')) root.setAttribute('data-theme','dark'); else if(p.includes('light')) root.removeAttribute('data-theme');
+  if(DARK_TINT){ if(p.includes('neutral')) root.setAttribute('data-dark-tint','neutral'); else root.removeAttribute('data-dark-tint'); }   /* 網址沒帶就是預設的跟隨 */
   window.setPair(k); };
  removeEventListener('hashchange',pairFromHash); addEventListener('hashchange',fromHash);
- addEventListener('message',e=>{ const d=e.data; if(d&&d.mode) window.setMode(d.mode); });
+ addEventListener('message',e=>{ const d=e.data; if(d&&d.mode) window.setMode(d.mode); if(d&&d.tint) window.setTint(d.tint); });
  fromHash();
 })();
 /* ds-dark:end */

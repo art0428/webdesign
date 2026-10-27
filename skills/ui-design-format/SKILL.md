@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-10 v28 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S3、S5、S6 另有深色模式，每套可切寬鬆、標準、緊湊三檔密度（依風格開放）；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單、手機與平板版面通則與七項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度、四種寬度的版面稽核）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；七張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-10 v29 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：七套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯）擇一開發，S3、S5、S6 另有深色模式（S6 深色底預設跟隨色系、可切中性石墨），每套可切寬鬆、標準、緊湊三檔密度（依風格開放）；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、62 項元件清單、手機與平板版面通則與七項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度、四種寬度的版面稽核）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；七張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v28》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，五項交付前檢查的腳本在 `scripts/`（用法見第 9 節，其餘檔案的索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v29》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，五項交付前檢查的腳本在 `scripts/`（用法見第 9 節，其餘檔案的索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -69,7 +69,7 @@ description: "通用的網頁介面設計系統（2026-10 v28 規範）。凡是
 
 △ 的調整方式：S2 遇暖色改暖灰底 `#EDE8E0`；S4 遇冷色建議改選 S1；S5 遇 C7、C8 暈染只取彩色端。
 
-**深色模式（規範 8.8，v23）**：深色是風格的「模式」不是另一套風格——同一套風格的白天與夜間，結構、圓角、陰影形狀、框線粗細、字型、字級、間距全部不變，只換第二層灰階、第三層語意色、第四層資料色，第一層品牌色另有一組深色值；色系可用規則沿用該風格的淺色。**只有 S3 琉璃、S5 極光、S6 石墨有深色**：資料密集後台、監控、開發者工具要深色選 S6；品牌官網、活動頁要深色選 S3；前台、預約、會員中心要深色選 S5。S1、S2、S4、S7 沒有深色（暖紙色、凸凹柔影、手繪硬影、白紙黑字都是淺底上的身分），需求有夜間模式就不要選這四套。三套共用：語意色 `--err:#F28B82 --wrn:#E2B341 --ok:#74C483 --info:#7DB6EE`；`--d1` 改 `#6E97DB`；主色在 OKLab 只加明度、保留色相，加到本套最亮面板上 ≥4.6、自己淡底上 ≥4.8，**填色上一律放深色字**（`--on-acc`、`--on-acc2`、`--on-err`、`--on-ink` 都是 `#121212`），所以同一組色系在三套的深色主色不同，數值見規範 8.8 或 `dist/theme.js` 的 `DARK` 表（依風格分表）。S6：`--page:#121212 --card:#1A1A1A --band/paperc:#202020 --sel:#262626 --line:#2E2E2E --line-2:#3A3A3A --ink:#EDEDED --muted:#A3A3A3`（與 v14〜v22 相同）。S3：深玻璃升格為主材質——放資料的面板 `rgba(18,21,34,.80)`、疊在面板上的小件改白 5〜9% 薄霧、墊白處改實心面 `#232838`、背景漸層兩端各 40% 混入 `#0B0D14`，框線降為白 10〜18%，`--ink:#EDEDED --muted:#B5B8C2`；兩條鐵則照舊（文字不落在漸層上、彩色字不落在玻璃上）。S5：近黑底 `#0F1117` 上三團提亮的主副色暈染，面板 `rgba(26,29,39,.84〜.96)`、`--card:#1A1D27`、純白小件改實心面 `#1E212C`、`--line:#2C303C`、`--ink:#EDEDED --muted:#ADB1BB`、`--dark` 改 `#E4E6EC` 配深字，漸層主按鈕上的字改深色。寫法：深色規則掛在 `html[data-theme="dark"]` 底下、宣告 `color-scheme:dark`，寫在同一份元件 HTML 與同一張樣式表裡（不另做一份深色頁）；預設跟隨系統並提供淺／深／跟隨三選一、記住使用者的選擇；不用 `filter:invert()`。新寫的元件不要寫死 `#fff`，白字改引用上述四個變數。
+**深色模式（規範 8.8，v23）**：深色是風格的「模式」不是另一套風格——同一套風格的白天與夜間，結構、圓角、陰影形狀、框線粗細、字型、字級、間距全部不變，只換第二層灰階、第三層語意色、第四層資料色，第一層品牌色另有一組深色值；色系可用規則沿用該風格的淺色。**只有 S3 琉璃、S5 極光、S6 石墨有深色**：資料密集後台、監控、開發者工具要深色選 S6；品牌官網、活動頁要深色選 S3；前台、預約、會員中心要深色選 S5。S1、S2、S4、S7 沒有深色（暖紙色、凸凹柔影、手繪硬影、白紙黑字都是淺底上的身分），需求有夜間模式就不要選這四套。三套共用：語意色 `--err:#F28B82 --wrn:#E2B341 --ok:#74C483 --info:#7DB6EE`；`--d1` 改 `#6E97DB`；主色在 OKLab 只加明度、保留色相，加到本套最亮面板上 ≥4.6、自己淡底上 ≥4.8，**填色上一律放深色字**（`--on-acc`、`--on-acc2`、`--on-err`、`--on-ink` 都是 `#121212`），所以同一組色系在三套的深色主色不同，數值見規範 8.8 或 `dist/theme.js` 的 `DARK` 表（依風格分表）。S6：中性石墨 `--page:#121212 --card:#1A1A1A --band/paperc:#202020 --sel:#262626 --line:#2E2E2E --line-2:#3A3A3A --ink:#EDEDED --muted:#A3A3A3`（與 v14〜v28 相同）；**v29 起 S6 深色預設「跟隨色系」**（規範 8.8.5）——六個面（page、card、paperc、sel、line、line-2）保留中性值的 OKLab 明度、色相取該色系淺色主色、OKLCH 彩度 `min(0.012, 主色彩度)`（上限 0.015），換色系自動跟著換，例如 C1 深海藍 `--page:#0F1217 --card:#171A20 --sel:#23262C --line:#2B2E34`；四個語意淡底與品牌淡底照「16% 混入卡片色」重算，C2、C3 主色各補一階明度（`#62A6AD`、`#8E95E7`）；文字三色與四個 `--on-*` 不變。十五組數值在 `dist/theme.js` 的 `DARK_TINT`（由 `build_dark.py` 呼叫 `code/dark_tint/derive_dark_tint.py` 產生，不手抄）。開關二選一：不寫或 `data-dark-tint="follow"`＝跟隨色系，`<html data-dark-tint="neutral">`＝中性石墨；`DS.setDarkTint('follow'|'neutral')`、`DS.darkTint()`，偏好 `localStorage` 的 `ds.darkTint`、網址 `?tint=neutral`（示範頁 `#c1.dark.neutral`）；只對 S6 深色有效，S3、S5 沒有這個開關。**28.x 的 S6 專案升上來深色會帶色調**，要原樣就寫 `neutral`；產品 CSS 不要寫死 `#1A1A1A`、`rgba(26,26,26,…)`，半透明寫 `color-mix(in srgb,var(--card) 95%,transparent)`。S3：深玻璃升格為主材質——放資料的面板 `rgba(18,21,34,.80)`、疊在面板上的小件改白 5〜9% 薄霧、墊白處改實心面 `#232838`、背景漸層兩端各 40% 混入 `#0B0D14`，框線降為白 10〜18%，`--ink:#EDEDED --muted:#B5B8C2`；兩條鐵則照舊（文字不落在漸層上、彩色字不落在玻璃上）。S5：近黑底 `#0F1117` 上三團提亮的主副色暈染，面板 `rgba(26,29,39,.84〜.96)`、`--card:#1A1D27`、純白小件改實心面 `#1E212C`、`--line:#2C303C`、`--ink:#EDEDED --muted:#ADB1BB`、`--dark` 改 `#E4E6EC` 配深字，漸層主按鈕上的字改深色。寫法：深色規則掛在 `html[data-theme="dark"]` 底下、宣告 `color-scheme:dark`，寫在同一份元件 HTML 與同一張樣式表裡（不另做一份深色頁）；預設跟隨系統並提供淺／深／跟隨三選一、記住使用者的選擇；不用 `filter:invert()`。新寫的元件不要寫死 `#fff`，白字改引用上述四個變數。
 
 **S1 與 S6 是一對**：奶油暖而軟，給文件與對外畫面；石墨冷而硬，給工程師與內部工具。兩套的辨識度靠底色拉開：S1 是暖白 `#F6F5F2`、S6 是中性灰 `#F4F4F4`，卡片都是純白。S6 是對色系最寬容的一套（沒有任何一格需調整或鎖住，S7 同樣如此），因為它把品牌色壓到最少。七套 × 十五組 ＝ 105，扣掉鎖住的 S2 × SC1、S2 × SC2，可用 **103 種**；S3、S5、S6 的深色模式各另 15 種，共 45 種，合計 **148 種**。
 
@@ -90,7 +90,7 @@ S1 為基準，其餘六套各有一個只含材質的風格層（`dist/style-s2
 **S6 石墨**：`--page:#F4F4F4 --card:#FFFFFF --band:#F6F6F6 --sel:#F2F2F2 --line:#E3E3E3 --line-2:#D9D9D9 --ink:#171717 --muted:#6A6A6A --dark:#3B3B3B`；圓角 `--r-lg:12px --r-sm:6px --r-pill:999px`。所有卡片、輸入框、按鈕 `1px solid var(--line)`、零陰影。三條鐵則：
 
 一、**側欄、頂列與頁面同色，只有卡片與輸入元件是白的**——「只有資料躺在白紙上，其餘都是同一張桌面」。做成側欄白、頁面灰就變成另一套風格。
-二、**灰階是純無彩色**，每個灰的紅綠藍三值必須相等，不得帶藍調或黃調。
+二、**灰階是純無彩色**，每個灰的紅綠藍三值必須相等，不得帶藍調或黃調。**唯一例外是深色模式的「跟隨色系」**（v29）：六個面可帶目前色系主色的色調，OKLCH 彩度不得超過 0.015，明度與中性值相同；文字色仍是純無彩色。整張桌面一起帶色調，不影響鐵則一與鐵則三。
 三、**表格區不用品牌色，只有選取列例外**——篩選膠囊選中、側欄 hover、分段控制都用中性灰 `--sel`；品牌色只留給主按鈕、連結、側欄選中項、目前頁籤、選取列。
 
 **S7 編輯**（規範 8.2）：`--page:#FAF8F3`（暖白紙）`--card:#FFFFFF --band/paperc:#F3F0E9 --line:#E2DDD3 --ink:#1A1814 --muted:#615C54`；零陰影。外層區塊 `.board` 不加框、改上緣 `2px solid var(--ink)` 欄線，左右內距 0、上方 `--sp-6`；框只留給卡片與輸入元件（1px 細線）。兩項風格層例外（只有 S7）：**標題用明體**——H1〜H3 與元件內標題 `font-family:'Noto Serif TC','Songti TC','Source Han Serif TC','PMingLiU',serif`（Google Fonts 加載 `Noto+Serif+TC:wght@700;900`），字級行距字重照表，內文標籤按鈕仍黑體、金額仍 Arial；**直角**——`--r-lg:0 --r-sm:2px`，容器 0、按鈕輸入框選項標籤 2px、頭像圓點正圓。提示框改用 `--paperc` 底（外層區塊透明，用頁面色會消失）。
@@ -348,7 +348,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 ## 10. 起手式：引用 dist/，不要複製示範頁的 CSS（規範第十二章）
 
-元件樣式的唯一來源是公開倉庫根目錄的 `dist/`（由 `emit_css.py` 自七套元件庫產生，檔頭有版號，與規範同版）。工程師手冊 `dist/USAGE.md`（＝《設計系統使用說明 v10》）、範例頁 `dist/examples/`（七套風格各一張、各在 8.7 的首選情境：S1 後台、S2 控制面板、S3 品牌官網、S4 點餐、S5 預約、S6 監控儀表板、S7 說明中心；`same-markup.html` 是同一份標記換七套殼，只說明「風格是殼」）。幫人起新頁面時，照情境挑一張範例當起點，不要七套都拿訂單後台換皮。**不要**從 `components_s*.html` 複製 `<style>`——複製那一刻起產品與元件庫就分家。
+元件樣式的唯一來源是公開倉庫根目錄的 `dist/`（由 `emit_css.py` 自七套元件庫產生，檔頭有版號，與規範同版）。工程師手冊 `dist/USAGE.md`（＝《設計系統使用說明 v11》）、範例頁 `dist/examples/`（七套風格各一張、各在 8.7 的首選情境：S1 後台、S2 控制面板、S3 品牌官網、S4 點餐、S5 預約、S6 監控儀表板、S7 說明中心；`same-markup.html` 是同一份標記換七套殼，只說明「風格是殼」）。幫人起新頁面時，照情境挑一張範例當起點，不要七套都拿訂單後台換皮。**不要**從 `components_s*.html` 複製 `<style>`——複製那一刻起產品與元件庫就分家。
 
 七套載法相同（三檔 ＋ theme.js，順序不能換；v20 起 S2〜S5 也以 S1 為基底，七套共用同一份元件 HTML）：
 
@@ -360,12 +360,12 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 <link rel="stylesheet" href="dist/style-s1.css">   <!-- 這一套的材質層；換風格只換這一行（s1〜s7） -->
 <body data-type="productive">                      <!-- 前台閱讀型頁面改 expressive -->
   …元件 HTML 照第 8 節的 class 語彙寫…
-<script src="dist/theme.js"></script>              <!-- DS.applyTheme('c1')、DS.setColorScheme('dark'|'light'|'system')、DS.setDensity('comfortable'|'normal'|'compact') -->
+<script src="dist/theme.js"></script>              <!-- DS.applyTheme('c1')、DS.setColorScheme('dark'|'light'|'system')、DS.setDarkTint('follow'|'neutral')（S6）、DS.setDensity('comfortable'|'normal'|'compact') -->
 ```
 
 v19 的 S2〜S5 過渡版（兩檔、不載 base.css）已退場。頁面不加 `.up`、`.glass`、`.wob`、`.org` 之類的修飾 class——`.board`、`.card`、`.statc` 本身就帶著該套材質；數量調整器一律用 `<input>`。S5 的漸層強調按鈕就是 `.btn.primary`。
 
-深色（只有 S3、S5、S6）：`<html data-theme="dark">` 強制深、`light` 強制淺、不寫跟隨系統；這三套的風格檔同時含 `html[data-theme="dark"]` 與 `@media (prefers-color-scheme:dark)` 兩段，切換不換檔、不重載，品牌色深色值由 theme.js 的 DARK 表（依風格分表）套用。產品可用任何框架，但元件 HTML 照元件庫 class、樣式只來自 dist；**不混第三方 UI 庫的元件外觀**，需要行為就用 headless 庫。瀏覽器基線 Chrome／Edge 111+、Safari 16.4+（iOS 16.4+）、Firefox 121+。
+深色（只有 S3、S5、S6）：`<html data-theme="dark">` 強制深、`light` 強制淺、不寫跟隨系統；這三套的風格檔同時含 `html[data-theme="dark"]` 與 `@media (prefers-color-scheme:dark)` 兩段，切換不換檔、不重載，品牌色深色值由 theme.js 的 DARK 表（依風格分表）套用；S6 深色的跟隨色系由 `DARK_TINT` 注入六個面與淡底，沒有 JS 時是中性石墨。產品可用任何框架，但元件 HTML 照元件庫 class、樣式只來自 dist；**不混第三方 UI 庫的元件外觀**，需要行為就用 headless 庫。瀏覽器基線 Chrome／Edge 111+、Safari 16.4+（iOS 16.4+）、Firefox 121+。
 
 任何元件的 CSS 不得寫死色碼與字級，一律引用變數；唯一例外是純黑純白與陰影用的半透明黑。
 
