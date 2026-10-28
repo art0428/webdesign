@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>設計系統瀏覽器</title>
+<title>設計系統瀏覽器 v29</title>
 <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -46,6 +46,11 @@ body{
 .brandline{display:flex;align-items:baseline;gap:11px;flex-wrap:wrap}
 .brandline .eyebrow{font-size:9.5px;font-weight:700;letter-spacing:.17em;color:var(--muted);font-family:var(--font-num)}
 .brandline h1{font-size:15px;font-weight:900;letter-spacing:.05em;line-height:1.4}
+/* 版本標記（v29）：規範版號 ＋ dist 版號 ＋ 規範日期，由 emit_css.py 寫入 */
+.brandline .ver{font-family:var(--font-num);font-size:10.5px;font-weight:700;letter-spacing:.04em;color:var(--muted);
+  border:1px solid var(--line);border-radius:999px;padding:0 8px;line-height:1.7;white-space:nowrap;flex:0 0 auto}
+.brandline .ver b{color:var(--ink);font-weight:700}
+.brandline .ver .ver-d{font-weight:400}
 .brandline .now{
   margin-left:auto;display:flex;align-items:center;gap:8px;
   font-size:11.5px;color:var(--muted);
@@ -195,6 +200,8 @@ body{
   .bar-in{gap:8px}
   .brandline{flex-wrap:nowrap;align-items:center}
   .brandline .eyebrow{display:none}
+  .brandline h1{white-space:nowrap}
+  .brandline .ver .ver-d{display:none}
   .brandline .now{width:auto;margin-left:auto;min-width:0;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
   .brandline .now > span:last-child{overflow:hidden;text-overflow:ellipsis}
   .ctlbtn{display:inline-flex;align-items:center;gap:6px;flex:0 0 auto;font:inherit;font-size:12.5px;font-weight:700;cursor:pointer;
@@ -212,6 +219,7 @@ body{
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
+      <span class="ver" id="dsVer" title="網頁設計規範 v29・dist 29.0.0（2026-10-27）">v29<span class="ver-d"> · 29.0.0 · 2026-10-27</span></span>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
