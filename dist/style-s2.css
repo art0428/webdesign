@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 29.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 30.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -120,7 +120,7 @@ button{font-family:inherit;color:var(--ink)}
 .notice{border-radius:14px;box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
 .nitem{background:var(--bg);box-shadow:4px 4px 8px var(--shD),-4px -4px 8px var(--shL)}
 .nitem.on{box-shadow:inset 3px 3px 6px var(--shD),inset -3px -3px 6px var(--shL)}
-.modal{border-radius:22px;box-shadow:10px 10px 22px var(--shD),-10px -10px 22px var(--shL)}
+.modal{border-radius:20px;box-shadow:10px 10px 22px var(--shD),-10px -10px 22px var(--shL)}
 .toast{background:#39404D;box-shadow:6px 6px 14px var(--shD)}
 .empty{border-radius:18px;box-shadow:inset 4px 4px 9px var(--shD),inset -4px -4px 9px var(--shL)}
 .flow .stp{box-shadow:4px 4px 8px var(--shD),-4px -4px 8px var(--shL)}
@@ -142,7 +142,7 @@ button{font-family:inherit;color:var(--ink)}
 .upload{border-radius:18px;box-shadow:inset 4px 4px 9px var(--shD),inset -4px -4px 9px var(--shL)}
 .upfile{border-radius:14px;box-shadow:4px 4px 8px var(--shD),-4px -4px 8px var(--shL)}
 .txa textarea{border:none;border-radius:14px;background:var(--bg);box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
-.tip{background:#39404D;border-radius:11px;box-shadow:4px 4px 10px var(--shD)}
+.tip{background:#39404D;box-shadow:4px 4px 10px var(--shD)}
 .tip::after{border-top-color:#39404D}
 .sk{box-shadow:inset 2px 2px 4px var(--shD),inset -2px -2px 4px var(--shL)}
 .spin{border:3px solid rgba(163,177,198,.4);border-top-color:var(--acc);border-radius:50%}

@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 29.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 30.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -17,7 +17,7 @@
 .nitem{color:unset}
 .tab.on{border:none}
 .toast{border:unset}
-.dd .trg{border:1px solid var(--line);border-radius:16px;background:#fff}
+.dd .trg{border:1px solid var(--line);background:#fff}
 .dd .trg .car{color:var(--muted)}
 .msearch{color:unset}
 .sw2 .lbl2{color:unset}
@@ -41,7 +41,6 @@ button{font-family:inherit;color:var(--ink)}
 .btn.primary:not(:disabled){background:linear-gradient(95deg,var(--acc),var(--acc2));border:none;color:#fff}
 .btn.ghost{background:rgba(255,255,255,.7)}
 .btn:disabled{opacity:.45;transform:none}
-.field input,.field select{border-radius:16px}
 .field input:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 15%,transparent)}
 .field.err input{box-shadow:0 0 0 3px color-mix(in srgb,var(--err) 12%,transparent)}
 .radio i{background:#fff}
@@ -71,7 +70,7 @@ button{font-family:inherit;color:var(--ink)}
 .notice{border:1px solid var(--line);border-radius:18px 18px 18px 6px;background:rgba(255,255,255,.85)}
 .nitem{background:rgba(255,255,255,.7)}
 .nitem.on{background:var(--dark);color:#fff}
-.trg{border:1px solid var(--line);border-radius:16px;background:#fff}
+.trg{border:1px solid var(--line);background:#fff}
 .trg .car{color:var(--muted)}
 .menu{background:rgba(255,255,255,.96);border-radius:20px 20px 20px 6px;box-shadow:0 14px 34px rgba(30,34,60,.14)}
 .mi{border-radius:12px}
@@ -84,7 +83,6 @@ button{font-family:inherit;color:var(--ink)}
 .flow .stp.cur{background:linear-gradient(95deg,var(--acc),var(--acc2));border:none;color:#fff}
 .msearch{background:#fff}
 .selcount button{border:none;background:none;color:var(--acc)}
-.txa textarea{border-radius:16px 16px 16px 6px}
 .txa textarea:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 15%,transparent)}
 .upfile{border-radius:16px 16px 16px 6px;background:#fff}
 .sk{border-radius:999px;background:#EAEAF0}
