@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 31.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 32.0.0 — 可引用的 CSS
 
 由七套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
 
@@ -16,9 +16,13 @@
 
 v20 起七套元件庫全部以 S1 為基底（共用同一份元件 HTML 與結構），`style-s1.css`〜`style-s7.css` 都是只有材質的薄檔，載法一律三檔。v19 的 S2〜S5「過渡版完整樣式表、不配 base.css」已退場——從 19.x 升上來的產品，S2〜S5 要把 `base.css` 加回去，數量調整器改用 S1 的 `<input>` 標記。
 
-## 深色模式（S3 琉璃、S5 極光、S6 石墨）
+## 深色模式（S1 奶油、S3 琉璃、S5 極光、S6 石墨）
 
-深色是風格的**模式**，不是另一套風格：`style-s3.css`、`style-s5.css`、`style-s6.css` 各自內含深色。`<html data-theme="dark">` 強制深色、`data-theme="light"` 強制淺色、不寫則跟隨系統（`prefers-color-scheme`）。切換不換檔、不重載。品牌色的深色值由 `theme.js` 的 `DARK` 表（依風格分表）套用。其他四套（S1、S2、S4、S7）沒有深色，`data-theme="dark"` 對它們無效果（理由見規範 8.8）。
+深色是風格的**模式**，不是另一套風格：`style-s1.css`、`style-s3.css`、`style-s5.css`、`style-s6.css` 各自內含深色（S1 的淺色材質在 `base.css`，`style-s1.css` 只有深色段）。`<html data-theme="dark">` 強制深色、`data-theme="light"` 強制淺色、不寫則跟隨系統（`prefers-color-scheme`）。切換不換檔、不重載。品牌色的深色值由 `theme.js` 的 `DARK` 表（依風格分表）套用。其他三套（S2、S4、S7）沒有深色，`data-theme="dark"` 對它們無效果（理由見規範 8.8）。
+
+### S1 深色：暖紙色調固定（32.0.0）
+
+S1 深色的六個面明度與 S6 深色相同（頁面 `#14120E`、卡片 `#1C1A16`），色調固定在淺色紙張的色相（OKLCH 色相 85、彩度 0.008），**不跟色系變**；S6 深色則預設跟著色系帶色調。側欄比頁面亮一階（對應淺色的側欄白、頁面米）、大圓角、全部黑體都照 S1。從 31.x 升上來的 S1 產品：以前 `data-theme="dark"` 沒有效果，32.0.0 起會變深色；不想要就寫 `data-theme="light"`。
 
 ### S6 深色底：跟隨色系（預設）／中性石墨（v29）
 
@@ -34,7 +38,7 @@ S6 深色的六個面（page、card、paperc、sel、line、line-2）**預設帶
 
 ```js
 DS.applyTheme('c3')              // 切換色系 c1〜c12、sc1〜sc3；不適用於本風格的組合退回 c1，回傳實際套用的 key
-DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s3、s5、s6）有效
+DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s1、s3、s5、s6）有效
 DS.setDarkTint('neutral')        // 'follow'（預設）| 'neutral'；S6 深色底跟隨色系或中性石墨，其他風格呼叫無效果
 DS.darkTint()                    // 目前生效的值：S6 回 'follow' 或 'neutral'；其他風格回 null
 DS.labelTables()                 // 依表頭替表格每格補 data-l（手機卡片列的欄名，規範 6.3）；載入時自動跑一次，動態新增列後再呼叫
@@ -60,15 +64,15 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
 | `base.css` | 結構層 ＋ S1 材質 | 79.9 KB |
-| `style-s1.css` | S1 奶油（材質在 base，空殼） | 0.3 KB |
+| `style-s1.css` | S1 奶油 深色（材質在 base） | 28.6 KB |
 | `style-s2.css` | S2 浮雕 | 16.3 KB |
 | `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 85.5 KB |
 | `style-s4.css` | S4 手帳 | 12.5 KB |
 | `style-s5.css` | S5 極光 淺色 ＋ 深色 | 51.8 KB |
 | `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 33.5 KB |
 | `style-s7.css` | S7 編輯 | 2.9 KB |
-| `theme.js` | 色系、深淺模式、深色底色調與密度 | 23.9 KB |
+| `theme.js` | 色系、深淺模式、深色底色調與密度 | 26.5 KB |
 
 ## 版本
 
-`31.0.0` 與《網頁設計規範 v31》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`32.0.0` 與《網頁設計規範 v32》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

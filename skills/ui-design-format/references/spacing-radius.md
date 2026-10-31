@@ -1,4 +1,4 @@
-> 本檔是《網頁設計規範 v31》的一部分，全文見倉庫的 docs/spec.md。
+> 本檔是《網頁設計規範 v32》的一部分，全文見倉庫的 docs/spec.md。
 
 ## 五、間距、圓角與框線
 
@@ -237,6 +237,6 @@ S1 依上表，是其他六套的基準。
 
 **寫法**：高度由 5.4 的 `--h-*` token 決定，所以三檔主要是在 `html[data-density="…"]`（與各套的 `:not([data-density])` 預設）上覆寫那八個 token；儲存格、卡片、板的內距以 `:where(html[…])` 包住前綴覆寫，權重與原規則相同、排在後面，`.t td.ck` 的右內距 0、`.desc.v` 的上下內距 0 這類更具體的規則照樣有效。風格檔不得出現密度規則（12.2 的純度檢查會擋）。元件庫的區塊由 `patch_v24.py`（緊湊）與 `patch_v26.py`（寬鬆與各套預設）產生，矩陣在 `density_cfg.py`。
 
-**驗收**：`audit_sizes.py` 每套元件庫以 `#c1.normal`、`#c1.cozy`、`#c1.dense` 各量一次（只量該套開放的檔；S3、S5、S6 另量深色），前台示範頁量該套的預設檔，高度與儲存格內距照上表，框線貼合與分隔線重複的規則不變；七套眾數一致的檢查只看標準檔。現況 29 次量測 0 不合規。`verify_css_split.py` 加 `s6:cozy`、`s1:normal`、`s1:dense`、`s7:normal`，19 種 0 差異；`audit_contrast.py` 的 S1、S7 預設寬鬆、`s6:cozy`、`s1:dense` 共 60 組 0 不及格。
+**驗收**：`audit_sizes.py` 每套元件庫以 `#c1.normal`、`#c1.cozy`、`#c1.dense` 各量一次（只量該套開放的檔；S1、S3、S5、S6 另量深色），前台示範頁量該套的預設檔，高度與儲存格內距照上表，框線貼合與分隔線重複的規則不變；七套眾數一致的檢查只看標準檔。現況 29 次量測 0 不合規。`verify_css_split.py` 加 `s6:cozy`、`s1:normal`、`s1:dense`、`s7:normal`，19 種 0 差異；`audit_contrast.py` 的 S1、S7 預設寬鬆、`s6:cozy`、`s1:dense` 共 60 組 0 不及格。
 
 ---

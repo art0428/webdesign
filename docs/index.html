@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>設計系統瀏覽器 v31</title>
+<title>設計系統瀏覽器 v32</title>
 <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +219,7 @@ body{
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
-      <span class="ver" id="dsVer" title="網頁設計規範 v31・dist 31.0.0（2026-10-31）">v31<span class="ver-d"> · 31.0.0 · 2026-10-31</span></span>
+      <span class="ver" id="dsVer" title="網頁設計規範 v32・dist 32.0.0（2026-10-31）">v32<span class="ver-d"> · 32.0.0 · 2026-10-31</span></span>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
@@ -241,7 +241,7 @@ body{
     </div>
     <div class="idx" id="idx" hidden></div>
     <div class="foot">
-  <span>七套風格 × 十二組核心 ＋ SC1〜SC3，淺色共 <b class="num">103</b> 種可用組合；S3、S5、S6 另有深色模式，再加 <b class="num">45</b> 種；S6 深色另分跟隨色系與中性石墨兩種深色底，再加 <b class="num">15</b> 種，共 <b class="num">163</b> 種。</span>
+  <span>七套風格 × 十二組核心 ＋ SC1〜SC3，淺色共 <b class="num">103</b> 種可用組合；S1、S3、S5、S6 另有深色模式，再加 <b class="num">60</b> 種；S6 深色另分跟隨色系與中性石墨兩種深色底，再加 <b class="num">15</b> 種，共 <b class="num">178</b> 種。</span>
   <span>換色系、換模式、換深色底、換密度不重載，換風格才重載；「通用規範」檢視都不重載。</span>
   <span>第二層結構灰階與第三層四個語意色<b>不隨色系改變</b>。</span>
 </div>
@@ -283,7 +283,7 @@ const THEMES={
 const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s7": "編輯"};
 const PAIRS=Object.entries(THEMES).map(([k,t])=>({k,cd:t.id,nm:t.name,a1:t.acc,a2:t.acc2,t}));
 /* 深色是風格的模式，不是另一套風格（規範 8.8）：只有這三套有深色，色系的可用與調整規則跟淺色相同 */
-const DARK_STYLES=["s3","s5","s6"];
+const DARK_STYLES=["s1","s3","s5","s6"];
 function allowed(k,style){ const t=THEMES[k]; return !!t && (t.styles.includes(style) || (t.adjust||[]).includes(style)); }
 function note(msg){
   const n=document.getElementById("pairNote"); n.textContent=msg; n.hidden=false; n.style.opacity="1";
@@ -433,7 +433,7 @@ function syncMode(){
   });
   document.getElementById("modeHint").textContent = found ? "通用規範不分模式。"
     : has ? "同一套風格切白天／夜間：結構、圓角、字型不變，只換灰階、語意色與品牌色的深色值。"
-    : "深色模式只有 S3 琉璃、S5 極光、S6 石墨"+(curMode==="dark"?"；"+STYLE_NAME[curStyle]+"顯示淺色。":"。");
+    : "深色模式只有 S1 奶油、S3 琉璃、S5 極光、S6 石墨"+(curMode==="dark"?"；"+STYLE_NAME[curStyle]+"顯示淺色。":"。");
 }
 function sync(){
   lockChips(); syncMode(); syncTint(); syncDens(); setFavicon(curPair);

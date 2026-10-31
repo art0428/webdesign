@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>S1 奶油 · 後台管理 — 管理者工作室 設計系統 31.0.0</title>
+<title>S1 奶油 · 後台管理 — 管理者工作室 設計系統 32.0.0</title>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../base.css">
@@ -29,7 +29,7 @@
 .ph{display:flex;align-items:flex-end;gap:var(--sp-4);flex-wrap:wrap}
 .ph h1{font-size:var(--fs-h1);line-height:var(--lh-h1);letter-spacing:var(--ls-h1);font-weight:900;margin:0}
 .ph .cnt{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
-.ph .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center}
+.ph .sp{margin-left:auto;display:flex;gap:var(--sp-2);align-items:center;flex-wrap:wrap;justify-content:flex-end}
 .filters{display:flex;gap:var(--sp-2);flex-wrap:wrap;align-items:center}
 .filters .search{flex:1 1 260px;width:auto}
 @media (max-width:1023px){.shell{grid-template-columns:1fr}.side{display:none}.main{padding:var(--sp-5) var(--sp-4)}}
@@ -64,7 +64,7 @@
   <main class="main">
     <span class="crumb">管理者工作室 ／ 銷售 ／ <b>訂單管理</b></span>
     <div class="ph"><div><h1>訂單管理</h1><div class="cnt">36 筆 · 本週新增 9</div></div>
-      <div class="sp"><button class="btn">匯出 Excel</button><button class="btn primary"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>新增訂單</button></div></div>
+      <div class="sp"><label class="foot-note" style="display:flex;gap:var(--sp-1);align-items:center;white-space:nowrap">深淺 <select id="scheme" aria-label="深淺模式" style="min-height:var(--h-input);border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card);color:var(--ink);font:inherit;padding:0 var(--sp-2)"><option value="system">跟隨系統</option><option value="light">淺</option><option value="dark">深</option></select></label><button class="btn">匯出 Excel</button><button class="btn primary"><svg class="ic" aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5v14"/></svg>新增訂單</button></div></div>
     <div class="grid">
       <div class="statc hero col-3"><div class="k">待確認</div><div class="v num">3<small>張</small></div><div class="delta up">▲ 2 vs 昨日</div></div>
       <div class="statc col-3"><div class="k">備貨中</div><div class="v num">12<small>張</small></div><div class="delta dn">▼ 3 vs 上週</div></div>
@@ -92,9 +92,11 @@
       </table>
       <div class="tfoot"><span class="p4"><button>‹</button><button class="on">1</button><button>2</button><button>3</button><button>…</button><button>8</button><button>›</button></span></div>
     </div>
-    <p class="foot-note">範例：S1 奶油 × 後台管理（訂單） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p>
+    <p class="foot-note">範例：S1 奶油 × 後台管理（訂單；右上角可切深淺，32.0.0） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p>
   </main>
 </div>
+
+<script>document.addEventListener('DOMContentLoaded',()=>{const s=document.getElementById('scheme');s.onchange=e=>DS.setColorScheme(e.target.value);try{s.value=localStorage.getItem('ds.scheme')||'system'}catch(_){}});</script>
 
 <script src="../theme.js"></script>
 </body>
