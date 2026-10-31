@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 30.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 31.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -233,6 +233,15 @@ button{font-family:inherit;color:var(--ink)}
 .req,.field .msg,.msg,.meter .mh b,.upfile .pct,.strip .thumb small,.p4 button.on{box-shadow:0 0 0 .3rem #fff}
 .upload{background:rgba(255,255,255,.78)}
 .p3 .cnt b{background:#fff;border-radius:5px;box-shadow:0 0 0 .3rem #fff}
+.sheet{background:var(--gl);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:1px solid var(--glBd);border-bottom:none;border-radius:20px 20px 0 0}
+.igroup .ad{background:rgba(255,255,255,.35);border-color:rgba(255,255,255,.75)}
+.igroup input,.field .igroup input,.otp input,.field .otp input{border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.55)}
+.codeblk{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75)}
+.thumbs button{border:1px solid rgba(255,255,255,.8);background:rgba(255,255,255,.82)}
+.prose a{color:var(--ink);text-decoration-color:var(--acc);text-decoration-thickness:2px}
+.cmdk{background:var(--gl);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border:1px solid var(--glBd);border-radius:20px;box-shadow:0 16px 48px rgba(15,18,35,.28)}
+.prose code{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75)}
+.sheetdemo{background:var(--page,#EEF0F6)}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
@@ -372,6 +381,23 @@ html[data-theme="dark"].sc-light .aibadge{color:var(--acc2-text) !important}
 html[data-theme="dark"].sc-light .avatar.a2{color:var(--acc2-text)}
 html[data-theme="dark"].sc-light .rowset:has(.st.wrn) .aibadge,html[data-theme="dark"].sc-light tr:has(.st.wrn) .aibadge,html[data-theme="dark"].sc-light .nitem:has(.st.wrn) .aibadge{color:var(--on-acc) !important}
 html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .avatar.a2{border:1px solid var(--ink) !important}
+:where(html[data-theme="dark"]) .rate .ic.off{color:var(--line)}
+:where(html[data-theme="dark"]) .rate.input button{background:none}
+:where(html[data-theme="dark"]) .rate.input button.off{color:var(--line)}
+:where(html[data-theme="dark"]) .raterow .n b{color:var(--ink)}
+:where(html[data-theme="dark"]) .sheetdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html[data-theme="dark"]) .prose th,:where(html[data-theme="dark"]) .prose td{border-bottom:1px solid var(--line)}
+:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:#fff}
+:where(html[data-theme="dark"]) .pwstr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html[data-theme="dark"]) .pwstr.s1 i:nth-child(1){background:var(--err)}
+:where(html[data-theme="dark"]) .pwstr.s4 i{background:var(--ok)}
+:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:#fff}
+:where(html[data-theme="dark"]) .thumbs button{background:var(--accsoft)}
+:where(html[data-theme="dark"]) .lbx .cnt{color:#fff}
+:where(html[data-theme="dark"]) .cmdk .in input{background:none}
+:where(html[data-theme="dark"]) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
+:where(html[data-theme="dark"]) .cmdk .it .ic{color:var(--muted)}
+:where(html[data-theme="dark"]) .cmdk .it.on .ic{color:inherit}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:#232838}
 :where(html[data-theme="dark"]) .check.dis i,:where(html[data-theme="dark"]) .radio.dis i{border-color:var(--muted)}
@@ -566,6 +592,12 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .upload{background:rgba(18,21,34,0.86)}
 :where(html[data-theme="dark"]) .p3 .cnt b{background:#232838;border-radius:5px;box-shadow:0 0 0 .3rem #232838}
 :where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}
+:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input,:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.55)}
+:where(html[data-theme="dark"]) .igroup .ad{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input,:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08)}
+:where(html[data-theme="dark"]) .codeblk{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.15)}
+:where(html[data-theme="dark"]) .thumbs button{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08)}
+:where(html[data-theme="dark"]) .prose code{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)}
 html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED}
 @media (prefers-color-scheme:dark){
 html:not([data-theme="light"]){color-scheme:dark}
@@ -705,6 +737,23 @@ html:not([data-theme="light"]).sc-light .aibadge{color:var(--acc2-text) !importa
 html:not([data-theme="light"]).sc-light .avatar.a2{color:var(--acc2-text)}
 html:not([data-theme="light"]).sc-light .rowset:has(.st.wrn) .aibadge,html:not([data-theme="light"]).sc-light tr:has(.st.wrn) .aibadge,html:not([data-theme="light"]).sc-light .nitem:has(.st.wrn) .aibadge{color:var(--on-acc) !important}
 html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"]).sc-adjust .avatar.a2{border:1px solid var(--ink) !important}
+:where(html:not([data-theme="light"])) .rate .ic.off{color:var(--line)}
+:where(html:not([data-theme="light"])) .rate.input button{background:none}
+:where(html:not([data-theme="light"])) .rate.input button.off{color:var(--line)}
+:where(html:not([data-theme="light"])) .raterow .n b{color:var(--ink)}
+:where(html:not([data-theme="light"])) .sheetdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html:not([data-theme="light"])) .prose th,:where(html:not([data-theme="light"])) .prose td{border-bottom:1px solid var(--line)}
+:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:#fff}
+:where(html:not([data-theme="light"])) .pwstr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html:not([data-theme="light"])) .pwstr.s1 i:nth-child(1){background:var(--err)}
+:where(html:not([data-theme="light"])) .pwstr.s4 i{background:var(--ok)}
+:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:#fff}
+:where(html:not([data-theme="light"])) .thumbs button{background:var(--accsoft)}
+:where(html:not([data-theme="light"])) .lbx .cnt{color:#fff}
+:where(html:not([data-theme="light"])) .cmdk .in input{background:none}
+:where(html:not([data-theme="light"])) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
+:where(html:not([data-theme="light"])) .cmdk .it .ic{color:var(--muted)}
+:where(html:not([data-theme="light"])) .cmdk .it.on .ic{color:inherit}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:#232838}
 :where(html:not([data-theme="light"])) .check.dis i,:where(html:not([data-theme="light"])) .radio.dis i{border-color:var(--muted)}
@@ -899,5 +948,11 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .upload{background:rgba(18,21,34,0.86)}
 :where(html:not([data-theme="light"])) .p3 .cnt b{background:#232838;border-radius:5px;box-shadow:0 0 0 .3rem #232838}
 :where(html:not([data-theme="light"])) [fill="#fff"]{fill:var(--card)}
+:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input,:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{border:1px solid rgba(255,255,255,.75);background:rgba(255,255,255,.55)}
+:where(html:not([data-theme="light"])) .igroup .ad{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.15)}
+:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input,:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08)}
+:where(html:not([data-theme="light"])) .codeblk{background:rgba(0,0,0,.28);border:1px solid rgba(255,255,255,.15)}
+:where(html:not([data-theme="light"])) .thumbs button{border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08)}
+:where(html:not([data-theme="light"])) .prose code{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15)}
 html:not([data-theme="light"]){color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED}
 }

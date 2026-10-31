@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>設計系統瀏覽器 v30</title>
+<title>設計系統瀏覽器 v31</title>
 <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +219,7 @@ body{
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
-      <span class="ver" id="dsVer" title="網頁設計規範 v30・dist 30.0.0（2026-10-28）">v30<span class="ver-d"> · 30.0.0 · 2026-10-28</span></span>
+      <span class="ver" id="dsVer" title="網頁設計規範 v31・dist 31.0.0（2026-10-31）">v31<span class="ver-d"> · 31.0.0 · 2026-10-31</span></span>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
@@ -227,7 +227,7 @@ body{
     </div>
     <div class="row" role="group" aria-label="檢視"><span class="lb">檢視</span>
       <span class="viewseg" id="viewSeg"><button type="button" class="on" data-v="lib">元件庫</button><button type="button" data-v="found">通用規範</button><button type="button" data-v="store">前台示範</button></span>
-      <span class="viewhint" id="viewHint">六十二項元件一項一節，依風格與色系即時換裝。</span>
+      <span class="viewhint" id="viewHint">七十項元件一項一節，依風格與色系即時換裝。</span>
     </div>
     <div class="row" role="group" aria-label="風格"><span class="lb">風格</span><span id="styleRow" style="display:contents"></span></div>
     <div class="row" role="group" aria-label="模式"><span class="lb">模式</span><span id="modeRow" style="display:contents"></span><span class="modehint" id="modeHint"></span></div>
@@ -236,7 +236,7 @@ body{
     <div class="row" role="group" aria-label="色系"><span class="lb">色系</span><span id="pairRow" style="display:contents"></span></div>
     <div class="pairnote" id="pairNote" role="status" aria-live="polite" hidden></div>
     <div class="row" id="idxRow"><span class="lb">元件</span>
-      <span style="font-size:11.5px;color:var(--muted)">六十二項元件一項一節，分核心 45／選用 17，逐項核對本風格是否都有。</span>
+      <span style="font-size:11.5px;color:var(--muted)">七十項元件一項一節，分核心 49／選用 21，逐項核對本風格是否都有。</span>
       <button type="button" class="idxbtn" id="idxBtn" aria-expanded="false" aria-controls="idx">展開元件清單</button>
     </div>
     <div class="idx" id="idx" hidden></div>
@@ -464,7 +464,7 @@ document.getElementById("viewSeg").addEventListener("click",e=>{
     ? STORE_HINT[curStyle]+"說明與不適合的情境寫在示範頁頂端。"
     : curView==="found"
     ? "七套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
-    : "六十二項元件一項一節，依風格、模式與色系即時換裝。";
+    : "七十項元件一項一節，依風格、模式與色系即時換裝。";
   sync(); load();
 });
 function pickStyle(k){
@@ -528,15 +528,15 @@ const TIERS=[
  {tier:"核心 CORE ─ 每個專案必備", key:"core", groups:[
   {g:"基礎 FOUNDATION", items:[["設計 Token","設計 Token"],["字級層級","字級層級 Type scale"],["分隔線","分隔線 Divider"]]},
   {g:"動作 ACTIONS", items:[["按鈕","按鈕 Button"],["動作鈕","動作鈕 Kebab"],["分段控制","分段控制 Segmented"]]},
-  {g:"表單 DATA ENTRY", items:[["輸入框","輸入框 Input"],["搜尋框","搜尋框 Search"],["核取與單選","核取與單選 Checkbox / Radio"],["篩選膠囊","篩選膠囊 Filter pill"],["開關","開關 Switch"],["上傳","上傳 Upload"],["多行輸入","多行輸入 Textarea"],["下拉選單","下拉選單 Select"],["多選＋搜尋","多選＋搜尋 Multi-select"],["日期與時間選擇器","日期與時間選擇器 Date / Time"],["自動完成","自動完成 Autocomplete"],["數字步進器","數字步進器 Number stepper"],["選項 chip","選項 chip Choice chip"]]},
-  {g:"資料呈現 DATA DISPLAY", items:[["表格","表格 Table"],["表格進階","表格進階 Table advanced"],["卡片","卡片 Card"],["統計卡","統計卡 Stat card"],["描述清單","描述清單 Descriptions"],["狀態標籤","狀態標籤 Status"],["屬性 tag","屬性 tag Tag"],["折疊面板","折疊面板 Accordion"],["頭像","頭像 Avatar"],["數字角標","數字角標 Badge"]]},
-  {g:"導覽 NAVIGATION", items:[["側欄項目","側欄項目 Nav item"],["頁籤","頁籤 Tabs"],["麵包屑","麵包屑 Breadcrumb"],["分頁器","分頁器 Pagination"],["側滑面板","側滑面板 Drawer"]]},
+  {g:"表單 DATA ENTRY", items:[["輸入框","輸入框 Input"],["搜尋框","搜尋框 Search"],["核取與單選","核取與單選 Checkbox / Radio"],["篩選膠囊","篩選膠囊 Filter pill"],["開關","開關 Switch"],["上傳","上傳 Upload"],["多行輸入","多行輸入 Textarea"],["輸入框附加","輸入框附加 Input addon"],["密碼與驗證碼","密碼與驗證碼 Password / OTP"],["下拉選單","下拉選單 Select"],["多選＋搜尋","多選＋搜尋 Multi-select"],["日期與時間選擇器","日期與時間選擇器 Date / Time"],["自動完成","自動完成 Autocomplete"],["數字步進器","數字步進器 Number stepper"],["選項 chip","選項 chip Choice chip"]]},
+  {g:"資料呈現 DATA DISPLAY", items:[["表格","表格 Table"],["表格進階","表格進階 Table advanced"],["卡片","卡片 Card"],["統計卡","統計卡 Stat card"],["描述清單","描述清單 Descriptions"],["長文排版","長文排版 Prose"],["狀態標籤","狀態標籤 Status"],["屬性 tag","屬性 tag Tag"],["折疊面板","折疊面板 Accordion"],["頭像","頭像 Avatar"],["數字角標","數字角標 Badge"]]},
+  {g:"導覽 NAVIGATION", items:[["側欄項目","側欄項目 Nav item"],["頁籤","頁籤 Tabs"],["麵包屑","麵包屑 Breadcrumb"],["分頁器","分頁器 Pagination"],["側滑面板","側滑面板 Drawer"],["底部抽屜","底部抽屜 Bottom sheet"]]},
   {g:"回饋 FEEDBACK", items:[["彈窗","彈窗 Modal"],["就地確認","就地確認 Popconfirm"],["提示氣泡","提示氣泡 Tooltip"],["Toast","Toast 提示"],["警示條","警示條 Alert"],["提示框","提示框 Notice"],["空狀態","空狀態 Empty"],["骨架屏","骨架屏 Skeleton"],["通知鈴","通知鈴 Bell"],["進度條","進度條 Progress"],["搜尋無結果","搜尋無結果 No result"]]}
  ]},
  {tier:"選用 OPTIONAL ─ 依系統類型勾選", key:"opt", groups:[
-  {g:"動作 ACTIONS", items:[["工具列","工具列 Toolbar"]]},
+  {g:"動作 ACTIONS", items:[["工具列","工具列 Toolbar"],["命令面板","命令面板 Command palette"]]},
   {g:"表單 DATA ENTRY", items:[["滑桿","滑桿 Slider"],["級聯選擇","級聯選擇 Cascader"],["穿梭框","穿梭框 Transfer"]]},
-  {g:"資料呈現 DATA DISPLAY", items:[["摘要方塊","摘要方塊 Summary box"],["來源標記","來源標記 Source badge"],["百分比膠囊","百分比膠囊 Percent pill"],["量表","量表 Meter"],["樹狀","樹狀 Tree"],["時間軸","時間軸 Timeline"],["圖表","圖表 Chart"],["媒體與輪播","媒體與輪播 Media / Carousel"],["動態列表","動態列表 Feed"]]},
+  {g:"資料呈現 DATA DISPLAY", items:[["摘要方塊","摘要方塊 Summary box"],["來源標記","來源標記 Source badge"],["百分比膠囊","百分比膠囊 Percent pill"],["量表","量表 Meter"],["評分","評分 Rate"],["程式碼區塊","程式碼區塊 Code block"],["燈箱","燈箱 Lightbox"],["樹狀","樹狀 Tree"],["時間軸","時間軸 Timeline"],["圖表","圖表 Chart"],["媒體與輪播","媒體與輪播 Media / Carousel"],["動態列表","動態列表 Feed"]]},
   {g:"導覽 NAVIGATION", items:[["步驟精靈","步驟精靈 Stepper wizard"],["唯讀步驟","唯讀步驟 Read-only steps"],["分割面板","分割面板 Splitter"]]},
   {g:"回饋 FEEDBACK", items:[["結果頁","結果頁 Result"]]}
  ]}

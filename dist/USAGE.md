@@ -1,13 +1,15 @@
 ---
 title: 設計系統使用說明
 kicker: 管理者工作室 設計系統
-subtitle: 給工程師的 dist/ 使用手冊（30.0.0）
+subtitle: 給工程師的 dist/ 使用手冊（31.0.0）
 source: 管理者工作室
-date: 2026.10.28
-highlight: 設計系統使用說明 v12
+date: 2026.10.31
+highlight: 設計系統使用說明 v13
 ---
 
-# 設計系統使用說明 v12
+# 設計系統使用說明 v13
+
+v13 變更範圍（31.0.0）：對應規範 v31——**八個新元件**。新增第 4.11 節八項的寫法：評分 `.rate`、底部抽屜 `.sheet`、長文排版 `.prose`、輸入框附加 `.igroup`、密碼 `.pw` 與驗證碼 `.otp`、程式碼區塊 `.codeblk`、燈箱 `.lbx`、命令面板 `.cmdk`。產品端不用改既有頁面；要用新元件就換上 31.0.0 的 `base.css` 與風格檔。
 
 v12 變更範圍（30.0.0）：對應規範 v30——**圓角跟著風格走，輸入框圓角收斂**。S3 的輸入框、chip、token 格、檔案列、提示框圓角由 13／14 回到共用層的 12px，區塊與彈窗 22 → 20，提示氣泡 11 → 10、屬性 tag 7 → 6；S5 的輸入框與多行輸入由 16 與 16/16/16/6 回到 12；S2 的彈窗 22 → 20、提示氣泡 11 → 10，其餘維持它自己的圓角階（容器 20、小件 14）；S2、S4 的輸入框 14、S6 6、S7 2 為風格層例外。產品端不用改任何東西，換上 30.0.0 的 `style-s2`、`style-s3`、`style-s5.css` 即可；如果產品自己寫了 `border-radius` 去「對齊」舊的 13 或 16，刪掉。第 4.2 節補一句。
 
@@ -31,13 +33,13 @@ v3 變更範圍（20.0.0）：S2〜S5 以 S1 為基底重建，**七套載法一
 
 v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套風格各一張、各在規範 8.7 的首選情境，`example.html` 改名為 `examples/same-markup.html`；第 10 節並寫明範例頁裡兩處「版面層保護」與一處過渡用覆寫的來歷；第 2.2 節補 flex 容器 `align-items:center` 一句；第 12 節新增一問。其餘與 v1 逐字相同。
 
-這份是給前端工程師看的：拿到 `dist/` 之後怎麼開工、每個元件怎麼寫、哪些事不能做、交付前怎麼自己檢查。規則的「為什麼」在《網頁設計規範 v30》，這裡只講「怎麼做」。本文件會同步複製成 `dist/USAGE.md`，跟著檔案一起發。
+這份是給前端工程師看的：拿到 `dist/` 之後怎麼開工、每個元件怎麼寫、哪些事不能做、交付前怎麼自己檢查。規則的「為什麼」在《網頁設計規範 v31》，這裡只講「怎麼做」。本文件會同步複製成 `dist/USAGE.md`，跟著檔案一起發。
 
 ## 1. 五分鐘上手
 
 ### 1.1 拿檔案
 
-`dist/` 在公開倉庫 `art0428/webdesign`。十一個檔，檔頭都有版號 `30.0.0`，與規範同版。**不要**從示範頁 `components_s*.html` 複製 `<style>`——那是來源，`dist/` 才是產物，複製的那一刻起你的產品就和元件庫分家了。
+`dist/` 在公開倉庫 `art0428/webdesign`。十一個檔，檔頭都有版號 `31.0.0`，與規範同版。**不要**從示範頁 `components_s*.html` 複製 `<style>`——那是來源，`dist/` 才是產物，複製的那一刻起你的產品就和元件庫分家了。
 
 ### 1.2 選一套風格，寫在 `<html>` 上
 
@@ -53,7 +55,7 @@ v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套�
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="dist/tokens.css">     <!-- 1 字級、間距、圓角、高度、動態、層級 -->
-<link rel="stylesheet" href="dist/base.css">       <!-- 2 結構層 ＋ S1 材質：62 項元件、焦點環、佔位文字、RWD -->
+<link rel="stylesheet" href="dist/base.css">       <!-- 2 結構層 ＋ S1 材質：70 項元件、焦點環、佔位文字、RWD -->
 <link rel="stylesheet" href="dist/style-s6.css">   <!-- 3 這一套的材質層；換風格只換這一行 -->
 </head>
 <body data-type="productive">                      <!-- 後台、購物車、結帳；前台閱讀型頁面改 expressive -->
@@ -76,7 +78,7 @@ v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套�
 
 ### 1.5 升版
 
-規範升一版、`dist/` 升一版。產品把 `30.0.0` 的檔換成下一版的檔，跑一次第 11 節的檢查，看 diff 就知道哪裡變了。不要在產品裡修改 `dist/` 的任何檔案——要改，回元件庫改，重新產生。
+規範升一版、`dist/` 升一版。產品把 `31.0.0` 的檔換成下一版的檔，跑一次第 11 節的檢查，看 diff 就知道哪裡變了。不要在產品裡修改 `dist/` 的任何檔案——要改，回元件庫改，重新產生。
 
 ## 2. 頁面骨架
 
@@ -195,7 +197,7 @@ DS.DENSITY                    // 矩陣：{s1:{default:'comfortable',allowed:[�
 
 ## 4. 元件寫法
 
-下面是最常用的三十項，class 語彙七套相同、不得自創同義名。完整 62 項的標記看元件庫示範頁對應區段（`components_s1_cream.html`），**只抄 HTML，不抄 CSS**。
+下面是最常用的三十項，class 語彙七套相同、不得自創同義名。完整 70 項的標記看元件庫示範頁對應區段（`components_s1_cream.html`），**只抄 HTML，不抄 CSS**。
 
 ### 4.1 按鈕
 
@@ -333,6 +335,26 @@ DS.DENSITY                    // 矩陣：{s1:{default:'comfortable',allowed:[�
 ### 4.10 其他
 
 時間軸 `ul.tl > li.acc|ok|err`、步驟 `.stepper > .sp.done|.cur`、上傳區 `.upload` 與 `.upfile.ok|.err`、折疊 `.acc-p > .arow > .ahead + .abody`、頭像 `.avatar`（`.sm` 小）、分隔 `.divider`／`hr.hr`／`.vdiv`、圖表容器 `.chart > .chh + svg`。圖示一律 Lucide，尺寸 16／20／24／48、線寬 2、顏色 `currentColor`。
+
+### 4.11 v31 補件：評分、底部抽屜、長文排版、輸入框附加、密碼與驗證碼、程式碼區塊、燈箱、命令面板
+
+```html
+<span class="rate" aria-label="4 顆星"><svg class="ic" …星…></svg>×4<svg class="ic off" …></svg></span>          <!-- 顯示態；.lg 28px、.sm 16px -->
+<span class="rate input" role="radiogroup" aria-label="評分"><button type="button" aria-label="1 星">…</button>×5</span>  <!-- 可點：未選的加 .off -->
+<div class="sheet"><div class="grab"></div><div class="sh">篩選<button class="x" aria-label="關閉">×</button></div>
+  <div class="sg">門市<div class="rowset">…chip…</div></div><div class="sf"><button class="btn">清除</button><button class="btn primary">套用</button></div></div>
+<article class="prose"><h2>…</h2><p>…</p><blockquote>…</blockquote><figure><div class="ph">…</div><figcaption>…</figcaption></figure><div class="tw"><table>…</table></div></article>
+<div class="field"><label for="len">裁切長度</label><div class="igroup"><input id="len" class="num"><span class="ad">mm</span></div></div>   <!-- 前綴放 input 前、按鈕放最後 -->
+<div class="field"><label for="pw">新密碼</label><div class="pw"><input id="pw" type="password"><button class="eye" type="button" aria-label="顯示密碼">…</button></div>
+  <div class="pwstr s2"><i></i><i></i><i></i><i></i></div><div class="msg">中等。再加一個大寫字母或符號會更安全。</div></div>  <!-- s1 弱 s2 中 s3 強 s4 很強 -->
+<div class="otp"><input inputmode="numeric" maxlength="1" aria-label="第 1 碼">×6</div>
+<div class="codeblk"><div class="cbar">bash · 建立班表<button class="btn sm" type="button">複製</button></div><pre><span class="ln">1</span>curl …</pre></div>
+<div class="thumbs"><button type="button">正面</button>…</div>   <!-- 點開 .lbx：fixed 全畫面，.ctl.x／.pv／.nx 三顆 44px 鈕、.cnt 計數 -->
+<div class="cmdk" role="dialog"><div class="in"><svg …放大鏡…></svg><input aria-label="搜尋指令或頁面"><kbd>Esc</kbd></div>
+  <div class="g">動作</div><div class="it on">新增訂單<span class="k"><kbd>N</kbd></span></div><div class="ft">…</div></div>
+```
+
+底部抽屜只在手機用（<768px），桌機同一內容改 `.drawer` 或 `.modal`；評分的星一律琥珀，不要換成品牌色；單位寫在 `.igroup .ad`，不寫在標籤裡；燈箱與命令面板的開關、鍵盤（Esc、方向鍵、⌘K）是行為，要自己寫，層級已由 `--z-modal` 決定。
 
 ## 5. 表格
 

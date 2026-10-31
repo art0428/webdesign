@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 30.0.0 ══ style-s7.css（編輯 EDITORIAL 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 31.0.0 ══ style-s7.css（編輯 EDITORIAL 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -23,3 +23,15 @@ body{background:#FAF8F3}
 .card,.cardx,.tblwrap,.empty,.cal,.desc,.drawerdemo,.noti,.acc-p,.feed,.chart,.split,.result,.upload,.modal,.menu,.pop,.notice,.alert,.statc,.toast,.tip,.drawer,.dd .menu,.tlist,.casc,.spark{border-radius:0}
 .card .card-title,.cardx .ct{border-radius:0}
 .btn,.btn.primary,.btn.ghost,.btn.danger,.btn.sm,.kebab,.msearch,.p2,.p4 button,.cal .ch button,.cal .quick button,.field input,.field select,.field textarea,.search,.txa textarea,.p5 input,.dd .trg,.qty,.seg,.seg button,.upfile,.tokcell,.mck,.chip,.pillf,.st,.tag,.count,.tabs,.tab,.nitem,.aibadge,.bar,.bar i{border-radius:2px}
+.sheet{background:var(--paperc);border:none;border-top:2px solid var(--ink);border-radius:0;box-shadow:none}
+.igroup .ad,.igroup input,.field .igroup input,.codeblk,.thumbs button,.cmdk,.cmdk .it,.prose code,.prose figure .ph{border-radius:0}
+.igroup .ad{background:var(--paperc)}
+.igroup input:first-child,.field .igroup input:first-child{border-radius:2px 0 0 2px}
+.igroup input:last-child,.field .igroup input:last-child{border-radius:0 2px 2px 0}
+.otp input,.field .otp input{border-radius:2px}
+.codeblk{background:var(--paperc)}
+.cmdk{box-shadow:none;border-top:2px solid var(--ink)}
+.prose>h2,.prose>h3,.sheet .sh{font-family:var(--serif)}
+.prose>blockquote{border-left:2px solid var(--ink);font-family:var(--serif)}
+.prose figure .ph{border:1px solid var(--line);background:var(--paperc);color:var(--muted)}
+.sheetdemo{background:var(--paperc)}

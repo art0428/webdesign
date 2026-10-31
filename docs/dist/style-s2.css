@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 30.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 31.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -239,3 +239,20 @@ button{font-family:inherit;color:var(--ink)}
 .notice{border-left:none}
 ::placeholder{color:var(--muted);opacity:1}
 .conf{box-shadow:inset 1px 1px 3px var(--shD),inset -1px -1px 3px var(--shL)}
+.sheet{border:none;background:var(--bg);box-shadow:-8px -8px 16px var(--shL),8px 8px 16px var(--shD)}
+.igroup .ad,.igroup input,.field .igroup input,.otp input,.field .otp input{border:none;background:var(--bg);box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
+.igroup .ad{box-shadow:none;background:transparent}
+.igroup input,.field .igroup input{border-radius:0}
+.igroup .ad:first-child{border-radius:14px 0 0 14px}
+.igroup .ad:last-child{border-radius:0 14px 14px 0}
+.igroup input:first-child,.field .igroup input:first-child{border-radius:14px 0 0 14px}
+.igroup input:last-child,.field .igroup input:last-child{border-radius:0 14px 14px 0}
+.igroup .btn{border-radius:0 14px 14px 0}
+.otp input,.field .otp input{border-radius:14px}
+.codeblk{border:none;background:var(--bg);border-radius:14px;box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
+.codeblk .cbar{border-bottom:none}
+.thumbs button{border:none;background:var(--bg);border-radius:14px;box-shadow:4px 4px 8px var(--shD),-4px -4px 8px var(--shL)}
+.cmdk{border:none;background:var(--bg);border-radius:20px;box-shadow:10px 10px 22px var(--shD),-10px -10px 22px var(--shL)}
+.cmdk .it{border-radius:14px}
+.prose code{background:var(--bg);border:none;box-shadow:inset 2px 2px 4px var(--shD),inset -2px -2px 4px var(--shL)}
+.sheetdemo{background:var(--bg)}

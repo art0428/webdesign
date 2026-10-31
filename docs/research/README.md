@@ -9,4 +9,4 @@
 | [色彩系統定義 v2](color-system-derivation.md) | 灰階與語意色的推導 |
 | [對比稽核報告 v3](contrast-audit.md) | 77 種風格色系組合的像素取樣對比稽核 |
 | [警示條與提示框選型調研 v1](alert-notice-research.md) | 警示條與提示框的業界選型比較 |
-| [元件清冊 核心與選用 v1](component-inventory.md) | 62 項元件的核心與選用分組 |
+| [元件清冊 核心與選用 v1](component-inventory.md) | 62 項元件的核心與選用分組（v31 起 70 項，補件見規範 7.1） |

@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 30.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 31.0.0 — 可引用的 CSS
 
 由七套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
 
@@ -7,7 +7,7 @@
 ```html
 <html lang="zh-Hant" data-style="s6">                 <!-- 全站只選一套風格，建置時決定 -->
 <link rel="stylesheet" href="tokens.css">            <!-- 1 字級、間距、圓角、高度、動態、層級 -->
-<link rel="stylesheet" href="base.css">              <!-- 2 結構層 ＋ S1 材質（62 項元件、焦點環、佔位文字、RWD） -->
+<link rel="stylesheet" href="base.css">              <!-- 2 結構層 ＋ S1 材質（70 項元件、焦點環、佔位文字、RWD） -->
 <link rel="stylesheet" href="style-s6.css">          <!-- 3 這一套的材質層；換風格只換這一行 -->
 <script src="theme.js"></script>                     <!-- 色系切換與深淺模式 -->
 ```
@@ -59,16 +59,16 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | 檔 | 內容 | 大小 |
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
-| `base.css` | 結構層 ＋ S1 材質 | 68.7 KB |
+| `base.css` | 結構層 ＋ S1 材質 | 79.9 KB |
 | `style-s1.css` | S1 奶油（材質在 base，空殼） | 0.3 KB |
-| `style-s2.css` | S2 浮雕 | 15.0 KB |
-| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 79.8 KB |
-| `style-s4.css` | S4 手帳 | 11.1 KB |
-| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 48.1 KB |
-| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 28.7 KB |
-| `style-s7.css` | S7 編輯 | 2.1 KB |
+| `style-s2.css` | S2 浮雕 | 16.3 KB |
+| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 85.5 KB |
+| `style-s4.css` | S4 手帳 | 12.5 KB |
+| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 51.8 KB |
+| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 33.5 KB |
+| `style-s7.css` | S7 編輯 | 2.9 KB |
 | `theme.js` | 色系、深淺模式、深色底色調與密度 | 23.9 KB |
 
 ## 版本
 
-`30.0.0` 與《網頁設計規範 v30》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`31.0.0` 與《網頁設計規範 v31》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

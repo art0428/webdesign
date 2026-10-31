@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 30.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 31.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -173,3 +173,23 @@ button{font-family:inherit;color:var(--ink)}
 ::placeholder{color:var(--muted);opacity:1}
 .noti{border:2px solid var(--ink);border-radius:6px 20px 6px 20px;box-shadow:3px 3px 0 var(--ink);background:var(--card)}
 .noti .nh{border-bottom:2px dashed var(--line);background:transparent}
+.sheet{background:var(--card);border:2px solid var(--ink);border-bottom:none;border-radius:18px 18px 0 0;box-shadow:none}
+.igroup .ad,.igroup input,.field .igroup input,.otp input,.field .otp input{border:2px solid var(--ink);background:var(--card)}
+.igroup .ad{background:var(--paper)}
+.igroup input,.field .igroup input{border-radius:0}
+.igroup .ad:first-child{border-right:0;border-radius:14px 0 0 14px}
+.igroup .ad:last-child{border-left:0;border-radius:0 14px 14px 0}
+.igroup input:first-child,.field .igroup input:first-child{border-radius:14px 0 0 14px}
+.igroup input:last-child,.field .igroup input:last-child{border-radius:0 14px 14px 0}
+.igroup .btn{border-radius:0 14px 14px 0}
+.otp input,.field .otp input{border-radius:14px}
+.codeblk{border:2px solid var(--ink);border-radius:14px;background:var(--paper)}
+.codeblk .cbar{border-bottom:2px solid var(--ink)}
+.thumbs button{border:2px solid var(--ink);border-radius:14px;background:var(--card);box-shadow:2px 2px 0 var(--ink)}
+.cmdk{border:2px solid var(--ink);background:var(--card);border-radius:6px 20px 6px 20px;box-shadow:3px 3px 0 var(--ink)}
+.cmdk .in{border-bottom:2px solid var(--ink)}
+.cmdk .it{border-radius:14px}
+.prose>blockquote{border-left:3px dashed var(--acc)}
+.prose code{background:var(--paper);border:1.5px solid var(--ink)}
+.prose th,.prose td{border-bottom:1.5px dashed var(--ink)}
+.sheetdemo{background:var(--paper)}
