@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>設計系統瀏覽器 v32</title>
+<title>設計系統瀏覽器 v33</title>
 <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +219,7 @@ body{
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
-      <span class="ver" id="dsVer" title="網頁設計規範 v32・dist 32.0.0（2026-10-31）">v32<span class="ver-d"> · 32.0.0 · 2026-10-31</span></span>
+      <span class="ver" id="dsVer" title="網頁設計規範 v33・dist 33.0.0（2026-11-07）">v33<span class="ver-d"> · 33.0.0 · 2026-11-07</span></span>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
@@ -241,7 +241,7 @@ body{
     </div>
     <div class="idx" id="idx" hidden></div>
     <div class="foot">
-  <span>七套風格 × 十二組核心 ＋ SC1〜SC3，淺色共 <b class="num">103</b> 種可用組合；S1、S3、S5、S6 另有深色模式，再加 <b class="num">60</b> 種；S6 深色另分跟隨色系與中性石墨兩種深色底，再加 <b class="num">15</b> 種，共 <b class="num">178</b> 種。</span>
+  <span>八套風格 × 十二組核心 ＋ SC1〜SC3，淺色共 <b class="num">118</b> 種可用組合；S1、S3、S5、S6、S8 另有深色模式，再加 <b class="num">75</b> 種；S6 深色另分跟隨色系與中性石墨兩種深色底，再加 <b class="num">15</b> 種，共 <b class="num">208</b> 種。</span>
   <span>換色系、換模式、換深色底、換密度不重載，換風格才重載；「通用規範」檢視都不重載。</span>
   <span>第二層結構灰階與第三層四個語意色<b>不隨色系改變</b>。</span>
 </div>
@@ -253,7 +253,7 @@ body{
 
 <script>
 
-const FILES={s1:"components_s1_cream.html",s2:"components_s2_emboss.html",s3:"components_s3_glaze.html",s4:"components_s4_doodle.html",s5:"components_s5_aurora.html",s6:"components_s6_graphite.html",s7:"components_s7_editorial.html",found:"foundations.html"};
+const FILES={s1:"components_s1_cream.html",s2:"components_s2_emboss.html",s3:"components_s3_glaze.html",s4:"components_s4_doodle.html",s5:"components_s5_aurora.html",s6:"components_s6_graphite.html",s7:"components_s7_editorial.html",s8:"components_s8_line.html",found:"foundations.html"};
 const STYLES=[
  {k:"s1",cd:"S1",nm:"奶油",hint:"零陰影"},
  {k:"s2",cd:"S2",nm:"浮雕",hint:"凸凹柔影"},
@@ -261,29 +261,30 @@ const STYLES=[
  {k:"s4",cd:"S4",nm:"手帳",hint:"手繪硬影"},
  {k:"s5",cd:"S5",nm:"極光",hint:"暈染有機角"},
  {k:"s6",cd:"S6",nm:"石墨",hint:"無彩灰細線"},
- {k:"s7",cd:"S7",nm:"編輯",hint:"明體直角"}
+ {k:"s7",cd:"S7",nm:"編輯",hint:"明體直角"},
+ {k:"s8",cd:"S8",nm:"線描",hint:"細線圓點"}
 ];
 const THEMES={
- c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#35463D"},
- sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#2449E8"},
- sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6","s7"],"adjust":["s2"],"series":"SC","accDeep":"#3D4C5E"}
+ c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4","s8"],"series":"SC","accDeep":"#35463D"},
+ sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4","s8"],"series":"SC","accDeep":"#2449E8"},
+ sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6","s7"],"adjust":["s2","s8"],"series":"SC","accDeep":"#3D4C5E"}
 };
-const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s7": "編輯"};
+const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s7": "編輯", "s8": "線描"};
 const PAIRS=Object.entries(THEMES).map(([k,t])=>({k,cd:t.id,nm:t.name,a1:t.acc,a2:t.acc2,t}));
-/* 深色是風格的模式，不是另一套風格（規範 8.8）：只有這三套有深色，色系的可用與調整規則跟淺色相同 */
-const DARK_STYLES=["s1","s3","s5","s6"];
+/* 深色是風格的模式，不是另一套風格（規範 8.8）：只有這五套有深色，色系的可用與調整規則跟淺色相同 */
+const DARK_STYLES=["s1","s3","s5","s6","s8"];
 function allowed(k,style){ const t=THEMES[k]; return !!t && (t.styles.includes(style) || (t.adjust||[]).includes(style)); }
 function note(msg){
   const n=document.getElementById("pairNote"); n.textContent=msg; n.hidden=false; n.style.opacity="1";
@@ -331,11 +332,11 @@ let curTint="follow";
 const tintable=()=>TINT_STYLES.includes(curStyle) && effMode()==="dark";
 const effTint=()=>tintable() ? curTint : "follow";
 /* 密度三檔（規範 v26，5.7）：只改尺寸、不改顏色；每套有預設檔與可選範圍，只在元件庫檢視切換（前台示範顯示該套預設、通用規範不分密度） */
-const DENSITY={"s1":{"default":"comfortable","allowed":["comfortable","normal","compact"]},"s2":{"default":"comfortable","allowed":["comfortable","normal"]},"s3":{"default":"comfortable","allowed":["comfortable","normal","compact"]},"s4":{"default":"comfortable","allowed":["comfortable","normal"]},"s5":{"default":"comfortable","allowed":["comfortable","normal"]},"s6":{"default":"normal","allowed":["comfortable","normal","compact"]},"s7":{"default":"comfortable","allowed":["comfortable","normal"]}};
+const DENSITY={"s1":{"default":"comfortable","allowed":["comfortable","normal","compact"]},"s2":{"default":"comfortable","allowed":["comfortable","normal"]},"s3":{"default":"comfortable","allowed":["comfortable","normal","compact"]},"s4":{"default":"comfortable","allowed":["comfortable","normal"]},"s5":{"default":"comfortable","allowed":["comfortable","normal"]},"s6":{"default":"normal","allowed":["comfortable","normal","compact"]},"s7":{"default":"comfortable","allowed":["comfortable","normal"]},"s8":{"default":"comfortable","allowed":["comfortable","normal"]}};
 const DENSE_STYLES=Object.keys(DENSITY).filter(k=>DENSITY[k].allowed.includes("compact"));
 const DENS_HASH={comfortable:"cozy",normal:"normal",compact:"dense"};
 /* 前台示範：每套風格做它最適合的網站（規範 8.7），說明跟著風格換 */
-const STORE_HINT={"s1": "服務型前台・會員中心：咖啡豆訂閱品牌「山嵐咖啡」的會員中心。適合會員中心、預約與點餐等服務型前台、SaaS 產品的對外頁面與說明中心、內容型網站。", "s2": "少資料、多操作的介面・自助機台：自助洗衣店「泡泡洗衣坊」的機台操作畫面。適合自助機台、點餐機、控制面板、設定精靈、智慧家電的操作畫面——畫面以大按鈕與開關為主、幾乎沒有表格。", "s3": "品牌官網・產品發表：耳機品牌「Lumen 聲學」的新品發表與預購頁。適合品牌官網、產品發表、活動頁、一次性瀏覽、要讓人記住的頁面。", "s4": "餐飲・文創前台：社區咖啡館「巷口晨光」的官網首頁。適合咖啡館與餐廳、手作與文創品牌、市集與工作坊、年輕客群的電商——品牌個性本身就是賣點。", "s5": "電商前台：生活選物店「器物日常」的首頁。適合電商首頁與商品列表、預約與會員等服務型前台、品牌官網——要讓商品好看、流程親切。", "s6": "開發者產品官網：Webhook 中繼服務「Relay API」的官網首頁。適合開發者產品的官網與文件、技術文件、狀態頁。", "s7": "內容與閱讀：線上雜誌「慢讀誌」的首頁。適合雜誌與媒體、品牌誌、內容多的品牌官網、說明中心與長文——眼睛要舒服、要讀得下去。"};
+const STORE_HINT={"s1": "服務型前台・會員中心：咖啡豆訂閱品牌「山嵐咖啡」的會員中心。適合會員中心、預約與點餐等服務型前台、SaaS 產品的對外頁面與說明中心、內容型網站。", "s2": "少資料、多操作的介面・自助機台：自助洗衣店「泡泡洗衣坊」的機台操作畫面。適合自助機台、點餐機、控制面板、設定精靈、智慧家電的操作畫面——畫面以大按鈕與開關為主、幾乎沒有表格。", "s3": "品牌官網・產品發表：耳機品牌「Lumen 聲學」的新品發表與預購頁。適合品牌官網、產品發表、活動頁、一次性瀏覽、要讓人記住的頁面。", "s4": "餐飲・文創前台：社區咖啡館「巷口晨光」的官網首頁。適合咖啡館與餐廳、手作與文創品牌、市集與工作坊、年輕客群的電商——品牌個性本身就是賣點。", "s5": "電商前台：生活選物店「器物日常」的首頁。適合電商首頁與商品列表、預約與會員等服務型前台、品牌官網——要讓商品好看、流程親切。", "s6": "開發者產品官網：Webhook 中繼服務「Relay API」的官網首頁。適合開發者產品的官網與文件、技術文件、狀態頁。", "s7": "內容與閱讀：線上雜誌「慢讀誌」的首頁。適合雜誌與媒體、品牌誌、內容多的品牌官網、說明中心與長文——眼睛要舒服、要讀得下去。", "s8": "設計工作室官網：工業設計工作室「線間設計室」的官網首頁。適合品牌官網、產品發表、設計工作室與作品集、手機 App 前台、儀表板首頁——要「看」、要精密冷靜的畫面。"};
 let curDens=null;   /* null ＝ 跟該套預設 */
 const effDens=()=>{ const d=DENSITY[curStyle]; return (curView==="lib" && curDens && d.allowed.includes(curDens)) ? curDens : d.default; };
 const frame=document.getElementById("stage");
@@ -419,7 +420,7 @@ function syncTint(){
     b.setAttribute("aria-pressed",String(on && b.dataset.t===eff));
     b.title=on?(b.dataset.t==="follow"?"預設":""):(TINT_STYLES.includes(curStyle)?"只在深色時可切換":STYLE_NAME[curStyle]+"沒有這個開關");
   });
-  document.getElementById("tintHint").textContent = !TINT_STYLES.includes(curStyle) ? "只有 S6 石墨的深色有這個開關；S3、S5 的深色本來就帶品牌色。"
+  document.getElementById("tintHint").textContent = !TINT_STYLES.includes(curStyle) ? "只有 S6 石墨的深色有這個開關；S3、S5 的深色本來就帶品牌色，S1 固定暖紙、S8 固定中性黑。"
     : !on ? "切到深色後可選：跟隨色系（預設）讓六個面帶主色的色調，中性石墨是純無彩色。"
     : "跟隨色系：明度不動、彩度 0.012，換色系時底色跟著換；文字三色不變。中性石墨：#121212 系列純無彩色。";
 }
@@ -433,7 +434,7 @@ function syncMode(){
   });
   document.getElementById("modeHint").textContent = found ? "通用規範不分模式。"
     : has ? "同一套風格切白天／夜間：結構、圓角、字型不變，只換灰階、語意色與品牌色的深色值。"
-    : "深色模式只有 S1 奶油、S3 琉璃、S5 極光、S6 石墨"+(curMode==="dark"?"；"+STYLE_NAME[curStyle]+"顯示淺色。":"。");
+    : "深色模式只有 S1 奶油、S3 琉璃、S5 極光、S6 石墨、S8 線描"+(curMode==="dark"?"；"+STYLE_NAME[curStyle]+"顯示淺色。":"。");
 }
 function sync(){
   lockChips(); syncMode(); syncTint(); syncDens(); setFavicon(curPair);
@@ -463,7 +464,7 @@ document.getElementById("viewSeg").addEventListener("click",e=>{
   document.getElementById("viewHint").textContent = curView==="store"
     ? STORE_HINT[curStyle]+"說明與不適合的情境寫在示範頁頂端。"
     : curView==="found"
-    ? "七套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
+    ? "八套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
     : "七十項元件一項一節，依風格、模式與色系即時換裝。";
   sync(); load();
 });
@@ -523,7 +524,7 @@ addEventListener("hashchange",()=>{
   if(curStyle!==ps || curPair!==pp || effMode()!==pm || effDens()!==pd || effTint()!==pt){ sync(); if(curStyle!==ps) load(); else try{ frame.contentWindow.postMessage({pair:curPair},"*"); frame.contentWindow.postMessage({mode:effMode()},"*"); frame.contentWindow.postMessage({tint:effTint()},"*"); frame.contentWindow.postMessage({density:effDens()},"*"); }catch(_){ load(); } }
 });
 
-/* ══ 元件清單：六套共用的完整清冊，逐項標示本風格有沒有 ══ */
+/* ══ 元件清單：八套共用的完整清冊，逐項標示本風格有沒有 ══ */
 const TIERS=[
  {tier:"核心 CORE ─ 每個專案必備", key:"core", groups:[
   {g:"基礎 FOUNDATION", items:[["設計 Token","設計 Token"],["字級層級","字級層級 Type scale"],["分隔線","分隔線 Divider"]]},

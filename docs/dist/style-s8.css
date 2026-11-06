@@ -1,0 +1,601 @@
+/* ══ 管理者工作室 設計系統 33.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
+   由 emit_s8.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
+   風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（規範 12.2）。
+   四項風格層例外（規範 4.1、4.2、7.4，僅 S8）：標題細字重、英文眉標寬字距 0.3em、圖示線寬 1.5、數字用 Inter。
+   字型：Google Fonts 另載 Inter:wght@300;400;700 與 Noto Sans TC 的 300。
+   深色（規範 8.8.7）：html[data-theme="dark"] 強制深色，不寫則跟隨系統；中性黑，卡片與頁面同為 #121212，
+   品牌色深色值在 theme.js 的 DARK.s8（沿用 S6）。深色規則照示範頁的順序緊接在對應的淺色規則之後。 */
+
+:root{--ink:#1A1A1A;--line:#C8C8C8;--muted:#5E5E5E;--paperc:#E6E6E6}
+body{background:#EDEDED}
+:where(html[data-theme="dark"]) body{background:var(--page)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) body{background:var(--page)}
+}
+.accbar{background:rgba(237,237,237,.93)}
+:where(html[data-theme="dark"]) .accbar{background:color-mix(in srgb,var(--card) 93%,transparent)}
+:where(html[data-theme="dark"]) .accbtn{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .accbar{background:color-mix(in srgb,var(--card) 93%,transparent)}
+:where(html:not([data-theme="light"])) .accbtn{background:var(--card)}
+}
+.board{background:var(--card)}
+:where(html[data-theme="dark"]) .board{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .board{background:var(--card)}
+}
+.btn{background:var(--card)}
+:where(html[data-theme="dark"]) .btn{background:var(--card)}
+:where(html[data-theme="dark"]) .btn.primary{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .btn{background:var(--card)}
+:where(html:not([data-theme="light"])) .btn.primary{color:var(--on-acc)}
+}
+.btn.ghost{background:var(--card)}
+:where(html[data-theme="dark"]) .btn.ghost{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .btn.ghost{background:var(--card)}
+}
+.btn.danger{background:var(--card)}
+:where(html[data-theme="dark"]) .btn.danger{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .btn.danger{background:var(--card)}
+}
+.field input,.field select,.field textarea{background:var(--card)}
+:where(html[data-theme="dark"]) .field input,:where(html[data-theme="dark"]) .field select,:where(html[data-theme="dark"]) .field textarea{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .field input,:where(html:not([data-theme="light"])) .field select,:where(html:not([data-theme="light"])) .field textarea{background:var(--card)}
+}
+.search{background:var(--card)}
+:where(html[data-theme="dark"]) .search{background:var(--card)}
+:where(html[data-theme="dark"]) .check i{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .search{background:var(--card)}
+:where(html:not([data-theme="light"])) .check i{color:var(--on-acc)}
+}
+.chip{background:var(--card)}
+:where(html[data-theme="dark"]) .chip{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .chip{background:var(--card)}
+}
+.pillf{background:var(--card)}
+:where(html[data-theme="dark"]) .pillf{background:var(--card)}
+:where(html[data-theme="dark"]) .pillf.on{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .pillf{background:var(--card)}
+:where(html:not([data-theme="light"])) .pillf.on{color:var(--on-acc)}
+}
+.seg button{background:var(--card)}
+:where(html[data-theme="dark"]) .seg button{background:var(--card)}
+:where(html[data-theme="dark"]) .seg button.on{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .seg button{background:var(--card)}
+:where(html:not([data-theme="light"])) .seg button.on{color:var(--on-acc)}
+}
+.st.gray{background:#E2E2E2}
+:where(html[data-theme="dark"]) .st.gray{background:var(--sel)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .st.gray{background:var(--sel)}
+}
+.tblwrap{background:var(--card)}
+:where(html[data-theme="dark"]) .tblwrap{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .tblwrap{background:var(--card)}
+}
+.t td{border-bottom:1px solid #D6D6D6}
+:where(html[data-theme="dark"]) .t td{border-bottom:1px solid var(--line)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .t td{border-bottom:1px solid var(--line)}
+}
+.statc{background:var(--card)}
+:where(html[data-theme="dark"]) .statc{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .statc{background:var(--card)}
+}
+.cardx{background:var(--card)}
+:where(html[data-theme="dark"]) .cardx{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .cardx{background:var(--card)}
+}
+.notice{background:var(--card)}
+:where(html[data-theme="dark"]) .notice{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .notice{background:var(--card)}
+}
+.p1 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p1 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p1 button.on{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .p1 button{background:var(--card)}
+:where(html:not([data-theme="light"])) .p1 button.on{color:var(--on-acc)}
+}
+.p2 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p2 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p2 button.on{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .p2 button{background:var(--card)}
+:where(html:not([data-theme="light"])) .p2 button.on{color:var(--on-acc)}
+}
+.p2 .dots{background:var(--card)}
+:where(html[data-theme="dark"]) .p2 .dots{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .p2 .dots{background:var(--card)}
+}
+.p3 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p3 button{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .p3 button{background:var(--card)}
+}
+.p5 button{background:var(--card)}
+:where(html[data-theme="dark"]) .p5 button{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .p5 button{background:var(--card)}
+}
+.modal{background:var(--card)}
+:where(html[data-theme="dark"]) .modal{background:var(--card)}
+:where(html[data-theme="dark"]) .toast{color:var(--on-ink)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .modal{background:var(--card)}
+:where(html:not([data-theme="light"])) .toast{color:var(--on-ink)}
+}
+.flow .stp{background:var(--card)}
+:where(html[data-theme="dark"]) .flow .stp{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .flow .stp{background:var(--card)}
+}
+.dd .trg{background:var(--card)}
+:where(html[data-theme="dark"]) .dd .trg{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .dd .trg{background:var(--card)}
+}
+.menu{background:var(--card)}
+:where(html[data-theme="dark"]) .menu{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .menu{background:var(--card)}
+}
+.kebab{background:var(--card)}
+:where(html[data-theme="dark"]) .kebab{background:var(--card)}
+:where(html[data-theme="dark"]) .mck i{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .kebab{background:var(--card)}
+:where(html:not([data-theme="light"])) .mck i{color:var(--on-acc)}
+}
+.sw2 .tk::after{background:var(--card)}
+:where(html[data-theme="dark"]) .sw2 .tk::after{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .sw2 .tk::after{background:var(--card)}
+}
+.txa textarea{background:var(--card)}
+:where(html[data-theme="dark"]) .txa textarea{background:var(--card)}
+:where(html[data-theme="dark"]) .tip{color:var(--on-ink)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .txa textarea{background:var(--card)}
+:where(html:not([data-theme="light"])) .tip{color:var(--on-ink)}
+}
+.sk{background:linear-gradient(90deg,#E0E0E0 25%,#EAEAEA 50%,#E0E0E0 75%)}
+:where(html[data-theme="dark"]) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,var(--sel) 75%);background-size:200% 100%}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .sk{background:linear-gradient(90deg,var(--sel) 25%,var(--paperc) 50%,var(--sel) 75%);background-size:200% 100%}
+}
+.noti{background:var(--card)}
+:where(html[data-theme="dark"]) .noti{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .noti{background:var(--card)}
+}
+.nrow{border-bottom:1px solid #D6D6D6}
+:where(html[data-theme="dark"]) .nrow{border-bottom:1px solid var(--line)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .nrow{border-bottom:1px solid var(--line)}
+}
+.acc-p{background:var(--card)}
+:where(html[data-theme="dark"]) .acc-p{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .acc-p{background:var(--card)}
+}
+.accbar{background:rgba(237,237,237,.93)}
+:where(html[data-theme="dark"]) .accbar{background:color-mix(in srgb,var(--card) 93%,transparent);border-bottom:1px solid rgba(255,255,255,.09)}
+:where(html[data-theme="dark"]) .accbtn{border:1px solid rgba(255,255,255,.14);border-radius:999px;background:var(--card);color:var(--ink)}
+:where(html[data-theme="dark"]) .accbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .accbar{background:color-mix(in srgb,var(--card) 93%,transparent);border-bottom:1px solid rgba(255,255,255,.09)}
+:where(html:not([data-theme="light"])) .accbtn{border:1px solid rgba(255,255,255,.14);border-radius:999px;background:var(--card);color:var(--ink)}
+:where(html:not([data-theme="light"])) .accbtn:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+}
+.bell{background:var(--card)}
+:where(html[data-theme="dark"]) .bell{background:var(--card)}
+:where(html[data-theme="dark"]) .bell b{color:var(--on-err);border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .aibadge{color:var(--on-acc2) !important}
+:where(html[data-theme="dark"]) .alert.err{background:var(--err-soft,var(--err-soft))}
+:where(html[data-theme="dark"]) .alert.wrn{background:var(--wrn-soft,var(--wrn-soft))}
+:where(html[data-theme="dark"]) .alert.ok{background:var(--ok-soft,var(--ok-soft))}
+:where(html[data-theme="dark"]) .alert.info{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .bell{background:var(--card)}
+:where(html:not([data-theme="light"])) .bell b{color:var(--on-err);border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .aibadge{color:var(--on-acc2) !important}
+:where(html:not([data-theme="light"])) .alert.err{background:var(--err-soft,var(--err-soft))}
+:where(html:not([data-theme="light"])) .alert.wrn{background:var(--wrn-soft,var(--wrn-soft))}
+:where(html:not([data-theme="light"])) .alert.ok{background:var(--ok-soft,var(--ok-soft))}
+:where(html:not([data-theme="light"])) .alert.info{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+}
+.pop{background:var(--card)}
+:where(html[data-theme="dark"]) .pop{background:var(--card)}
+:where(html[data-theme="dark"]) .pop .pt i{background:var(--wrn-soft,var(--wrn-soft))}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .pop{background:var(--card)}
+:where(html:not([data-theme="light"])) .pop .pt i{background:var(--wrn-soft,var(--wrn-soft))}
+}
+.cal{background:var(--card)}
+:where(html[data-theme="dark"]) .cal{background:var(--card)}
+:where(html[data-theme="dark"]) .cal .cg .sel{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .cal .quick button.on{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .tab.on .cnt{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .cal{background:var(--card)}
+:where(html:not([data-theme="light"])) .cal .cg .sel{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .cal .quick button.on{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .tab.on .cnt{color:var(--on-acc)}
+}
+.desc{background:var(--card)}
+:where(html[data-theme="dark"]) .desc{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .desc{background:var(--card)}
+}
+.desc dt{background:var(--paperc,#E6E6E6)}
+:where(html[data-theme="dark"]) .desc dt{background:var(--paperc,var(--paperc))}
+:where(html[data-theme="dark"]) .avatar{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .avatar .dot{border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .avstack .avatar{border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .badge>b{color:var(--on-err);border:2px solid var(--card)}
+:where(html[data-theme="dark"]) .count.err{background:var(--err-soft,var(--err-soft))}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .desc dt{background:var(--paperc,var(--paperc))}
+:where(html:not([data-theme="light"])) .avatar{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .avatar .dot{border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .avstack .avatar{border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .badge>b{color:var(--on-err);border:2px solid var(--card)}
+:where(html:not([data-theme="light"])) .count.err{background:var(--err-soft,var(--err-soft))}
+}
+.count.gray{background:var(--paperc,#E6E6E6)}
+:where(html[data-theme="dark"]) .count.gray{background:var(--paperc,var(--paperc))}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .count.gray{background:var(--paperc,var(--paperc))}
+}
+.drawerdemo{background:#EDEDED}
+:where(html[data-theme="dark"]) .drawerdemo{background:var(--page)}
+:where(html[data-theme="dark"]) .drawerdemo .scrim{background:rgba(0,0,0,.6)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .drawerdemo{background:var(--page)}
+:where(html:not([data-theme="light"])) .drawerdemo .scrim{background:rgba(0,0,0,.6)}
+}
+.drawer{background:var(--card)}
+:where(html[data-theme="dark"]) .drawer{background:var(--card);box-shadow:-12px 0 32px rgba(0,0,0,.6)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .drawer{background:var(--card);box-shadow:-12px 0 32px rgba(0,0,0,.6)}
+}
+.toolbar{background:var(--card)}
+:where(html[data-theme="dark"]) .toolbar{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .toolbar{background:var(--card)}
+}
+.slider .th{background:var(--card)}
+:where(html[data-theme="dark"]) .slider .th{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .slider .tt{color:var(--on-ink)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .slider .th{background:var(--card);box-shadow:0 1px 4px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .slider .tt{color:var(--on-ink)}
+}
+.casc{background:var(--card)}
+:where(html[data-theme="dark"]) .casc{background:var(--card)}
+:where(html[data-theme="dark"]) .casc li.pick{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .casc{background:var(--card)}
+:where(html:not([data-theme="light"])) .casc li.pick{color:var(--on-acc)}
+}
+.tlist{background:var(--card)}
+:where(html[data-theme="dark"]) .tlist{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .tlist{background:var(--card)}
+}
+.tlist .th2{background:var(--paperc,#E6E6E6)}
+:where(html[data-theme="dark"]) .tlist .th2{background:var(--paperc,var(--paperc))}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .tlist .th2{background:var(--paperc,var(--paperc))}
+}
+.stepper .sp .dot{background:var(--card)}
+:where(html[data-theme="dark"]) .stepper .sp .dot{background:var(--card)}
+:where(html[data-theme="dark"]) .stepper .sp.done .dot{color:var(--on-acc)}
+:where(html[data-theme="dark"]) .tl li::before{border:2px solid var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .stepper .sp .dot{background:var(--card)}
+:where(html:not([data-theme="light"])) .stepper .sp.done .dot{color:var(--on-acc)}
+:where(html:not([data-theme="light"])) .tl li::before{border:2px solid var(--card)}
+}
+.feed{background:var(--card)}
+:where(html[data-theme="dark"]) .feed{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .feed{background:var(--card)}
+}
+.chart{background:var(--card)}
+:where(html[data-theme="dark"]) .chart{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .chart{background:var(--card)}
+}
+.spark{background:var(--card)}
+:where(html[data-theme="dark"]) .spark{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .spark{background:var(--card)}
+}
+.split{background:var(--card)}
+:where(html[data-theme="dark"]) .split{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .split{background:var(--card)}
+}
+.split .pa{background:var(--paperc,#E6E6E6)}
+:where(html[data-theme="dark"]) .split .pa{background:var(--paperc,var(--paperc))}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .split .pa{background:var(--paperc,var(--paperc))}
+}
+.thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,#E6E6E6) 7px 14px)}
+:where(html[data-theme="dark"]) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
+:where(html[data-theme="dark"]) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
+:where(html[data-theme="dark"]) .thumb .arr{background:color-mix(in srgb,var(--card) 95%,transparent);box-shadow:0 2px 8px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .thumb .dots i{background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid rgba(255,255,255,.15)}
+:where(html[data-theme="dark"]) .strip .thumb small{background:color-mix(in srgb,var(--card) 95%,transparent)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
+:where(html:not([data-theme="light"])) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
+:where(html:not([data-theme="light"])) .thumb .arr{background:color-mix(in srgb,var(--card) 95%,transparent);box-shadow:0 2px 8px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .thumb .dots i{background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid rgba(255,255,255,.15)}
+:where(html:not([data-theme="light"])) .strip .thumb small{background:color-mix(in srgb,var(--card) 95%,transparent)}
+}
+.result{background:var(--card)}
+:where(html[data-theme="dark"]) .result{background:var(--card)}
+:where(html[data-theme="dark"]) .result.ok .ic{background:var(--ok-soft,var(--ok-soft))}
+:where(html[data-theme="dark"]) .result.err .ic{background:var(--err-soft,var(--err-soft))}
+:where(html[data-theme="dark"]) .result.info .ic{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .result{background:var(--card)}
+:where(html:not([data-theme="light"])) .result.ok .ic{background:var(--ok-soft,var(--ok-soft))}
+:where(html:not([data-theme="light"])) .result.err .ic{background:var(--err-soft,var(--err-soft))}
+:where(html:not([data-theme="light"])) .result.info .ic{background:var(--info-soft,var(--info-soft));color:var(--info,var(--info))}
+}
+.result .dl{background:var(--paperc,#E6E6E6)}
+:where(html[data-theme="dark"]) .result .dl{background:var(--paperc,var(--paperc))}
+html[data-theme="dark"].sc-light .rowset:has(.st.wrn) .aibadge,html[data-theme="dark"].sc-light tr:has(.st.wrn) .aibadge,html[data-theme="dark"].sc-light .nitem:has(.st.wrn) .aibadge{color:var(--on-acc) !important}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .result .dl{background:var(--paperc,var(--paperc))}
+html:not([data-theme="light"]).sc-light .rowset:has(.st.wrn) .aibadge,html:not([data-theme="light"]).sc-light tr:has(.st.wrn) .aibadge,html:not([data-theme="light"]).sc-light .nitem:has(.st.wrn) .aibadge{color:var(--on-acc) !important}
+}
+.sheet{background:var(--card)}
+:where(html[data-theme="dark"]) .sheet{background:var(--card);box-shadow:0 -8px 24px rgba(0,0,0,.6)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .sheet{background:var(--card);box-shadow:0 -8px 24px rgba(0,0,0,.6)}
+}
+.igroup input,.field .igroup input{background:var(--card)}
+:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:var(--card)}
+}
+.otp input,.field .otp input{background:var(--card)}
+:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:var(--card)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:var(--card)}
+}
+.cmdk{background:var(--card)}
+:where(html[data-theme="dark"]) .cmdk{background:var(--card);box-shadow:0 16px 48px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .cmdk{background:var(--card);box-shadow:0 16px 48px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
+}
+.card{background:var(--card)}
+:where(html[data-theme="dark"]) .card{background:var(--card)}
+:where(html[data-theme="dark"]) .check.ind i{color:var(--on-acc)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .card{background:var(--card)}
+:where(html:not([data-theme="light"])) .check.ind i{color:var(--on-acc)}
+}
+.notice{background:#EDEDED}
+:where(html[data-theme="dark"]) .notice{background:var(--page)}
+html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#121212;--paperc:#1A1A1A;--band:#1A1A1A;--sel:#262626;--line:#3A3A3A;--line-2:#EDEDED;--ink:#EDEDED;--muted:#A3A3A3;--err:#F28B82;--err-soft:#362524;--wrn:#E2B341;--wrn-soft:#332C1A;--ok:#74C483;--ok-soft:#222E24;--info:#7DB6EE;--info-soft:#232C35;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-26292e:var(--ink);--tk-6f6b64:var(--muted);--tk-e4e2de:var(--line);--tk-fbfaf8:var(--paperc);--tk-e9c94a:var(--wrn);--tk-5a5751:var(--muted);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .notice{background:var(--page)}
+html:not([data-theme="light"]){color-scheme:dark;--page:#121212;--card:#121212;--paperc:#1A1A1A;--band:#1A1A1A;--sel:#262626;--line:#3A3A3A;--line-2:#EDEDED;--ink:#EDEDED;--muted:#A3A3A3;--err:#F28B82;--err-soft:#362524;--wrn:#E2B341;--wrn-soft:#332C1A;--ok:#74C483;--ok-soft:#222E24;--info:#7DB6EE;--info-soft:#232C35;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-26292e:var(--ink);--tk-6f6b64:var(--muted);--tk-e4e2de:var(--line);--tk-fbfaf8:var(--paperc);--tk-e9c94a:var(--wrn);--tk-5a5751:var(--muted);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}
+}
+/* ══════════════════════════════════════════════════════════════
+   S8 線描 LINE 表面層（build_s8_line.py 產生）
+   元件 HTML 與 class 與 S1〜S7 完全相同，這裡只覆寫材質。
+   材質原理：只用 1px 線條、圓點與留白——卡片與頁面同色、選中用同心圓與實心點、零陰影零漸層。
+   四項風格層例外：標題細字重、英文眉標寬字距、圖示線寬 1.5、數字用 Inter。
+   ══════════════════════════════════════════════════════════════ */
+:root{--page:#EDEDED;--card:#EDEDED;--band:#E6E6E6;--sel:#E2E2E2;--line-2:#1A1A1A;
+ --lat:'Inter',Arial,'Noto Sans TC',sans-serif}
+body{background:var(--page)}
+.board{background:transparent}
+
+/* 墨線：可以按的東西用墨色細線，分隔用淡線 */
+.btn{border-color:var(--ink);background:transparent}
+.btn.ghost,.btn.danger{border-width:1px;background:transparent}
+.kebab,.p1 button,.p3 button,.p5 button{border-color:var(--ink);background:transparent}
+.seg,.search,.chip,.pillf{background:transparent}
+.seg button{background:transparent}
+.chip.on{border-width:1px;background:transparent}
+.statc.hero{border-width:1px;background:transparent}
+
+/* 輸入框：只留底線，聚焦時變主色 */
+.field input,.field select{border:0;border-bottom:1px solid var(--ink);border-radius:0;background:transparent}
+.dd .trg{border:0;border-bottom:1.5px solid var(--acc);border-radius:0;background:transparent}
+.field.err input{border:0;border-bottom:1.5px solid var(--err)}
+.txa textarea{border-color:var(--ink);background:transparent}
+.upload{border-width:1px;background:transparent}
+/* 面板緊接在只有底線的觸發框下方：面板不畫上緣，底線就是面板的上緣（規範 9.3「一處分隔只用一條線」） */
+.field + .cal,.field + .menu,.dd + .casc,.dd + .menu,.dd .trg + .menu{border-top:0;border-top-left-radius:0;border-top-right-radius:0}
+/* 觸發框與面板對齊（v6，日期選擇器面板沒有對齊觸發框）：面板與觸發框同寬、緊貼底線，左右兩條邊直接接在底線的兩端。
+   示範頁的面板帶行內 margin-top，所以這裡要 !important；實際產品的面板是浮層定位，不受影響 */
+.field:has(+ .cal),.field:has(+ .menu){width:auto}
+.dd:has(+ .casc){width:auto !important}
+.field + .cal,.field + .menu,.dd + .casc,.dd .trg + .menu{margin-top:0 !important}
+/* 時間選擇器的「時」「分」欄名與下方數字同樣置中 */
+.tp .tpcol .wd{justify-content:center}
+
+/* 選中＝同心圓：核取、單選、開關 */
+.check i{border:1px solid var(--ink);border-radius:4px}
+.radio i{border:1px solid var(--ink)}
+.radio.on i{border-color:var(--acc);box-shadow:0 0 0 3px var(--page),0 0 0 4px var(--line)}
+.sw2 .tk{background:transparent;box-shadow:inset 0 0 0 1px var(--ink)}
+.sw2 .tk::after{background:var(--page);box-shadow:inset 0 0 0 1px var(--ink)}
+.sw2.on .tk{background:var(--acc);box-shadow:none}
+.sw2.on .tk::after{box-shadow:none}
+
+/* 頁籤：目前頁是騎在底線上的圓點，不用粗底線 */
+.tab{position:relative}
+.tab.on{border-bottom-color:transparent}
+.tab.on::after{content:"";position:absolute;left:50%;bottom:-6px;width:7px;height:7px;border-radius:50%;background:var(--acc);transform:translateX(-50%)}
+.p4 button.on{border-bottom-color:transparent;position:relative}
+.p4 button.on::after{content:"";position:absolute;left:50%;bottom:-6px;width:5px;height:5px;border-radius:50%;background:var(--acc);transform:translateX(-50%)}
+
+/* 狀態標籤：細框膠囊加圓點，不鋪底 */
+.st,.st.acc,.st.err,.st.ok,.st.wrn,.st.gray{background:transparent;border:1px solid currentColor}
+.st::before{content:"";display:inline-block;width:6px;height:6px;margin-right:var(--sp-1);border-radius:50%;background:currentColor;vertical-align:middle}
+
+/* 卡片、表格：同色面，只靠線 */
+.card .card-title{background:transparent}
+.notice{background:transparent;border:1px solid var(--line)}
+.empty{border-width:1px}
+
+/* 進度條：淡線軌道上一條 2px 實線 */
+.bar{background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat;border-radius:0}
+.bar i{background:linear-gradient(var(--acc),var(--acc)) center/100% 2px no-repeat;border-radius:0}
+
+/* 時間軸：空心圓點，目前節點外加一圈淡線 */
+.tl li::before{background:var(--page);border-color:var(--page);box-shadow:0 0 0 1px var(--ink)}
+.tl li.acc::before{background:var(--acc);box-shadow:0 0 0 1px var(--acc),0 0 0 5px var(--page),0 0 0 6px var(--line)}
+.tl li.ok::before{background:var(--ok);box-shadow:0 0 0 1px var(--ok)}
+.tl li.err::before{background:var(--err);box-shadow:0 0 0 1px var(--err)}
+.avatar .dot{border-color:var(--page)}
+/* 數字角標：S8 的按鈕透明、卡片與頁面同色，S1 深色加的那圈卡片色外環沒有作用，改成與角標同色（尺寸不變） */
+html[data-theme="dark"] .badge>b{border-color:var(--err)}
+html[data-theme="dark"] .badge>b.gray{border-color:var(--muted)}
+
+/* 與「線描風格 Mockup」對齊（v3）*/
+/* 側欄：沒選中的是次要字色；選中不鋪色塊，改主色字加一圈淡線 */
+.nitem{color:var(--muted)}
+.nitem.on{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--line)}
+/* 區塊標題與表頭：墨線分段，表格標題列不鋪表頭帶 */
+.sec .rule{background:var(--ink)}
+/* 示範板不再加外框：區塊已由上方墨線分段，再框一次就是兩條線（規範 9.3） */
+.board{border-color:transparent}
+.tcap{background:transparent}
+.t th{border-bottom-color:var(--ink)}
+/* 進度條末端加一個實心點 */
+.bar i{background:radial-gradient(circle at calc(100% - 3.5px) 50%,var(--acc) 0 3px,transparent 3.5px),linear-gradient(var(--acc),var(--acc)) center/100% 2px no-repeat}
+/* 零陰影：側滑面板與命令面板改一條淡線分層 */
+.drawer{box-shadow:none;border-left:1px solid var(--line)}
+.cmdk{box-shadow:none}
+
+/* 線條一律 1px（v4，量表這類元件改成細細的一條線，其他類似的線條都維持 1px）
+   做法：元件高度與版面不動，只把「條」畫成置中的 1px 線，末端加一個實心點標出數值位置；焦點環維持 2px（無障礙） */
+.bar i{background:radial-gradient(circle at calc(100% - 3.5px) 50%,var(--acc) 0 3px,transparent 3.5px),linear-gradient(var(--acc),var(--acc)) center/100% 1px no-repeat}
+.meter .mt{background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat;border-radius:0;overflow:visible}
+.meter .mt i{--c:var(--ok);background:radial-gradient(circle at calc(100% - 3.5px) 50%,var(--c) 0 3px,transparent 3.5px),linear-gradient(var(--c),var(--c)) center/100% 1px no-repeat;border-radius:0}
+.meter.wrn .mt i{--c:var(--wrn);background:radial-gradient(circle at calc(100% - 3.5px) 50%,var(--c) 0 3px,transparent 3.5px),linear-gradient(var(--c),var(--c)) center/100% 1px no-repeat}
+.meter.err .mt i{--c:var(--err);background:radial-gradient(circle at calc(100% - 3.5px) 50%,var(--c) 0 3px,transparent 3.5px),linear-gradient(var(--c),var(--c)) center/100% 1px no-repeat}
+.meter .mt em{width:1px;opacity:1;background:var(--ink)}
+.slider .tr{background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat;border-radius:0}
+.slider .fl{background:linear-gradient(var(--acc),var(--acc)) center/100% 1px no-repeat;border-radius:0}
+.slider .th{border-width:1px;box-shadow:none;background:radial-gradient(circle,var(--acc) 0 3px,var(--page) 3.5px)}
+.pwstr i{background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat;border-radius:0}
+.pwstr.s1 i:nth-child(1){background:linear-gradient(var(--err),var(--err)) center/100% 1px no-repeat}
+.pwstr.s2 i:nth-child(-n+2){background:linear-gradient(var(--wrn),var(--wrn)) center/100% 1px no-repeat}
+.pwstr.s3 i:nth-child(-n+3),.pwstr.s4 i{background:linear-gradient(var(--ok),var(--ok)) center/100% 1px no-repeat}
+.stepper .sp::before{height:1px}
+.stepper .sp .dot{border-width:1px}
+.stepper .sp.cur .dot{box-shadow:0 0 0 3px var(--page),0 0 0 4px var(--line)}
+.tl{border-left-width:1px}
+.tl li::before{left:-28.5px}
+.sheet .grab{background:linear-gradient(var(--muted),var(--muted)) center/100% 1px no-repeat}
+.qty,.flow .stp.cur,.radcell .shape,.mck i{border-width:1px}
+.dd .trg{border-bottom-width:1px}
+.field.err input{border-bottom-width:1px}
+.field input:focus,.field select:focus{border:0;border-bottom:1px solid var(--acc)}
+.field textarea:focus,.txa textarea:focus,.p5 input:focus{border-width:1px}
+.cal .cg .today{box-shadow:inset 0 0 0 1px var(--acc)}
+.spin{border-width:1px}
+.prose>blockquote{border-left-width:1px}
+
+/* ══ 線描語法整體收斂（v4）══
+   一、線一律 1px（焦點環 2px 是無障礙要求，不算）。
+   二、面不鋪色：卡片、表頭、選中列、提示、標籤、計數一律透明，靠線分層。
+   三、選中＝實心點或細框：小的點（圓點、核取、單選、步驟、角標、目前頁碼）可以實心；
+       整條、整列、整塊的選中改「主色字＋1px 細框」，不鋪色塊。
+   四、實心只留給主要動作：主按鈕、分段控制與篩選膠囊的目前項、開關開啟。
+   五、條改成線：進度、量表、滑桿、強度、連接線＝1px 線＋末端實心點。
+   六、浮層（Toast、提示氣泡、數值氣泡）也不用墨色實心，改同色底＋1px 墨線。 */
+/* 二、面不鋪色 */
+.tfoot,.cardx .ct,.noti .nh,.abody,.tlist .th2,.split .pa,.result .dl,.desc dt,.igroup .ad,.codeblk,.sheetdemo{background:transparent}
+.prose code{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.alert.err,.alert.wrn,.alert.ok,.alert.info{background:transparent;border-color:currentColor}
+.conf.hi,.conf.md,.conf.lo,.count,.count.err,.count.gray,.tab .cnt{background:transparent;box-shadow:inset 0 0 0 1px currentColor}
+.count.gray{color:var(--muted)}
+.pop .pt i,.result.ok .ic,.result.err .ic,.result.info .ic{background:transparent;box-shadow:inset 0 0 0 1px currentColor}
+/* 三、整條整列的選中：主色字＋1px 細框，不鋪色塊 */
+.flow .stp.done,.mi.on,.t tr.sel td,.t tbody tr.sel,.tlist .check.on{background:transparent}
+.batchbar{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.toolbar .tb.on,.casc li.pick,.tp .tpcol span.sel,.tab.on .cnt{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
+.casc li.on,.tree .nd.on,.split .pa .li.on,.cmdk .it.on{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--line)}
+.cal .cg .inr{background:transparent;color:var(--acc)}
+/* 頭像與來源標記：細框圓，字用主色或深副色 */
+/* 頭像底用卡片色而不是透明：堆疊頭像互相壓住時，後面的細框才不會透出來 */
+.avatar,html.sc-light .avatar{background:var(--card);color:var(--acc);box-shadow:inset 0 0 0 1px currentColor}
+.avatar.gray{background:var(--card);color:var(--muted);box-shadow:inset 0 0 0 1px currentColor}
+.avatar.a2,html.sc-light .avatar.a2{background:var(--card);color:var(--acc2-deep,var(--acc2));box-shadow:inset 0 0 0 1px currentColor}
+.aibadge,html.sc-light .aibadge,html.sc-light .rowset:has(.st.wrn) .aibadge,html.sc-light tr:has(.st.wrn) .aibadge,html.sc-light .nitem:has(.st.wrn) .aibadge{background:transparent !important;color:var(--acc2-deep) !important;box-shadow:inset 0 0 0 1px currentColor}
+html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:0}
+/* 六、浮層：同色底＋1px 墨線 */
+.toast{background:var(--card);color:var(--ink);border-color:var(--ink)}
+.toast i{background:var(--ok)}
+.tip,.slider .tt{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+
+/* 圖表（v5）：折線、走勢線、資料點外框一律 1px；資料點中心用卡片色（不是白）；走勢線不鋪面積；
+   長條是資料本身（寬度就是數值），維持實心。圖例跟著標記走：長條給小方塊、折線給一段 1px 線 */
+.chart .ln,.chart .lnd1,.chart .lnd2,.chart .lnd3,.chart .lnd4,.chart .lnd5,.chart .lnd6,.chart .lnd7,.chart .lnd8{stroke-width:1}
+.chart svg circle{fill:var(--card);stroke-width:1}
+.spark .sl{stroke-width:1}
+.spark .sa{fill:none}
+.chart .lg i[style*="acc2"]{width:14px;height:1px;border-radius:0;vertical-align:middle}
+
+/* 全面複查補件（v5，以 audit_line_grammar.py 逐元素量出的殘留）*/
+/* 白色外環：S1 用白圈把角標、堆疊頭像與底下的東西隔開；S8 沒有白，改與自身同色或卡片色（尺寸不變） */
+.avstack .avatar{border-color:var(--card)}
+.badge>b,.badge>b.dot,.bell b{border-color:var(--err)}
+.badge>b.gray{border-color:var(--muted)}
+/* 還粗於 1px 的線 */
+.feed .more .spin{border-width:1px}
+.sheetdemo{border-width:1px}
+.split .gut{background:linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat}
+.split .gut::after{width:1px;border-radius:0}
+/* 還有投影的：輪播箭頭、底部抽屜 */
+.thumb .arr{box-shadow:inset 0 0 0 1px var(--line)}
+.sheet{box-shadow:none}
+/* 還有色塊的：說明文字裡的行內代碼、示範用的假內容條、瀏覽器預設白底的輸入格 */
+.use code{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.drawerdemo .ghost i,.sheetdemo .scr i{background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat}
+.qty input,.p5 input{background:transparent}
+
+/* 例外一：標題細字重（H0〜H2 300，H3 500）；按鈕字重 500。字級、行距照十四級表 */
+.btn,.btn.primary{font-weight:500}
+.head h1,.sec h2,.modal .mh,.drawer .dh,.result h3{font-weight:300}
+.card .card-title,.cardx .ct,.tcap b,.chart .chh,.acd .hd,.empty b{font-weight:500}
+
+/* 例外二：英文眉標寬字距 0.3em、全大寫 */
+.kick,.statc .k{font-family:var(--lat);letter-spacing:.3em;text-transform:uppercase}
+
+/* 例外三：圖示線寬 1.5（配 1px 細線，2 會太粗） */
+svg[stroke-width="2"]{stroke-width:1.5}
+
+/* 例外四：數字用 Inter；大數字細字重 */
+.num,.accbtn .cc,.sec .no,.tokcell .tv,.radcell .tv,.typerow .spec2,.qty input,.conf,.tcap .cnt,.amt,.dt,.tfoot .tv,.statc .v,.sumrow .price,.p1 button,.p2 button,.p3 .cnt,.p4 button,.p5 input,.upfile .pct,.txa .cnt2,.nrow .tm,.bell b,.cal .cg,.ac .mi small,.ac .hint kbd,.tab .cnt,/* ── 核心補件：頭像 Avatar ── */
+.avatar,.badge>b,.count,.toolbar .tb,.slider .tt,.slider .tk,.meter .mh b,.tlist .th2 small,.stepper .sp .dot,.tl .tm,.feed .fi small,.chart .ax,.chart .vl,.spark .v,.split .pa .li small,.thumb .dur,.strip .thumb small,.raterow .n b,.otp input,.field .otp input,.cmdk kbd,.use code,.tp .tpcol span,.pillf .n,.num,.amt,.price{font-family:var(--lat)}
+.statc .v,.statc.hero .v,.head h1{font-weight:300}
+/* S8 表面層結束 */

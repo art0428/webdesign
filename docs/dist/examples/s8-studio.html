@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-style="s8">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>S8 線描 · 設計工作室官網 — 管理者工作室 設計系統 33.0.0</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../tokens.css">
+<link rel="stylesheet" href="../base.css">
+<link rel="stylesheet" href="../style-s8.css">
+<style>
+/* 本頁只做排版，一律用 token；元件外觀全部來自 dist/ */
+.wrap{max-width:1120px;margin:0 auto;padding:var(--sp-6) var(--sp-5) var(--sp-9)}
+.sf-scheme{display:flex;gap:var(--sp-1);align-items:center;white-space:nowrap;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);margin-right:var(--sp-2)}
+.sf-scheme select{min-height:var(--h-input);border:0;border-bottom:1px solid var(--line-2);background:transparent;color:var(--ink);font:inherit;padding:0 var(--sp-2)}
+.foot-note{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.foot-note a{color:var(--acc)}
+.sf-exnote{max-width:1120px;margin:0 auto;padding:0 var(--sp-5) var(--sp-7);display:flex;flex-wrap:wrap;gap:var(--sp-3) var(--sp-5);align-items:center}
+.sf-exnote p{margin:0;flex:1 1 20em}
+/* 手機觸控下限（規範 6.6、5.4）：文字連結至少 44px 高，與前台示範頁相同 */
+@media (max-width:767px){.sf-logo,.sf-more,.sf-foot nav a,.foot-note a{display:inline-flex;align-items:center;min-height:4.4rem}}
+
+/* ══ 前台示範頁的版面（只寫排版；材質交給各套的 .board .card .btn） ══ */
+.ic{flex:none;vertical-align:middle}
+.sf{display:flex;flex-direction:column;gap:var(--sp-6)}
+.sf a{color:inherit;text-decoration:none}
+.sf-nav{display:flex;align-items:center;gap:var(--sp-6)}
+.sf-logo{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-h3);line-height:var(--lh-h3);font-weight:900;letter-spacing:var(--ls-h3)}
+.sf-mark{width:14px;aspect-ratio:1/1;border-radius:4px;background:var(--acc2)}
+.sf-links{display:flex;gap:var(--sp-5);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:500}
+.sf-links a:hover{color:var(--acc)}
+.sf-tools{margin-left:auto;display:flex;align-items:center;gap:var(--sp-1)}
+.sf-ib{min-width:44px;min-height:4.4rem;display:inline-flex;align-items:center;justify-content:center;border:none;background:none;color:var(--ink);border-radius:var(--r-pill);cursor:pointer;padding:0;transition:background var(--dur-1) var(--ease-out)}
+.sf-ib:hover{background:var(--accsoft)}
+.sf-ib:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.sf-menu{display:none}
+.sf-hero{display:grid;grid-template-columns:1.1fr 0.9fr;gap:var(--sp-8);align-items:center}
+.sf-eyebrow{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted);text-transform:uppercase}
+.sf-h1{margin:var(--sp-3) 0 var(--sp-4);font-size:var(--fs-h0);line-height:var(--lh-h0);letter-spacing:var(--ls-h0);font-weight:900;text-wrap:balance}
+.sf-h2{margin:0;font-size:var(--fs-h2);line-height:var(--lh-h2);letter-spacing:var(--ls-h2);font-weight:900}
+.sf-lead{margin:0 0 var(--sp-6);color:var(--muted);max-width:34em}
+.sf-cta{display:flex;flex-wrap:wrap;gap:var(--sp-3)}
+.sf-cta .btn{display:inline-flex;align-items:center;gap:var(--sp-2)}
+.sf-media{aspect-ratio:4/3;border-radius:var(--r-lg);background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.sf-sechead{display:flex;align-items:baseline;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-4)}
+.sf-more{display:inline-flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:700;color:var(--acc)}
+.sf-filter{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-bottom:var(--sp-5)}
+.sf-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--sp-5)}
+.sf-prod{display:flex;flex-direction:column;overflow:hidden;min-width:0}
+.sf-thumb{position:relative;aspect-ratio:1/1;background:var(--accsoft);color:var(--acc);display:flex;align-items:center;justify-content:center}
+.sf-thumb .tag{position:absolute;top:var(--sp-3);left:var(--sp-3)}
+.sf-fav{position:absolute;top:var(--sp-1);right:var(--sp-1)}
+.sf-pbody{display:flex;flex-direction:column;gap:var(--sp-2);flex:1}
+.sf-pname{margin:0;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-meta{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-pricing{display:flex;align-items:baseline;flex-wrap:wrap;gap:var(--sp-2);margin-top:auto}
+.sf-pricing .price{font-family:Arial,sans-serif;font-weight:700;color:var(--ink);font-size:var(--fs-n2);line-height:var(--lh-n2)}
+.sf-pricing .price small{font-size:.68em;color:var(--muted);font-weight:400}
+.sf-was{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);text-decoration:line-through}
+.sf-add{display:inline-flex;align-items:center;justify-content:center;gap:var(--sp-1);width:100%}
+.sf-feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--sp-6)}
+.sf-feat{display:flex;gap:var(--sp-2);align-items:flex-start}
+.sf-feat .ic{color:var(--acc)}
+.sf-feat h3{margin:0 0 var(--sp-1);font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-feat p{margin:0;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-article{display:flex;flex-direction:column;gap:var(--sp-4)}
+.sf-article .sf-body{max-width:36em}
+.sf-article .sf-body p{margin:0 0 var(--sp-4)}
+.sf-news{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-6);align-items:end}
+.sf-news p{margin:var(--sp-2) 0 0;font-size:var(--fs-b2);line-height:var(--lh-b2);color:var(--muted)}
+.sf-form{display:flex;gap:var(--sp-3);align-items:flex-end}
+.sf-form .field{flex:1;min-width:0}
+.sf-foot{display:flex;flex-wrap:wrap;gap:var(--sp-5);justify-content:space-between;font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted);padding:0 var(--sp-2)}
+.sf-foot nav{display:flex;flex-wrap:wrap;gap:var(--sp-4)}
+.sf-foot.board{padding:var(--sp-4) var(--sp-5)}
+/* v25 起七套各做自己最適合的前台（規範 8.7），以下是另外幾種版面用到的排版 */
+.sf .grid>.card,.sf-hero>.card,.sf-split>.card{max-width:none}
+.sf-hero>*,.sf-split>*{min-width:0}   /* 程式碼區塊 pre 不換行，不設 0 會把格子撐出畫面 */   /* 元件庫的 .card 預設最寬 360px，放進欄格就跟著欄寬 */
+.sf-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-3)}
+.sf-col{display:flex;flex-direction:column;gap:var(--sp-3);min-width:0}
+.sf-split{display:grid;grid-template-columns:1.2fr 0.8fr;gap:var(--sp-6);align-items:start}
+.sf-p{margin:0;font-size:var(--fs-b2);line-height:var(--lh-b2);color:var(--muted)}
+.sf-h3{margin:0;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900}
+.sf-big{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n1);line-height:var(--lh-n1)}
+.sf-big small{font-size:.68em;color:var(--muted);font-weight:400}
+.sf-list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:var(--sp-2);font-size:var(--fs-b2);line-height:var(--lh-b2)}
+.sf-list li{display:flex;align-items:center;gap:var(--sp-2)}
+.sf-list .ic{color:var(--acc)}
+.sf-code{margin:0;padding:var(--sp-4);overflow-x:auto;font-family:"SF Mono",Menlo,Consolas,"Liberation Mono",monospace;font-size:var(--fs-n4);line-height:var(--lh-n4);color:var(--ink);background:var(--paperc,var(--band));white-space:pre}
+.sf-menuitem{display:flex;justify-content:space-between;align-items:baseline;gap:var(--sp-3)}
+.sf-menuitem .price{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n3);line-height:var(--lh-n3)}
+.sf-date{display:flex;align-items:center;gap:var(--sp-1);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-byline{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.sf-quote{margin:0;padding-left:var(--sp-5);border-left:2px solid var(--line);font-size:var(--fs-h2);line-height:var(--lh-h2);font-weight:700}
+.sf-kiosk .btn{min-height:4.4rem}
+.sf-machine{display:flex;flex-direction:column;gap:var(--sp-2)}
+.sf-machine .sf-mno{font-family:Arial,sans-serif;font-weight:700;font-size:var(--fs-n2);line-height:var(--lh-n2)}
+@media (max-width:1023px){.sf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.sf-split{grid-template-columns:1fr}}
+@media (max-width:767px){
+ .sf-links{display:none}.sf-menu{display:inline-flex}
+ .sf-hero,.sf-feats,.sf-news{grid-template-columns:1fr}
+ .sf-hero{gap:var(--sp-6)}.sf-media{order:-1}
+ .sf-form{flex-direction:column;align-items:stretch}
+ .sf-cta .btn{flex:1;justify-content:center}
+}
+/* 規範 6.3 的例外：商品卡列表在 480 以下維持兩欄——單欄時一屏只看得到一件商品。
+   條件：卡片內距收為 --sp-3、名稱最多兩行、評價數只留星等、加入購物袋改成右下角的圖示鈕 */
+@media (max-width:479px){
+ .sf-grid{gap:var(--sp-3)}
+ .card .sf-pbody{padding:var(--sp-3)}
+ .sf-pname{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+ .sf-rc,.sf-addtxt{display:none}
+ .sf-add{width:auto;min-width:44px;min-height:4.4rem;align-self:flex-end;padding:0}
+}
+
+
+/* ══ S8 線描：前台示範頁的版面跟著線描語法六條（build_s8_line.py --storefront 加入） ══ */
+.sf-logo{font-weight:500;letter-spacing:.08em}
+.sf-mark{width:10px;border-radius:50%;background:var(--acc)}
+.sf-links a{position:relative;color:var(--muted)}
+.sf-links a[aria-current="page"]{color:var(--ink)}
+.sf-links a[aria-current="page"]::after{content:"";position:absolute;left:50%;top:100%;width:5px;height:5px;margin:var(--sp-1) 0 0 -2.5px;border-radius:50%;background:var(--acc)}
+.sf-tools{gap:var(--sp-2)}   /* 圖示鈕有 1px 細框（hover 才看得見），並排時照 9.3 第十條隔 --sp-2 */
+.sf-ib{border:1px solid transparent}
+.sf-ib:hover{background:none;border-color:var(--line-2)}
+.sf-eyebrow{font-family:var(--lat);letter-spacing:.3em;font-weight:400}
+.sf-h1,.sf-h2{font-weight:300}
+.sf-h3,.sf-pname,.sf-feat h3{font-weight:500}
+.sf-media{background:none;color:var(--ink);border:1px solid var(--line);padding:var(--sp-5)}
+.sf-thumb{background:none;color:var(--ink);border-bottom:1px solid var(--line);padding:var(--sp-5)}
+.sf-art{width:100%;height:100%;display:block}
+.sf-art *{vector-effect:non-scaling-stroke}
+.sf-art .acc{fill:var(--acc);stroke:none}
+.sf-pricing .price,.sf-big,.sf-menuitem .price,.sf-machine .sf-mno{font-family:var(--lat);font-weight:300}
+.sf-quote{border-left-width:1px}
+.sf-code{background:none;border:1px solid var(--line)}
+
+</style>
+</head>
+<body data-type="expressive">
+<div class="wrap sf">
+<header class="board sf-nav"><a class="sf-logo" href="#"><span class="sf-mark" aria-hidden="true"></span>線間設計室</a><nav class="sf-links" aria-label="主要連結"><a href="#" aria-current="page">作品</a><a href="#">服務</a><a href="#">流程</a><a href="#">關於我們</a></nav><div class="sf-tools"><button class="sf-ib" type="button" aria-label="搜尋作品"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="m21 21-4.34-4.34" /><circle cx="11" cy="11" r="8" /></svg></button><button class="sf-ib sf-menu" type="button" aria-label="開啟選單"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M4 5h16" /><path d="M4 12h16" /><path d="M4 19h16" /></svg></button></div></header>
+<section class="board sf-hero"><div><div class="sf-eyebrow">Industrial Design Studio</div><h1 class="sf-h1">把複雜的東西，畫成一條線</h1><p class="sf-lead">我們替家電、照明與生活器物品牌做產品設計：從第一張草圖、機構打樣，到量產前的最後一次修模，都在同一張桌子上完成。</p><div class="sf-cta"><button class="btn primary" type="button">預約初次諮詢<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></button><button class="btn" type="button">看作品集</button></div></div><div class="sf-media"><svg class="sf-art" viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="100" cy="72" r="46"/><circle cx="100" cy="72" r="28"/><circle cx="100" cy="72" r="10"/><path d="M100 14v116M42 72h116"/><path d="M54 138h92M54 134v8M146 134v8"/><path d="M154 26l-20 20M154 26h-8M154 26v8"/><circle class="acc" cx="128" cy="52" r="4"/></svg></div></section>
+<section class="grid" aria-label="工作室概況"><div class="col-3 statc"><div class="k">Projects</div><div class="v num">126<small>件</small></div><div class="delta">十二年來的量產作品</div></div><div class="col-3 statc"><div class="k">Clients</div><div class="v num">38<small>家</small></div><div class="delta">七成是第二次合作</div></div><div class="col-3 statc"><div class="k">Awards</div><div class="v num">17<small>座</small></div><div class="delta">紅點、iF、金點</div></div><div class="col-3 statc"><div class="k">Lead time</div><div class="v num">14<small>週</small></div><div class="delta">草圖到量產樣品的平均</div></div></section>
+<section class="board" aria-labelledby="sf-works"><div class="sf-sechead"><h2 class="sf-h2" id="sf-works">精選作品</h2><a class="sf-more" href="#">全部作品<svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a></div><div class="sf-filter"><span class="seg"><button class="on">全部</button><button>照明</button><button>器物</button><button>家電</button></span></div><div class="sf-grid"><article class="card sf-prod"><div class="sf-thumb"><span class="tag acc">新作</span><svg class="sf-art" viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M70 120h60M100 120V62"/><path d="M76 62h48l-10-28H86z"/><path d="M100 34v-10"/><circle class="acc" cx="100" cy="76" r="3.5"/></svg></div><div class="card-body sf-pbody"><h3 class="sf-pname">Arc 桌燈</h3><div class="sf-meta">北辰照明・2026</div><div class="sf-row"><span class="tag gray">照明</span></div></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="sf-art" viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" focusable="false"><path d="M70 118h64l-6-60H76z"/><path d="M128 72c14 0 16 22 2 26"/><path d="M76 58c-14-10-26-16-34-14"/><path d="M90 58V50h24v8"/><circle class="acc" cx="102" cy="88" r="3.5"/></svg></div><div class="card-body sf-pbody"><h3 class="sf-pname">Pour 手沖壺</h3><div class="sf-meta">器物日常・2025</div><div class="sf-row"><span class="tag gray">器物</span></div></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="sf-art" viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" focusable="false"><rect x="62" y="34" width="76" height="86" rx="10"/><circle cx="100" cy="88" r="20"/><circle cx="100" cy="88" r="6"/><circle cx="100" cy="52" r="6"/><circle class="acc" cx="126" cy="44" r="3"/></svg></div><div class="card-body sf-pbody"><h3 class="sf-pname">Dot 藍牙音箱</h3><div class="sf-meta">Lumen 聲學・2025</div><div class="sf-row"><span class="tag gray">家電</span></div></div></article><article class="card sf-prod"><div class="sf-thumb"><svg class="sf-art" viewBox="0 0 200 150" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" aria-hidden="true" focusable="false"><circle cx="100" cy="76" r="44"/><path d="M100 76V50M100 76l18 12"/><path d="M100 36v6M100 110v6M60 76h6M134 76h6"/><circle class="acc" cx="100" cy="76" r="3.5"/></svg></div><div class="card-body sf-pbody"><h3 class="sf-pname">Tick 掛鐘</h3><div class="sf-meta">自有品牌・2024</div><div class="sf-row"><span class="tag gray">器物</span></div></div></article></div></section>
+<section class="board" aria-labelledby="sf-svc"><div class="sf-sechead"><h2 class="sf-h2" id="sf-svc">我們做的事</h2></div><div class="sf-feats"><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z" /><path d="M20 2v4" /><path d="M22 4h-4" /><circle cx="4" cy="20" r="2" /></svg><div><h3>產品設計</h3><p>外型、材質、色彩與包裝一起想；每個案子交三個方向，選定後再收斂成一個。</p></div></div><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><path d="M20 6 9 17l-5-5" /></svg><div><h3>機構與打樣</h3><p>自有 3D 列印與 CNC，兩週出第一版手板；結構工程師從草圖階段就加入。</p></div></div><div class="sf-feat"><svg class="ic" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg><div><h3>量產陪跑</h3><p>試模、色板、首批驗貨我們都到廠；量產後半年內的修改不另收費。</p></div></div></div></section>
+<section class="board" aria-labelledby="sf-flow"><div class="sf-sechead"><h2 class="sf-h2" id="sf-flow">合作流程</h2><span class="sf-p">平均 14 週</span></div><span class="flow"><span class="stp done">初次諮詢</span><span class="arr">→</span><span class="stp done">提案三方向</span><span class="arr">→</span><span class="stp cur">手板打樣</span><span class="arr">→</span><span class="stp">試模驗證</span><span class="arr">→</span><span class="stp">量產</span></span><div class="notice" style="margin-top:var(--sp-5)">上面是「Arc 桌燈」目前走到的位置：第二版手板已寄出，等客戶試用一週後回饋。</div></section>
+<section class="board sf-news" aria-labelledby="sf-book"><div><h2 class="sf-h2" id="sf-book">預約初次諮詢</h2><p>三十分鐘線上會議，免費。告訴我們產品是什麼、想在什麼時候上市，我們會帶兩個過去的相似案例來談。</p></div><form class="sf-form" onsubmit="return false"><div class="field"><label>公司 Email <span class="req">*</span></label><input type="email" placeholder="name@company.com" autocomplete="email"/></div><button class="btn primary" type="submit">送出</button></form></section>
+<footer class="sf-foot"><span>© 2026 線間設計室（示範品牌）</span><nav aria-label="頁尾"><a href="#">作品</a><a href="#">徵才</a><a href="#">聯絡我們</a></nav></footer>
+</div>
+<div class="foot-note sf-exnote"><label class="sf-scheme">深淺 <select id="scheme" aria-label="深淺模式"><option value="system">跟隨系統</option><option value="light">淺色</option><option value="dark">深色</option></select></label><p>範例：S8 線描 × 設計工作室官網（頁尾可切深淺，33.0.0） · 規範 8.7 的首選情境。只引用 dist/，頁面自己的 CSS 只做排版。<a href="index.html">回範例索引</a></p></div>
+<script>document.addEventListener('DOMContentLoaded',()=>{const s=document.getElementById('scheme');s.onchange=e=>DS.setColorScheme(e.target.value);try{s.value=localStorage.getItem('ds.scheme')||'system'}catch(_){}});</script>
+<script src="../theme.js"></script>
+</body>
+</html>

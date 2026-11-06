@@ -24,6 +24,9 @@ EXPRESSIVE = {"fs": {44, 36, 40, 32, 30, 22, 16, 14, 13, 12, 11, 23},
               "lh": {1.10, 1.25, 1.35, 1.40, 1.50, 1.90, 1.80, 1.15, 1.20, 1.60}}
 SP_OK = {0, 4, 8, 12, 16, 20, 24, 32, 40, 48, 64}
 LS_OK = {0, -0.01, 0.02, 0.03, 0.06, 0.08, 0.15}
+# 規範 4.1 的風格層例外（v33，僅 S8 線描）：英文眉標全大寫、字距 0.3em。
+# 頁面宣告 <html data-style="s8"> 或檔名是 style-s8.css 時才放行，其他風格照樣報
+LS_S8 = {0.3}
 SP_PROPS = ("margin", "margin-top", "margin-right", "margin-bottom", "margin-left",
             "margin-inline", "margin-block", "padding", "padding-top", "padding-right",
             "padding-bottom", "padding-left", "padding-inline", "padding-block",
@@ -87,8 +90,15 @@ def load(path):
     return items
 
 
+def is_s8(path):
+    if os.path.basename(urllib.parse.urlparse(path).path) == "style-s8.css":
+        return True
+    return (not is_css(path)) and re.search(r'<html[^>]*data-style="s8"', read_source(path)) is not None
+
+
 def check(path, scale):
     items = load(path)
+    ls_ok = LS_OK | (LS_S8 if is_s8(path) else set())
     bad = collections.defaultdict(list)
     warn = collections.defaultdict(list)
     for sel, p, v in items:
@@ -122,7 +132,7 @@ def check(path, scale):
                 warn["固定 height（若承載文字請改 min-height）"].append((sel, v))
         elif p == "letter-spacing":
             m = re.findall(r"(-?\d*\.?\d+)em", v)
-            if m and round(float(m[0]), 3) not in LS_OK:
+            if m and round(float(m[0]), 3) not in ls_ok:
                 bad["字距不在表上"].append((sel, v))
     return bad, warn, len(items)
 

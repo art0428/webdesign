@@ -1,4 +1,4 @@
-> 本檔是《網頁設計規範 v32》的一部分，全文見倉庫的 docs/spec.md。
+> 本檔是《網頁設計規範 v33》的一部分，全文見倉庫的 docs/spec.md。
 
 ## 十二、開發對接
 
@@ -6,19 +6,20 @@
 
 ### 12.1 檔案：引用，不複製
 
-元件的樣式**不是**從示範頁 `components_s*.html` 的 `<style>` 複製出來用。公開倉庫 `art0428/webdesign` 的 `dist/` 由 `emit_css.py` 自七套元件庫產生，是唯一來源，每個檔頭都有版本號（與本規範同版）：
+元件的樣式**不是**從示範頁 `components_s*.html` 的 `<style>` 複製出來用。公開倉庫 `art0428/webdesign` 的 `dist/` 由 `emit_css.py` 自八套元件庫產生（`style-s8.css` 由 `emit_s8.py` 產生），是唯一來源，每個檔頭都有版本號（與本規範同版）：
 
 | 檔 | 內容 | 誰載 |
 |---|---|---|
 | `tokens.css` | 字級、行距、間距、圓角、高度、動態、層級 token（第四、五章） | 所有產品 |
-| `base.css` | 結構層 ＋ S1 奶油的材質：70 項元件的 class、尺寸、焦點環、佔位文字、RWD、欄格 `.grid`（6.5）、密度三檔 `data-density`（5.7）。**S1 為基準** | 七套全部 |
+| `base.css` | 結構層 ＋ S1 奶油的材質：70 項元件的 class、尺寸、焦點環、佔位文字、RWD、欄格 `.grid`（6.5）、密度三檔 `data-density`（5.7）。**S1 為基準** | 八套全部 |
 | `style-s1.css` | S1 的深色段（8.8.6，v32）；淺色材質已在 base，淺色時本檔沒有效果 | S1 |
 | `style-s6.css` | 石墨淺色 ＋ 深色（8.8），切換不換檔 | S6 |
 | `style-s7.css` | 編輯的材質（明體標題、直角、欄線） | S7 |
+| `style-s8.css` | 線描淺色 ＋ 深色（8.2、8.8.7，v33），四項風格層例外寫在檔頭；另載 Inter 與 Noto Sans TC 300 | S8 |
 | `style-s2.css`〜`style-s5.css` | 浮雕、琉璃、手帳、極光的材質（v20 起以 S1 為基底重建，與 S6、S7 同為薄檔）；`style-s3.css`、`style-s5.css` 另含深色（8.8，v23） | S2〜S5 |
 | `theme.js` | 色系切換、鎖定規則、深淺模式、S6 深色底（`DARK_TINT`，8.8.5） | 所有產品 |
 
-載入順序（七套相同）：
+載入順序（八套相同）：
 
 ```html
 <html lang="zh-Hant" data-style="s6">
@@ -28,25 +29,25 @@
 <script src="theme.js"></script>
 ```
 
-順序不能換：風格層靠「排在後面」覆寫，權重與基準相同，不用 `!important`。v20 起七套一律三檔；v19 的 S2〜S5 過渡版（兩檔、不配 `base.css`）已退場，從 19.x 升上來的 S2〜S5 產品要把 `base.css` 加回去，元件 HTML 照 S1 的語彙（數量調整器用 `<input>`）。
+順序不能換：風格層靠「排在後面」覆寫，權重與基準相同，不用 `!important`。v20 起各套一律三檔；v19 的 S2〜S5 過渡版（兩檔、不配 `base.css`）已退場，從 19.x 升上來的 S2〜S5 產品要把 `base.css` 加回去，元件 HTML 照 S1 的語彙（數量調整器用 `<input>`）。
 
 **為什麼是「一份結構 ＋ 每套一個薄材質檔」而不是七份完整檔**：七套的 CSS 有九成以上規則一字不差，七份完整檔等於同一條 `.btn` 存七份，改一次漏一處就是 v17 以前「S1 儲存格 16px、S2 20px」的翻版。結構層只有一份，風格層才改不壞結構。
 
-**版本**：`dist/` 的版號跟本規範走（v32 ＝ `32.0.0`；沒有改 CSS 的版本不另發版號，例如 v21）。產品引用固定版號；規範升版，產品把版號改掉就跟上，diff 一目了然。
+**版本**：`dist/` 的版號跟本規範走（v33 ＝ `33.0.0`；沒有改 CSS 的版本不另發版號，例如 v21）。產品引用固定版號；規範升版，產品把版號改掉就跟上，diff 一目了然。
 
 ### 12.2 風格層純度（第六項檢查的一半）
 
-`style-s*.css` 的薄檔只准出現顏色、框線、陰影、圓角、字型；**不得出現** `min-height`、`height`、`padding`、`margin`、`gap`、`font-size`、`line-height`、`z-index`、`width`、`display`、`position`。規範明訂的風格層例外（8.2 的 S7 外層區塊內距、4.1 的 S6 等寬字字距、8.2 的 S5 暈染背景 `body::before` 與 hero 暈點 `.statc.hero::after` 的定位）列在 `audit_layers.py` 的 ALLOW 表，其餘一律不通過。v20 起七個風格檔全查（v19 只查得了 S1、S6、S7）。這是 8.1「風格是殼，只覆寫材質」第一次有程式守著。
+`style-s*.css` 的薄檔只准出現顏色、框線、陰影、圓角、字型；**不得出現** `min-height`、`height`、`padding`、`margin`、`gap`、`font-size`、`line-height`、`z-index`、`width`、`display`、`position`。規範明訂的風格層例外（8.2 的 S7 外層區塊內距、4.1 的 S6 等寬字字距、8.2 的 S5 暈染背景 `body::before` 與 hero 暈點 `.statc.hero::after` 的定位、8.2 的 S8 用偽元素畫的點與 1px 線——頁籤與目前頁碼的圓點、狀態標籤的圓點、量表刻度、步驟連接線、時間軸節點、圖例線段、分割面板的分隔線——的尺寸與定位，以及 5.2 的 S8 觸發框與面板對齊 `width:auto`、`margin-top:0` 與日期面板星期列置中）列在 `audit_layers.py` 的 ALLOW 表，其餘一律不通過。v33 起八個風格檔全查（v19 只查得了 S1、S6、S7）。這是 8.1「風格是殼，只覆寫材質」第一次有程式守著。
 
 ### 12.3 拆檔無損（第六項檢查的另一半）
 
-`verify_css_split.py` 把每張示範頁的 `<style>` 全部拿掉、換成只引用 `dist/` 的三個檔，再渲染一次，逐元素比對 48 個計算屬性（顏色、框線、圓角、陰影、內距、字級、行距、層級、尺寸、`::before`／`::after`、佔位文字色）。七份元件庫（各以該套的預設密度：S6 標準、其餘寬鬆），加上 S1、S3、S5、S6 深色的兩種入口（`data-theme="dark"` 指定、跟隨系統），加上其他密度檔（S6 的緊湊淺色與深色、S6 寬鬆，S1 的標準與緊湊，S7 標準），加上 S6 深色的中性石墨（指定、跟隨系統兩種入口；預設的跟隨色系含在 S6 深色那兩次裡，8.8.5）共 23 次比對 **0 差異**才算 `dist/` 可出貨（5.7）。這代表示範頁與 `dist/` 不可能分家：示範頁是來源，`dist/` 是產物，中間由程式保證一致。
+`verify_css_split.py` 把每張示範頁的 `<style>` 全部拿掉、換成只引用 `dist/` 的三個檔，再渲染一次，逐元素比對 48 個計算屬性（顏色、框線、圓角、陰影、內距、字級、行距、層級、尺寸、`::before`／`::after`、佔位文字色）。八份元件庫（各以該套的預設密度：S6 標準、其餘寬鬆），加上 S1、S3、S5、S6、S8 深色的兩種入口（`data-theme="dark"` 指定、跟隨系統），加上其他密度檔（S6 的緊湊淺色與深色、S6 寬鬆，S1 的標準與緊湊，S7 標準），加上 S6 深色的中性石墨（指定、跟隨系統兩種入口；預設的跟隨色系含在 S6 深色那兩次裡，8.8.5）共 26 次比對 **0 差異**才算 `dist/` 可出貨（5.7）。這代表示範頁與 `dist/` 不可能分家：示範頁是來源，`dist/` 是產物，中間由程式保證一致。
 
 ### 12.4 theme.js
 
 ```js
 DS.applyTheme('c3')          // 切換色系 c1〜c12、sc1〜sc3；不適用於本風格的組合退回 c1，回傳實際套用的 key
-DS.setColorScheme('dark')    // 'dark' | 'light' | 'system'；只對 S1、S3、S5、S6 有效，跟隨系統時監聽 prefers-color-scheme
+DS.setColorScheme('dark')    // 'dark' | 'light' | 'system'；只對 S1、S3、S5、S6、S8 有效，跟隨系統時監聽 prefers-color-scheme
 DS.setDarkTint('neutral')    // 'follow'（預設）| 'neutral'；S6 深色底跟隨色系或中性石墨（8.8.5），其他風格無效果；DS.darkTint() 回目前生效的值
 DS.labelTables()             // 依表頭替表格每格補 data-l（手機卡片列的欄名，6.3）；載入時自動跑一次，動態新增列後再呼叫
 DS.setDensity('compact')     // 'comfortable' | 'normal' | 'compact'；不在本風格可選範圍的檔退回該套預設，回傳實際套用的檔（5.7 的矩陣 DS.DENSITY）

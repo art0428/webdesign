@@ -134,7 +134,7 @@ td.sample{width:46%}
 <div class="wrap">
   <div class="head">
     <div class="kick">管理者工作室 ─ DESIGN SYSTEM · FOUNDATIONS</div>
-    <h1>通用規範（七套風格共用）</h1>
+    <h1>通用規範（八套風格共用）</h1>
     <p>這一頁的每個數值<b>不隨風格改變</b>：字級十四級、行距、字距、間距標尺、圓角、元件高度、語意色、斷點。換風格只會換下方「結構灰階」那一組值；換色系只會換「品牌雙色」。所有數值直接讀自 <b>tokens.css</b>，與六套元件庫用的是同一份，因此這裡顯示的就是元件真正用的值。</p>
     <div class="now"><span><i id="swA"></i><span id="nmPair">C1 深海藍</span></span><span><i id="swS" style="background:#26292E"></i><span id="nmStyle">S1 奶油 的灰階</span></span></div>
   </div>
@@ -218,7 +218,7 @@ td.sample{width:46%}
   </div></div>
 
   <div class="sec"><span class="no">06</span><h2>元件高度與觸控目標</h2><span class="rule"></span><span class="en">SIZING</span></div>
-  <p class="use">所有元件禁止固定 <code>height</code>，一律 <code>min-height</code>（rem）：字級放大時框跟著長高，文字才不會被裁切。高度由 <code>--h-*</code> token 鎖定、垂直內距歸零、flex 置中，所以框線粗細與有無陰影都不會改變高度——七套風格的同一個元件一樣高。<b>手機 44px（4.4rem）觸控下限</b>來自 Apple 人機介面指南；相鄰可點元件之間至少留 space-2。</p>
+  <p class="use">所有元件禁止固定 <code>height</code>，一律 <code>min-height</code>（rem）：字級放大時框跟著長高，文字才不會被裁切。高度由 <code>--h-*</code> token 鎖定、垂直內距歸零、flex 置中，所以框線粗細與有無陰影都不會改變高度——八套風格的同一個元件一樣高。<b>手機 44px（4.4rem）觸控下限</b>來自 Apple 人機介面指南；相鄰可點元件之間至少留 space-2。</p>
   <div class="board"><div class="hgt">
     <figure><span class="h p" style="min-height:4.0rem">送出訂單</span><figcaption>主按鈕 4.0 → 手機 4.4</figcaption></figure>
     <figure><span class="h" style="min-height:3.8rem">下載 Excel</span><figcaption>一般按鈕 3.8 → 4.4</figcaption></figure>
@@ -256,15 +256,15 @@ td.sample{width:46%}
 <div><i style="background:#0E82A8"></i><b>D7 青</b><small>#0E82A8</small></div>
 <div><i style="background:#B5651D"></i><b>D8 棕</b><small>#B5651D</small></div>
 </div>
-<p class="use" style="margin-top:0.8rem">這一層只負責「分辨這是第幾條資料」。<b>兩個數列以下</b>用第一層的主色與深副色；<b>三個以上</b>一律改用這八色，依 D1〜D8 的固定順序取用。固定順序、與品牌色無關的意思是：使用者把色系從深海藍換成節慶桃紅，這八個顏色一個都不會動——否則同一張圖今天藍色代表 A 產品、明天變成桃紅，看圖的人會誤判。語意色不得拿來當數列色（綠色數列會被讀成「成功」）；超過八個數列改分組或併為「其他」。六套元件庫第 56 節各有一張用這八色畫的示範。</p>
+<p class="use" style="margin-top:0.8rem">這一層只負責「分辨這是第幾條資料」。<b>兩個數列以下</b>用第一層的主色與深副色；<b>三個以上</b>一律改用這八色，依 D1〜D8 的固定順序取用。固定順序、與品牌色無關的意思是：使用者把色系從深海藍換成節慶桃紅，這八個顏色一個都不會動——否則同一張圖今天藍色代表 A 產品、明天變成桃紅，看圖的人會誤判。語意色不得拿來當數列色（綠色數列會被讀成「成功」）；超過八個數列改分組或併為「其他」。八套元件庫第 56 節各有一張用這八色畫的示範。</p>
     <div class="cap" style="margin-top:1.6rem">色系分三類：核心 C（十二組，任何風格都成立）、特殊 SC（需要例外規則或只在部分風格可用）、趨勢 T（依年份退場，尚未進正選）</div>
     <div style="overflow-x:auto;margin-top:0.8rem"><table>
-      <thead><tr><th>編號</th><th>名稱</th><th>副色型</th><th>S1 奶油</th><th>S2 浮雕</th><th>S3 琉璃</th><th>S4 手帳</th><th>S5 極光</th><th>S6 石墨</th><th>S6 深色</th><th>S7 編輯</th><th>例外規則</th></tr></thead>
+      <thead><tr><th>編號</th><th>名稱</th><th>副色型</th><th>S1 奶油</th><th>S2 浮雕</th><th>S3 琉璃</th><th>S4 手帳</th><th>S5 極光</th><th>S6 石墨</th><th>S6 深色</th><th>S7 編輯</th><th>S8 線描</th><th>例外規則</th></tr></thead>
       <tbody>
-        <tr><td class="code">C1–C12</td><td>十二組核心</td><td>深型</td><td>◎</td><td>◎</td><td>◎</td><td>◎（冷色系依 8.3 矩陣）</td><td>◎</td><td>◎（暖色系 ○）</td><td>同 S6</td><td>◎（C4、C10、C12 ○）</td><td>承載字的副色填色用深副色配白字</td></tr>
-        <tr><td class="code">SC1</td><td>深綠 × 相思黃</td><td>淺型</td><td>◎</td><td>✕ 鎖定</td><td>◎</td><td>△ 自動加框線</td><td>◎ 最推薦</td><td>◎</td><td>◎</td><td>○</td><td>副色填色上放主文字；填色元件須有 1px 框線或置於白卡；不與 warning 琥珀同列</td></tr>
-        <tr><td class="code">SC2</td><td>鈷藍 × 亮橘</td><td>淺型</td><td>○</td><td>✕ 鎖定</td><td>◎</td><td>△ 自動加框線</td><td>◎</td><td>○</td><td>○</td><td>○</td><td>高彩度，給零售、消費品、活動頁；淺型副色規則同 SC1</td></tr>
-        <tr><td class="code">SC3</td><td>石板藍 × 冰川青</td><td>淺型</td><td>◎</td><td>△ 自動加框線</td><td>○</td><td>△</td><td>○</td><td>◎</td><td>◎</td><td>◎</td><td>冷色、低彩度、像工具，給金融、資安、監控；淺型副色規則同 SC1</td></tr>
+        <tr><td class="code">C1–C12</td><td>十二組核心</td><td>深型</td><td>◎</td><td>◎</td><td>◎</td><td>◎（冷色系依 8.3 矩陣）</td><td>◎</td><td>◎（暖色系 ○）</td><td>同 S6</td><td>◎（C4、C10、C12 ○）</td><td>◎（暖色與高彩度 ○；C8 首選）</td><td>承載字的副色填色用深副色配白字</td></tr>
+        <tr><td class="code">SC1</td><td>深綠 × 相思黃</td><td>淺型</td><td>◎</td><td>✕ 鎖定</td><td>◎</td><td>△ 自動加框線</td><td>◎ 最推薦</td><td>◎</td><td>◎</td><td>○</td><td>△ 自動加框線</td><td>副色填色上放主文字；填色元件須有 1px 框線或置於白卡；不與 warning 琥珀同列</td></tr>
+        <tr><td class="code">SC2</td><td>鈷藍 × 亮橘</td><td>淺型</td><td>○</td><td>✕ 鎖定</td><td>◎</td><td>△ 自動加框線</td><td>◎</td><td>○</td><td>○</td><td>○</td><td>△ 自動加框線</td><td>高彩度，給零售、消費品、活動頁；淺型副色規則同 SC1</td></tr>
+        <tr><td class="code">SC3</td><td>石板藍 × 冰川青</td><td>淺型</td><td>◎</td><td>△ 自動加框線</td><td>○</td><td>△</td><td>○</td><td>◎</td><td>◎</td><td>◎</td><td>△ 自動加框線</td><td>冷色、低彩度、像工具，給金融、資安、監控；淺型副色規則同 SC1</td></tr>
       </tbody>
     </table></div>
     <div class="cap" style="margin-top:1.6rem">著色面上的字：夠亮配墨色、夠深配白，副色承載字一律深副色</div>
@@ -296,28 +296,28 @@ td.sample{width:46%}
     </ul>
   </div></div>
 
-  <div class="foot">數值來源：《字級與行距規範 v2》《網頁設計規範 v4》第 5、6 章、《色彩系統定義 v2》。本頁與六套元件庫共用 <b>tokens.css</b>；合規檢查腳本 <code>check_tokens.py</code> 會掃出任何不在表上的字級、行距、字距、間距與固定高度。</div>
+  <div class="foot">數值來源：《字級與行距規範 v2》《網頁設計規範 v4》第 5、6 章、《色彩系統定義 v2》。本頁與八套元件庫共用 <b>tokens.css</b>；合規檢查腳本 <code>check_tokens.py</code> 會掃出任何不在表上的字級、行距、字距、間距與固定高度。</div>
 </div>
 
 <script>
 const THEMES={
- c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7"],"adjust":[],"series":"C"},
- sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#35463D"},
- sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4"],"series":"SC","accDeep":"#2449E8"},
- sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6","s7"],"adjust":["s2"],"series":"SC","accDeep":"#3D4C5E"}
+ c1:{"id":"C1","name":"深海藍","acc":"#2B5FB8","accSoft":"#EDF1F9","acc2":"#C2377B","acc2Soft":"#FAEEF4","acc2Deep":"#BA3576","accDeep":"#2B5FB8","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c2:{"id":"C2","name":"深湖青","acc":"#0F5C63","accSoft":"#EBF1F2","acc2":"#C4663A","acc2Soft":"#FAF2EE","acc2Deep":"#A15430","accDeep":"#0F5C63","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c3:{"id":"C3","name":"深靛","acc":"#2C2A72","accSoft":"#EDEDF3","acc2":"#8C7AE6","acc2Soft":"#F5F4FD","acc2Deep":"#6A5DAF","accDeep":"#2C2A72","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c4:{"id":"C4","name":"電光紫","acc":"#6D28D9","accSoft":"#F3EDFC","acc2":"#0F8A99","acc2Soft":"#EBF5F6","acc2Deep":"#0D7481","accDeep":"#6D28D9","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c5:{"id":"C5","name":"森林綠","acc":"#1F5E3D","accSoft":"#ECF1EF","acc2":"#A16207","acc2Soft":"#F7F2EA","acc2Deep":"#975C07","accDeep":"#1F5E3D","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c6:{"id":"C6","name":"胡桃棕","acc":"#6B4A33","accSoft":"#F2F0EE","acc2":"#4A6B55","acc2Soft":"#F0F2F1","acc2Deep":"#4A6B55","accDeep":"#6B4A33","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c7:{"id":"C7","name":"焦糖磚橘","acc":"#A8481F","accSoft":"#F8EFEC","acc2":"#2B2B2B","acc2Soft":"#EDEDED","acc2Deep":"#2B2B2B","accDeep":"#A8481F","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c8:{"id":"C8","name":"暖墨","acc":"#23201E","accSoft":"#ECECEC","acc2":"#D95F1E","acc2Soft":"#FCF1EC","acc2Deep":"#AE4C18","accDeep":"#23201E","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c9:{"id":"C9","name":"唇膏紅","acc":"#9F2436","accSoft":"#F7EDEF","acc2":"#2A5C6A","acc2Soft":"#EEF2F3","acc2Deep":"#2A5C6A","accDeep":"#9F2436","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c10:{"id":"C10","name":"節慶桃紅","acc":"#9E2C6A","accSoft":"#F7EEF3","acc2":"#5C97CB","acc2Soft":"#F2F7FB","acc2Deep":"#336DA0","accDeep":"#9E2C6A","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c11:{"id":"C11","name":"燒橄欖","acc":"#646049","accSoft":"#F3F2F0","acc2":"#C65D52","acc2Soft":"#FAF2F1","acc2Deep":"#B2463B","accDeep":"#646049","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ c12:{"id":"C12","name":"玫瑰棕","acc":"#80565B","accSoft":"#F5F1F2","acc2":"#BA797D","acc2Soft":"#F9F4F5","acc2Deep":"#9F5257","accDeep":"#80565B","acc2Type":"deep","styles":["s1","s2","s3","s4","s5","s6","s7","s8"],"adjust":[],"series":"C"},
+ sc1:{"id":"SC1","name":"深綠 × 相思黃","acc":"#35463D","accSoft":"#EFF0EF","acc2":"#DACD65","acc2Soft":"#FCFBF3","acc2Deep":"#6F6519","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4","s8"],"series":"SC","accDeep":"#35463D"},
+ sc2:{"id":"SC2","name":"鈷藍 × 亮橘","acc":"#2449E8","accSoft":"#EEF1FD","acc2":"#FF7A1A","acc2Soft":"#FFF3EA","acc2Deep":"#B0490A","acc2Type":"light","styles":["s1","s3","s5","s6","s7"],"adjust":["s4","s8"],"series":"SC","accDeep":"#2449E8"},
+ sc3:{"id":"SC3","name":"石板藍 × 冰川青","acc":"#3D4C5E","accSoft":"#EFF1F3","acc2":"#5FB4C9","acc2Soft":"#F0F8FA","acc2Deep":"#296778","acc2Type":"light","styles":["s1","s3","s4","s5","s6","s7"],"adjust":["s2","s8"],"series":"SC","accDeep":"#3D4C5E"}
 };
-const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s7": "編輯"};
+const STYLE_NAME={"s1": "奶油", "s2": "浮雕", "s3": "琉璃", "s4": "手帳", "s5": "極光", "s6": "石墨", "s7": "編輯", "s8": "線描"};
 const PAIRS={}; Object.entries(THEMES).forEach(([k,t])=>{PAIRS[k]={n:t.name,cd:t.id,a1:t.acc,s1:t.accSoft,a2:t.acc2,s2:t.acc2Soft,deep:t.acc2Deep,type:t.acc2Type,series:t.series,styles:t.styles,adjust:t.adjust};});
 const GREY={
  s1:{n:"S1 奶油",ink:"#26292E",muted:"#6F6B64",line:"#E4E2DE",band:"#FBFAF8",page:"#F6F5F2",card:"#FFFFFF",note:"零陰影"},
@@ -326,7 +326,8 @@ const GREY={
  s4:{n:"S4 手帳",ink:"#2E2A24",muted:"#6E6656",line:"#D8CDB8",band:"#FAF3E4",page:"#FAF3E4",card:"#FFFDF7",note:"框線 2px 墨色"},
  s5:{n:"S5 極光",ink:"#22262E",muted:"#686E78",line:"#E9E9EF",band:"#F4F6F9",page:"#FCFCFD",card:"#FFFFFF",note:"漸層只准三處"},
  s6:{n:"S6 石墨",ink:"#171717",muted:"#6A6A6A",line:"#E3E3E3",band:"#F6F6F6",page:"#FBFBFB",card:"#FFFFFF",note:"純無彩色：每個灰的紅綠藍三值相等"},
- s7:{n:"S7 編輯",ink:"#1A1814",muted:"#615C54",line:"#E2DDD3",band:"#F3F0E9",page:"#FAF8F3",card:"#FFFFFF",note:"標題用明體；容器直角；2px 墨色欄線分段"}
+ s7:{n:"S7 編輯",ink:"#1A1814",muted:"#615C54",line:"#E2DDD3",band:"#F3F0E9",page:"#FAF8F3",card:"#FFFFFF",note:"標題用明體；容器直角；2px 墨色欄線分段"},
+ s8:{n:"S8 線描",ink:"#1A1A1A",muted:"#5E5E5E",line:"#C8C8C8",band:"#E6E6E6",page:"#EDEDED",card:"#EDEDED",note:"卡片與頁面同色，只靠 1px 線分層；墨線 #1A1A1A 給可以按的東西"}
 };
 let curPair="c1",curStyle="s1";
 function sw(color,name,val){return '<div><i style="background:'+color+'"></i><b>'+name+'</b><small>'+val+'</small></div>';}

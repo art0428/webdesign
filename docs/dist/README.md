@@ -1,8 +1,8 @@
-# 管理者工作室 設計系統 32.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 33.0.0 — 可引用的 CSS
 
-由七套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
+由八套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
 
-## 怎麼用（七套都一樣）
+## 怎麼用（八套都一樣）
 
 ```html
 <html lang="zh-Hant" data-style="s6">                 <!-- 全站只選一套風格，建置時決定 -->
@@ -14,15 +14,19 @@
 
 順序不能換：風格層靠「排在後面」覆寫，權重與基準相同，不用 `!important`。
 
-v20 起七套元件庫全部以 S1 為基底（共用同一份元件 HTML 與結構），`style-s1.css`〜`style-s7.css` 都是只有材質的薄檔，載法一律三檔。v19 的 S2〜S5「過渡版完整樣式表、不配 base.css」已退場——從 19.x 升上來的產品，S2〜S5 要把 `base.css` 加回去，數量調整器改用 S1 的 `<input>` 標記。
+v20 起各套元件庫全部以 S1 為基底（33.0.0 的 S8 也是）（共用同一份元件 HTML 與結構），`style-s1.css`〜`style-s8.css` 都是只有材質的薄檔，載法一律三檔。v19 的 S2〜S5「過渡版完整樣式表、不配 base.css」已退場——從 19.x 升上來的產品，S2〜S5 要把 `base.css` 加回去，數量調整器改用 S1 的 `<input>` 標記。
 
-## 深色模式（S1 奶油、S3 琉璃、S5 極光、S6 石墨）
+## 深色模式（S1 奶油、S3 琉璃、S5 極光、S6 石墨、S8 線描）
 
-深色是風格的**模式**，不是另一套風格：`style-s1.css`、`style-s3.css`、`style-s5.css`、`style-s6.css` 各自內含深色（S1 的淺色材質在 `base.css`，`style-s1.css` 只有深色段）。`<html data-theme="dark">` 強制深色、`data-theme="light"` 強制淺色、不寫則跟隨系統（`prefers-color-scheme`）。切換不換檔、不重載。品牌色的深色值由 `theme.js` 的 `DARK` 表（依風格分表）套用。其他三套（S2、S4、S7）沒有深色，`data-theme="dark"` 對它們無效果（理由見規範 8.8）。
+深色是風格的**模式**，不是另一套風格：`style-s1.css`、`style-s3.css`、`style-s5.css`、`style-s6.css`、`style-s8.css` 各自內含深色（S1 的淺色材質在 `base.css`，`style-s1.css` 只有深色段）。`<html data-theme="dark">` 強制深色、`data-theme="light"` 強制淺色、不寫則跟隨系統（`prefers-color-scheme`）。切換不換檔、不重載。品牌色的深色值由 `theme.js` 的 `DARK` 表（依風格分表）套用。其他三套（S2、S4、S7）沒有深色，`data-theme="dark"` 對它們無效果（理由見規範 8.8）。
 
 ### S1 深色：暖紙色調固定（32.0.0）
 
 S1 深色的六個面明度與 S6 深色相同（頁面 `#14120E`、卡片 `#1C1A16`），色調固定在淺色紙張的色相（OKLCH 色相 85、彩度 0.008），**不跟色系變**；S6 深色則預設跟著色系帶色調。側欄比頁面亮一階（對應淺色的側欄白、頁面米）、大圓角、全部黑體都照 S1。從 31.x 升上來的 S1 產品：以前 `data-theme="dark"` 沒有效果，32.0.0 起會變深色；不想要就寫 `data-theme="light"`。
+
+### S8 深色：中性黑（33.0.0）
+
+S8 深色是黑白對調：卡片與頁面同為 `#121212`（S8 沒有白卡）、表頭帶 `#1A1A1A`、選中底 `#262626`、淡線 `#3A3A3A`、墨線與主文字 `#EDEDED`、次要字 `#A3A3A3`；語意淡底照「16% 混入卡片色」重算。品牌色深色值沿用 S6 那張表（`DARK.s8`），**不跟色系帶色調**，也沒有「深色底」開關。
 
 ### S6 深色底：跟隨色系（預設）／中性石墨（v29）
 
@@ -30,15 +34,25 @@ S6 深色的六個面（page、card、paperc、sel、line、line-2）**預設帶
 
 要維持 v28 以前的純無彩色深灰，在 `<html>` 寫 `data-dark-tint="neutral"`，或呼叫 `DS.setDarkTint('neutral')`（使用者偏好記在 `localStorage` 的 `ds.darkTint`，網址 `?tint=neutral` 優先）。**從 28.x 升上來的 S6 專案，深色畫面會帶色調**；要原樣就寫 `neutral`。沒有 JavaScript 時是中性石墨（CSS 只寫中性值）。S3、S5 的深色本來就帶品牌色，沒有這個開關。
 
+## S8 線描（33.0.0）
+
+第八套風格：卡片與頁面同色、只用 1px 線條分層，選中用實心點或細框，零陰影零漸層；給品牌官網、設計工作室、手機 App 前台這類「看」的畫面，資料密集後台仍選 S1 或 S6（規範 8.7）。四項風格層例外寫在 `style-s8.css` 檔頭：標題 300／H3 500、英文眉標字距 0.3em、圖示線寬 1.5、數字用 Inter。字型另載：
+
+```html
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+```
+
+SC1〜SC3 在 S8 會自動加框線（`html.sc-adjust`）；預設寬鬆、可選標準，不開放緊湊。範例 `examples/s8-studio.html`。
+
 ## 密度三檔（comfortable 寬鬆／normal 標準／compact 緊湊）
 
-密度是第四條軸，三檔的數值全站只有一份（`base.css`），每套風格各有**預設檔**與**可選範圍**（規範 5.7 的矩陣）：S6 預設 normal，其餘六套預設 comfortable；S2、S4、S5、S7 鎖 compact。**不寫 `data-density` 就是該套的預設**（CSS 自己判斷，不靠 JS）；`<html data-density="normal">` 才回到標準，`"compact"` 緊湊。寬鬆把元件高度升到手機的觸控尺寸（44／44／40／44）、卡片與板內距 24、儲存格 16／20（列高 ≥56）、表格內文 B1、卡片與表格標題 H2；緊湊各縮一級（按鈕 32、儲存格 4／12）。**只改尺寸、不改顏色**，可與深色並用；768px 以下三檔收斂成一檔（normal）。密度是系統層的決定，頁面層只准往緊的方向覆寫一次。
+密度是第四條軸，三檔的數值全站只有一份（`base.css`），每套風格各有**預設檔**與**可選範圍**（規範 5.7 的矩陣）：S6 預設 normal，其餘七套預設 comfortable；S2、S4、S5、S7、S8 鎖 compact。**不寫 `data-density` 就是該套的預設**（CSS 自己判斷，不靠 JS）；`<html data-density="normal">` 才回到標準，`"compact"` 緊湊。寬鬆把元件高度升到手機的觸控尺寸（44／44／40／44）、卡片與板內距 24、儲存格 16／20（列高 ≥56）、表格內文 B1、卡片與表格標題 H2；緊湊各縮一級（按鈕 32、儲存格 4／12）。**只改尺寸、不改顏色**，可與深色並用；768px 以下三檔收斂成一檔（normal）。密度是系統層的決定，頁面層只准往緊的方向覆寫一次。
 
 ## theme.js
 
 ```js
 DS.applyTheme('c3')              // 切換色系 c1〜c12、sc1〜sc3；不適用於本風格的組合退回 c1，回傳實際套用的 key
-DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s1、s3、s5、s6）有效
+DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s1、s3、s5、s6、s8）有效
 DS.setDarkTint('neutral')        // 'follow'（預設）| 'neutral'；S6 深色底跟隨色系或中性石墨，其他風格呼叫無效果
 DS.darkTint()                    // 目前生效的值：S6 回 'follow' 或 'neutral'；其他風格回 null
 DS.labelTables()                 // 依表頭替表格每格補 data-l（手機卡片列的欄名，規範 6.3）；載入時自動跑一次，動態新增列後再呼叫
@@ -56,14 +70,14 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 
 ## 使用說明與範例
 
-完整的工程師手冊在 `USAGE.md`（每個元件怎麼寫、禁止事項、交付前怎麼自己跑檢查）；`examples/` 是七張只引用本資料夾寫出來的範例頁，每一套風格一張、各在規範 8.7 的首選情境（後台、控制面板、品牌官網、點餐、預約、監控儀表板、說明中心），從 `examples/index.html` 進；新專案照情境挑一張當起點。`examples/same-markup.html` 是同一份標記換七套殼的示範，只說明「風格是殼」，不代表每套都適合那個情境。
+完整的工程師手冊在 `USAGE.md`（每個元件怎麼寫、禁止事項、交付前怎麼自己跑檢查）；`examples/` 是八張只引用本資料夾寫出來的範例頁，每一套風格一張、各在規範 8.7 的首選情境（後台、控制面板、品牌官網、點餐、預約、監控儀表板、說明中心、設計工作室），從 `examples/index.html` 進；新專案照情境挑一張當起點。`examples/same-markup.html` 是同一份標記換七套殼的示範，只說明「風格是殼」，不代表每套都適合那個情境。
 
 ## 檔案
 
 | 檔 | 內容 | 大小 |
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
-| `base.css` | 結構層 ＋ S1 材質 | 79.9 KB |
+| `base.css` | 結構層 ＋ S1 材質 | 81.0 KB |
 | `style-s1.css` | S1 奶油 深色（材質在 base） | 28.6 KB |
 | `style-s2.css` | S2 浮雕 | 16.3 KB |
 | `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 85.5 KB |
@@ -71,8 +85,9 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | `style-s5.css` | S5 極光 淺色 ＋ 深色 | 51.8 KB |
 | `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 33.5 KB |
 | `style-s7.css` | S7 編輯 | 2.9 KB |
-| `theme.js` | 色系、深淺模式、深色底色調與密度 | 26.5 KB |
+| `style-s8.css` | S8 線描 淺色 ＋ 深色 | 38.5 KB |
+| `theme.js` | 色系、深淺模式、深色底色調與密度 | 29.4 KB |
 
 ## 版本
 
-`32.0.0` 與《網頁設計規範 v32》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`33.0.0` 與《網頁設計規範 v33》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
