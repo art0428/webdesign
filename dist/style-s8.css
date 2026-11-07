@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 38.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 39.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
    由 emit_s8.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（規範 12.2）。
    五項風格層例外（規範 4.1、4.2、7.4，僅 S8）：標題細字重、英文眉標寬字距 0.3em、圖示線寬 1.5、數字用 Inter、標籤與小字 500。
@@ -427,7 +427,7 @@ body{background:var(--page)}
 /* 墨線：可以按的東西用墨色細線，分隔用淡線 */
 .btn{border-color:var(--ink);background:transparent}
 .btn.ghost,.btn.danger{border-width:1px;background:transparent}
-.kebab,.p1 button,.p3 button,.p5 button{border-color:var(--ink);background:transparent}
+.kebab{border-color:var(--ink);background:transparent}
 .seg,.search,.chip,.pillf{background:transparent}
 .seg button{background:transparent}
 .chip.on{border-width:1px;background:transparent}
@@ -707,4 +707,37 @@ svg[stroke-width="2"]{stroke-width:1.5}
 .tw .ic{vertical-align:-1px}
 /* 示範頁的長句說明不要寬字距 */
 .cap{letter-spacing:var(--ls-l1)}
+/* ── v37：可以按的小東西平時淡、滑過才深；箭頭一律 14px 線條圖示 ── */
+/* 分頁器：數字不畫框、次要字色；目前頁主色細框（P2 主色短線）；前後頁淡線圓 */
+.p1 button,.p2 button,.p3 button,.p5 button{background:transparent;color:var(--muted);font-weight:400}
+.p1 button{border-color:transparent}
+.p1 button.ar,.p3 button,.p5 button{border-color:var(--line)}
+.p1 button:hover,.p3 button:hover,.p5 button:hover{border-color:var(--ink);color:var(--ink)}
+.p1 button.on,.p1 button.on:hover{background:transparent;border-color:var(--acc);color:var(--acc);font-weight:500}
+.p2 button,.p2 .dots{background:transparent;border-right-color:transparent}
+.p2 button:hover{color:var(--ink)}
+.p2 button.on{background:transparent;color:var(--acc);font-weight:500;position:relative}
+.p2 button.on::after{content:"";position:absolute;left:calc(50% - 7px);bottom:7px;width:14px;height:1px;background:var(--acc)}
+.p5 input{border:0;border-bottom:1px solid var(--ink);border-radius:0;font-weight:400}
+.p5 input:focus{border:0;border-bottom:1px solid var(--acc)}
+/* 數字步進器：外框淡線、內部不分隔，− ＋ 次要字色 */
+.qty{border-color:var(--line)}
+.qty input{border-left-color:transparent;border-right-color:transparent;font-weight:400}
+.qty button{color:var(--muted);font-weight:400}
+.qty button:hover:not(:disabled){color:var(--ink)}
+/* 穿梭框：兩顆成對的淡線圓 */
+.tarr .btn.sm,.tarr .btn.primary.sm{background:transparent;border-color:var(--line);color:var(--muted)}
+.tarr .btn.sm:hover{border-color:var(--ink);color:var(--ink)}
+/* 日期面板換月 */
+.cal .ch button{color:var(--muted)}
+.cal .ch button:hover{color:var(--ink)}
+.p1 .ic,.p2 .ic,.p3 .ic,.p5 .ic,.qty .ic,.tarr .ic,.cal .ch .ic,.thumb .arr .ic{vertical-align:middle}
+/* 唯讀步驟：走過的步驟沒有框，左右內距歸零，箭頭前後一律 --sp-2 */
+.flow .stp.done{padding-left:0;padding-right:0}
+.flow .arr{padding:0 var(--sp-2)}
+.cmdk .k kbd+kbd,.ac .hint kbd+kbd{margin-left:var(--sp-1)}
+/* 遮罩示範：元件庫示意圖的灰塊放淡（實際產品的遮罩深度不變） */
+.drawerdemo .scrim,.sheetdemo .scrim{background:rgba(18,18,18,.18)}
+html[data-theme="dark"] .drawerdemo .scrim,html[data-theme="dark"] .sheetdemo .scrim{background:rgba(0,0,0,.4)}
+@media (prefers-color-scheme:dark){html:not([data-theme="light"]) .drawerdemo .scrim,html:not([data-theme="light"]) .sheetdemo .scrim{background:rgba(0,0,0,.4)}}
 /* S8 表面層結束 */
