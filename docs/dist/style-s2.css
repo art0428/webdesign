@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 38.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -259,3 +259,16 @@ button{font-family:inherit;color:var(--ink)}
 .tabbar{border:none;background:var(--bg);box-shadow:0 -5px 11px var(--shD)}
 .tnav{border:none;background:var(--bg);border-radius:20px;box-shadow:5px 5px 11px var(--shD),-5px -5px 11px var(--shL)}
 .tbdemo{background:var(--bg)}
+:root{--trk-bar:11px;--trk-meter:11px;--tl-x:-27px;--tnl-al:center;--tnl-h:3.6rem}
+.tabbar .tbi,.tree .nd,.cmdk .it,.split .pa .li{border-radius:14px}
+.tnav .tnl a{border-bottom:none;border-radius:14px}
+.tabbar .tbi[aria-current],.tnav .tnl a[aria-current],.tree .nd.on,.cmdk .it.on,.split .pa .li.on,.p1 button.on,.p2 button.on,.cal .quick button.on{background:var(--bg);color:var(--acc);border-color:transparent;box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
+.strip .thumb.on{outline:none;box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
+.bar,.meter .mt,.slider .tr{background:var(--bg);box-shadow:inset 2px 2px 4px var(--shD),inset -2px -2px 4px var(--shL)}
+.slider .th{background:var(--bg);border:none;box-shadow:3px 3px 6px var(--shD),-3px -3px 6px var(--shL)}
+.tl li::before{border:none;background:var(--bg);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
+.tl li.acc::before{background:var(--acc);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
+.tl li.ok::before{background:var(--ok);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
+.tl li.err::before{background:var(--err);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
+.avatar{box-shadow:3px 3px 6px var(--shD),-3px -3px 6px var(--shL)}
+.conf{background:var(--bg);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}

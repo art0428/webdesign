@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 38.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -53,6 +53,20 @@ body{background:#F4F4F4}
 .tabbar,.tnav{background:var(--page,#F4F4F4)}
 .tabbar .tbi[aria-current]{color:var(--acc)}
 .tbdemo{background:var(--page,#F4F4F4)}
+:root{--trk-bar:5px;--trk-meter:5px;--th-w:14px;--th-h:20px;--tl-x:-25px;--tl-w:9px;--tl-h:9px;--tnl-al:center;--tnl-h:3.6rem}
+.tabbar .tbi,.tnav .tnl a{border-radius:6px}
+.tnav .tnl a{border-bottom:none}
+.tabbar .tbi[aria-current],.tnav .tnl a[aria-current]{background:var(--card,#FFFFFF);color:var(--acc);border-bottom-color:transparent;box-shadow:inset 0 0 0 1px var(--line-2)}
+.tree .nd.on,.cmdk .it.on,.split .pa .li.on,.p1 button.on,.p2 button.on,.cal .quick button.on{background:var(--sel);border-color:var(--line-2);color:var(--ink);border-radius:6px}
+.p1 button,.p3 button,.p5 button{border-radius:6px}
+.cmdk .it.on kbd,.tree .nd.on .tw{color:inherit}
+.strip .thumb.on{outline:1px solid var(--ink);outline-offset:1px;border-radius:6px}
+.bar,.meter .mt,.slider .tr,.bar i,.meter .mt i,.slider .fl{border-radius:2px}
+.slider .th{border:1px solid var(--line-2);border-radius:4px;background:var(--card,#FFFFFF)}
+.tl{border-left-width:1px}
+.tl li::before{border-radius:2px;border:none;box-shadow:none}
+.avatar,.avatar.sq{border-radius:6px}
+.conf{border-radius:6px;background:transparent;box-shadow:inset 0 0 0 1px currentColor}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
@@ -217,6 +231,8 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .cmdk .it.on .ic{color:inherit}
 :where(html[data-theme="dark"]) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html[data-theme="dark"]) .tnav .tnb i{border-radius:50%;background:var(--acc)}
+html[data-theme="dark"][data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
+html[data-theme="dark"][data-style="s1"] .p1 button.on,html[data-theme="dark"][data-style="s1"] .p2 button.on,html[data-theme="dark"][data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:var(--card)}
 :where(html[data-theme="dark"]) body{background:var(--page)}
@@ -241,6 +257,11 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .tabbar,:where(html[data-theme="dark"]) .tnav{background:var(--page,var(--page))}
 :where(html[data-theme="dark"]) .tbdemo{background:var(--page,var(--page))}
 :where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}
+:where(html[data-theme="dark"]) .tree .nd.on,:where(html[data-theme="dark"]) .cmdk .it.on,:where(html[data-theme="dark"]) .split .pa .li.on,:where(html[data-theme="dark"]) .p1 button.on,:where(html[data-theme="dark"]) .p2 button.on,:where(html[data-theme="dark"]) .cal .quick button.on{background:var(--sel);color:var(--ink)}
+:where(html[data-theme="dark"]) .bar,:where(html[data-theme="dark"]) .meter .mt,:where(html[data-theme="dark"]) .slider .tr,:where(html[data-theme="dark"]) .bar i,:where(html[data-theme="dark"]) .meter .mt i,:where(html[data-theme="dark"]) .slider .fl{border-radius:2px}
+:where(html[data-theme="dark"]) .slider .th{background:var(--card,#FFFFFF)}
+:where(html[data-theme="dark"]) .tl li::before{border-radius:2px;border:none}
+:where(html[data-theme="dark"]) .avatar,:where(html[data-theme="dark"]) .avatar.sq{border-radius:6px}
 html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED}
 @media (prefers-color-scheme:dark){
 html:not([data-theme="light"]){color-scheme:dark}
@@ -405,6 +426,8 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .cmdk .it.on .ic{color:inherit}
 :where(html:not([data-theme="light"])) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html:not([data-theme="light"])) .tnav .tnb i{border-radius:50%;background:var(--acc)}
+html:not([data-theme="light"])[data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
+html:not([data-theme="light"])[data-style="s1"] .p1 button.on,html:not([data-theme="light"])[data-style="s1"] .p2 button.on,html:not([data-theme="light"])[data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:var(--card)}
 :where(html:not([data-theme="light"])) body{background:var(--page)}
@@ -429,5 +452,10 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .tabbar,:where(html:not([data-theme="light"])) .tnav{background:var(--page,var(--page))}
 :where(html:not([data-theme="light"])) .tbdemo{background:var(--page,var(--page))}
 :where(html:not([data-theme="light"])) [fill="#fff"]{fill:var(--card)}
+:where(html:not([data-theme="light"])) .tree .nd.on,:where(html:not([data-theme="light"])) .cmdk .it.on,:where(html:not([data-theme="light"])) .split .pa .li.on,:where(html:not([data-theme="light"])) .p1 button.on,:where(html:not([data-theme="light"])) .p2 button.on,:where(html:not([data-theme="light"])) .cal .quick button.on{background:var(--sel);color:var(--ink)}
+:where(html:not([data-theme="light"])) .bar,:where(html:not([data-theme="light"])) .meter .mt,:where(html:not([data-theme="light"])) .slider .tr,:where(html:not([data-theme="light"])) .bar i,:where(html:not([data-theme="light"])) .meter .mt i,:where(html:not([data-theme="light"])) .slider .fl{border-radius:2px}
+:where(html:not([data-theme="light"])) .slider .th{background:var(--card,#FFFFFF)}
+:where(html:not([data-theme="light"])) .tl li::before{border-radius:2px;border:none}
+:where(html:not([data-theme="light"])) .avatar,:where(html:not([data-theme="light"])) .avatar.sq{border-radius:6px}
 html:not([data-theme="light"]){color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED}
 }

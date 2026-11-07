@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 38.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -245,6 +245,20 @@ button{font-family:inherit;color:var(--ink)}
 .tabbar{background:var(--gl);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border-top:1px solid var(--glBd)}
 .tnav{background:var(--gl);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:none;border-radius:20px}
 .tbdemo{background:var(--page,#EEF0F6)}
+:root{--trk-bar:11px;--trk-meter:11px;--tl-x:-28px;--tnl-al:center;--tnl-h:3.6rem;--tb-m:0 var(--sp-2) var(--sp-2)}
+.tabbar{border:1px solid var(--glBd);border-radius:999px}
+.tabbar .tbi,.tnav .tnl a{border-radius:999px}
+.tnav .tnl a{border-bottom:none}
+.tabbar .tbi[aria-current],.tnav .tnl a[aria-current],.tree .nd.on,.cmdk .it.on,.split .pa .li.on,.p1 button.on,.p2 button.on,.cal .quick button.on{background:var(--card,#FFFFFF);border-color:var(--glBd);color:var(--acc);box-shadow:0 2px 10px rgba(30,34,60,.14)}
+.strip .thumb.on{outline:1px solid var(--glBd);box-shadow:0 0 0 3px var(--card,#FFFFFF)}
+.bar,.meter .mt,.slider .tr{background:var(--gl);box-shadow:inset 0 0 0 1px var(--glBd)}
+.slider .th{background:var(--card,#FFFFFF);border:1px solid var(--glBd);box-shadow:0 2px 8px rgba(30,34,60,.22)}
+.tl li::before{border:1px solid var(--glBd);background:var(--gl);box-shadow:0 1px 4px rgba(30,34,60,.16)}
+.tl li.acc::before{background:var(--acc)}
+.tl li.ok::before{background:var(--ok)}
+.tl li.err::before{background:var(--err)}
+.avatar{box-shadow:0 0 0 2px var(--glBd),0 2px 8px rgba(30,34,60,.18)}
+.conf{background:var(--gl);box-shadow:inset 0 0 0 1px var(--glBd)}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
@@ -408,6 +422,8 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .cmdk .it.on .ic{color:inherit}
 :where(html[data-theme="dark"]) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html[data-theme="dark"]) .tnav .tnb i{border-radius:50%;background:var(--acc)}
+html[data-theme="dark"][data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
+html[data-theme="dark"][data-style="s1"] .p1 button.on,html[data-theme="dark"][data-style="s1"] .p2 button.on,html[data-theme="dark"][data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:#232838}
 :where(html[data-theme="dark"]) .check.dis i,:where(html[data-theme="dark"]) .radio.dis i{border-color:var(--muted)}
@@ -611,6 +627,15 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .sheetdemo{background:var(--page,#2B3142)}
 :where(html[data-theme="dark"]) .tbdemo{background:var(--page,#2B3142)}
 :where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}
+:where(html[data-theme="dark"]) .tabbar .tbi[aria-current],:where(html[data-theme="dark"]) .tnav .tnl a[aria-current],:where(html[data-theme="dark"]) .tree .nd.on,:where(html[data-theme="dark"]) .cmdk .it.on,:where(html[data-theme="dark"]) .split .pa .li.on,:where(html[data-theme="dark"]) .p1 button.on,:where(html[data-theme="dark"]) .p2 button.on,:where(html[data-theme="dark"]) .cal .quick button.on{background:var(--card,#FFFFFF);color:var(--acc);box-shadow:0 2px 10px rgba(30,34,60,.14)}
+:where(html[data-theme="dark"]) .strip .thumb.on{box-shadow:0 0 0 3px var(--card,#FFFFFF)}
+:where(html[data-theme="dark"]) .bar,:where(html[data-theme="dark"]) .meter .mt,:where(html[data-theme="dark"]) .slider .tr{background:var(--gl)}
+:where(html[data-theme="dark"]) .slider .th{background:var(--card,#FFFFFF);box-shadow:0 2px 8px rgba(30,34,60,.22)}
+:where(html[data-theme="dark"]) .tl li::before{border:1px solid var(--glBd);background:var(--gl);box-shadow:0 1px 4px rgba(30,34,60,.16)}
+:where(html[data-theme="dark"]) .tl li.acc::before{background:var(--acc)}
+:where(html[data-theme="dark"]) .tl li.ok::before{background:var(--ok)}
+:where(html[data-theme="dark"]) .tl li.err::before{background:var(--err)}
+:where(html[data-theme="dark"]) .conf{background:var(--gl)}
 html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED}
 @media (prefers-color-scheme:dark){
 html:not([data-theme="light"]){color-scheme:dark}
@@ -774,6 +799,8 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .cmdk .it.on .ic{color:inherit}
 :where(html:not([data-theme="light"])) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html:not([data-theme="light"])) .tnav .tnb i{border-radius:50%;background:var(--acc)}
+html:not([data-theme="light"])[data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
+html:not([data-theme="light"])[data-style="s1"] .p1 button.on,html:not([data-theme="light"])[data-style="s1"] .p2 button.on,html:not([data-theme="light"])[data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:#232838}
 :where(html:not([data-theme="light"])) .check.dis i,:where(html:not([data-theme="light"])) .radio.dis i{border-color:var(--muted)}
@@ -977,5 +1004,14 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .sheetdemo{background:var(--page,#2B3142)}
 :where(html:not([data-theme="light"])) .tbdemo{background:var(--page,#2B3142)}
 :where(html:not([data-theme="light"])) [fill="#fff"]{fill:var(--card)}
+:where(html:not([data-theme="light"])) .tabbar .tbi[aria-current],:where(html:not([data-theme="light"])) .tnav .tnl a[aria-current],:where(html:not([data-theme="light"])) .tree .nd.on,:where(html:not([data-theme="light"])) .cmdk .it.on,:where(html:not([data-theme="light"])) .split .pa .li.on,:where(html:not([data-theme="light"])) .p1 button.on,:where(html:not([data-theme="light"])) .p2 button.on,:where(html:not([data-theme="light"])) .cal .quick button.on{background:var(--card,#FFFFFF);color:var(--acc);box-shadow:0 2px 10px rgba(30,34,60,.14)}
+:where(html:not([data-theme="light"])) .strip .thumb.on{box-shadow:0 0 0 3px var(--card,#FFFFFF)}
+:where(html:not([data-theme="light"])) .bar,:where(html:not([data-theme="light"])) .meter .mt,:where(html:not([data-theme="light"])) .slider .tr{background:var(--gl)}
+:where(html:not([data-theme="light"])) .slider .th{background:var(--card,#FFFFFF);box-shadow:0 2px 8px rgba(30,34,60,.22)}
+:where(html:not([data-theme="light"])) .tl li::before{border:1px solid var(--glBd);background:var(--gl);box-shadow:0 1px 4px rgba(30,34,60,.16)}
+:where(html:not([data-theme="light"])) .tl li.acc::before{background:var(--acc)}
+:where(html:not([data-theme="light"])) .tl li.ok::before{background:var(--ok)}
+:where(html:not([data-theme="light"])) .tl li.err::before{background:var(--err)}
+:where(html:not([data-theme="light"])) .conf{background:var(--gl)}
 html:not([data-theme="light"]){color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED}
 }

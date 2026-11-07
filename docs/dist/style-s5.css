@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 38.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -158,6 +158,20 @@ button{font-family:inherit;color:var(--ink)}
 .tabbar{background:color-mix(in srgb,var(--card) 92%,transparent);border-top:none;box-shadow:0 -14px 34px rgba(30,34,60,.14)}
 .tnav{background:color-mix(in srgb,var(--card) 92%,transparent);border-bottom:none;border-radius:26px 26px 26px 8px}
 .tbdemo{background:var(--page,#FCFCFD)}
+:root{--trk-bar:10px;--trk-meter:10px;--sl-top:11px;--sl-h:10px;--fl-top:11px;--fl-h:10px}
+.tabbar,.tnav{background:color-mix(in srgb,var(--card,#FFFFFF) 92%,transparent)}
+.tabbar .tbi[aria-current]{color:var(--ink)}
+.tabbar .tbi[aria-current]::after{content:"";position:absolute;left:50%;bottom:0;width:20px;height:4px;transform:translateX(-50%);border-radius:999px;background:linear-gradient(95deg,var(--acc),var(--acc2-deep))}
+.tnav .tnl a[aria-current]{color:var(--ink);border-bottom-color:transparent}
+.tnav .tnl a[aria-current]::after{content:"";position:absolute;left:var(--sp-4);right:var(--sp-4);bottom:var(--sp-2);height:4px;border-radius:999px;background:linear-gradient(95deg,var(--acc),var(--acc2-deep))}
+.tree .nd.on,.cmdk .it.on,.split .pa .li.on,.p1 button.on,.p2 button.on,.cal .quick button.on{background:var(--dark);border-color:var(--dark);color:var(--page,#FFFFFF);border-radius:18px 18px 18px 6px}
+.tree .nd.on .tw,.tree .nd.on .count,.split .pa .li.on small,.cmdk .it.on kbd{color:inherit;background:transparent;border-color:currentColor}
+.strip .thumb.on{outline-color:var(--dark);border-radius:18px 18px 18px 6px}
+.bar,.meter .mt,.slider .tr{background:color-mix(in srgb,var(--acc) 14%,var(--line))}
+.slider .th{border:none;background:linear-gradient(95deg,var(--acc),var(--acc2-deep));box-shadow:0 0 0 3px var(--card,#FFFFFF)}
+.tl li.acc::before{background:linear-gradient(95deg,var(--acc),var(--acc2-deep));box-shadow:0 0 0 2px var(--line)}
+.avatar,.avatar.sq{border-radius:18px 18px 18px 6px}
+.conf{border-radius:14px 14px 14px 4px}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
@@ -320,6 +334,8 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .cmdk .it.on .ic{color:inherit}
 :where(html[data-theme="dark"]) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html[data-theme="dark"]) .tnav .tnb i{border-radius:50%;background:var(--acc)}
+html[data-theme="dark"][data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
+html[data-theme="dark"][data-style="s1"] .p1 button.on,html[data-theme="dark"][data-style="s1"] .p2 button.on,html[data-theme="dark"][data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:#1E212C}
 :where(html[data-theme="dark"]) .check.dis i,:where(html[data-theme="dark"]) .radio.dis i{border-color:var(--muted)}
@@ -419,6 +435,11 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .tabbar{box-shadow:0 -14px 34px rgba(0,0,0,0.42)}
 :where(html[data-theme="dark"]) .tbdemo{background:var(--page,#1E212C)}
 :where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}
+:where(html[data-theme="dark"]) .tree .nd.on,:where(html[data-theme="dark"]) .cmdk .it.on,:where(html[data-theme="dark"]) .split .pa .li.on,:where(html[data-theme="dark"]) .p1 button.on,:where(html[data-theme="dark"]) .p2 button.on,:where(html[data-theme="dark"]) .cal .quick button.on{background:var(--dark);color:var(--page,#FFFFFF)}
+:where(html[data-theme="dark"]) .tree .nd.on .tw,:where(html[data-theme="dark"]) .tree .nd.on .count,:where(html[data-theme="dark"]) .split .pa .li.on small,:where(html[data-theme="dark"]) .cmdk .it.on kbd{background:transparent}
+:where(html[data-theme="dark"]) .slider .th{background:linear-gradient(95deg,var(--acc),var(--acc2-deep));box-shadow:0 0 0 3px var(--card,#FFFFFF)}
+:where(html[data-theme="dark"]) .tl li.acc::before{background:linear-gradient(95deg,var(--acc),var(--acc2-deep))}
+:where(html[data-theme="dark"]) .avatar,:where(html[data-theme="dark"]) .avatar.sq{border-radius:18px 18px 18px 6px}
 html[data-theme="dark"]{color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED}
 @media (prefers-color-scheme:dark){
 html:not([data-theme="light"]){color-scheme:dark}
@@ -581,6 +602,8 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .cmdk .it.on .ic{color:inherit}
 :where(html:not([data-theme="light"])) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html:not([data-theme="light"])) .tnav .tnb i{border-radius:50%;background:var(--acc)}
+html:not([data-theme="light"])[data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
+html:not([data-theme="light"])[data-style="s1"] .p1 button.on,html:not([data-theme="light"])[data-style="s1"] .p2 button.on,html:not([data-theme="light"])[data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:#1E212C}
 :where(html:not([data-theme="light"])) .check.dis i,:where(html:not([data-theme="light"])) .radio.dis i{border-color:var(--muted)}
@@ -680,5 +703,10 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .tabbar{box-shadow:0 -14px 34px rgba(0,0,0,0.42)}
 :where(html:not([data-theme="light"])) .tbdemo{background:var(--page,#1E212C)}
 :where(html:not([data-theme="light"])) [fill="#fff"]{fill:var(--card)}
+:where(html:not([data-theme="light"])) .tree .nd.on,:where(html:not([data-theme="light"])) .cmdk .it.on,:where(html:not([data-theme="light"])) .split .pa .li.on,:where(html:not([data-theme="light"])) .p1 button.on,:where(html:not([data-theme="light"])) .p2 button.on,:where(html:not([data-theme="light"])) .cal .quick button.on{background:var(--dark);color:var(--page,#FFFFFF)}
+:where(html:not([data-theme="light"])) .tree .nd.on .tw,:where(html:not([data-theme="light"])) .tree .nd.on .count,:where(html:not([data-theme="light"])) .split .pa .li.on small,:where(html:not([data-theme="light"])) .cmdk .it.on kbd{background:transparent}
+:where(html:not([data-theme="light"])) .slider .th{background:linear-gradient(95deg,var(--acc),var(--acc2-deep));box-shadow:0 0 0 3px var(--card,#FFFFFF)}
+:where(html:not([data-theme="light"])) .tl li.acc::before{background:linear-gradient(95deg,var(--acc),var(--acc2-deep))}
+:where(html:not([data-theme="light"])) .avatar,:where(html:not([data-theme="light"])) .avatar.sq{border-radius:18px 18px 18px 6px}
 html:not([data-theme="light"]){color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED}
 }

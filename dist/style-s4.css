@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 38.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -196,3 +196,14 @@ button{font-family:inherit;color:var(--ink)}
 .tabbar{border-top:2px solid var(--ink)}
 .tnav{border-bottom:2px solid var(--ink)}
 .tbdemo{background:var(--paper)}
+:root{--trk-bar:12px;--trk-meter:12px;--sl-top:10px;--sl-h:12px;--fl-top:12px;--fl-h:8px;--tnl-al:center;--tnl-h:3.6rem;--tb-m:0 var(--sp-2) var(--sp-2)}
+.tabbar{border:2px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px}
+.tabbar .tbi[aria-current],.tnav .tnl a[aria-current],.tree .nd.on,.cmdk .it.on,.split .pa .li.on,.p1 button.on,.p2 button.on,.cal .quick button.on{background:var(--accsoft);color:var(--ink);border:2px solid var(--ink);border-radius:18px 225px 18px 255px/255px 18px 225px 18px;box-shadow:2.5px 2.5px 0 var(--ink)}
+.strip .thumb.on{outline:none;border:2px solid var(--ink);box-shadow:2.5px 2.5px 0 var(--ink)}
+.bar,.meter .mt,.slider .tr{border:2px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px;background:var(--card)}
+.bar i,.meter .mt i{border-radius:0}
+.slider .th{background:var(--card);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.tl{border-left:2px dashed var(--ink)}
+.tl li::before{border:2px solid var(--ink);box-shadow:1.5px 1.5px 0 var(--ink)}
+.avatar{border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.conf{border:2px solid currentColor;box-shadow:1.5px 1.5px 0 var(--ink)}
