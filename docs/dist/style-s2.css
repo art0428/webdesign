@@ -1,7 +1,9 @@
-/* ══ 管理者工作室 設計系統 39.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 40.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
+/* S1 有、本套沒有的規則或屬性：歸零（unset），等於本套原本沒寫 */
+:root{--page:initial;--card:initial}
 /* 本套材質（相對於 S1 基準的屬性層級差異） */
 .board{border:unset}
 .btn:hover{border:none}

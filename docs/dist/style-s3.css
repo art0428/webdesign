@@ -1,7 +1,9 @@
-/* ══ 管理者工作室 設計系統 39.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 40.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
+/* S1 有、本套沒有的規則或屬性：歸零（unset），等於本套原本沒寫 */
+:root{--page:initial;--card:initial}
 /* 本套材質（相對於 S1 基準的屬性層級差異） */
 .btn:hover{border:1px solid rgba(255,255,255,.65)}
 .btn.primary{border-radius:999px}
@@ -25,7 +27,7 @@
 .card.click:hover{border:1px solid var(--glBd)}
 .alert .btn.sm:hover{opacity:unset}
 :root,[data-type="productive"]{--r-lg:16px;--r-sm:12px;--r-pill:999px;--bw:1px;--bw-on:1.5px}
-:root{--info:#1A66AA;--info-soft:#E8F0F6;--acc:#2B5FB8;--acc2:#C2377B;--ink:#232936;--muted:#454C59;--gl:rgba(255,255,255,.70);--glBd:rgba(255,255,255,.7);--glDeep:rgba(255,255,255,.18);--err:#B23F2F;--err-soft:rgba(240,205,200,.75);--wrn:#846200;--wrn-soft:rgba(244,231,185,.8);--ok:#2A722E;--ok-soft:rgba(203,231,205,.8)}
+:root{--info:#1A66AA;--acc:#2B5FB8;--acc2:#C2377B;--ink:#232936;--muted:#454C59;--gl:rgba(255,255,255,.70);--glBd:rgba(255,255,255,.7);--err:#B23F2F;--wrn:#846200;--ok:#2A722E}
 body{background:linear-gradient(133deg,var(--acc) 0%,var(--acc2) 100%);background-attachment:fixed}
 button{font-family:inherit;color:var(--ink)}
 .board,.glass{background:var(--gl);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid var(--glBd);box-shadow:0 10px 32px rgba(15,18,35,.16)}

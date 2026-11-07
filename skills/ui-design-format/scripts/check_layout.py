@@ -22,7 +22,7 @@
 
 元件庫刻意的設計（堆疊頭像的負 margin、裝飾暈染、可兩行的次要說明等）已寫在 JS 的 EXEMPT，不算違規。
 開發時才出現的控制列等區塊，加上 data-audit-skip 屬性即可排除。需要 Playwright。
-有任何不合規時結束碼為 1；檔案找不到或網址載入失敗（HTTP 400 以上）時結束碼為 2。
+有任何不合規時結束碼為 1；檔案找不到或網址載入失敗（連不上或 HTTP 400 以上）時結束碼為 2。
 """
 import re, os, sys, json, argparse, pathlib, collections
 from playwright.sync_api import sync_playwright
@@ -244,7 +244,11 @@ def main():
                 pg = ctx.new_page()
                 errs = []
                 pg.on("pageerror", lambda e: errs.append(str(e)))
-                resp = pg.goto(url, wait_until="load")
+                try:
+                    resp = pg.goto(url, wait_until="load")
+                except Exception as e:   # 連不上、DNS 失敗：Playwright 直接丟例外，不是頁面不合規
+                    print("載入失敗：%s（%s）" % (name, str(e).splitlines()[0]), file=sys.stderr)
+                    sys.exit(2)
                 if resp is not None and resp.status >= 400:
                     print("載入失敗：%s（HTTP %d）" % (name, resp.status), file=sys.stderr)
                     sys.exit(2)

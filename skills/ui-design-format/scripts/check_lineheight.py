@@ -192,7 +192,11 @@ async def render_all(paths):
         pg = await b.new_page(viewport={"width": 1280, "height": 900})
         for path in paths:
             url = path if re.match(r"https?://", path) else pathlib.Path(path).resolve().as_uri()
-            resp = await pg.goto(url, wait_until="load")
+            try:
+                resp = await pg.goto(url, wait_until="load")
+            except Exception as e:   # 連不上、DNS 失敗：Playwright 直接丟例外，不是頁面不合規
+                print("載入失敗：%s（%s）" % (path, str(e).splitlines()[0]), file=sys.stderr)
+                sys.exit(2)
             if resp is not None and resp.status >= 400:
                 print(f"載入失敗：{path}（HTTP {resp.status}）", file=sys.stderr)
                 sys.exit(2)

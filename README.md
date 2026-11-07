@@ -3,10 +3,10 @@
 一套可以直接裝進 Claude 的網頁介面設計系統（以 Agent Skill 形式提供：裝好之後，Claude 做網頁時會自動照這套規範）。
 八套風格（S1、S3、S5、S6、S8 另有深色模式；依風格可切寬鬆、標準、緊湊三檔密度）、十二組核心色系加三組特殊色系、十四級字級、間距與動態標尺、12 欄欄格、72 項元件、可直接引用的 CSS（`dist/`）、前台示範頁，外加五支交付前的自動檢查腳本。手機與平板版面有專門的規則與檢查。
 
-**A Claude Agent Skill for building web UIs: 7 visual styles (4 with dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 72 components, and 5 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow, mobile/tablet layout). Docs are in Traditional Chinese.**
+**A Claude Agent Skill for building web UIs: 8 visual styles (5 with dark mode) × 15 color themes, a 14-level type scale, spacing tokens, 72 components, and 5 automated pre-delivery checks (contrast, token compliance, line-height pairing, overflow, mobile/tablet layout). Docs are in Traditional Chinese.**
 
 **線上預覽** → <https://art0428.github.io/webdesign/>
-左側切換風格、模式（S1、S3、S5、S6 可切淺色／深色；S6 深色另可切深色底：跟隨色系或中性石墨）、密度（寬鬆／標準／緊湊，依風格開放）與色系，右側即時換裝；「前台示範」檢視是每套風格各做一個它最適合的網站（S1 會員中心、S2 自助機台、S3 產品發表、S4 咖啡館官網、S5 選物電商、S6 開發者產品官網、S7 線上雜誌），頁頂寫明適合與不適合的用途，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
+左側切換風格、模式（S1、S3、S5、S6、S8 可切淺色／深色；S6 深色另可切深色底：跟隨色系或中性石墨）、密度（寬鬆／標準／緊湊，依風格開放）與色系，右側即時換裝；「前台示範」檢視是每套風格各做一個它最適合的網站（S1 會員中心、S2 自助機台、S3 產品發表、S4 咖啡館官網、S5 選物電商、S6 開發者產品官網、S7 線上雜誌、S8 設計工作室官網），頁頂寫明適合與不適合的用途，「通用規範」檢視放各風格共用的字級、間距、圓角、色彩與斷點。
 
 ---
 
@@ -61,7 +61,7 @@ cp -r webdesign/skills/ui-design-format ~/.claude/skills/
 | S7 | 編輯 EDITORIAL | 暖白紙、明體標題、欄線分段、直角 | 內容網站、品牌官網、長文閱讀 |
 | S8 | 線描 LINE | 卡片與頁面同色、只用 1px 線條分層、選中用實心點或細框、零陰影、標題細字；另有深色模式（中性黑） | 品牌官網、設計工作室與作品集、手機 App 前台 |
 
-色系由使用者在系統內切換：十二組核心 C1〜C12 加三組特殊色系 SC1〜SC3。八套 × 十五組共 120 種，扣掉鎖住的 S2 × SC1、S2 × SC2，共 118 種可用組合；S1、S3、S5、S6、S8 的深色模式各另有 15 種（S1 深色是暖紙色調固定的「深色的紙」，不跟色系變；S8 深色是中性黑）；S6 深色另分兩種深色底——跟隨色系（預設，深色面帶主色的極淡色調）與中性石墨（純灰），再加 15 種，合計 208 種。深色是同一套風格的夜間版本，只換顏色、不換結構，需要夜間模式的專案從這四套選。密度是另一條軸，分寬鬆、標準、緊湊三檔，只改元件高度與內距、不改顏色：寬鬆是桌機直接採用手機的觸控尺寸，緊湊給一屏要看大量列的後台。每套風格決定預設哪一檔、能選哪幾檔——S6 預設標準，其餘六套預設寬鬆；S2、S4、S5、S7 的材質在小元件上會壞，不開放緊湊。
+色系由使用者在系統內切換：十二組核心 C1〜C12 加三組特殊色系 SC1〜SC3。八套 × 十五組共 120 種，扣掉鎖住的 S2 × SC1、S2 × SC2，共 118 種可用組合；S1、S3、S5、S6、S8 的深色模式各另有 15 種（S1 深色是暖紙色調固定的「深色的紙」，不跟色系變；S8 深色是中性黑）；S6 深色另分兩種深色底——跟隨色系（預設，深色面帶主色的極淡色調）與中性石墨（純灰），再加 15 種，合計 208 種。深色是同一套風格的夜間版本，只換顏色、不換結構，需要夜間模式的專案從這五套選。密度是另一條軸，分寬鬆、標準、緊湊三檔，只改元件高度與內距、不改顏色：寬鬆是桌機直接採用手機的觸控尺寸，緊湊給一屏要看大量列的後台。每套風格決定預設哪一檔、能選哪幾檔——S6 預設標準，其餘七套預設寬鬆；S2、S4、S5、S7、S8 的材質在小元件上會壞，不開放緊湊。
 
 ## 開發時引用 CSS
 
@@ -102,12 +102,12 @@ skills/ui-design-format/      ← 這一整個資料夾就是 skill，複製走�
 ├── references/               規範全文依章節拆開，需要細節時才讀
 ├── assets/                   tokens.css、各風格元件庫、前台示範頁、通用規範頁（當範本複製）
 └── scripts/                  五項交付前檢查
-dist/                         可引用的 CSS（tokens、base、style-s1〜s7、theme.js）、USAGE.md、examples/
+dist/                         可引用的 CSS（tokens、base、style-s1〜s8、theme.js）、USAGE.md、examples/
 dist/ui-design-format.zip     給 claude.ai 上傳用的打包檔
 docs/                         線上預覽（GitHub Pages）、規範全文 spec.md、調研 research/
 ```
 
-規範全文：[docs/spec.md](docs/spec.md)（v39）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
+規範全文：[docs/spec.md](docs/spec.md)（v40）。每個數值背後的推導與業界對標：[docs/research/](docs/research/README.md)。
 
 ## 授權
 

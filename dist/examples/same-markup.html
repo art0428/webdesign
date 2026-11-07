@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>同一份標記換七套殼 — 管理者工作室 設計系統</title>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
+<title>同一份標記換八套殼 — 管理者工作室 設計系統</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../tokens.css">
 <link rel="stylesheet" href="../base.css" id="lnk-base">
 <link rel="stylesheet" href="../style-s1.css" id="lnk-style">
@@ -31,12 +31,12 @@
 <div class="page">
 
   <div class="hdr">
-    <div><h1>訂單管理</h1><div class="sub">管理者工作室 設計系統 20.0.0 · 同一份元件標記換七套殼的示範——說明「風格是殼」，不代表每一套都適合這個情境；各套適合的情境見 index.html</div></div>
+    <div><h1>訂單管理</h1><div class="sub">管理者工作室 設計系統 40.0.0 · 同一份元件標記換八套殼的示範——說明「風格是殼」，不代表每一套都適合這個情境；各套適合的情境見 index.html</div></div>
     <div class="sp">
       <label class="switcher">風格
         <select id="pickStyle">
           <option value="s1">S1 奶油</option><option value="s2">S2 浮雕</option><option value="s3">S3 琉璃</option>
-          <option value="s4">S4 手帳</option><option value="s5">S5 極光</option><option value="s6">S6 石墨</option><option value="s7">S7 編輯</option>
+          <option value="s4">S4 手帳</option><option value="s5">S5 極光</option><option value="s6">S6 石墨</option><option value="s7">S7 編輯</option><option value="s8">S8 線描</option>
         </select></label>
       <label class="switcher">色系
         <select id="pickTheme"></select></label>
@@ -101,19 +101,19 @@
   </div>
 
   <div class="notice">您的專屬價已套用：<b>A級經銷 92 折</b>＋數量階梯價。價格未登入不公開。</div>
-  <div class="demo-note">這張頁面的 CSS 只有上方 `&lt;style&gt;` 的排版（grid、flex、gap），所有元件外觀來自 dist/。右上角切換風格會換掉 style-s*.css 並重設 data-style；七套都是 tokens ＋ base ＋ 一個風格檔。</div>
+  <div class="demo-note">這張頁面的 CSS 只有上方 `&lt;style&gt;` 的排版（grid、flex、gap），所有元件外觀來自 dist/。右上角切換風格會換掉 style-s*.css 並重設 data-style；八套都是 tokens ＋ base ＋ 一個風格檔。</div>
 </div>
 
 <script src="../theme.js"></script>
 <script>
 (function(){
-  const FULL=new Set();   /* v20 起七套都載 base.css */
+  const FULL=new Set();   /* v20 起各套都載 base.css */
   const root=document.documentElement, base=document.getElementById('lnk-base'), lnk=document.getElementById('lnk-style');
   const pS=document.getElementById('pickStyle'), pT=document.getElementById('pickTheme'), pC=document.getElementById('pickScheme'), wrap=document.getElementById('schemeWrap');
   for(const k in DS.THEMES){ const o=document.createElement('option'); o.value=k; o.textContent=DS.THEMES[k].id+' '+DS.THEMES[k].name; pT.appendChild(o); }
   function setStyle(s){
     root.dataset.style=s; lnk.href='../style-'+s+'.css'; base.disabled=FULL.has(s);
-    wrap.style.display = (s==='s6') ? '' : 'none';
+    wrap.style.display = ['s1','s3','s5','s6','s8'].includes(s) ? '' : 'none';   /* 有深色的五套 */
     /* theme.js 的 STYLE 在載入時讀取；換風格後重新載入腳本最乾淨 */
     const old=document.querySelector('script[src="../theme.js"]'); const n=document.createElement('script'); n.src='../theme.js';
     old.replaceWith(n); n.onload=()=>{ refreshThemeOptions(); pT.value=root.dataset.theme_key||'c1'; };

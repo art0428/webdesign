@@ -1014,6 +1014,9 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 /* v37 區塊結束 */
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-171717:var(--ink);--tk-6a6a6a:var(--muted);--tk-e3e3e3:var(--line);--tk-f6f6f6:var(--paperc);--tk-e9c94a:var(--wrn);--tk-3b3b3b:var(--dark);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
+/* ══ v40 淺色的頁面與卡片變數（規範 v40）：淺色也定義 --page、--card，引用它們的導覽與產品樣式才不會變透明 ══ */
+:root{--page:#F4F4F4;--card:#FFFFFF}
+/* v40 區塊結束 */
 </style>
 </head>
 <body data-type="expressive">

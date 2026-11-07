@@ -165,7 +165,11 @@ async def audit(targets, themes, width):
             for th in (themes or [None]):
                 parts = [x for x in (th, frag) if x]
                 url = base + ("#" + ".".join(parts) if parts else "")
-                resp = await pg.goto(url, wait_until="load")
+                try:
+                    resp = await pg.goto(url, wait_until="load")
+                except Exception as e:   # 連不上、DNS 失敗：Playwright 直接丟例外，不是頁面不合規
+                    print("載入失敗：%s（%s）" % (url, str(e).splitlines()[0]), file=sys.stderr)
+                    sys.exit(2)
                 if resp is not None and resp.status >= 400:
                     print(f"載入失敗：{url}（HTTP {resp.status}）", file=sys.stderr)
                     sys.exit(2)
