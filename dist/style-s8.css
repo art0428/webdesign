@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 33.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 34.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
    由 emit_s8.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（規範 12.2）。
    四項風格層例外（規範 4.1、4.2、7.4，僅 S8）：標題細字重、英文眉標寬字距 0.3em、圖示線寬 1.5、數字用 Inter。
@@ -487,7 +487,31 @@ html[data-theme="dark"] .badge>b.gray{border-color:var(--muted)}
 /* 示範板不再加外框：區塊已由上方墨線分段，再框一次就是兩條線（規範 9.3） */
 .board{border-color:transparent}
 .tcap{background:transparent}
-.t th{border-bottom-color:var(--ink)}
+.t th{border-bottom-color:var(--ink);font-weight:500}
+/* 表格的層次（v34）：色碼不變，只有單號與金額用主文字色，其餘欄用次要字色，表頭字重 500，整張表才不會一片墨色 */
+.t td{color:var(--muted)}
+.t td.num,.t td.amt,.t td:first-child:not(.ck){color:var(--ink)}
+.t td.amt{font-weight:400}
+.t .st{font-weight:500}
+.num,.amt,.dt{font-variant-numeric:lining-nums tabular-nums}
+/* 滑過不鋪色，只多一條墨線 */
+.t tbody tr:hover td{background:transparent;box-shadow:inset 0 -1px 0 var(--ink)}
+.t tbody tr:hover td:first-child,.t tbody tr:hover td:last-child{border-radius:0}
+/* 標準密度列多，狀態標籤拿掉外框，只留圓點與文字；圓點靠齊表頭 */
+html[data-density="normal"] .t .st{border-color:transparent;padding-left:0}
+/* 線不碰外框（v34）：外框內留 --sp-5，第一欄與最後一欄內距歸零，標題、文字與線對齊同一條邊；標題列不再畫線，表頭墨線就是第一條線 */
+@media (min-width:768px){
+.tblwrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}
+.tblwrap .tcap{padding-top:var(--sp-4);padding-left:0;padding-right:0;border-bottom-color:transparent}
+.tblwrap .t th:first-child,.tblwrap .t td:first-child{padding-left:0}
+.tblwrap .t th:last-child,.tblwrap .t td:last-child{padding-right:0}
+.tblwrap .tfoot{padding-left:0;padding-right:0}
+}
+/* 手機卡片列也放輕：主欄與欄名 700 改 500 */
+@media (max-width:767px){
+table.t tbody tr td:first-child,table.t tbody tr td.ck + td{font-weight:500}
+table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):not(:has(> .st)):not(:has(> .btn:only-child))::before{font-weight:500}
+}
 /* 進度條末端加一個實心點 */
 .bar i{background:radial-gradient(circle at calc(100% - 3.5px) 50%,var(--acc) 0 3px,transparent 3.5px),linear-gradient(var(--acc),var(--acc)) center/100% 2px no-repeat}
 /* 零陰影：側滑面板與命令面板改一條淡線分層 */
