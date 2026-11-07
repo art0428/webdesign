@@ -1068,10 +1068,11 @@ body{background:var(--page)}
 .check i{border:1px solid var(--ink);border-radius:4px}
 .radio i{border:1px solid var(--ink)}
 .radio.on i{border-color:var(--acc);box-shadow:0 0 0 3px var(--page),0 0 0 4px var(--line)}
-.sw2 .tk{background:transparent;box-shadow:inset 0 0 0 1px var(--ink)}
-.sw2 .tk::after{background:var(--page);box-shadow:inset 0 0 0 1px var(--ink)}
-.sw2.on .tk{background:var(--acc);box-shadow:none}
-.sw2.on .tk::after{box-shadow:none}
+.sw2 .tk{background:transparent;border:1px solid var(--ink)}
+.sw2 .tk::after{background:var(--page);border:1px solid var(--ink)}
+.sw2 .tk::after{top:2px;left:2px}
+.sw2.on .tk{background:var(--acc);border-color:var(--acc)}
+.sw2.on .tk::after{border-color:transparent}
 
 /* 頁籤：目前頁是騎在底線上的圓點，不用粗底線 */
 .tab{position:relative}
@@ -1104,9 +1105,11 @@ html[data-theme="dark"] .badge>b{border-color:var(--err)}
 html[data-theme="dark"] .badge>b.gray{border-color:var(--muted)}
 
 /* 與「線描風格 Mockup」對齊（v3）*/
+/* 框線一律用真實 border（v37）：inset 內陰影的圓角線粗較不均；會切換選中的元件先留透明邊框，切換時文字才不會跳 */
+.nitem,.casc li,.tree .nd,.split .pa .li,.cmdk .it,.toolbar .tb,.tp .tpcol span{border:1px solid transparent}
 /* 側欄：沒選中的是次要字色；選中不鋪色塊，改主色字加一圈淡線 */
 .nitem{color:var(--muted)}
-.nitem.on{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--line)}
+.nitem.on{background:transparent;color:var(--acc);border:1px solid var(--line)}
 /* 區塊標題與表頭：墨線分段，表格標題列不鋪表頭帶 */
 .sec .rule{background:var(--ink)}
 /* 示範板不再加外框：區塊已由上方墨線分段，再框一次就是兩條線（規範 9.3） */
@@ -1129,7 +1132,7 @@ html[data-theme="dark"] .badge>b.gray{border-color:var(--muted)}
 html[data-density="normal"] .t .st{border-color:transparent;padding-left:0}
 /* 線不碰外框（v34）：外框內留 --sp-5，第一欄與最後一欄內距歸零，標題、文字與線對齊同一條邊；標題列不再畫線，表頭墨線就是第一條線 */
 /* 卡片裡的批次列不再自帶方框：外框已有，再框一次會撞上圓角 */
-.tblwrap .batchbar{box-shadow:none;font-weight:500}
+.tblwrap .batchbar{border-width:0 0 1px;font-weight:500}
 @media (min-width:768px){
 .tblwrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}
 .tblwrap .tcap{padding-top:var(--sp-4);padding-left:0;padding-right:0;border-bottom-color:transparent}
@@ -1147,6 +1150,7 @@ table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):n
 .bar i{background:radial-gradient(circle at calc(100% - 3.5px) 50%,var(--acc) 0 3px,transparent 3.5px),linear-gradient(var(--acc),var(--acc)) center/100% 2px no-repeat}
 /* 零陰影：側滑面板與命令面板改一條淡線分層 */
 .drawer{box-shadow:none;border-left:1px solid var(--line)}
+@media (max-width:767px){.drawerdemo .drawer{border-left-color:transparent}}
 .cmdk{box-shadow:none}
 
 /* 線條一律 1px（v4，量表這類元件改成細細的一條線，其他類似的線條都維持 1px）
@@ -1175,7 +1179,7 @@ table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):n
 .field.err input{border-bottom-width:1px}
 .field input:focus,.field select:focus{border:0;border-bottom:1px solid var(--acc)}
 .field textarea:focus,.txa textarea:focus,.p5 input:focus{border-width:1px}
-.cal .cg .today{box-shadow:inset 0 0 0 1px var(--acc)}
+.cal .cg .today{border:1px solid var(--acc)}
 .spin{border-width:1px}
 .prose>blockquote{border-left-width:1px}
 
@@ -1189,28 +1193,30 @@ table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):n
    六、浮層（Toast、提示氣泡、數值氣泡）也不用墨色實心，改同色底＋1px 墨線。 */
 /* 二、面不鋪色 */
 .tfoot,.cardx .ct,.noti .nh,.abody,.tlist .th2,.split .pa,.result .dl,.desc dt,.igroup .ad,.codeblk,.sheetdemo{background:transparent}
-.prose code{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.prose code{background:transparent;border:1px solid var(--line)}
 .alert.err,.alert.wrn,.alert.ok,.alert.info{background:transparent;border-color:currentColor}
-.conf.hi,.conf.md,.conf.lo,.count,.count.err,.count.gray,.tab .cnt{background:transparent;box-shadow:inset 0 0 0 1px currentColor}
+.conf.hi,.conf.md,.conf.lo,.count,.count.err,.count.gray,.tab .cnt{background:transparent;border:1px solid currentColor}
 .count.gray{color:var(--muted)}
-.pop .pt i,.result.ok .ic,.result.err .ic,.result.info .ic{background:transparent;box-shadow:inset 0 0 0 1px currentColor}
+.pop .pt i,.result.ok .ic,.result.err .ic,.result.info .ic{background:transparent;border:1px solid currentColor}
 /* 三、整條整列的選中：主色字＋1px 細框，不鋪色塊 */
 .flow .stp.done,.mi.on,.t tr.sel td,.t tbody tr.sel,.tlist .check.on{background:transparent}
-.batchbar{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
-.toolbar .tb.on,.casc li.pick,.tp .tpcol span.sel,.tab.on .cnt{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--acc)}
-.casc li.on,.tree .nd.on,.split .pa .li.on,.cmdk .it.on{background:transparent;color:var(--acc);box-shadow:inset 0 0 0 1px var(--line)}
+.batchbar{background:transparent;border:1px solid var(--line)}
+.toolbar .tb.on,.casc li.pick,.tp .tpcol span.sel,.tab.on .cnt{background:transparent;color:var(--acc);border:1px solid var(--acc)}
+.casc li.on,.tree .nd.on,.split .pa .li.on,.cmdk .it.on{background:transparent;color:var(--acc);border:1px solid var(--line)}
 .cal .cg .inr{background:transparent;color:var(--acc)}
 /* 頭像與來源標記：細框圓，字用主色或深副色 */
 /* 頭像底用卡片色而不是透明：堆疊頭像互相壓住時，後面的細框才不會透出來 */
-.avatar,html.sc-light .avatar{background:var(--card);color:var(--acc);box-shadow:inset 0 0 0 1px currentColor}
-.avatar.gray{background:var(--card);color:var(--muted);box-shadow:inset 0 0 0 1px currentColor}
-.avatar.a2,html.sc-light .avatar.a2{background:var(--card);color:var(--acc2-deep,var(--acc2));box-shadow:inset 0 0 0 1px currentColor}
-.aibadge,html.sc-light .aibadge,html.sc-light .rowset:has(.st.wrn) .aibadge,html.sc-light tr:has(.st.wrn) .aibadge,html.sc-light .nitem:has(.st.wrn) .aibadge{background:transparent !important;color:var(--acc2-deep) !important;box-shadow:inset 0 0 0 1px currentColor}
-html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:0}
+.avatar,html.sc-light .avatar{background:var(--card);color:var(--acc);border:1px solid currentColor}
+.avatar.gray{background:var(--card);color:var(--muted);border:1px solid currentColor}
+.avatar.a2,html.sc-light .avatar.a2{background:var(--card);color:var(--acc2-deep,var(--acc2));border:1px solid currentColor}
+.aibadge,html.sc-light .aibadge,html.sc-light .rowset:has(.st.wrn) .aibadge,html.sc-light tr:has(.st.wrn) .aibadge,html.sc-light .nitem:has(.st.wrn) .aibadge{background:transparent !important;color:var(--acc2-deep) !important;border:1px solid currentColor}
 /* 六、浮層：同色底＋1px 墨線 */
 .toast{background:var(--card);color:var(--ink);border-color:var(--ink)}
 .toast i{background:var(--ok)}
-.tip,.slider .tt{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.tip,.slider .tt{background:var(--card);color:var(--ink);border:1px solid var(--ink)}
+/* 氣泡靠左對齊觸發元件：置中的 translateX(-50%) 會落在小數像素，直線與圓角都會糊 */
+.tip{left:0;transform:none}
+.tip::after{left:var(--sp-6);transform:none}
 
 /* 圖表（v5）：折線、走勢線、資料點外框一律 1px；資料點中心用卡片色（不是白）；走勢線不鋪面積；
    長條是資料本身（寬度就是數值），維持實心。圖例跟著標記走：長條給小方塊、折線給一段 1px 線 */
@@ -1222,7 +1228,7 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:0}
 
 /* 全面複查補件（v5，以 audit_line_grammar.py 逐元素量出的殘留）*/
 /* 白色外環：S1 用白圈把角標、堆疊頭像與底下的東西隔開；S8 沒有白，改與自身同色或卡片色（尺寸不變） */
-.avstack .avatar{border-color:var(--card)}
+.avstack .avatar{border:1px solid currentColor}
 .badge>b,.badge>b.dot,.bell b{border-color:var(--err)}
 .badge>b.gray{border-color:var(--muted)}
 /* 還粗於 1px 的線 */
@@ -1231,10 +1237,10 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:0}
 .split .gut{background:linear-gradient(var(--line),var(--line)) center/1px 100% no-repeat}
 .split .gut::after{width:1px;border-radius:0}
 /* 還有投影的：輪播箭頭、底部抽屜 */
-.thumb .arr{box-shadow:inset 0 0 0 1px var(--line)}
-.sheet{box-shadow:none}
+.thumb .arr{border:1px solid var(--line)}
+.sheet{box-shadow:none;border-left:0;border-right:0}
 /* 還有色塊的：說明文字裡的行內代碼、示範用的假內容條、瀏覽器預設白底的輸入格 */
-.use code{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.use code{background:transparent;border:1px solid var(--line)}
 .drawerdemo .ghost i,.sheetdemo .scr i{background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat}
 .qty input,.p5 input{background:transparent}
 
@@ -1278,25 +1284,25 @@ svg[stroke-width="2"]{stroke-width:1.5}
 .sumrow .price,.tfoot .tv,.result .dl b,.raterow .n b{font-weight:400}
 .sumrow.total .price,.spark .v,.otp input,.field .otp input{font-weight:300}
 /* 媒體：不用斜紋與白底，佔位是一圈淡線，按鈕是細線 */
-.thumb{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.thumb{background:transparent;border:1px solid var(--line)}
 .thumb .lab,.strip .thumb small{background:transparent}
 .thumb .arr,.thumb .play{background:transparent;border:1px solid var(--ink);color:var(--ink)}
 .thumb .play{align-self:center}
 .thumb .play svg{fill:none}
-.thumb .dur{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.thumb .dur{background:transparent;color:var(--ink);border:1px solid var(--line)}
 .thumb .dots i{background:var(--line);border-color:transparent}
 .thumb .dots i.on{background:var(--acc);border-color:var(--acc)}
 /* 長文：標題細字重，圖片佔位不鋪色，表格與元件庫同一套線 */
 .prose>h2,.prose>h3{font-weight:300}
 .prose>blockquote{border-left:1px solid var(--ink)}
-.prose figure .ph{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.prose figure .ph{background:transparent;color:var(--muted);border:1px solid var(--line)}
 .prose th{border-bottom-color:var(--ink)}
 .prose tr:last-child td{border-bottom-color:transparent}
 /* 燈箱：縮圖與圖片不鋪色；遮罩上的控制鈕是細線 */
 .thumbs button{background:transparent;color:var(--ink);border:1px solid var(--line)}
-.lbx.demo{box-shadow:inset 0 0 0 1px var(--line)}
-.lbx .fig{background:var(--card);color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
-.lbx .ctl,.lbx .ctl:hover{background:rgba(18,18,18,.86);box-shadow:inset 0 0 0 1px #EDEDED}
+.lbx.demo{border:1px solid var(--line)}
+.lbx .fig{background:var(--card);color:var(--muted);border:1px solid var(--line)}
+.lbx .ctl,.lbx .ctl:hover{background:rgba(18,18,18,.86);border:1px solid #EDEDED}
 /* 評分：線條星，有分數的是深琥珀線，沒分數的是淡線 */
 .rate .ic,.rate.input button .ic{fill:none;stroke-width:1.5}
 /* 輸入框附加：和一般輸入框一樣只留底線 */

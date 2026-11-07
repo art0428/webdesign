@@ -55,7 +55,7 @@ JS = r"""(W) => {
   const add = (cat, e, detail) => { if (EXEMPT[cat] && e.matches(EXEMPT[cat])) return; if (!e.dataset.audf) e.dataset.audf = 'f' + (++fid); out.push({cat, sec: headOf.get(e) || '', path: path(e), text: (e.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 24), detail, aud: mark(e), audf: e.dataset.audf}); };
   const all = [...document.body.querySelectorAll('*')].filter(e => vis(e) && inScope(e));
   const cssOf = new Map(all.map(e => [e, getComputedStyle(e)]));
-  const bw = cs => ['Top', 'Right', 'Bottom', 'Left'].map(s => (cs['border' + s + 'Style'] === 'none' || cs['border' + s + 'Style'] === 'hidden') ? 0 : parseFloat(cs['border' + s + 'Width']) || 0);
+  const bw = cs => ['Top', 'Right', 'Bottom', 'Left'].map(s => (cs['border' + s + 'Style'] === 'none' || cs['border' + s + 'Style'] === 'hidden' || cs['border' + s + 'Color'] === 'rgba(0, 0, 0, 0)') ? 0 : parseFloat(cs['border' + s + 'Width']) || 0);
 
   // ── adj／line ──
   const boxes = [], lines = [];

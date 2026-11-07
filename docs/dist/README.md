@@ -86,7 +86,7 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | `style-s5.css` | S5 極光 淺色 ＋ 深色 | 54.0 KB |
 | `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 35.8 KB |
 | `style-s7.css` | S7 編輯 | 3.1 KB |
-| `style-s8.css` | S8 線描 淺色 ＋ 深色 | 47.3 KB |
+| `style-s8.css` | S8 線描 淺色 ＋ 深色 | 47.6 KB |
 | `theme.js` | 色系、深淺模式、深色底色調與密度 | 32.8 KB |
 
 ## 版本

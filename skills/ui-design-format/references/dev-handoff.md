@@ -37,7 +37,7 @@
 
 ### 12.2 風格層純度（第六項檢查的一半）
 
-`style-s*.css` 的薄檔只准出現顏色、框線、陰影、圓角、字型；**不得出現** `min-height`、`height`、`padding`、`margin`、`gap`、`font-size`、`line-height`、`z-index`、`width`、`display`、`position`。規範明訂的風格層例外（8.2 的 S7 外層區塊內距、4.1 的 S6 等寬字字距、8.2 的 S5 暈染背景 `body::before` 與 hero 暈點 `.statc.hero::after` 的定位、8.2 的 S8 用偽元素畫的點與 1px 線——頁籤與目前頁碼的圓點、狀態標籤的圓點、量表刻度、步驟連接線、時間軸節點、圖例線段、分割面板的分隔線——的尺寸與定位，以及 5.2 的 S8 觸發框與面板對齊 `width:auto`、`margin-top:0` 與日期面板星期列置中、8.2 的 S8 導覽隆起線——`.lnav` 的定位、頁籤滿版與左內距、底部導覽的左右內距與只留圖示、示範框的外距——、8.2 的 S8 標準密度狀態標籤靠齊表頭 `padding-left:0`、8.2 的 S8 表格線不碰外框所需的 `.tblwrap` 左右內距與首尾欄內距、8.2 的 S8 穿梭框 `align-items`、播放鈕 `align-self`、日期與時間欄線條圖示的 `width`、`height`）列在 `audit_layers.py` 的 ALLOW 表，其餘一律不通過。v33 起八個風格檔全查（v19 只查得了 S1、S6、S7）。這是 8.1「風格是殼，只覆寫材質」第一次有程式守著。
+`style-s*.css` 的薄檔只准出現顏色、框線、陰影、圓角、字型；**不得出現** `min-height`、`height`、`padding`、`margin`、`gap`、`font-size`、`line-height`、`z-index`、`width`、`display`、`position`。規範明訂的風格層例外（8.2 的 S7 外層區塊內距、4.1 的 S6 等寬字字距、8.2 的 S5 暈染背景 `body::before` 與 hero 暈點 `.statc.hero::after` 的定位、8.2 的 S8 用偽元素畫的點與 1px 線——頁籤與目前頁碼的圓點、狀態標籤的圓點、量表刻度、步驟連接線、時間軸節點、圖例線段、分割面板的分隔線——的尺寸與定位，以及 5.2 的 S8 觸發框與面板對齊 `width:auto`、`margin-top:0` 與日期面板星期列置中、8.2 的 S8 導覽隆起線——`.lnav` 的定位、頁籤滿版與左內距、底部導覽的左右內距與只留圖示、示範框的外距——、8.2 的 S8 標準密度狀態標籤靠齊表頭 `padding-left:0`、8.2 的 S8 表格線不碰外框所需的 `.tblwrap` 左右內距與首尾欄內距、8.2 的 S8 穿梭框 `align-items`、播放鈕 `align-self`、氣泡靠左的 `left`、開關滑塊補回邊框的 `top`、`left`、日期與時間欄線條圖示的 `width`、`height`）列在 `audit_layers.py` 的 ALLOW 表，其餘一律不通過。v33 起八個風格檔全查（v19 只查得了 S1、S6、S7）。這是 8.1「風格是殼，只覆寫材質」第一次有程式守著。
 
 ### 12.3 拆檔無損（第六項檢查的另一半）
 
