@@ -1168,6 +1168,17 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
    單號、日期這類識別碼斷開就讀不出來；整欄放不下時由表格容器橫捲（平板以上），手機轉卡片列（6.3）。前綴 :where(html) 同 v27 */
 :where(html) .t .dt{white-space:nowrap}
 /* v28 區塊結束 */
+/* ══ 手機的提示氣泡與分割面板（規範 v37，6.6）：結構層，八套共用 ══
+   氣泡改靠左對齊觸發元件，太長時折行；分割面板改上下排，清單在上 */
+@media (max-width:767px){
+:where(html) .tip{left:0;transform:none;white-space:normal;width:max-content;max-width:calc(100vw - var(--sp-7))}
+:where(html) .tip::after{left:var(--sp-6);transform:none}
+:where(html) .split{flex-direction:column;height:auto}
+:where(html) .split .pa{flex:none;max-height:20rem;border-bottom:1px solid var(--line)}
+:where(html) .split .gut{display:none}
+:where(html) .split .pa .li .num{white-space:nowrap}
+}
+/* v37 區塊結束 */
 </style>
 </head>
 <body data-type="expressive">

@@ -1303,6 +1303,17 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 .tnav{border:none;background:var(--bg);border-radius:20px;box-shadow:5px 5px 11px var(--shD),-5px -5px 11px var(--shL)}
 .tbdemo{background:var(--bg)}
 /* v35 材質結束 */
+/* ══ 手機的提示氣泡與分割面板（規範 v37，6.6）：結構層，八套共用 ══
+   氣泡改靠左對齊觸發元件，太長時折行；分割面板改上下排，清單在上 */
+@media (max-width:767px){
+:where(html) .tip{left:0;transform:none;white-space:normal;width:max-content;max-width:calc(100vw - var(--sp-7))}
+:where(html) .tip::after{left:var(--sp-6);transform:none}
+:where(html) .split{flex-direction:column;height:auto}
+:where(html) .split .pa{flex:none;max-height:20rem;border-bottom:1px solid var(--line)}
+:where(html) .split .gut{display:none}
+:where(html) .split .pa .li .num{white-space:nowrap}
+}
+/* v37 區塊結束 */
 </style>
 </head>
 <body>
@@ -1813,7 +1824,11 @@ addEventListener('message',function(e){
  const list=[...document.querySelectorAll('h2')].map(h=>h.textContent.trim());
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
-</script>
+</script><script>/* ds-navdemo:begin 示範頁才有：點導覽換目前項，真實產品由路由決定 */
+document.addEventListener('click',e=>{const b=e.target.closest('.tabs .tab,.tnav .tnl a,.tabbar .tbi');if(!b)return;e.preventDefault();
+  if(b.matches('.tab')){b.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));return;}
+  b.parentElement.querySelectorAll('[aria-current]').forEach(x=>x.removeAttribute('aria-current'));b.setAttribute('aria-current','page');});
+/* ds-navdemo:end */</script>
 <script>/* ds-density:begin */
 /* 密度三檔（規範 5.7）：<html data-density="comfortable|normal|compact">；本套預設 comfortable、可選 comfortable／normal。由 build_density.py 產生，不要手改。 */
 (function(){
@@ -1838,10 +1853,5 @@ addEventListener('message',function(e){
 })();
 /* ds-density:end */
 </script>
-<script>/* ds-navdemo:begin 示範頁才有：點導覽換目前項，真實產品由路由決定 */
-document.addEventListener('click',e=>{const b=e.target.closest('.tabs .tab,.tnav .tnl a,.tabbar .tbi');if(!b)return;e.preventDefault();
-  if(b.matches('.tab')){b.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));return;}
-  b.parentElement.querySelectorAll('[aria-current]').forEach(x=>x.removeAttribute('aria-current'));b.setAttribute('aria-current','page');});
-/* ds-navdemo:end */</script>
 </body>
 </html>

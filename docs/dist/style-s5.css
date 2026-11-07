@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 35.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -301,14 +301,19 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .rate.input button.off{color:var(--line)}
 :where(html[data-theme="dark"]) .raterow .n b{color:var(--ink)}
 :where(html[data-theme="dark"]) .sheetdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html[data-theme="dark"]) .sheet{background:#1E212C;box-shadow:0 -8px 24px rgba(0,0,0,0.36)}
 :where(html[data-theme="dark"]) .prose th,:where(html[data-theme="dark"]) .prose td{border-bottom:1px solid var(--line)}
-:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:#fff}
+:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:#1E212C}
 :where(html[data-theme="dark"]) .pwstr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html[data-theme="dark"]) .pwstr.s1 i:nth-child(1){background:var(--err)}
 :where(html[data-theme="dark"]) .pwstr.s4 i{background:var(--ok)}
-:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:#fff}
+:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:#1E212C}
 :where(html[data-theme="dark"]) .thumbs button{background:var(--accsoft)}
+:where(html[data-theme="dark"]) .lbx .ctl{background:rgba(26,29,39,0.84)}
+:where(html[data-theme="dark"]) .lbx .ctl:hover{background:rgba(26,29,39,0.84)}
+:where(html[data-theme="dark"]) .lbx .ctl:focus-visible{outline:2px solid #1E212C;outline-offset:2px}
 :where(html[data-theme="dark"]) .lbx .cnt{color:#fff}
+:where(html[data-theme="dark"]) .cmdk{background:#1E212C;box-shadow:0 16px 48px rgba(0,0,0,0.42)}
 :where(html[data-theme="dark"]) .cmdk .in input{background:none}
 :where(html[data-theme="dark"]) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .cmdk .it .ic{color:var(--muted)}
@@ -407,10 +412,13 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .card{background:rgba(26,29,39,0.92)}
 :where(html[data-theme="dark"]) .card.click:hover{box-shadow:0 14px 34px rgba(0,0,0,0.36)}
 :where(html[data-theme="dark"]) .notice{background:color-mix(in srgb,var(--line) 55%,#1E212C)}
+:where(html[data-theme="dark"]) .sheet{background:rgba(26,29,39,0.92);box-shadow:0 -14px 34px rgba(0,0,0,0.42)}
+:where(html[data-theme="dark"]) .codeblk{background:rgba(26,29,39,0.85)}
+:where(html[data-theme="dark"]) .cmdk{background:#1E212C;box-shadow:0 14px 34px rgba(0,0,0,0.42)}
+:where(html[data-theme="dark"]) .sheetdemo{background:var(--page,#1E212C)}
+:where(html[data-theme="dark"]) .tabbar{box-shadow:0 -14px 34px rgba(0,0,0,0.42)}
+:where(html[data-theme="dark"]) .tbdemo{background:var(--page,#1E212C)}
 :where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}
-:where(html[data-theme="dark"]) .sheet{background:var(--card)}
-:where(html[data-theme="dark"]) .codeblk{background:var(--paperc)}
-:where(html[data-theme="dark"]) .cmdk{background:var(--card)}
 html[data-theme="dark"]{color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED}
 @media (prefers-color-scheme:dark){
 html:not([data-theme="light"]){color-scheme:dark}
@@ -554,14 +562,19 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .rate.input button.off{color:var(--line)}
 :where(html:not([data-theme="light"])) .raterow .n b{color:var(--ink)}
 :where(html:not([data-theme="light"])) .sheetdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html:not([data-theme="light"])) .sheet{background:#1E212C;box-shadow:0 -8px 24px rgba(0,0,0,0.36)}
 :where(html:not([data-theme="light"])) .prose th,:where(html:not([data-theme="light"])) .prose td{border-bottom:1px solid var(--line)}
-:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:#fff}
+:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:#1E212C}
 :where(html:not([data-theme="light"])) .pwstr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html:not([data-theme="light"])) .pwstr.s1 i:nth-child(1){background:var(--err)}
 :where(html:not([data-theme="light"])) .pwstr.s4 i{background:var(--ok)}
-:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:#fff}
+:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:#1E212C}
 :where(html:not([data-theme="light"])) .thumbs button{background:var(--accsoft)}
+:where(html:not([data-theme="light"])) .lbx .ctl{background:rgba(26,29,39,0.84)}
+:where(html:not([data-theme="light"])) .lbx .ctl:hover{background:rgba(26,29,39,0.84)}
+:where(html:not([data-theme="light"])) .lbx .ctl:focus-visible{outline:2px solid #1E212C;outline-offset:2px}
 :where(html:not([data-theme="light"])) .lbx .cnt{color:#fff}
+:where(html:not([data-theme="light"])) .cmdk{background:#1E212C;box-shadow:0 16px 48px rgba(0,0,0,0.42)}
 :where(html:not([data-theme="light"])) .cmdk .in input{background:none}
 :where(html:not([data-theme="light"])) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .cmdk .it .ic{color:var(--muted)}
@@ -660,9 +673,12 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .card{background:rgba(26,29,39,0.92)}
 :where(html:not([data-theme="light"])) .card.click:hover{box-shadow:0 14px 34px rgba(0,0,0,0.36)}
 :where(html:not([data-theme="light"])) .notice{background:color-mix(in srgb,var(--line) 55%,#1E212C)}
+:where(html:not([data-theme="light"])) .sheet{background:rgba(26,29,39,0.92);box-shadow:0 -14px 34px rgba(0,0,0,0.42)}
+:where(html:not([data-theme="light"])) .codeblk{background:rgba(26,29,39,0.85)}
+:where(html:not([data-theme="light"])) .cmdk{background:#1E212C;box-shadow:0 14px 34px rgba(0,0,0,0.42)}
+:where(html:not([data-theme="light"])) .sheetdemo{background:var(--page,#1E212C)}
+:where(html:not([data-theme="light"])) .tabbar{box-shadow:0 -14px 34px rgba(0,0,0,0.42)}
+:where(html:not([data-theme="light"])) .tbdemo{background:var(--page,#1E212C)}
 :where(html:not([data-theme="light"])) [fill="#fff"]{fill:var(--card)}
-:where(html:not([data-theme="light"])) .sheet{background:var(--card)}
-:where(html:not([data-theme="light"])) .codeblk{background:var(--paperc)}
-:where(html:not([data-theme="light"])) .cmdk{background:var(--card)}
 html:not([data-theme="light"]){color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED}
 }

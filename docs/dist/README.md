@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 35.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 37.0.0 — 可引用的 CSS
 
 由八套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
 
@@ -39,7 +39,7 @@ S6 深色的六個面（page、card、paperc、sel、line、line-2）**預設帶
 第八套風格：卡片與頁面同色、只用 1px 線條分層，選中用實心點或細框，零陰影零漸層；給品牌官網、設計工作室、手機 App 前台這類「看」的畫面，資料密集後台仍選 S1 或 S6（規範 8.7）。四項風格層例外寫在 `style-s8.css` 檔頭：標題 300／H3 500、英文眉標字距 0.3em、圖示線寬 1.5、數字用 Inter。字型另載：
 
 ```html
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
 ```
 
 SC1〜SC3 在 S8 會自動加框線（`html.sc-adjust`）；預設寬鬆、可選標準，不開放緊湊。範例 `examples/s8-studio.html`。
@@ -78,17 +78,17 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | 檔 | 內容 | 大小 |
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
-| `base.css` | 結構層 ＋ S1 材質 | 83.9 KB |
+| `base.css` | 結構層 ＋ S1 材質 | 84.3 KB |
 | `style-s1.css` | S1 奶油 深色（材質在 base） | 29.0 KB |
 | `style-s2.css` | S2 浮雕 | 16.5 KB |
-| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 86.2 KB |
+| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 87.3 KB |
 | `style-s4.css` | S4 手帳 | 12.6 KB |
-| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 52.5 KB |
-| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 34.0 KB |
+| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 54.0 KB |
+| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 35.8 KB |
 | `style-s7.css` | S7 編輯 | 3.1 KB |
-| `style-s8.css` | S8 線描 淺色 ＋ 深色 | 41.6 KB |
+| `style-s8.css` | S8 線描 淺色 ＋ 深色 | 47.3 KB |
 | `theme.js` | 色系、深淺模式、深色底色調與密度 | 32.8 KB |
 
 ## 版本
 
-`35.0.0` 與《網頁設計規範 v35》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`37.0.0` 與《網頁設計規範 v37》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

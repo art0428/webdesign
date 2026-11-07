@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>設計系統瀏覽器 v35</title>
+<title>設計系統瀏覽器 v37</title>
 <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +219,7 @@ body{
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
-      <span class="ver" id="dsVer" title="網頁設計規範 v35・dist 35.0.0（2026-11-07）">v35<span class="ver-d"> · 35.0.0 · 2026-11-07</span></span>
+      <span class="ver" id="dsVer" title="網頁設計規範 v37・dist 37.0.0（2026-11-07）">v37<span class="ver-d"> · 37.0.0 · 2026-11-07</span></span>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
@@ -449,7 +449,29 @@ function sync(){
 }
 /* 前台示範頁：倉庫版由 FILES 換前綴，線上版沿用 sf_s1.html 這種短檔名 */
 const storeFile=k=>(typeof FILES!=="undefined" ? FILES[k].replace("components_","storefront_") : "sf_"+k+".html");
+/* 換風格時留在同一個元件（v35 之後補）：iframe 重載會回到頁首，所以重載前記下目前這一節與它離視窗頂端的距離，載入後捲回同一節。
+   八套的節標題逐字相同，用標題對位；讀不到 iframe（file:// 開檔）時就不處理。只有元件庫檢視有節。 */
+let keepSec=null, pickedSec=null;
+function secTitle(s){ return s.querySelector("h2").textContent; }
+function whereAmI(){
+  try{
+    const w=frame.contentWindow, secs=[...w.document.querySelectorAll(".sec")].filter(s=>s.querySelector("h2"));
+    const inView=s=>{ const t=s.getBoundingClientRect().top; return t>=-1&&t<w.innerHeight; };
+    let hit=pickedSec?secs.find(s=>secTitle(s).includes(pickedSec)&&inView(s)):null;   /* 最後幾節捲不到頂，剛點的那一節優先 */
+    /* 視窗上方三成內最靠上的節標題；都沒有就是正在看的那一節（標題已捲過頂端） */
+    const top=s=>s.getBoundingClientRect().top;
+    if(!hit) hit=secs.find(s=>top(s)>=-12&&top(s)<=w.innerHeight*.3)||secs.filter(s=>top(s)<-12).pop();
+    return hit?{title:secTitle(hit),top:hit.getBoundingClientRect().top}:null;
+  }catch(_){ return null; }
+}
+function backTo(spot){
+  try{
+    const w=frame.contentWindow, s=[...w.document.querySelectorAll(".sec")].find(x=>x.querySelector("h2")&&secTitle(x)===spot.title);
+    if(s) w.scrollBy({top:s.getBoundingClientRect().top-spot.top,behavior:"instant"});
+  }catch(_){}
+}
 function load(){
+  if(curView==="lib"){ const spot=whereAmI(); if(spot) keepSec=spot; } else keepSec=null;   /* 連按時上一頁還沒載完，沿用先前記下的位置 */
   const md=(effMode()==="dark"?".dark":"")+(effTint()==="neutral"?".neutral":"");
   if(curView==="store"){ frame.src=storeFile(curStyle)+"#"+curPair+md; return; }
   frame.src = curView==="found" ? (FILES.found+"#"+curPair+"."+curStyle) : (FILES[curStyle]+"#"+curPair+md+"."+DENS_HASH[effDens()]);
@@ -574,6 +596,7 @@ function buildIndex(){
   wrap.innerHTML=html;
   wrap.querySelectorAll(".it:not(.absent)").forEach(b=>{
     b.addEventListener("click",()=>{
+      pickedSec=b.dataset.a;
       try{ frame.contentWindow.postMessage({scrollTo:b.dataset.a},"*"); }catch(_){}
     });
   });
@@ -593,7 +616,11 @@ document.getElementById("idxBtn").addEventListener("click",()=>{
   document.getElementById("idxBtn").setAttribute("aria-expanded",String(idxOpen));
   if(idxOpen) askSections();
 });
-frame.addEventListener("load",()=>{ setTimeout(()=>{ if(idxOpen) askSections(); },160); });
+frame.addEventListener("load",()=>{
+  setTimeout(()=>{ if(idxOpen) askSections(); },160);
+  const spot=keepSec; keepSec=null;
+  if(spot) [0,150,450].forEach(t=>setTimeout(()=>backTo(spot),t));   /* 字型載入後版面會再動一次 */
+});
 /* v27 手機控制區 */
 (function(){
   const bar=document.querySelector('.bar'), btn=document.getElementById('ctlBtn');

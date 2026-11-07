@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 35.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -201,14 +201,16 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .raterow .n b{color:var(--ink)}
 :where(html[data-theme="dark"]) .sheetdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html[data-theme="dark"]) .sheetdemo .scrim{background:rgba(0,0,0,.28)}
+:where(html[data-theme="dark"]) .sheet{background:var(--card)}
 :where(html[data-theme="dark"]) .prose th,:where(html[data-theme="dark"]) .prose td{border-bottom:1px solid var(--line)}
-:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:#fff}
+:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:var(--card)}
 :where(html[data-theme="dark"]) .pwstr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html[data-theme="dark"]) .pwstr.s1 i:nth-child(1){background:var(--err)}
 :where(html[data-theme="dark"]) .pwstr.s4 i{background:var(--ok)}
-:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:#fff}
+:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:var(--card)}
 :where(html[data-theme="dark"]) .thumbs button{background:var(--accsoft)}
 :where(html[data-theme="dark"]) .lbx .cnt{color:#fff}
+:where(html[data-theme="dark"]) .cmdk{background:var(--card)}
 :where(html[data-theme="dark"]) .cmdk .in input{background:none}
 :where(html[data-theme="dark"]) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .cmdk .it .ic{color:var(--muted)}
@@ -227,10 +229,18 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .check.ind i{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
 :where(html[data-theme="dark"]) .alert .btn.sm{background:none;color:currentColor}
 :where(html[data-theme="dark"]) .notice{background:var(--page)}
-:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}
-:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:var(--card,#fff)}
-:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:var(--card,#fff)}
+:where(html[data-theme="dark"]) .sheet{background:var(--card,var(--card))}
+:where(html[data-theme="dark"]) .igroup .ad{background:var(--page,var(--page))}
+:where(html[data-theme="dark"]) .igroup input,:where(html[data-theme="dark"]) .field .igroup input{background:var(--card,var(--card))}
+:where(html[data-theme="dark"]) .otp input,:where(html[data-theme="dark"]) .field .otp input{background:var(--card,var(--card))}
+:where(html[data-theme="dark"]) .codeblk{background:var(--page,var(--page))}
 :where(html[data-theme="dark"]) .thumbs button{background:var(--sel)}
+:where(html[data-theme="dark"]) .cmdk{background:var(--card,var(--card));box-shadow:0 16px 48px rgba(0,0,0,.6)}
+:where(html[data-theme="dark"]) .prose code{background:var(--page,var(--page))}
+:where(html[data-theme="dark"]) .sheetdemo{background:var(--page,var(--page))}
+:where(html[data-theme="dark"]) .tabbar,:where(html[data-theme="dark"]) .tnav{background:var(--page,var(--page))}
+:where(html[data-theme="dark"]) .tbdemo{background:var(--page,var(--page))}
+:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}
 html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED}
 @media (prefers-color-scheme:dark){
 html:not([data-theme="light"]){color-scheme:dark}
@@ -379,14 +389,16 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .raterow .n b{color:var(--ink)}
 :where(html:not([data-theme="light"])) .sheetdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html:not([data-theme="light"])) .sheetdemo .scrim{background:rgba(0,0,0,.28)}
+:where(html:not([data-theme="light"])) .sheet{background:var(--card)}
 :where(html:not([data-theme="light"])) .prose th,:where(html:not([data-theme="light"])) .prose td{border-bottom:1px solid var(--line)}
-:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:#fff}
+:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:var(--card)}
 :where(html:not([data-theme="light"])) .pwstr i{border-radius:var(--r-pill);background:var(--line)}
 :where(html:not([data-theme="light"])) .pwstr.s1 i:nth-child(1){background:var(--err)}
 :where(html:not([data-theme="light"])) .pwstr.s4 i{background:var(--ok)}
-:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:#fff}
+:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:var(--card)}
 :where(html:not([data-theme="light"])) .thumbs button{background:var(--accsoft)}
 :where(html:not([data-theme="light"])) .lbx .cnt{color:#fff}
+:where(html:not([data-theme="light"])) .cmdk{background:var(--card)}
 :where(html:not([data-theme="light"])) .cmdk .in input{background:none}
 :where(html:not([data-theme="light"])) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .cmdk .it .ic{color:var(--muted)}
@@ -405,9 +417,17 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .check.ind i{background:var(--acc);border-color:var(--acc);color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .alert .btn.sm{background:none;color:currentColor}
 :where(html:not([data-theme="light"])) .notice{background:var(--page)}
-:where(html:not([data-theme="light"])) [fill="#fff"]{fill:var(--card)}
-:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:var(--card,#fff)}
-:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:var(--card,#fff)}
+:where(html:not([data-theme="light"])) .sheet{background:var(--card,var(--card))}
+:where(html:not([data-theme="light"])) .igroup .ad{background:var(--page,var(--page))}
+:where(html:not([data-theme="light"])) .igroup input,:where(html:not([data-theme="light"])) .field .igroup input{background:var(--card,var(--card))}
+:where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:var(--card,var(--card))}
+:where(html:not([data-theme="light"])) .codeblk{background:var(--page,var(--page))}
 :where(html:not([data-theme="light"])) .thumbs button{background:var(--sel)}
+:where(html:not([data-theme="light"])) .cmdk{background:var(--card,var(--card));box-shadow:0 16px 48px rgba(0,0,0,.6)}
+:where(html:not([data-theme="light"])) .prose code{background:var(--page,var(--page))}
+:where(html:not([data-theme="light"])) .sheetdemo{background:var(--page,var(--page))}
+:where(html:not([data-theme="light"])) .tabbar,:where(html:not([data-theme="light"])) .tnav{background:var(--page,var(--page))}
+:where(html:not([data-theme="light"])) .tbdemo{background:var(--page,var(--page))}
+:where(html:not([data-theme="light"])) [fill="#fff"]{fill:var(--card)}
 html:not([data-theme="light"]){color-scheme:dark;--page:#121212;--card:#1A1A1A;--paperc:#202020;--sel:#262626;--line:#2E2E2E;--line-2:#3A3A3A;--ink:#EDEDED;--muted:#A3A3A3;--dark:#D4D4D4;--err:#F28B82;--err-soft:#3D2C2B;--wrn:#E2B341;--wrn-soft:#3A3220;--ok:#74C483;--ok-soft:#28352B;--info:#7DB6EE;--info-soft:#2A333C;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED}
 }

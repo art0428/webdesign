@@ -1,8 +1,8 @@
-/* ══ 管理者工作室 設計系統 35.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 37.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
    由 emit_s8.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（規範 12.2）。
-   四項風格層例外（規範 4.1、4.2、7.4，僅 S8）：標題細字重、英文眉標寬字距 0.3em、圖示線寬 1.5、數字用 Inter。
-   字型：Google Fonts 另載 Inter:wght@300;400;700 與 Noto Sans TC 的 300。
+   五項風格層例外（規範 4.1、4.2、7.4，僅 S8）：標題細字重、英文眉標寬字距 0.3em、圖示線寬 1.5、數字用 Inter、標籤與小字 500。
+   字型：Google Fonts 另載 Inter:wght@300;400;500;700 與 Noto Sans TC 的 300。
    深色（規範 8.8.7）：html[data-theme="dark"] 強制深色，不寫則跟隨系統；中性黑，卡片與頁面同為 #121212，
    品牌色深色值在 theme.js 的 DARK.s8（沿用 S6）。深色規則照示範頁的順序緊接在對應的淺色規則之後。 */
 
@@ -263,9 +263,12 @@ body{background:#EDEDED}
 }
 .drawerdemo{background:#EDEDED}
 :where(html[data-theme="dark"]) .drawerdemo{background:var(--page)}
-:where(html[data-theme="dark"]) .drawerdemo .scrim{background:rgba(0,0,0,.6)}
 @media (prefers-color-scheme:dark){
 :where(html:not([data-theme="light"])) .drawerdemo{background:var(--page)}
+}
+.drawerdemo .scrim{background:rgba(18,18,18,.45)}
+:where(html[data-theme="dark"]) .drawerdemo .scrim{background:rgba(0,0,0,.6)}
+@media (prefers-color-scheme:dark){
 :where(html:not([data-theme="light"])) .drawerdemo .scrim{background:rgba(0,0,0,.6)}
 }
 .drawer{background:var(--card)}
@@ -339,12 +342,16 @@ body{background:#EDEDED}
 .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,#E6E6E6) 7px 14px)}
 :where(html[data-theme="dark"]) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
 :where(html[data-theme="dark"]) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
+@media (prefers-color-scheme:dark){
+:where(html:not([data-theme="light"])) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
+:where(html:not([data-theme="light"])) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
+}
+.thumb .play{background:rgba(18,18,18,.74)}
+.thumb .dur{background:rgba(18,18,18,.8)}
 :where(html[data-theme="dark"]) .thumb .arr{background:color-mix(in srgb,var(--card) 95%,transparent);box-shadow:0 2px 8px rgba(0,0,0,.6)}
 :where(html[data-theme="dark"]) .thumb .dots i{background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid rgba(255,255,255,.15)}
 :where(html[data-theme="dark"]) .strip .thumb small{background:color-mix(in srgb,var(--card) 95%,transparent)}
 @media (prefers-color-scheme:dark){
-:where(html:not([data-theme="light"])) .thumb{background:repeating-linear-gradient(135deg,var(--line) 0 7px,var(--paperc,var(--paperc)) 7px 14px)}
-:where(html:not([data-theme="light"])) .thumb .lab{background:color-mix(in srgb,var(--card) 95%,transparent)}
 :where(html:not([data-theme="light"])) .thumb .arr{background:color-mix(in srgb,var(--card) 95%,transparent);box-shadow:0 2px 8px rgba(0,0,0,.6)}
 :where(html:not([data-theme="light"])) .thumb .dots i{background:color-mix(in srgb,var(--card) 80%,transparent);border:1px solid rgba(255,255,255,.15)}
 :where(html:not([data-theme="light"])) .strip .thumb small{background:color-mix(in srgb,var(--card) 95%,transparent)}
@@ -382,6 +389,7 @@ html:not([data-theme="light"]).sc-light .rowset:has(.st.wrn) .aibadge,html:not([
 @media (prefers-color-scheme:dark){
 :where(html:not([data-theme="light"])) .otp input,:where(html:not([data-theme="light"])) .field .otp input{background:var(--card)}
 }
+.lbx{background:rgba(18,18,18,.86)}
 .cmdk{background:var(--card)}
 :where(html[data-theme="dark"]) .cmdk{background:var(--card);box-shadow:0 16px 48px rgba(0,0,0,.6)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
@@ -407,8 +415,10 @@ html:not([data-theme="light"]){color-scheme:dark;--page:#121212;--card:#121212;-
    S8 線描 LINE 表面層（build_s8_line.py 產生）
    元件 HTML 與 class 與 S1〜S7 完全相同，這裡只覆寫材質。
    材質原理：只用 1px 線條、圓點與留白——卡片與頁面同色、選中用同心圓與實心點、零陰影零漸層。
-   四項風格層例外：標題細字重、英文眉標寬字距、圖示線寬 1.5、數字用 Inter。
+   五項風格層例外：標題細字重、英文眉標寬字距、圖示線寬 1.5、數字用 Inter、標籤放輕。
    ══════════════════════════════════════════════════════════════ */
+/* 例外五（v37）：標籤與小字放輕，S1 的 700、900 一律 500（清單由 build_s8_line.py 自 S1 收集） */
+b,strong,.head .kick,.head h1,.accbar .lb,.accbtn,.accbtn .cc,.sec h2,.sec .no,.cap,.tokcell .tn,.radcell .tn,.btn,.field label,.chip.on,.pillf.on,.qty button,.qty input,.seg button.on,.st,.tag,.conf,.tcap b,.t th,.amt,.tfoot .tv,.statc .k,.statc .v,.cardx .ct,.sumrow .price,.sumrow.total,.nitem.on,.tab.on,.crumb b,.p1 button,.p2 button,.p3 button,.p4 button.on,.p5 button,.p5 input,.modal .mh,.flow .stp.cur,.mi.on,.mi.on::after,.kebab,.selcount,.upfile .pct,.noti .nh,.noti .nh .mk,.bell b,.selcount button,.alert i,.alert b,.pop .pt,.pop .pt i,.divider,.cal .ch,.cal .cg .wd,.cal .cg .sel,.cal .cf .num,.cal .quick button.on,.ac mark,.tab .cnt,.desc dt,.avatar,.avrow,.badge>b,.count,.batchbar,.drawer .dh,.toolbar .tb,.slider .tt,.meter .mh b,.casc li.on,.casc li.pick,.tlist .th2,.tree .nd.on,.stepper .sp .dot,.stepper .sp b,.tl .tt,.chart .chh,.chart .vl,.spark .k,.spark .v,.split .pa .li.on,.split .pb b,.thumb .lab,.result .ic,.result h3,.accbar .accnote,.sheet .sh,.prose>h2,.prose>h3,.prose th,.otp input,.field .otp input,.cmdk .g,.tabbar .tbi span,.tnav .tnb,.tnav .tnl a[aria-current],.tierbar,.typels .code,.tp .tpcol span.sel,.tp .tpcol .wd,.card .card-title,.check.ind i::after,.pillf .n,.upfile.ok .pct,.filerow.ok .sz,.upfile.err .pct,.filerow.err .sz,.alert .btn.sm,:where(html) .flow .stp.done::before,table.t tbody tr td:first-child,table.t tbody tr td.ck + td,table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):not(:has(> .st)):not(:has(> .btn:only-child))::before{font-weight:500}
 :root{--page:#EDEDED;--card:#EDEDED;--band:#E6E6E6;--sel:#E2E2E2;--line-2:#1A1A1A;
  --lat:'Inter',Arial,'Noto Sans TC',sans-serif}
 body{background:var(--page)}
@@ -495,17 +505,23 @@ html[data-theme="dark"] .badge>b.gray{border-color:var(--muted)}
 .t .st{font-weight:500}
 .num,.amt,.dt{font-variant-numeric:lining-nums tabular-nums}
 /* 滑過不鋪色，只多一條墨線 */
+/* 選取列靠核取方塊，字色不變：其他風格加深是因為鋪了淡底，S8 不鋪 */
+.t tr.sel td,.t tr.sel .dt{color:var(--muted)}
+.t tr.sel td.num,.t tr.sel td.amt,.t tr.sel td:first-child:not(.ck){color:var(--ink)}
 .t tbody tr:hover td{background:transparent;box-shadow:inset 0 -1px 0 var(--ink)}
 .t tbody tr:hover td:first-child,.t tbody tr:hover td:last-child{border-radius:0}
 /* 標準密度列多，狀態標籤拿掉外框，只留圓點與文字；圓點靠齊表頭 */
 html[data-density="normal"] .t .st{border-color:transparent;padding-left:0}
 /* 線不碰外框（v34）：外框內留 --sp-5，第一欄與最後一欄內距歸零，標題、文字與線對齊同一條邊；標題列不再畫線，表頭墨線就是第一條線 */
+/* 卡片裡的批次列不再自帶方框：外框已有，再框一次會撞上圓角 */
+.tblwrap .batchbar{box-shadow:none;font-weight:500}
 @media (min-width:768px){
 .tblwrap{padding-left:var(--sp-5);padding-right:var(--sp-5)}
 .tblwrap .tcap{padding-top:var(--sp-4);padding-left:0;padding-right:0;border-bottom-color:transparent}
 .tblwrap .t th:first-child,.tblwrap .t td:first-child{padding-left:0}
 .tblwrap .t th:last-child,.tblwrap .t td:last-child{padding-right:0}
 .tblwrap .tfoot{padding-left:0;padding-right:0}
+.tblwrap .batchbar{padding-top:var(--sp-4);padding-left:0;padding-right:0;border-bottom-color:transparent}
 }
 /* 手機卡片列也放輕：主欄與欄名 700 改 500 */
 @media (max-width:767px){
@@ -642,4 +658,47 @@ svg[stroke-width="2"]{stroke-width:1.5}
 .tbdemo{background:transparent;border-width:1px}
 .tbdemo .scr i{background:linear-gradient(var(--line),var(--line)) center/100% 1px no-repeat}
 .tbdemo .tabbar{margin:0 var(--sp-3) var(--sp-4)}
+/* ── v37：把還留著 S1 樣子的元件收進線描語法 ── */
+/* 金額與統計數字跟著字級表：合計 300、小計 300、表格 400 */
+.sumrow .price,.tfoot .tv,.result .dl b,.raterow .n b{font-weight:400}
+.sumrow.total .price,.spark .v,.otp input,.field .otp input{font-weight:300}
+/* 媒體：不用斜紋與白底，佔位是一圈淡線，按鈕是細線 */
+.thumb{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}
+.thumb .lab,.strip .thumb small{background:transparent}
+.thumb .arr,.thumb .play{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+.thumb .play{align-self:center}
+.thumb .play svg{fill:none}
+.thumb .dur{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 1px var(--line)}
+.thumb .dots i{background:var(--line);border-color:transparent}
+.thumb .dots i.on{background:var(--acc);border-color:var(--acc)}
+/* 長文：標題細字重，圖片佔位不鋪色，表格與元件庫同一套線 */
+.prose>h2,.prose>h3{font-weight:300}
+.prose>blockquote{border-left:1px solid var(--ink)}
+.prose figure .ph{background:transparent;color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.prose th{border-bottom-color:var(--ink)}
+.prose tr:last-child td{border-bottom-color:transparent}
+/* 燈箱：縮圖與圖片不鋪色；遮罩上的控制鈕是細線 */
+.thumbs button{background:transparent;color:var(--ink);border:1px solid var(--line)}
+.lbx.demo{box-shadow:inset 0 0 0 1px var(--line)}
+.lbx .fig{background:var(--card);color:var(--muted);box-shadow:inset 0 0 0 1px var(--line)}
+.lbx .ctl,.lbx .ctl:hover{background:rgba(18,18,18,.86);box-shadow:inset 0 0 0 1px #EDEDED}
+/* 評分：線條星，有分數的是深琥珀線，沒分數的是淡線 */
+.rate .ic,.rate.input button .ic{fill:none;stroke-width:1.5}
+/* 輸入框附加：和一般輸入框一樣只留底線 */
+.igroup .ad,.igroup .ad:first-child,.igroup .ad:last-child,.igroup input,.field .igroup input,.igroup input:first-child,.igroup input:last-child{background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0}
+.igroup .btn{border:1px solid var(--ink);border-radius:999px}
+.otp input,.field .otp input{background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0}
+/* 核取框在選單裡也是墨線 */
+.mck i{border-color:var(--ink)}
+/* 穿梭框左右兩塊上緣對齊 */
+.transfer{align-items:flex-start}
+/* 日期與時間欄的圖示：線條圖示，顏色跟字走 */
+.datein::after,.timein::after{content:"";width:16px;height:16px;background:currentColor;-webkit-mask:var(--ic) center/contain no-repeat;mask:var(--ic) center/contain no-repeat}
+.datein::after{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 2v4M16 2v4M3 10h18'/%3E%3Crect x='3' y='4' width='18' height='18' rx='2'/%3E%3C/svg%3E")}
+.timein::after{--ic:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='M12 6v6l4 2'/%3E%3C/svg%3E")}
+/* 線條圖示和文字對齊 */
+.tb .ic,.tw .ic,.car .ic,.msearch .ic{vertical-align:middle}
+.tw .ic{vertical-align:-1px}
+/* 示範頁的長句說明不要寬字距 */
+.cap{letter-spacing:var(--ls-l1)}
 /* S8 表面層結束 */

@@ -1012,6 +1012,17 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
    單號、日期這類識別碼斷開就讀不出來；整欄放不下時由表格容器橫捲（平板以上），手機轉卡片列（6.3）。前綴 :where(html) 同 v27 */
 :where(html) .t .dt{white-space:nowrap}
 /* v28 區塊結束 */
+/* ══ 手機的提示氣泡與分割面板（規範 v37，6.6）：結構層，八套共用 ══
+   氣泡改靠左對齊觸發元件，太長時折行；分割面板改上下排，清單在上 */
+@media (max-width:767px){
+:where(html) .tip{left:0;transform:none;white-space:normal;width:max-content;max-width:calc(100vw - var(--sp-7))}
+:where(html) .tip::after{left:var(--sp-6);transform:none}
+:where(html) .split{flex-direction:column;height:auto}
+:where(html) .split .pa{flex:none;max-height:20rem;border-bottom:1px solid var(--line)}
+:where(html) .split .gut{display:none}
+:where(html) .split .pa .li .num{white-space:nowrap}
+}
+/* v37 區塊結束 */
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#14120E;--card:#1C1A16;--paperc:#22201C;--sel:#282622;--line:#302E2A;--line-2:#3C3A35;--ink:#EDEDED;--muted:#A3A3A3;--err:#F28B82;--err-soft:#3E2C27;--wrn:#E2B341;--wrn-soft:#3C321D;--ok:#74C483;--ok-soft:#2A3527;--info:#7DB6EE;--info-soft:#2C3339;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-26292e:var(--ink);--tk-6f6b64:var(--muted);--tk-e4e2de:var(--line);--tk-fbfaf8:var(--paperc);--tk-e9c94a:var(--wrn);--tk-5a5751:var(--muted);--acc:#629AF8;--accsoft:#272E3A;--acc-soft:#272E3A;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#371F26;--acc2-soft:#371F26;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
@@ -1530,7 +1541,12 @@ addEventListener('message',function(e){
  const list=[...document.querySelectorAll('h2')].map(h=>h.textContent.trim());
  try{ parent.postMessage({sections:list},'*'); }catch(_){}
 });
-</script><script>/* ds-dark:begin */
+</script><script>/* ds-navdemo:begin 示範頁才有：點導覽換目前項，真實產品由路由決定 */
+document.addEventListener('click',e=>{const b=e.target.closest('.tabs .tab,.tnav .tnl a,.tabbar .tbi');if(!b)return;e.preventDefault();
+  if(b.matches('.tab')){b.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));return;}
+  b.parentElement.querySelectorAll('[aria-current]').forEach(x=>x.removeAttribute('aria-current'));b.setAttribute('aria-current','page');});
+/* ds-navdemo:end */</script>
+<script>/* ds-dark:begin */
 /* 深色模式（規範 8.8）：<html data-theme="dark"> 切深色。由 build_dark.py 產生，不要手改。 */
 const DARK={"c1":{"acc":"#629AF8","accSoft":"#272E3A","accDeep":"#629AF8","acc2":"#C2377B","acc2Soft":"#371F26","acc2Deep":"#F46BA8","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c2":{"acc":"#61A5AC","accSoft":"#27302E","accDeep":"#61A5AC","acc2":"#C4663A","acc2Soft":"#37261C","acc2Deep":"#D88561","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c3":{"acc":"#8D94E6","accSoft":"#2E2E37","accDeep":"#8D94E6","acc2":"#8C7AE6","acc2Soft":"#2E2937","acc2Deep":"#9C90E7","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c4":{"acc":"#A486FF","accSoft":"#322B3B","accDeep":"#A486FF","acc2":"#0F8A99","acc2Soft":"#1A2C2B","acc2Deep":"#4FA6B4","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c5":{"acc":"#6BA984","accSoft":"#293128","accDeep":"#6BA984","acc2":"#A16207","acc2Soft":"#312614","acc2Deep":"#CC8E48","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c6":{"acc":"#B9947B","accSoft":"#352E26","accDeep":"#B9947B","acc2":"#4D6E58","acc2Soft":"#242721","acc2Deep":"#81A48C","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c7":{"acc":"#E57F57","accSoft":"#3C2A20","accDeep":"#E57F57","acc2":"#666666","acc2Soft":"#282623","acc2Deep":"#9B9B9B","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c8":{"acc":"#9F9B98","accSoft":"#312F2B","accDeep":"#9F9B98","acc2":"#D95F1E","acc2Soft":"#3A2517","acc2Deep":"#E88051","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c9":{"acc":"#F2727A","accSoft":"#3E2826","accDeep":"#F2727A","acc2":"#3C6D7C","acc2Soft":"#212726","acc2Deep":"#71A3B3","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#EDEDED"},"c10":{"acc":"#E972AC","accSoft":"#3D282E","accDeep":"#E972AC","acc2":"#5C97CB","acc2Soft":"#262E33","acc2Deep":"#659FD5","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c11":{"acc":"#A19D84","accSoft":"#312F28","accDeep":"#A19D84","acc2":"#C65D52","acc2Soft":"#372520","acc2Deep":"#ED7B6C","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"c12":{"acc":"#BD8F94","accSoft":"#362D2A","accDeep":"#BD8F94","acc2":"#BA797D","acc2Soft":"#352926","acc2Deep":"#D78588","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc1":{"acc":"#8CA095","accSoft":"#2E2F2A","accDeep":"#8CA095","acc2":"#DACD65","acc2Soft":"#3A3723","acc2Deep":"#A69C55","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc2":{"acc":"#6D96FF","accSoft":"#292E3B","accDeep":"#6D96FF","acc2":"#FF7A1A","acc2Soft":"#402917","acc2Deep":"#EA7E4B","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"},"sc3":{"acc":"#8C9DB2","accSoft":"#2E2F2F","accDeep":"#8C9DB2","acc2":"#5FB4C9","acc2Soft":"#273333","acc2Deep":"#68A5B7","onAcc":"#121212","onAcc2":"#121212","acc2Text":"#121212"}};
 const DARK_TINT=null, TINT_VARS=[];
@@ -1603,10 +1619,5 @@ const DARK_TINT=null, TINT_VARS=[];
 })();
 /* ds-density:end */
 </script>
-<script>/* ds-navdemo:begin 示範頁才有：點導覽換目前項，真實產品由路由決定 */
-document.addEventListener('click',e=>{const b=e.target.closest('.tabs .tab,.tnav .tnl a,.tabbar .tbi');if(!b)return;e.preventDefault();
-  if(b.matches('.tab')){b.parentElement.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x===b));return;}
-  b.parentElement.querySelectorAll('[aria-current]').forEach(x=>x.removeAttribute('aria-current'));b.setAttribute('aria-current','page');});
-/* ds-navdemo:end */</script>
 </body>
 </html>
