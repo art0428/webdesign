@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 34.0.0 ══ style-s1.css（S1 奶油 CREAM）
+/* ══ 管理者工作室 設計系統 35.0.0 ══ style-s1.css（S1 奶油 CREAM）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    S1 的材質已在 base.css；淺色時本檔沒有效果，保持三檔載法一致。v32 起本檔放 S1 的深色段（規範 8.8）。 */
 
@@ -161,6 +161,8 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .cmdk .it .ic{color:var(--muted)}
 :where(html[data-theme="dark"]) .cmdk .it.on .ic{color:inherit}
+:where(html[data-theme="dark"]) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html[data-theme="dark"]) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:var(--card)}
 :where(html[data-theme="dark"]) .check.dis i,:where(html[data-theme="dark"]) .radio.dis i{border-color:var(--muted)}
@@ -327,6 +329,8 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .cmdk .it .ic{color:var(--muted)}
 :where(html:not([data-theme="light"])) .cmdk .it.on .ic{color:inherit}
+:where(html:not([data-theme="light"])) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html:not([data-theme="light"])) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:var(--card)}
 :where(html:not([data-theme="light"])) .check.dis i,:where(html:not([data-theme="light"])) .radio.dis i{border-color:var(--muted)}

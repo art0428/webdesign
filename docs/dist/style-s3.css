@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 34.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 35.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -242,6 +242,9 @@ button{font-family:inherit;color:var(--ink)}
 .cmdk{background:var(--gl);-webkit-backdrop-filter:blur(26px);backdrop-filter:blur(26px);border:1px solid var(--glBd);border-radius:20px;box-shadow:0 16px 48px rgba(15,18,35,.28)}
 .prose code{background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.75)}
 .sheetdemo{background:var(--page,#EEF0F6)}
+.tabbar{background:var(--gl);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border-top:1px solid var(--glBd)}
+.tnav{background:var(--gl);-webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);border:none;border-radius:20px}
+.tbdemo{background:var(--page,#EEF0F6)}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
@@ -398,6 +401,8 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .cmdk .it .ic{color:var(--muted)}
 :where(html[data-theme="dark"]) .cmdk .it.on .ic{color:inherit}
+:where(html[data-theme="dark"]) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html[data-theme="dark"]) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:#232838}
 :where(html[data-theme="dark"]) .check.dis i,:where(html[data-theme="dark"]) .radio.dis i{border-color:var(--muted)}
@@ -754,6 +759,8 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .cmdk .it .ic{color:var(--muted)}
 :where(html:not([data-theme="light"])) .cmdk .it.on .ic{color:inherit}
+:where(html:not([data-theme="light"])) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html:not([data-theme="light"])) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:#232838}
 :where(html:not([data-theme="light"])) .check.dis i,:where(html:not([data-theme="light"])) .radio.dis i{border-color:var(--muted)}

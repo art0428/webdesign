@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 34.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 35.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -256,3 +256,6 @@ button{font-family:inherit;color:var(--ink)}
 .cmdk .it{border-radius:14px}
 .prose code{background:var(--bg);border:none;box-shadow:inset 2px 2px 4px var(--shD),inset -2px -2px 4px var(--shL)}
 .sheetdemo{background:var(--bg)}
+.tabbar{border:none;background:var(--bg);box-shadow:0 -5px 11px var(--shD)}
+.tnav{border:none;background:var(--bg);border-radius:20px;box-shadow:5px 5px 11px var(--shD),-5px -5px 11px var(--shL)}
+.tbdemo{background:var(--bg)}

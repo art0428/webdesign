@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 34.0.0 ══ theme.js
+/* ══ 管理者工作室 設計系統 35.0.0 ══ theme.js
    色系切換（規範 3.8、4.2）與深淺模式（規範 8.8）。由 emit_css.py 產生，THEMES 表取自元件庫。
    用法：
      <html data-style="s1">                         本系統選定的風格（建置時決定，全站只有一套）
@@ -110,8 +110,48 @@ function labelTables(scope){
     t.querySelectorAll('tbody tr').forEach(tr=>[...tr.children].forEach((td,i)=>{ if(!td.hasAttribute('data-l')&&hs[i]) td.setAttribute('data-l',hs[i]); }));
   });
 }
+/* 導覽的隆起線（規範 8.2、5.5，v35，僅 S8 線描）：量出目前項的位置，畫一條 1px 的線，在目前項隆起；換項時沿線滑過去。
+   頁籤與頂部導覽是底線隆起，底部導覽是外框隆起。尺寸改變、換目前項都會重畫；動態減量時直接到位；沒有 JavaScript 時退回 CSS 的圓點與細線。 */
+function lineNav(){
+  const root=document.documentElement;
+  if(root.dataset.style!=='s8') return;
+  if(document.readyState==='loading'){ document.addEventListener('DOMContentLoaded',lineNav,{once:true}); return; }
+  const NS='http://www.w3.org/2000/svg', MS=320;
+  const still=()=>!!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches);
+  const KINDS=[['.tabs','.tab','.on','line'],['.tnav','.tnl a','[aria-current]','line'],['.sf-nav','.sf-links a','[aria-current]','line'],['.tabbar','.tbi','[aria-current]','shell']];
+  const line=(a,b,W,H)=>{ const y=H-.5,t=6;
+    return `M0,${y} L${a-20},${y} C${a-4},${y} ${a-6},${t} ${a+12},${t} L${b-12},${t} C${b+6},${t} ${b+4},${y} ${b+20},${y} L${W},${y}`; };
+  const shell=(a,b,W,H)=>{ const c=(a+b)/2,T=.5,B=H-.5,r=(B-T)/2,h=Math.min(36,c-r,W-r-c),u=T-11;
+    return `M${r},${T} L${c-h},${T} C${c-h*.55},${T} ${c-h*.45},${u} ${c},${u} C${c+h*.45},${u} ${c+h*.55},${T} ${c+h},${T} L${W-r},${T} A${r},${r} 0 0 1 ${W-r},${B} L${r},${B} A${r},${r} 0 0 1 ${r},${T} Z`; };
+  KINDS.forEach(([box,item,cur,kind])=>document.querySelectorAll(box).forEach(el=>{
+    if(el.querySelector(':scope > .lnav')) return;
+    const svg=document.createElementNS(NS,'svg'), path=document.createElementNS(NS,'path');
+    svg.setAttribute('class','lnav'); svg.setAttribute('aria-hidden','true'); svg.appendChild(path); el.appendChild(svg);
+    el.classList.add('lnon');
+    let x0=0,x1=0,raf=0,seen=null,W=0,H=0;
+    /* 先把畫布歸零再量：畫布本身會撐大 scrollWidth，不歸零的話視窗縮小時量不到新寬度 */
+    const size=()=>{ svg.setAttribute('width',0); svg.setAttribute('height',0); W=el.scrollWidth; H=el.clientHeight; svg.setAttribute('width',W); svg.setAttribute('height',H); };
+    const span=()=>{ const n=[...el.querySelectorAll(item)].find(e=>e.matches(cur)&&e.offsetWidth>0); if(!n) return null;
+      const p=el.getBoundingClientRect(), q=n.getBoundingClientRect(), s=el.scrollLeft;
+      return [q.left-p.left+s,q.right-p.left+s,n]; };
+    const paint=()=>path.setAttribute('d',(kind==='shell'?shell:line)(x0,x1,W,H));
+    const sync=(glide)=>{ cancelAnimationFrame(raf); size(); const r=span();
+      if(!r){ seen=null; path.setAttribute('d',kind==='shell'?shell(0,W,W,H):`M0,${H-.5} L${W},${H-.5}`); return; }
+      const [a,b,n]=r, a0=x0, b0=x1, move=glide&&seen&&seen!==n&&!still(); seen=n;
+      if(!move){ x0=a; x1=b; paint(); return; }
+      const t0=performance.now();
+      const step=t=>{ const q=Math.min(1,(t-t0)/MS), e=1-Math.pow(1-q,3); x0=a0+(a-a0)*e; x1=b0+(b-b0)*e; paint(); if(q<1) raf=requestAnimationFrame(step); };
+      raf=requestAnimationFrame(step); };
+    sync(false);
+    if(window.MutationObserver) new MutationObserver(()=>sync(true)).observe(el,{subtree:true,attributes:true,attributeFilter:['class','aria-current','aria-selected']});
+    if(window.ResizeObserver) new ResizeObserver(()=>sync(false)).observe(el);
+    if(document.fonts&&document.fonts.ready) document.fonts.ready.then(()=>sync(false));
+  }));
+}
+
 function init(){
   labelTables();
+  lineNav();
   let k=null, mode=null, dens=null, tint=null;
   try{ const q=new URLSearchParams(location.search); k=q.get('theme'); tint=q.get('tint'); }catch(_){}
   try{ k=k||localStorage.getItem('ds.theme'); mode=localStorage.getItem('ds.scheme'); dens=localStorage.getItem('ds.density'); tint=tint||localStorage.getItem('ds.darkTint'); }catch(_){}
@@ -121,6 +161,6 @@ function init(){
   if(dens&&!root.hasAttribute('data-density')){ const d=DENSITY[STYLE]||DENSITY.s1; if(d.allowed.includes(dens)&&dens!==d.default) root.setAttribute('data-density',dens); }
   root.dataset.theme_key=applyTheme(k||'c1');
 }
-window.DS={THEMES,STYLE,DENSITY,DARK_TINT,allowed,applyTheme:function(k){root.dataset.theme_key=k;return applyTheme(k);},setColorScheme,setDarkTint,darkTint,setDensity,density,labelTables,init};
+window.DS={THEMES,STYLE,DENSITY,DARK_TINT,allowed,applyTheme:function(k){root.dataset.theme_key=k;return applyTheme(k);},setColorScheme,setDarkTint,darkTint,setDensity,density,labelTables,lineNav,init};
 init();
 })();

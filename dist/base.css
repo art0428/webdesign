@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 34.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘七套以 style-s*.css 覆寫）
+/* ══ 管理者工作室 設計系統 35.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘七套以 style-s*.css 覆寫）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    先載 tokens.css，再載本檔，最後載一個 style-s*.css（順序不能換：風格層靠「排在後面」覆寫，權重與 S1 相同）。 */
 :root{--info:#1A66AA;--info-soft:#E8F0F6;--acc:#2B5FB8;--accsoft:#EDF1F9;--acc2:#C2377B;--acc2soft:#FAEEF4;--ink:#26292E;--line:#E4E2DE;--muted:#6F6B64;--paperc:#FBFAF8;--err:#B23F2F;--err-soft:#FAECEA;--wrn:#846200;--wrn-soft:#F8F0D8;--ok:#2A722E;--ok-soft:#E9F2EA}
@@ -588,6 +588,31 @@ html.sc-adjust .aibadge,html.sc-adjust .avatar.a2{border:1px solid var(--ink) !i
 .cmdk .ft{display:flex;gap:var(--sp-4);padding:var(--sp-2) var(--sp-4);border-top:1px solid var(--line);font-size:var(--fs-l1);line-height:var(--lh-l1);color:var(--muted);margin-top:var(--sp-2)}
 .cmdk .ft .r{margin-left:auto}
 @media (max-width:767px){.cmdk .k,.cmdk .in kbd{display:none}.thumbs{grid-template-columns:repeat(2,1fr)}}
+.tabbar{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);background:var(--card);border-top:1px solid var(--line);padding:var(--sp-1) var(--sp-2) calc(var(--sp-1) + env(safe-area-inset-bottom,0px))}
+.tabbar .tbi{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-1);min-height:4.8rem;border:none;background:none;color:var(--muted);text-decoration:none;cursor:pointer;border-radius:var(--r-sm);transition:color var(--dur-1) var(--ease-out)}
+.tabbar .tbi .ic{width:20px;aspect-ratio:1/1}
+.tabbar .tbi span{font-size:var(--fs-l2);line-height:var(--lh-l2);font-weight:700}
+.tabbar .tbi[aria-current]{color:var(--acc)}
+.tabbar .tbi:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.tabbar.app{position:fixed;left:0;right:0;bottom:0;z-index:var(--z-sticky)}
+@media (min-width:768px){.tabbar.app{display:none}}
+@media (max-width:767px){body:has(>.tabbar.app){padding-bottom:calc(5.6rem + env(safe-area-inset-bottom,0px))}}
+.tbdemo{width:320px;max-width:100%;min-height:22rem;border:6px solid var(--ink);border-radius:32px;background:var(--paperc);overflow:hidden;display:flex;flex-direction:column;justify-content:space-between}
+.tbdemo .scr{padding:var(--sp-4);display:grid;gap:var(--sp-3);align-content:start;opacity:.55}
+.tbdemo .scr i{display:block;min-height:10px;border-radius:var(--r-pill);background:var(--line)}
+.tnav{position:relative;display:flex;align-items:center;gap:var(--sp-5);min-height:6.4rem;padding:0 var(--sp-5);background:var(--card);border-bottom:1px solid var(--line)}
+.tnav .tnb{display:inline-flex;align-items:center;gap:var(--sp-2);min-height:4.4rem;font-size:var(--fs-h3);line-height:var(--lh-h3);letter-spacing:var(--ls-h3);font-weight:900;color:var(--ink);text-decoration:none;white-space:nowrap}
+.tnav .tnb i{width:12px;aspect-ratio:1/1;border-radius:50%;background:var(--acc)}
+.tnav .tnl{display:flex;align-self:stretch;gap:var(--sp-1);min-width:0}
+.tnav .tnl a{display:inline-flex;align-items:center;padding:0 var(--sp-4);font-size:var(--fs-b2);line-height:var(--lh-b2);font-weight:500;color:var(--muted);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent;transition:color var(--dur-1) var(--ease-out)}
+.tnav .tnl a[aria-current]{color:var(--acc);font-weight:700;border-bottom-color:var(--acc)}
+.tnav .tnl a:focus-visible{outline:2px solid var(--acc);outline-offset:-4px}
+.tnav .tnt{margin-left:auto;display:flex;align-items:center;gap:var(--sp-2)}
+.tnav .tnt .btn{text-decoration:none}
+.tnav .tni{min-width:44px;min-height:4.4rem;display:inline-flex;align-items:center;justify-content:center;border:none;background:none;color:var(--ink);cursor:pointer;border-radius:var(--r-sm)}
+.tnav .tni:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.tnav .tnm{display:none}
+@media (max-width:767px){.tnav{padding:0 var(--sp-4);gap:var(--sp-3)}.tnav .tnl,.tnav .tnt .btn{display:none}.tnav .tnt{gap:0}.tnav .tnm{display:inline-flex}}
 .typels{display:flex;flex-direction:column}
 .typels .tl-row{display:flex;align-items:baseline;gap:1.6rem;padding:0.8rem 0;border-bottom:1px dashed var(--line);flex-wrap:wrap}
 .typels .tl-row:last-child{border-bottom:none}

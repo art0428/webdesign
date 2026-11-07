@@ -1,13 +1,15 @@
 ---
 title: 設計系統使用說明
 kicker: 管理者工作室 設計系統
-subtitle: 給工程師的 dist/ 使用手冊（34.0.0）
+subtitle: 給工程師的 dist/ 使用手冊（35.0.0）
 source: 管理者工作室
 date: 2026.11.07
-highlight: 設計系統使用說明 v16
+highlight: 設計系統使用說明 v17
 ---
 
-# 設計系統使用說明 v16
+# 設計系統使用說明 v17
+
+v17 變更範圍（35.0.0）：對應規範 v35——**底部導覽 Tab Bar、頂部導覽 Top nav**，70 → 72 項。第 4.12 節是這兩個元件的寫法；第 3.3 節補 S8 的隆起線與 `DS.lineNav()`。
 
 v16 變更範圍（34.0.0）：對應規範 v34——**S8 的表格層次**。第 3.3 節補「S8 的表格」。
 
@@ -39,13 +41,13 @@ v3 變更範圍（20.0.0）：S2〜S5 以 S1 為基底重建，**七套載法一
 
 v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套風格各一張、各在規範 8.7 的首選情境，`example.html` 改名為 `examples/same-markup.html`；第 10 節並寫明範例頁裡兩處「版面層保護」與一處過渡用覆寫的來歷；第 2.2 節補 flex 容器 `align-items:center` 一句；第 12 節新增一問。其餘與 v1 逐字相同。
 
-這份是給前端工程師看的：拿到 `dist/` 之後怎麼開工、每個元件怎麼寫、哪些事不能做、交付前怎麼自己檢查。規則的「為什麼」在《網頁設計規範 v34》，這裡只講「怎麼做」。本文件會同步複製成 `dist/USAGE.md`，跟著檔案一起發。
+這份是給前端工程師看的：拿到 `dist/` 之後怎麼開工、每個元件怎麼寫、哪些事不能做、交付前怎麼自己檢查。規則的「為什麼」在《網頁設計規範 v35》，這裡只講「怎麼做」。本文件會同步複製成 `dist/USAGE.md`，跟著檔案一起發。
 
 ## 1. 五分鐘上手
 
 ### 1.1 拿檔案
 
-`dist/` 在公開倉庫 `art0428/webdesign`。十二個檔，檔頭都有版號 `34.0.0`，與規範同版。**不要**從示範頁 `components_s*.html` 複製 `<style>`——那是來源，`dist/` 才是產物，複製的那一刻起你的產品就和元件庫分家了。
+`dist/` 在公開倉庫 `art0428/webdesign`。十二個檔，檔頭都有版號 `35.0.0`，與規範同版。**不要**從示範頁 `components_s*.html` 複製 `<style>`——那是來源，`dist/` 才是產物，複製的那一刻起你的產品就和元件庫分家了。
 
 ### 1.2 選一套風格，寫在 `<html>` 上
 
@@ -61,7 +63,7 @@ v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套�
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="dist/tokens.css">     <!-- 1 字級、間距、圓角、高度、動態、層級 -->
-<link rel="stylesheet" href="dist/base.css">       <!-- 2 結構層 ＋ S1 材質：70 項元件、焦點環、佔位文字、RWD -->
+<link rel="stylesheet" href="dist/base.css">       <!-- 2 結構層 ＋ S1 材質：72 項元件、焦點環、佔位文字、RWD -->
 <link rel="stylesheet" href="dist/style-s6.css">   <!-- 3 這一套的材質層；換風格只換這一行 -->
 </head>
 <body data-type="productive">                      <!-- 後台、購物車、結帳；前台閱讀型頁面改 expressive -->
@@ -84,7 +86,7 @@ v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套�
 
 ### 1.5 升版
 
-規範升一版、`dist/` 升一版。產品把 `34.0.0` 的檔換成下一版的檔，跑一次第 11 節的檢查，看 diff 就知道哪裡變了。不要在產品裡修改 `dist/` 的任何檔案——要改，回元件庫改，重新產生。
+規範升一版、`dist/` 升一版。產品把 `35.0.0` 的檔換成下一版的檔，跑一次第 11 節的檢查，看 diff 就知道哪裡變了。不要在產品裡修改 `dist/` 的任何檔案——要改，回元件庫改，重新產生。
 
 ## 2. 頁面骨架
 
@@ -224,11 +226,13 @@ S8 只靠 1px 線分層、卡片與頁面同色，四項風格層例外由 `styl
 
 S8 的表格（34.0.0）自動分層，但欄位 class 要寫對：單號 `td.num`、金額 `td.amt`、日期 `td.dt`；只有單號與金額是主文字色，其餘欄是次要字色。進行中的狀態寫 `.st.acc`，才會跟著主色變。金額欄的表頭要寫 `text-align:right`。標準密度的狀態標籤自動拿掉外框。768px 以上橫線左右內縮、不碰外框，第一欄與最後一欄內距歸零，放在 `.tblwrap` 裡就自動套用。
 
+S8 的導覽（35.0.0）是一條 1px 的隆起線：頁籤、頂部導覽是底線隆起，底部導覽是外框隆起，換項時線滑過去。線由 `theme.js` 自動畫，你只要照常切換 `.tab.on` 或 `aria-current`；頁面載入後才加進來的導覽，呼叫一次 `DS.lineNav()`。沒有 JavaScript 時退回圓點。
+
 寫頁面時記住線描語法：不要給區塊鋪底色（做成白卡就變成 S6）、選中用主色字加 1px 細框或實心點、只有主按鈕和目前項是實心。選中底 `--sel` 上不放語意色文字。密度預設寬鬆、可選標準，不開放緊湊。SC1〜SC3 在 S8 自動加框線。
 
 ## 4. 元件寫法
 
-下面是最常用的三十項，class 語彙七套相同、不得自創同義名。完整 70 項的標記看元件庫示範頁對應區段（`components_s1_cream.html`），**只抄 HTML，不抄 CSS**。
+下面是最常用的三十項，class 語彙七套相同、不得自創同義名。完整 72 項的標記看元件庫示範頁對應區段（`components_s1_cream.html`），**只抄 HTML，不抄 CSS**。
 
 ### 4.1 按鈕
 
@@ -386,6 +390,31 @@ S8 的表格（34.0.0）自動分層，但欄位 class 要寫對：單號 `td.nu
 ```
 
 底部抽屜只在手機用（<768px），桌機同一內容改 `.drawer` 或 `.modal`；評分的星一律琥珀，不要換成品牌色；單位寫在 `.igroup .ad`，不寫在標籤裡；燈箱與命令面板的開關、鍵盤（Esc、方向鍵、⌘K）是行為，要自己寫，層級已由 `--z-modal` 決定。
+
+### 4.12 v35 補件：底部導覽、頂部導覽
+
+全站主導覽用這兩個；同一頁裡切內容才用頁籤 `.tabs`。
+
+```html
+<header class="tnav">
+  <a class="tnb" href="/"><i aria-hidden="true"></i>品牌名稱</a>
+  <nav class="tnl" aria-label="主要連結"><a href="/works" aria-current="page">作品</a><a href="/services">服務</a></nav>
+  <div class="tnt">
+    <button class="tni" type="button" aria-label="搜尋">…</button>
+    <a class="btn primary sm" href="/contact">預約諮詢</a>
+    <button class="tni tnm" type="button" aria-label="開啟選單">…</button>
+  </div>
+</header>
+
+<nav class="tabbar app" aria-label="主要導覽">
+  <a class="tbi" href="/" aria-current="page"><svg class="ic">…</svg><span>首頁</span></a>
+  <a class="tbi" href="/works"><svg class="ic">…</svg><span>作品</span></a>
+</nav>
+```
+
+- `.tabbar.app` 放在 `<body>` 的第一層，才會固定在畫面底部並自動留出內容的底部空間；768 以上自動隱藏。不加 `.app` 就是一般區塊。
+- 底部導覽放 3〜5 項，兩邊放同樣的主要項目；`.tnm` 只在 768 以下出現，打開什麼由產品決定（常用側滑面板）。
+- 目前項一律寫 `aria-current="page"`，樣式跟著它走。
 
 ## 5. 表格
 

@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 34.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 35.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -50,6 +50,9 @@ body{background:#F4F4F4}
 .prose figure .ph{border-radius:6px}
 .sheetdemo{background:var(--page,#F4F4F4)}
 .rate{color:var(--wrn)}
+.tabbar,.tnav{background:var(--page,#F4F4F4)}
+.tabbar .tbi[aria-current]{color:var(--acc)}
+.tbdemo{background:var(--page,#F4F4F4)}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
@@ -210,6 +213,8 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html[data-theme="dark"]) .cmdk .it .ic{color:var(--muted)}
 :where(html[data-theme="dark"]) .cmdk .it.on .ic{color:inherit}
+:where(html[data-theme="dark"]) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html[data-theme="dark"]) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:var(--card)}
 :where(html[data-theme="dark"]) body{background:var(--page)}
@@ -386,6 +391,8 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .cmdk .it.on{background:var(--accsoft);color:var(--acc)}
 :where(html:not([data-theme="light"])) .cmdk .it .ic{color:var(--muted)}
 :where(html:not([data-theme="light"])) .cmdk .it.on .ic{color:inherit}
+:where(html:not([data-theme="light"])) .tbdemo .scr i{border-radius:var(--r-pill);background:var(--line)}
+:where(html:not([data-theme="light"])) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:var(--card)}
 :where(html:not([data-theme="light"])) body{background:var(--page)}

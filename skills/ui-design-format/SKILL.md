@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-11 v34 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：八套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯、S8 線描）擇一開發，S1、S3、S5、S6、S8 另有深色模式（S1 暖紙色調固定；S6 深色底預設跟隨色系、可切中性石墨），每套可切寬鬆、標準、緊湊三檔密度（依風格開放）；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、70 項元件清單、手機與平板版面通則與七項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度、四種寬度的版面稽核）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；八張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-11 v35 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：八套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯、S8 線描）擇一開發，S1、S3、S5、S6、S8 另有深色模式（S1 暖紙色調固定；S6 深色底預設跟隨色系、可切中性石墨），每套可切寬鬆、標準、緊湊三檔密度（依風格開放）；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、72 項元件清單、手機與平板版面通則與七項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度、四種寬度的版面稽核）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；八張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v34》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，五項交付前檢查的腳本在 `scripts/`（用法見第 9 節，其餘檔案的索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v35》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，七套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，五項交付前檢查的腳本在 `scripts/`（用法見第 9 節，其餘檔案的索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -96,6 +96,8 @@ S1 為基準，其餘七套各有一個只含材質的風格層（`dist/style-s2
 三、**表格區不用品牌色，只有選取列例外**——篩選膠囊選中、側欄 hover、分段控制都用中性灰 `--sel`；品牌色只留給主按鈕、連結、側欄選中項、目前頁籤、選取列。
 
 **S7 編輯**（規範 8.2）：`--page:#FAF8F3`（暖白紙）`--card:#FFFFFF --band/paperc:#F3F0E9 --line:#E2DDD3 --ink:#1A1814 --muted:#615C54`；零陰影。外層區塊 `.board` 不加框、改上緣 `2px solid var(--ink)` 欄線，左右內距 0、上方 `--sp-6`；框只留給卡片與輸入元件（1px 細線）。兩項風格層例外（只有 S7）：**標題用明體**——H1〜H3 與元件內標題 `font-family:'Noto Serif TC','Songti TC','Source Han Serif TC','PMingLiU',serif`（Google Fonts 加載 `Noto+Serif+TC:wght@700;900`），字級行距字重照表，內文標籤按鈕仍黑體、金額仍 Arial；**直角**——`--r-lg:0 --r-sm:2px`，容器 0、按鈕輸入框選項標籤 2px、頭像圓點正圓。提示框改用 `--paperc` 底（外層區塊透明，用頁面色會消失）。
+
+**S8 的導覽（v35）**：頁籤與頂部導覽是底線在目前項隆起，底部導覽是外框隆起，換項時線滑過去；由 `theme.js` 的 `DS.lineNav()` 自動畫，只要照常切換 `.on` 或 `aria-current`，沒有 JavaScript 時退回圓點。
 
 **S8 線描**（規範 8.2，v33）：`--page:#EDEDED --card:#EDEDED`（卡片與頁面同色）`--band/paperc:#E6E6E6 --sel:#E2E2E2 --line:#C8C8C8`（淡線，分隔）`--line-2:#1A1A1A`（墨線，可以按的東西）`--ink:#1A1A1A --muted:#5E5E5E`；圓角沿用共用值，**輸入框與下拉觸發框只留 1px 底線、圓角 0**，展開的面板與觸發框同寬、緊貼底線、不畫上緣。**線描語法六條**：線一律 1px（焦點環 2px 例外）；面不鋪色（表頭、提示框、警示條、狀態標籤一律透明）；選中＝實心點或細框（點可以實心，整列整塊的選中改主色字＋1px 細框）；實心只留給主要動作（主按鈕、分段與篩選的目前項、開關開啟）；條改成線（進度、量表、滑桿＝1px 軌道上一條 1px 色線＋末端實心點）；浮層也是線（Toast、提示氣泡改同色底＋1px 墨線，零陰影）。四項風格層例外（只有 S8）：H0〜H2 字重 300、H3 500、按鈕 500；英文眉標全大寫字距 0.3em；圖示線寬 1.5；數字用 Inter（大數字 300）——Google Fonts 另載 `Inter:wght@300;400;700` 與 Noto Sans TC 300。選中底 `--sel` 上不放語意色文字。密度預設寬鬆、可選標準、鎖緊湊。SC1〜SC3 自動加框線。表格（v34）靠深淺分層：只有 `td.num`、`td.amt` 用 `--ink`，其餘欄 `--muted`，表頭與表格內 `.st` 500、金額 400，等寬數字，滑過只多一條墨線不鋪色，標準密度的 `.st` 不加外框且靠齊表頭；768px 以上橫線左右內縮不碰外框，首尾欄內距歸零，標題、文字與線對齊同一條邊；進行中一律 `.st.acc`。
 
@@ -318,17 +320,17 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 **間距三原則（規範 9.3 第八至十條，v22）**：內部間距 ≤ 外部間距（卡片內距 16／20，卡片之間至少 `--sp-6`）；區塊之間一律大於區塊內部（區塊內 `--sp-3`〜`--sp-4`、區塊之間 `--sp-6` 以上、頁面大區段 `--sp-7`〜`--sp-8`）；`--sp-1`、`--sp-2` 只用在元件內部與同一組並排小元件之間，獨立元件或組與組之間最小 `--sp-3`（就是上面第二條）。
 
-## 8. 元件清單（70 項：核心 49 必備、選用 21 依系統勾選）
+## 8. 元件清單（72 項：核心 49 必備、選用 23 依系統勾選）
 
 **核心（每個專案都要，七套風格皆已實作）**
 基礎：設計 Token、字級層級、分隔線。動作：按鈕、動作鈕 ⋯、分段控制。表單：輸入框、搜尋框、核取與單選、篩選膠囊、開關、上傳、多行輸入、下拉選單、多選＋搜尋、日期與時間選擇器、自動完成、數字步進器、選項 chip。資料呈現：表格、表格進階（排序、欄位切換、批次選取）、卡片、統計卡、描述清單、狀態標籤、屬性 tag、折疊面板、頭像、數字角標。導覽：側欄項目、頁籤、麵包屑、分頁器（P4 底線數字式）、側滑面板、底部抽屜（v31，手機從底部升起的面板；桌機改側滑面板或彈窗）。回饋：彈窗、就地確認、提示氣泡、Toast、警示條（四語意色）、提示框、空狀態、骨架屏、通知鈴、進度條、搜尋無結果。v31 另補三項核心：長文排版 `.prose`（文章內文整組樣式）、輸入框附加 `.igroup`（NT$、mm、％ 等單位與前綴，不寫在標籤裡）、密碼與驗證碼 `.pw`／`.otp`（顯示隱藏、強度四格、六格 OTP）。
 
 **選用（依系統類型）**
-工具列、滑桿、級聯選擇、穿梭框、摘要方塊、來源標記（原 AI 標記）、百分比膠囊、量表、樹狀、時間軸、圖表（兩個數列以下用主色與深副色，三個以上改用第四層八色）、媒體與輪播、動態列表、步驟精靈、唯讀步驟、分割面板、結果頁；v31 補：評分 `.rate`（星一律琥珀 `--wrn`）、程式碼區塊 `.codeblk`、燈箱 `.lbx`、命令面板 `.cmdk`（⌘K）。
+工具列、滑桿、級聯選擇、穿梭框、摘要方塊、來源標記（原 AI 標記）、百分比膠囊、量表、樹狀、時間軸、圖表（兩個數列以下用主色與深副色，三個以上改用第四層八色）、媒體與輪播、動態列表、步驟精靈、唯讀步驟、分割面板、結果頁；v31 補：評分 `.rate`（星一律琥珀 `--wrn`）、程式碼區塊 `.codeblk`、燈箱 `.lbx`、命令面板 `.cmdk`（⌘K）；v35 補：底部導覽 `.tabbar`（手機與 App 型前台，3〜5 項，加 `.app` 固定在畫面底部）、頂部導覽 `.tnav`（網站全站導覽，768 以下主要連結收起）。頁籤 `.tabs` 只換同一頁的內容，全站主導覽用這兩個；後台維持側欄。
 
 **警示條與提示框（v7 定案、v8 補對齊守則，七套一致）**：警示條 `.alert` 不用左側 4px 色條，改 `border:1px solid color-mix(in srgb,currentColor 32%,transparent)` 一圈細框，框線顏色自動跟著語意色走；標題與內文同一行（`b` 與 `p` 都 `display:inline`），圖示保留，背景仍是該語意的 `-soft` 淡底。四條使用守則：**標題是選用的**（一句話講得完就不要標題）、**動作最多一顆**且做成帶底線的文字連結而非按鈕（`.alert .btn.sm` 去底去框去陰影）、**錯誤與警告不給關閉鈕**（使用者關掉就看不到問題了，只有 info 與 ok 可關）、**文字動作與關閉鈕要跟內文站在同一條基線上**（和內文共用同一個行框：同字級、同行距、`align-self:flex-start`，不要再給它 `min-height`——按鈕那個 32px 會把整列撐高，差將近 6px）。提示框 `.notice` 去掉左側主色條與彩色底，S1 與 S6 直接用頁面灰底無框、S2 用凹面無框、S3 是 1px 玻璃框、S4 是 2px 虛線框、S5 是淡線框加淡底——它只是「順便一提」，不該比旁邊的內容搶眼。
 
-八套**共用同一份元件 HTML**：S1 奶油是基準，其餘七套只覆寫材質（S2〜S5 由 `build_from_s1.py` 以 S1 ＋ `material/<套>.css` 產生，v20；S6、S7、S8 由各自的產生器以 S1 為基底重建（S8 是 `build_s8_line.py`，v33）；S3、S5、S6 的深色規則由 `build_dark.py` 插進同一份元件庫，v23）；八套的 70 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（七套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
+八套**共用同一份元件 HTML**：S1 奶油是基準，其餘七套只覆寫材質（S2〜S5 由 `build_from_s1.py` 以 S1 ＋ `material/<套>.css` 產生，v20；S6、S7、S8 由各自的產生器以 S1 為基底重建（S8 是 `build_s8_line.py`，v33）；S3、S5、S6 的深色規則由 `build_dark.py` 插進同一份元件庫，v23）；八套的 72 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（七套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題六套逐字相同，可用 grep 找）。
 
 **圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；七套風格共用同一組圖示。
 
@@ -352,7 +354,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 ## 10. 起手式：引用 dist/，不要複製示範頁的 CSS（規範第十二章）
 
-元件樣式的唯一來源是公開倉庫根目錄的 `dist/`（由 `emit_css.py` 自八套元件庫產生，檔頭有版號，與規範同版）。工程師手冊 `dist/USAGE.md`（＝《設計系統使用說明 v16》）、範例頁 `dist/examples/`（八套風格各一張、各在 8.7 的首選情境：S1 後台、S2 控制面板、S3 品牌官網、S4 點餐、S5 預約、S6 監控儀表板、S7 說明中心、S8 設計工作室官網；`same-markup.html` 是同一份標記換七套殼，只說明「風格是殼」）。幫人起新頁面時，照情境挑一張範例當起點，不要八套都拿訂單後台換皮。**不要**從 `components_s*.html` 複製 `<style>`——複製那一刻起產品與元件庫就分家。
+元件樣式的唯一來源是公開倉庫根目錄的 `dist/`（由 `emit_css.py` 自八套元件庫產生，檔頭有版號，與規範同版）。工程師手冊 `dist/USAGE.md`（＝《設計系統使用說明 v17》）、範例頁 `dist/examples/`（八套風格各一張、各在 8.7 的首選情境：S1 後台、S2 控制面板、S3 品牌官網、S4 點餐、S5 預約、S6 監控儀表板、S7 說明中心、S8 設計工作室官網；`same-markup.html` 是同一份標記換七套殼，只說明「風格是殼」）。幫人起新頁面時，照情境挑一張範例當起點，不要八套都拿訂單後台換皮。**不要**從 `components_s*.html` 複製 `<style>`——複製那一刻起產品與元件庫就分家。
 
 八套載法相同（三檔 ＋ theme.js，順序不能換；v20 起 S2〜S5 也以 S1 為基底，八套共用同一份元件 HTML）：
 
@@ -360,7 +362,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 <html lang="zh-Hant" data-style="s1">              <!-- 全站只選一套風格，建置時決定；密度不寫就是該套預設（S6 標準、其餘寬鬆），要改才加 data-density -->
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="dist/tokens.css">     <!-- 字級、間距、圓角、高度、動態、層級 -->
-<link rel="stylesheet" href="dist/base.css">       <!-- 結構層 ＋ S1 材質：70 項元件、焦點環、佔位文字、RWD -->
+<link rel="stylesheet" href="dist/base.css">       <!-- 結構層 ＋ S1 材質：72 項元件、焦點環、佔位文字、RWD -->
 <link rel="stylesheet" href="dist/style-s1.css">   <!-- 這一套的材質層；換風格只換這一行（s1〜s7） -->
 <body data-type="productive">                      <!-- 前台閱讀型頁面改 expressive -->
   …元件 HTML 照第 8 節的 class 語彙寫…
