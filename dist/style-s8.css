@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 42.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 43.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
    由 emit_s8.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（規範 12.2）。
    五項風格層例外（規範 4.1、4.2、7.4，僅 S8）：標題細字重、英文眉標寬字距 0.3em、圖示線寬 1.5、數字用 Inter、標籤與小字 500。
@@ -411,7 +411,6 @@ html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#121212;--paperc
 :where(html:not([data-theme="light"])) .notice{background:var(--page)}
 html:not([data-theme="light"]){color-scheme:dark;--page:#121212;--card:#121212;--paperc:#1A1A1A;--band:#1A1A1A;--sel:#262626;--line:#3A3A3A;--line-2:#EDEDED;--ink:#EDEDED;--muted:#A3A3A3;--err:#F28B82;--err-soft:#362524;--wrn:#E2B341;--wrn-soft:#332C1A;--ok:#74C483;--ok-soft:#222E24;--info:#7DB6EE;--info-soft:#232C35;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-26292e:var(--ink);--tk-6f6b64:var(--muted);--tk-e4e2de:var(--line);--tk-fbfaf8:var(--paperc);--tk-e9c94a:var(--wrn);--tk-5a5751:var(--muted);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}
 }
-:root{--page:#EDEDED}
 /* ══════════════════════════════════════════════════════════════
    S8 線描 LINE 表面層（build_s8_line.py 產生）
    元件 HTML 與 class 與 S1〜S7 完全相同，這裡只覆寫材質。
@@ -746,3 +745,4 @@ html[data-theme="dark"] .drawerdemo .scrim,html[data-theme="dark"] .sheetdemo .s
 .cal .cg .sel,.cal .cg .sel.a,.cal .cg .sel.b{background:transparent;color:var(--acc);border-color:var(--acc);border-radius:999px}
 .cal .quick button.on{background:transparent;color:var(--acc);border-color:var(--acc)}
 /* S8 表面層結束 */
+:root{--page:#EDEDED;--card:#EDEDED}

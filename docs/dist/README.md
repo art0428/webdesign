@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 42.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 43.0.0 — 可引用的 CSS
 
 由八套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
 
@@ -26,7 +26,7 @@ S1 深色的六個面明度與 S6 深色相同（頁面 `#14120E`、卡片 `#1C1
 
 ### S8 深色：中性黑（33.0.0）
 
-S8 深色是黑白對調：卡片與頁面同為 `#121212`（S8 沒有白卡）、表頭帶 `#1A1A1A`、選中底 `#262626`、淡線 `#3A3A3A`、墨線與主文字 `#EDEDED`、次要字 `#A3A3A3`；語意淡底照「16% 混入卡片色」重算。品牌色深色值沿用 S6 那張表（`DARK.s8`），**不跟色系帶色調**，也沒有「深色底」開關。
+S8 深色是黑白對調：卡片與頁面同為 `#121212`（S8 沒有白卡）、表頭帶 `#1A1A1A`、選中底 `#262626`、淡線 `#3A3A3A`、墨線與主文字 `#EDEDED`、次要字 `#A3A3A3`；語意淡底照「16% 混入卡片色」重算。品牌色深色值沿用 S6 那張表（`DARK.s8`）。**43.0.0 起可切「跟隨色系」**：預設仍是中性黑（升級後畫面不變），寫 `<html data-dark-tint="follow">` 或呼叫 `DS.setDarkTint('follow')`（網址 `?tint=follow`）時，頁面、表頭帶、選中底與淡線帶目前色系主色的色調（明度不動、OKLCH 彩度 0.012），墨線與文字不變，數值在 `theme.js` 的 `DARK_TINT`（S8 那張）。
 
 ### S6 深色底：跟隨色系（預設）／中性石墨（v29）
 
@@ -53,15 +53,15 @@ SC1〜SC3 在 S8 會自動加框線（`html.sc-adjust`）；預設寬鬆、可�
 ```js
 DS.applyTheme('c3')              // 切換色系 c1〜c12、sc1〜sc3；不適用於本風格的組合退回 c1，回傳實際套用的 key
 DS.setColorScheme('dark')        // 'dark' | 'light' | 'system'；只對 DARK_STYLES（s1、s3、s5、s6、s8）有效
-DS.setDarkTint('neutral')        // 'follow'（預設）| 'neutral'；S6 深色底跟隨色系或中性石墨，其他風格呼叫無效果
-DS.darkTint()                    // 目前生效的值：S6 回 'follow' 或 'neutral'；其他風格回 null
+DS.setDarkTint('neutral')        // 'follow' | 'neutral'；S6、S8 的深色底（S6 預設 follow、S8 預設 neutral），其他風格呼叫無效果
+DS.darkTint()                    // 目前生效的值：S6、S8 回 'follow' 或 'neutral'；其他風格回 null
 DS.labelTables()                 // 依表頭替表格每格補 data-l（手機卡片列的欄名，規範 6.3）；載入時自動跑一次，動態新增列後再呼叫
 DS.lineNav()                     // S8 導覽的隆起線（規範 8.2）：載入時自動跑；之後才加進頁面的頁籤或導覽再呼叫，其他風格呼叫無效果
 DS.setDensity('compact')         // 'comfortable' | 'normal' | 'compact'；不在本風格可選範圍的檔退回該套預設，回傳實際套用的檔
 DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切回 C1')   // 選配：退回時通知使用者
 ```
 
-偏好以 localStorage 的 `ds.theme`、`ds.scheme`、`ds.density`、`ds.darkTint` 記住；網址參數 `?theme=c3`、`?tint=neutral` 優先。副色淺型（SC 系列）會自動加 `html.sc-light`，需加框線的組合加 `html.sc-adjust`。
+偏好以 localStorage 的 `ds.theme`、`ds.scheme`、`ds.density`、`ds.darkTint` 記住；網址參數 `?theme=c3`、`?tint=neutral`（或 `follow`）優先。副色淺型（SC 系列）會自動加 `html.sc-light`，需加框線的組合加 `html.sc-adjust`。
 
 ## 瀏覽器支援
 
@@ -87,8 +87,8 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 39.6 KB |
 | `style-s7.css` | S7 編輯 | 5.0 KB |
 | `style-s8.css` | S8 線描 淺色 ＋ 深色 | 50.5 KB |
-| `theme.js` | 色系、深淺模式、深色底色調與密度 | 32.8 KB |
+| `theme.js` | 色系、深淺模式、深色底色調與密度 | 37.8 KB |
 
 ## 版本
 
-`42.0.0` 與《網頁設計規範 v42》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`43.0.0` 與《網頁設計規範 v43》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
