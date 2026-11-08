@@ -1245,6 +1245,37 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 }
 /* v37 區塊結束 */
 </style>
+<style>
+/* ══ v41 表格與核取（S2 浮雕）：滑過不再逐格內凹、核取填色、選取列加主色邊、卡片裡的區塊不再疊一層凸起 ══ */
+.t tbody tr:hover td{box-shadow:none}
+@media (min-width:768px){
+.t tbody tr:hover td{background:rgba(255,255,255,.45)}
+.t tbody tr.sel td,.t tbody tr.sel:hover td{background:var(--accsoft)}
+.t tbody tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--acc)}
+}
+.check.on i{background:var(--acc);color:var(--on-acc,#fff);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
+:is(.board,.card) :is(.tblwrap,.desc,.feed){box-shadow:none;border:1px solid rgba(163,177,198,.45)}
+/* 趨勢箭頭 .delta.up 與 S2 的凸起工具 class .up 撞名，統計卡的「▲ 2 vs 昨日」被畫成一塊凸起的方框 */
+.delta.up{background:none;box-shadow:none}
+/* S1 留下的白底與暖灰線：主色外框鈕、分頁器、跳頁輸入格、數量調整器輸入格、步驟精靈未到的步驟。
+   圓鈕分頁器用淡線圓圈不加凸起：P1 在手機是橫滑列，凸起的柔影會被捲動容器切成直邊 */
+.btn.ghost{background:var(--bg)}
+.p1 button,.p3 button,.p5 button{background:var(--bg);border-color:rgba(163,177,198,.45);box-shadow:none}
+.p2{background:var(--bg);border-color:transparent;box-shadow:4px 4px 8px var(--shD),-4px -4px 8px var(--shL)}
+.p2 button,.p2 .dots{background:transparent;border-color:rgba(163,177,198,.45)}
+.p5 input,.qty input{background:var(--bg);border-color:transparent;box-shadow:inset 2px 2px 5px var(--shD),inset -2px -2px 5px var(--shL)}
+.stepper .sp .dot{background:var(--bg)}
+.prose th,.prose td,.cmdk .in,.cmdk .ft,.cmdk kbd,.typels .tl-row{border-color:rgba(163,177,198,.45)}
+/* 核取框 7px 圓角加上內凹柔影看起來是圓的，和單選分不出來 */
+.check i{border-radius:4px}
+/* 停用：不能按就不凸不凹，平面灰底（原本停用鈕是 S1 的暖灰 #E4E2DE，停用的核取、單選、開關和可用的長得一樣） */
+.btn:disabled,.btn[disabled]{background:#D5DCE6 !important}
+.check.dis i,.radio.dis i,.sw2.dis .tk{box-shadow:none;background:#D5DCE6}
+/* 輸入框附加：整組是一個凹槽，前後綴在槽裡（原本只有輸入格凹下去，前綴浮在外面） */
+.igroup{border-radius:14px;background:var(--bg);box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
+.igroup .ad,.igroup input,.field .igroup input{background:transparent;box-shadow:none}
+/* v41 材質結束 */
+</style>
 </head>
 <body data-type="expressive">
 

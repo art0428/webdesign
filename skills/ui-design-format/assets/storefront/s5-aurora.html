@@ -1153,6 +1153,12 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
 html[data-theme="dark"]{color-scheme:dark;--page:#0F1117;--card:#1A1D27;--paperc:#171A23;--ink:#EDEDED;--muted:#ADB1BB;--dark:#E4E6EC;--line:#2C303C;--line-2:#383C48;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#158871;--d4:#8D61D4;--d5:#65821E;--d6:#CA4971;--err:#F28B82;--err-soft:#3D2F36;--wrn:#E2B341;--wrn-soft:#3A352B;--ok:#74C483;--ok-soft:#283836;--info:#7DB6EE;--info-soft:#2A3547;--tk-fff:#1E212C;--acc:#81B0FF;--accsoft:#353F56;--acc-soft:#353F56;--acc-deep:#81B0FF;--acc2:#C93E81;--acc2soft:#402D42;--acc2-soft:#402D42;--acc2-deep:#FF8BBB;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 </style>
+<style>
+/* ══ v41 表格（S5 極光）：滑過的漸層鋪在整列上，不再每一格各畫一段 ══ */
+.t tbody tr:hover{background:linear-gradient(90deg,var(--accsoft),var(--acc2soft))}
+.t tbody tr:hover td{background:transparent}
+/* v41 材質結束 */
+</style>
 </head>
 <body data-type="expressive">
 

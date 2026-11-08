@@ -1,11 +1,11 @@
 ---
 name: "ui-design-format"
-description: "通用的網頁介面設計系統（2026-11 v40 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：八套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯、S8 線描）擇一開發，S1、S3、S5、S6、S8 另有深色模式（S1 暖紙色調固定；S6 深色底預設跟隨色系、可切中性石墨），每套可切寬鬆、標準、緊湊三檔密度（依風格開放）；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、72 項元件清單、手機與平板版面通則與七項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度、四種寬度的版面稽核）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；八張 Expressive 前台示範頁。"
+description: "通用的網頁介面設計系統（2026-11 v41 規範）。凡是要產生或修改任何網頁介面、HTML prototype、後台管理、表單頁、訂購或點餐系統、web app、landing page、互動 demo、元件庫，或使用者提到「UI」「介面」「網頁設計」「prototype」「做一個系統」「前端」時，必須先讀本 skill 再動工，即使使用者沒提到風格。內容：八套風格（S1 奶油、S2 浮雕、S3 琉璃、S4 手帳、S5 極光、S6 石墨、S7 編輯、S8 線描）擇一開發，S1、S3、S5、S6、S8 另有深色模式（S1 暖紙色調固定；S6 深色底預設跟隨色系、可切中性石墨），每套可切寬鬆、標準、緊湊三檔密度（依風格開放）；十二組核心 ＋ SC1〜SC3 特殊色系由使用者在系統內切換（含鎖定規則）；四層色彩、十四級字級、間距標尺、圓角、元件高度、RWD 與 12 欄欄格、72 項元件清單、手機與平板版面通則與七項自動檢查（含元件結構尺寸、焦點環、佔位文字、拆檔無損與風格層純度、四種寬度的版面稽核）；z-index 五層；可引用的 dist/ CSS 與 theme.js（開發對接）；動態 token 與 Lucide 圖示規則；八張 Expressive 前台示範頁。"
 ---
 
 # 管理者工作室 網頁介面設計系統（skill 版）
 
-本 skill 是《網頁設計規範 v40》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，八套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，五項交付前檢查的腳本在 `scripts/`（用法見第 9 節，其餘檔案的索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
+本 skill 是《網頁設計規範 v41》與其推導調研的實作摘要。規範全文依章節放在本資料夾的 `references/`，八套元件庫與 `tokens.css` 在 `assets/`、可引用的 CSS 在倉庫的 `dist/`，五項交付前檢查的腳本在 `scripts/`（用法見第 9 節，其餘檔案的索引見文末第 11 節）。**本 skill 與 `references/` 衝突時以 `references/` 為準。**
 
 頁面上的品牌名稱一律用使用者自己的專案名稱。`assets/` 範本裡的「管理者工作室」只是範例品牌，複製標記時要換掉。術語第一次出現要白話解釋。
 
@@ -81,7 +81,7 @@ S1 為基準，其餘七套各有一個只含材質的風格層（`dist/style-s2
 
 **S1 奶油**：`--page:#F6F5F2 --card:#FFFFFF --line:#E4E2DE --paperc:#FBFAF8 --ink:#26292E --muted:#6F6B64`。所有卡片、輸入框、按鈕 `border:1px solid var(--line)`、零陰影；容器 16px、輸入框與小卡 12px、按鈕與狀態膠囊 999px。
 
-**S2 浮雕**：`--bg:#E6EAF0`（底即卡）`--ink:#333B49 --muted:#5F6673 --shD:rgba(163,177,198,.62) --shL:rgba(255,255,255,.95)`。凸（可按）`box-shadow:6px 6px 12px var(--shD),-6px -6px 12px var(--shL)`（依面積放大縮小：按鈕 5／10、卡片 8／16、小件 4／8）；凹（已選、輸入區）`inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)`；不用框線；主按鈕仍實心主色配白字。CSS 變數名大小寫有別（`--shD` 不是 `--shd`）。
+**S2 浮雕**：`--bg:#E6EAF0`（底即卡）`--ink:#333B49 --muted:#5F6673 --shD:rgba(163,177,198,.62) --shL:rgba(255,255,255,.95)`。凸（可按）`box-shadow:6px 6px 12px var(--shD),-6px -6px 12px var(--shL)`（依面積放大縮小：按鈕 5／10、卡片 8／16、小件 4／8）；凹（已選、輸入區）`inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)`；不用框線；主按鈕仍實心主色配白字。CSS 變數名大小寫有別（`--shD` 不是 `--shd`）。v41 五條補充：凸只疊一層（卡片裡的表格容器、描述清單、動態列表平面加 1px 淡線 `rgba(163,177,198,.45)`，浮層可再凸）；表格列的滑過與選取畫在整列（滑過整列淡白、選取列主色淡底＋第一格 3px 主色左邊線），不要逐格加內凹；核取框圓角 4px、打勾填主色；停用是平面 `#D5DCE6`、不凸不凹；沒有白色的面（分頁器、輸入格、主色外框鈕、步驟點用 `--bg`），輸入框附加整組一個凹槽。S2 的凸起工具 class 是 `.up`／`.up-sm`／`.in`，新 class 不要撞名（v40 以前統計卡的 `.delta.up` 被畫成凸起方框）。
 
 **S3 琉璃**：`body{background:linear-gradient(133deg,var(--acc),var(--acc2))}`；`--ink:#232936 --muted:#454C59`；亮玻璃 `rgba(255,255,255,.70)`＋`backdrop-filter:blur(24px)`＋`1px solid rgba(255,255,255,.7)`；深玻璃 `rgba(22,26,42,.66)` 配白字，只用在示範頁的導覽（v20 起元件不用深玻璃；統計卡 hero 是亮玻璃配主色數字）。鐵則：**文字不落在漸層上（一律墊玻璃）、彩色字不落在 70% 玻璃上（一律墊白）**。
 
@@ -331,7 +331,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 八套**共用同一份元件 HTML**：S1 奶油是基準，其餘七套只覆寫材質（S2〜S5 由 `build_from_s1.py` 以 S1 ＋ `material/<套>.css` 產生，v20；S6、S7、S8 由各自的產生器以 S1 為基底重建（S8 是 `build_s8_line.py`，v33）；S1、S3、S5、S6 的深色規則由 `build_dark.py` 插進同一份元件庫，v23、v32；S8 的深色由 `build_s8_line.py` 一起產生）；八套的 72 個節標題逐字相同，少任何一項都會在設計系統瀏覽器的元件索引顯示 ✕。共用 class 語彙（八套一致，不得自創同義名）：`.btn .btn.primary .btn.sm .btn.danger`、`.field label input .req .msg`、`.st.acc/.wrn/.ok/.err/.gray`、`.tag.acc/.err/.gray`、`.aibadge`、`.chip`、`.pillf`、`.seg`、`.qty`、`.check`、`.radio`、`.sw2`、`.card .card-title`、`.tblwrap .tcap table.t .amt .dt .p4`、`.statc .k .v .delta`、`.desc`、`.avatar`、`.badge`、`.count`、`.tabs .tab`、`.nitem`、`.drawer`、`.modal .mh .mb .mf`、`.pop`、`.tip`、`.toast`、`.alert.err/.wrn/.ok/.info`、`.notice`、`.empty`、`.skel`、`.bell`、`.bar`、`.stepper`、`.tl`、`.feed`、`.divider .hr .vdiv`。完整標記與樣式直接抄 `assets/components/` 裡所選風格檔案的對應區段（每項元件一節，節標題八套逐字相同，可用 grep 找）。
 
-**圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2（S8 由 `style-s8.css` 自動改 1.5，標記照寫 `stroke-width="2"`）；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；八套風格共用同一組圖示。
+**圖示（規範 7.4）**：全站只用 Lucide（開源、ISC 授權），版本寫死不用 latest，線條畫法不混實心；尺寸只有 16（配 B2、B3、L1）、20（配 B1、H3、按鈕）、24（頂列圖示鈕、H2）、48（空狀態與插圖），線寬一律 2（S8 由 `style-s8.css` 自動改 1.5，標記照寫 `stroke-width="2"`）；顏色 `currentColor`，只有「本身就是操作」才用主色，語意色只給狀態圖示；圖示與文字間距 16px 配 4px、20px 以上配 8px；純圖示按鈕要 `aria-label` 且點擊範圍 44×44，裝飾性圖示加 `aria-hidden="true"`；八套風格共用同一組圖示；不用 emoji 或文字符號當圖示（🔔 🔍 ⚙ ⬆ ◉，v41 起元件庫已全換成 Lucide，箭頭 `‹ › ▼ ▲ ▶` 與日期時間欄位的 `▦ ◷` 下一版換；狀態標籤的 `●`、趨勢的 `▲ ▼` 是符號＋文字，不算圖示）。材質不逐格畫：表格列等同一組的狀態要畫成一個面，陰影、漸層加在每個儲存格上會出現縫或重複色帶（v41）。
 
 **前台長什麼樣**：`assets/storefront/*.html` 八張前台示範頁（掛 Expressive，只用元件庫 class；S1、S3、S5、S6、S8 同一頁可切深色）。v25 起每套各做它最適合的那一種網站：S1 會員中心、S2 自助機台、S3 產品發表、S4 咖啡館官網、S5 選物電商、S6 開發者產品官網、S7 線上雜誌、S8 設計工作室官網，頁頂寫明「適合」與「不適合」（規範 8.7「每套風格的前台示範」）。設計系統瀏覽器的「前台示範」檢視可切換風格、模式與色系。做前台時挑跟自己最接近的一張照它的結構起手。
 
@@ -353,7 +353,7 @@ body{font-family:'Noto Sans TC',sans-serif;font-size:var(--fs-b1);line-height:va
 
 ## 10. 起手式：引用 dist/，不要複製示範頁的 CSS（規範第十二章）
 
-元件樣式的唯一來源是公開倉庫根目錄的 `dist/`（由 `emit_css.py` 自八套元件庫產生（`style-s8.css` 由 `emit_s8.py` 產生），檔頭有版號，與規範同版）。工程師手冊 `dist/USAGE.md`（＝《設計系統使用說明 v22》）、範例頁 `dist/examples/`（八套風格各一張、各在 8.7 的首選情境：S1 後台、S2 控制面板、S3 品牌官網、S4 點餐、S5 預約、S6 監控儀表板、S7 說明中心、S8 設計工作室官網；`same-markup.html` 是同一份標記換八套殼，只說明「風格是殼」）。幫人起新頁面時，照情境挑一張範例當起點，不要八套都拿訂單後台換皮。**不要**從 `components_s*.html` 複製 `<style>`——複製那一刻起產品與元件庫就分家。
+元件樣式的唯一來源是公開倉庫根目錄的 `dist/`（由 `emit_css.py` 自八套元件庫產生（`style-s8.css` 由 `emit_s8.py` 產生），檔頭有版號，與規範同版）。工程師手冊 `dist/USAGE.md`（＝《設計系統使用說明 v23》）、範例頁 `dist/examples/`（八套風格各一張、各在 8.7 的首選情境：S1 後台、S2 控制面板、S3 品牌官網、S4 點餐、S5 預約、S6 監控儀表板、S7 說明中心、S8 設計工作室官網；`same-markup.html` 是同一份標記換八套殼，只說明「風格是殼」）。幫人起新頁面時，照情境挑一張範例當起點，不要八套都拿訂單後台換皮。**不要**從 `components_s*.html` 複製 `<style>`——複製那一刻起產品與元件庫就分家。
 
 八套載法相同（三檔 ＋ theme.js，順序不能換；v20 起 S2〜S5 也以 S1 為基底，八套共用同一份元件 HTML）：
 

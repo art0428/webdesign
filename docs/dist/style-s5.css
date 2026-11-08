@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 40.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 41.0.0 ══ style-s5.css（極光 AURORA 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -174,6 +174,8 @@ button{font-family:inherit;color:var(--ink)}
 .tl li.acc::before{background:linear-gradient(95deg,var(--acc),var(--acc2-deep));box-shadow:0 0 0 2px var(--line)}
 .avatar,.avatar.sq{border-radius:18px 18px 18px 6px}
 .conf{border-radius:14px 14px 14px 4px}
+.t tbody tr:hover{background:linear-gradient(90deg,var(--accsoft),var(--acc2soft))}
+.t tbody tr:hover td{background:transparent}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}

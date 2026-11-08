@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 40.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 41.0.0 ══ style-s2.css（浮雕 EMBOSS 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -274,3 +274,22 @@ button{font-family:inherit;color:var(--ink)}
 .tl li.err::before{background:var(--err);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
 .avatar{box-shadow:3px 3px 6px var(--shD),-3px -3px 6px var(--shL)}
 .conf{background:var(--bg);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
+.t tbody tr:hover td{box-shadow:none}
+@media (min-width:768px){.t tbody tr:hover td{background:rgba(255,255,255,.45)}
+.t tbody tr.sel td,.t tbody tr.sel:hover td{background:var(--accsoft)}
+.t tbody tr.sel td:first-child{box-shadow:inset 3px 0 0 var(--acc)}}
+.check.on i{background:var(--acc);color:var(--on-acc,#fff);box-shadow:2px 2px 4px var(--shD),-2px -2px 4px var(--shL)}
+:is(.board,.card) :is(.tblwrap,.desc,.feed){box-shadow:none;border:1px solid rgba(163,177,198,.45)}
+.delta.up{background:none;box-shadow:none}
+.btn.ghost{background:var(--bg)}
+.p1 button,.p3 button,.p5 button{background:var(--bg);border-color:rgba(163,177,198,.45);box-shadow:none}
+.p2{background:var(--bg);border-color:transparent;box-shadow:4px 4px 8px var(--shD),-4px -4px 8px var(--shL)}
+.p2 button,.p2 .dots{background:transparent;border-color:rgba(163,177,198,.45)}
+.p5 input,.qty input{background:var(--bg);border-color:transparent;box-shadow:inset 2px 2px 5px var(--shD),inset -2px -2px 5px var(--shL)}
+.stepper .sp .dot{background:var(--bg)}
+.prose th,.prose td,.cmdk .in,.cmdk .ft,.cmdk kbd,.typels .tl-row{border-color:rgba(163,177,198,.45)}
+.check i{border-radius:4px}
+.btn:disabled,.btn[disabled]{background:#D5DCE6 !important}
+.check.dis i,.radio.dis i,.sw2.dis .tk{box-shadow:none;background:#D5DCE6}
+.igroup{border-radius:14px;background:var(--bg);box-shadow:inset 3px 3px 7px var(--shD),inset -3px -3px 7px var(--shL)}
+.igroup .ad,.igroup input,.field .igroup input{background:transparent;box-shadow:none}
