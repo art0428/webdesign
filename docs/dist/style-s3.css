@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 41.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 42.0.0 ══ style-s3.css（琉璃 GLAZE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -261,6 +261,11 @@ button{font-family:inherit;color:var(--ink)}
 .tl li.err::before{background:var(--err)}
 .avatar{box-shadow:0 0 0 2px var(--glBd),0 2px 8px rgba(30,34,60,.18)}
 .conf{background:var(--gl);box-shadow:inset 0 0 0 1px var(--glBd)}
+.cal .ch button{color:var(--muted)}
+.cal .ch button:hover{color:var(--ink)}
+.cal .cg .sel{background:var(--card,#FFFFFF);color:var(--acc);box-shadow:0 2px 10px rgba(30,34,60,.14)}
+.cal .cg .sel.a,.cal .cg .sel.b{border-radius:999px}
+.cal .cg .inr{background:linear-gradient(180deg,color-mix(in srgb,var(--acc) 5%,var(--card,#FFFFFF)),color-mix(in srgb,var(--acc) 16%,var(--card,#FFFFFF)));box-shadow:inset 0 1px 0 var(--glBd)}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
@@ -638,6 +643,7 @@ html[data-theme="dark"][data-style="s1"] .p1 button.on,html[data-theme="dark"][d
 :where(html[data-theme="dark"]) .tl li.ok::before{background:var(--ok)}
 :where(html[data-theme="dark"]) .tl li.err::before{background:var(--err)}
 :where(html[data-theme="dark"]) .conf{background:var(--gl)}
+:where(html[data-theme="dark"]) .cal .cg .sel{color:var(--acc)}
 html[data-theme="dark"]{color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED}
 @media (prefers-color-scheme:dark){
 html:not([data-theme="light"]){color-scheme:dark}
@@ -1015,5 +1021,6 @@ html:not([data-theme="light"])[data-style="s1"] .p1 button.on,html:not([data-the
 :where(html:not([data-theme="light"])) .tl li.ok::before{background:var(--ok)}
 :where(html:not([data-theme="light"])) .tl li.err::before{background:var(--err)}
 :where(html:not([data-theme="light"])) .conf{background:var(--gl)}
+:where(html:not([data-theme="light"])) .cal .cg .sel{color:var(--acc)}
 html:not([data-theme="light"]){color-scheme:dark;--page:#0B0D14;--card:#1C2030;--paperc:#1A1E2B;--ink:#EDEDED;--muted:#B5B8C2;--dark:#D4D6DC;--line:rgba(255,255,255,.14);--line-2:rgba(255,255,255,.20);--gl:rgba(18,21,34,.80);--glBd:rgba(255,255,255,.14);--glDeep:rgba(6,8,14,.72);--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--d1:#6E97DB;--d3:#208E77;--d4:#9367DB;--d5:#6C8927;--d6:#D35178;--d7:#1E8AB0;--d8:#BC6B25;--err:#F28B82;--err-soft:#403642;--wrn:#E2B341;--wrn-soft:#3E3B39;--ok:#74C483;--ok-soft:#2E3E42;--info:#7DB6EE;--info-soft:#303C51;--acc:#76A9FF;--accsoft:#2D3954;--acc-soft:#2D3954;--acc-deep:#76A9FF;--acc2:#C2377B;--acc2soft:#39273F;--acc2-soft:#39273F;--acc2-deep:#FF7EB6;--acc2-text:#EDEDED}
 }

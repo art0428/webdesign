@@ -1,4 +1,4 @@
-# 管理者工作室 設計系統 41.0.0 — 可引用的 CSS
+# 管理者工作室 設計系統 42.0.0 — 可引用的 CSS
 
 由八套元件庫示範頁（`skills/ui-design-format/assets/components/`）以程式產生，**不要手改**；維護端每次產生後都驗證示範頁改成引用這些檔之後，每個元素的計算樣式一字不差（規範 12.3；產生與驗證的腳本不隨公開版發佈）。
 
@@ -78,17 +78,17 @@ DS.onFallback = (asked, used) => notify(asked + ' 不適用於此風格，已切
 | 檔 | 內容 | 大小 |
 |---|---|---|
 | `tokens.css` | token | 2.5 KB |
-| `base.css` | 結構層 ＋ S1 材質 | 85.3 KB |
+| `base.css` | 結構層 ＋ S1 材質 | 86.2 KB |
 | `style-s1.css` | S1 奶油 深色（材質在 base） | 29.6 KB |
-| `style-s2.css` | S2 浮雕 | 19.4 KB |
-| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 91.6 KB |
-| `style-s4.css` | S4 手帳 | 13.9 KB |
-| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 58.4 KB |
-| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 39.3 KB |
-| `style-s7.css` | S7 編輯 | 4.6 KB |
-| `style-s8.css` | S8 線描 淺色 ＋ 深色 | 50.1 KB |
+| `style-s2.css` | S2 浮雕 | 19.8 KB |
+| `style-s3.css` | S3 琉璃 淺色 ＋ 深色 | 92.2 KB |
+| `style-s4.css` | S4 手帳 | 14.4 KB |
+| `style-s5.css` | S5 極光 淺色 ＋ 深色 | 58.8 KB |
+| `style-s6.css` | S6 石墨 淺色 ＋ 深色 | 39.6 KB |
+| `style-s7.css` | S7 編輯 | 5.0 KB |
+| `style-s8.css` | S8 線描 淺色 ＋ 深色 | 50.5 KB |
 | `theme.js` | 色系、深淺模式、深色底色調與密度 | 32.8 KB |
 
 ## 版本
 
-`41.0.0` 與《網頁設計規範 v41》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。
+`42.0.0` 與《網頁設計規範 v42》同步；規範升版時本套檔案一起升版，產品把版號改掉就跟上。

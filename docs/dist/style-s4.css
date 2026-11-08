@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 41.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 42.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -210,3 +210,9 @@ button{font-family:inherit;color:var(--ink)}
 .avatar{border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
 .conf{border:2px solid currentColor;box-shadow:1.5px 1.5px 0 var(--ink)}
 .check.on i{background:var(--acc);border-color:var(--acc);color:var(--on-acc,#fff)}
+.cal .ch button{color:var(--muted)}
+.cal .ch button:hover{color:var(--ink)}
+.cal .cg .sel{background:var(--accsoft);color:var(--ink);border:2px solid var(--ink);box-shadow:2px 2px 0 var(--ink)}
+.cal .cg .sel.a{border-radius:18px 225px 18px 255px/255px 18px 225px 18px}
+.cal .cg .sel.b{border-radius:255px 18px 225px 18px/18px 225px 18px 255px}
+.cal .cg .inr{background:linear-gradient(transparent 20%,color-mix(in srgb,var(--acc) 24%,transparent) 20% 80%,transparent 80%)}

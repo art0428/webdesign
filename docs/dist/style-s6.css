@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 41.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 42.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -68,6 +68,12 @@ body{background:#F4F4F4}
 .avatar,.avatar.sq{border-radius:6px}
 .conf{border-radius:6px;background:transparent;box-shadow:inset 0 0 0 1px currentColor}
 :root{--page:#F4F4F4;--card:#FFFFFF}
+.cal .ch button{color:var(--muted)}
+.cal .ch button:hover{color:var(--ink)}
+.cal .cg span{border-radius:6px}
+.cal .cg .sel.a{border-radius:6px 0 0 6px}
+.cal .cg .sel.b{border-radius:0 6px 6px 0}
+.cal .cg .inr{background:var(--sel);border-radius:0}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
 html[data-theme="dark"]{color-scheme:dark}
