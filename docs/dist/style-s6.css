@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 43.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 44.0.0 ══ style-s6.css（石墨 GRAPHITE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -73,6 +73,12 @@ body{background:#F4F4F4}
 .cal .cg .sel.a{border-radius:6px 0 0 6px}
 .cal .cg .sel.b{border-radius:0 6px 6px 0}
 .cal .cg .inr{background:var(--sel);border-radius:0}
+:root{--bub-r:6px;--bub-tail:2px;--ring-w:2;--ring-tw:2;--ring-trk:var(--line-2);--ring-cap:butt;--wv-r:1px}
+.bub{background:var(--sel);border-color:transparent}
+.cmsg.me .bub{background:var(--acc);border-color:var(--acc)}
+.voice{border-radius:6px}
+.vplay{border-radius:6px}
+.cd .cu{border-radius:6px}
 :root{--page:#F4F4F4;--card:#FFFFFF}
 
 /* ══ 深色模式（規範 8.8）：元件庫頁面淺色規則與深色規則的屬性層級差異（build_dark.py 產生深色）。html[data-theme="dark"] 強制深色；沒有指定時跟隨系統；:where() 讓深色規則權重與淺色相同。 ══ */
@@ -240,6 +246,12 @@ html[data-theme="dark"].sc-adjust .aibadge,html[data-theme="dark"].sc-adjust .av
 :where(html[data-theme="dark"]) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 html[data-theme="dark"][data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
 html[data-theme="dark"][data-style="s1"] .p1 button.on,html[data-theme="dark"][data-style="s1"] .p2 button.on,html[data-theme="dark"][data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
+:where(html[data-theme="dark"]) .bub.typing i{border-radius:50%;background:var(--muted)}
+:where(html[data-theme="dark"]) .wave i{border-radius:var(--wv-r);background:color-mix(in srgb,var(--muted) 38%,transparent)}
+:where(html[data-theme="dark"]) .wave i.on{background:var(--acc)}
+:where(html[data-theme="dark"]) .cd .cu b{color:var(--ink)}
+:where(html[data-theme="dark"]) .cd.urgent .cu b{color:var(--err)}
+:where(html[data-theme="dark"]) .ring .rc b{color:var(--ink)}
 :where(html[data-theme="dark"]) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html[data-theme="dark"]) .card{background:var(--card)}
 :where(html[data-theme="dark"]) body{background:var(--page)}
@@ -435,6 +447,12 @@ html:not([data-theme="light"]).sc-adjust .aibadge,html:not([data-theme="light"])
 :where(html:not([data-theme="light"])) .tnav .tnb i{border-radius:50%;background:var(--acc)}
 html:not([data-theme="light"])[data-style="s1"] .tabbar .tbi[aria-current] .ic{background:var(--accsoft)}
 html:not([data-theme="light"])[data-style="s1"] .p1 button.on,html:not([data-theme="light"])[data-style="s1"] .p2 button.on,html:not([data-theme="light"])[data-style="s1"] .cal .quick button.on{background:var(--accsoft);color:var(--acc)}
+:where(html:not([data-theme="light"])) .bub.typing i{border-radius:50%;background:var(--muted)}
+:where(html:not([data-theme="light"])) .wave i{border-radius:var(--wv-r);background:color-mix(in srgb,var(--muted) 38%,transparent)}
+:where(html:not([data-theme="light"])) .wave i.on{background:var(--acc)}
+:where(html:not([data-theme="light"])) .cd .cu b{color:var(--ink)}
+:where(html:not([data-theme="light"])) .cd.urgent .cu b{color:var(--err)}
+:where(html:not([data-theme="light"])) .ring .rc b{color:var(--ink)}
 :where(html:not([data-theme="light"])) .tp .tpcol span.sel{color:var(--on-acc)}
 :where(html:not([data-theme="light"])) .card{background:var(--card)}
 :where(html:not([data-theme="light"])) body{background:var(--page)}

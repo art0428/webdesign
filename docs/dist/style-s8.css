@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 43.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 44.0.0 ══ style-s8.css（S8 線描 LINE 材質層：只有與 S1 不同的規則）
    由 emit_s8.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（規範 12.2）。
    五項風格層例外（規範 4.1、4.2、7.4，僅 S8）：標題細字重、英文眉標寬字距 0.3em、圖示線寬 1.5、數字用 Inter、標籤與小字 500。
@@ -418,7 +418,7 @@ html:not([data-theme="light"]){color-scheme:dark;--page:#121212;--card:#121212;-
    五項風格層例外：標題細字重、英文眉標寬字距、圖示線寬 1.5、數字用 Inter、標籤放輕。
    ══════════════════════════════════════════════════════════════ */
 /* 例外五（v37）：標籤與小字放輕，S1 的 700、900 一律 500（清單由 build_s8_line.py 自 S1 收集） */
-b,strong,.head .kick,.head h1,.accbar .lb,.accbtn,.accbtn .cc,.sec h2,.sec .no,.cap,.tokcell .tn,.radcell .tn,.btn,.field label,.chip.on,.pillf.on,.qty button,.qty input,.seg button.on,.st,.tag,.conf,.tcap b,.t th,.amt,.tfoot .tv,.statc .k,.statc .v,.cardx .ct,.sumrow .price,.sumrow.total,.nitem.on,.tab.on,.crumb b,.p1 button,.p2 button,.p3 button,.p4 button.on,.p5 button,.p5 input,.modal .mh,.flow .stp.cur,.mi.on,.mi.on::after,.kebab,.selcount,.upfile .pct,.noti .nh,.noti .nh .mk,.bell b,.selcount button,.alert i,.alert b,.pop .pt,.pop .pt i,.divider,.cal .ch,.cal .cg .wd,.cal .cg .sel,.cal .cf .num,.cal .quick button.on,.ac mark,.tab .cnt,.desc dt,.avatar,.avrow,.badge>b,.count,.batchbar,.drawer .dh,.toolbar .tb,.slider .tt,.meter .mh b,.casc li.on,.casc li.pick,.tlist .th2,.tree .nd.on,.stepper .sp .dot,.stepper .sp b,.tl .tt,.chart .chh,.chart .vl,.spark .k,.spark .v,.split .pa .li.on,.split .pb b,.thumb .lab,.result .ic,.result h3,.accbar .accnote,.sheet .sh,.prose>h2,.prose>h3,.prose th,.otp input,.field .otp input,.cmdk .g,.tabbar .tbi span,.tnav .tnb,.tnav .tnl a[aria-current],.tierbar,.typels .code,.tp .tpcol span.sel,.tp .tpcol .wd,.card .card-title,.check.ind i::after,.pillf .n,.upfile.ok .pct,.filerow.ok .sz,.upfile.err .pct,.filerow.err .sz,.alert .btn.sm,:where(html) .flow .stp.done::before,table.t tbody tr td:first-child,table.t tbody tr td.ck + td,table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):not(:has(> .st)):not(:has(> .btn:only-child))::before{font-weight:500}
+b,strong,.head .kick,.head h1,.accbar .lb,.accbtn,.accbtn .cc,.sec h2,.sec .no,.cap,.tokcell .tn,.radcell .tn,.btn,.field label,.chip.on,.pillf.on,.qty button,.qty input,.seg button.on,.st,.tag,.conf,.tcap b,.t th,.amt,.tfoot .tv,.statc .k,.statc .v,.cardx .ct,.sumrow .price,.sumrow.total,.nitem.on,.tab.on,.crumb b,.p1 button,.p2 button,.p3 button,.p4 button.on,.p5 button,.p5 input,.modal .mh,.flow .stp.cur,.mi.on,.mi.on::after,.kebab,.selcount,.upfile .pct,.noti .nh,.noti .nh .mk,.bell b,.selcount button,.alert i,.alert b,.pop .pt,.pop .pt i,.divider,.cal .ch,.cal .cg .wd,.cal .cg .sel,.cal .cf .num,.cal .quick button.on,.ac mark,.tab .cnt,.desc dt,.avatar,.avrow,.badge>b,.count,.batchbar,.drawer .dh,.toolbar .tb,.slider .tt,.meter .mh b,.casc li.on,.casc li.pick,.tlist .th2,.tree .nd.on,.stepper .sp .dot,.stepper .sp b,.tl .tt,.chart .chh,.chart .vl,.spark .k,.spark .v,.split .pa .li.on,.split .pb b,.thumb .lab,.result .ic,.result h3,.accbar .accnote,.sheet .sh,.prose>h2,.prose>h3,.prose th,.otp input,.field .otp input,.cmdk .g,.tabbar .tbi span,.tnav .tnb,.tnav .tnl a[aria-current],.chat .cday,.cd .cu b,.cd .cu span,.ring .rc b,.ring .rc span,.tierbar,.typels .code,.tp .tpcol span.sel,.tp .tpcol .wd,.card .card-title,.check.ind i::after,.pillf .n,.upfile.ok .pct,.filerow.ok .sz,.upfile.err .pct,.filerow.err .sz,.alert .btn.sm,:where(html) .flow .stp.done::before,table.t tbody tr td:first-child,table.t tbody tr td.ck + td,table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):not(:has(> .st)):not(:has(> .btn:only-child))::before{font-weight:500}
 :root{--page:#EDEDED;--card:#EDEDED;--band:#E6E6E6;--sel:#E2E2E2;--line-2:#1A1A1A;
  --lat:'Inter',Arial,'Noto Sans TC',sans-serif}
 body{background:var(--page)}
@@ -642,7 +642,7 @@ svg[stroke-width="2"]{stroke-width:1.5}
 
 /* 例外四：數字用 Inter；大數字細字重 */
 .num,.accbtn .cc,.sec .no,.tokcell .tv,.radcell .tv,.typerow .spec2,.qty input,.conf,.tcap .cnt,.amt,.dt,.tfoot .tv,.statc .v,.sumrow .price,.p1 button,.p2 button,.p3 .cnt,.p4 button,.p5 input,.upfile .pct,.txa .cnt2,.nrow .tm,.bell b,.cal .cg,.ac .mi small,.ac .hint kbd,.tab .cnt,/* ── 核心補件：頭像 Avatar ── */
-.avatar,.badge>b,.count,.toolbar .tb,.slider .tt,.slider .tk,.meter .mh b,.tlist .th2 small,.stepper .sp .dot,.tl .tm,.feed .fi small,.chart .ax,.chart .vl,.spark .v,.split .pa .li small,.thumb .dur,.strip .thumb small,.raterow .n b,.otp input,.field .otp input,.cmdk kbd,.use code,.tp .tpcol span,.pillf .n,.num,.amt,.price{font-family:var(--lat)}
+.avatar,.badge>b,.count,.toolbar .tb,.slider .tt,.slider .tk,.meter .mh b,.tlist .th2 small,.stepper .sp .dot,.tl .tm,.feed .fi small,.chart .ax,.chart .vl,.spark .v,.split .pa .li small,.thumb .dur,.strip .thumb small,.raterow .n b,.otp input,.field .otp input,.cmdk kbd,.voice .vt,.cd .cu b,.ring .rc b,.use code,.tp .tpcol span,.pillf .n,.num,.amt,.price{font-family:var(--lat)}
 .statc .v,.statc.hero .v,.head h1{font-weight:300}
 /* 導覽的線（v35，規範 8.2、5.5）：theme.js 的 lineNav() 量出目前項，畫一條 1px 隆起線；沒有 JavaScript 時退回圓點與細線 */
 .lnav{position:absolute;left:0;top:0;pointer-events:none;overflow:visible}
@@ -744,5 +744,18 @@ html[data-theme="dark"] .drawerdemo .scrim,html[data-theme="dark"] .sheetdemo .s
 .cal .cg span{border:1px solid transparent}
 .cal .cg .sel,.cal .cg .sel.a,.cal .cg .sel.b{background:transparent;color:var(--acc);border-color:var(--acc);border-radius:999px}
 .cal .quick button.on{background:transparent;color:var(--acc);border-color:var(--acc)}
+/* ── v44 補件：聊天泡泡、語音播放、倒數計時、進度圈（線描：不鋪色，條改成線）── */
+:root{--ring-w:.4;--ring-tw:.4;--ring-dot:block;--wv-w:1px;--wv-r:0px;--cd-gap:0px}
+.bub{background:transparent;border-color:var(--line)}
+.cmsg.me .bub{background:transparent;border-color:var(--acc);color:var(--ink)}
+.voice{background:transparent}
+.vplay{background:transparent;border-color:var(--ink);color:var(--ink)}
+.wave i{background:var(--line)}
+.wave i.on{background:var(--acc)}
+.cd .cu{border:none;border-left:1px solid var(--line);border-radius:0;background:transparent}
+.cd .cu:first-child{border-left:none}
+.cd .cu b,.ring .rc b{font-weight:300}
+.ring.sm{--ring-w:.9;--ring-tw:.9}
+.ring.sm .rd{stroke:var(--ring-c,var(--acc));stroke-width:2}
 /* S8 表面層結束 */
 :root{--page:#EDEDED;--card:#EDEDED}

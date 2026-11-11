@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>設計系統瀏覽器 v43</title>
+<title>設計系統瀏覽器 v44</title>
 <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +219,7 @@ body{
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
-      <span class="ver" id="dsVer" title="網頁設計規範 v43・dist 43.0.0（2026-11-08）">v43<span class="ver-d"> · 43.0.0 · 2026-11-08</span></span>
+      <span class="ver" id="dsVer" title="網頁設計規範 v44・dist 44.0.0（2026-11-11）">v44<span class="ver-d"> · 44.0.0 · 2026-11-11</span></span>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
@@ -227,7 +227,7 @@ body{
     </div>
     <div class="row" role="group" aria-label="檢視"><span class="lb">檢視</span>
       <span class="viewseg" id="viewSeg"><button type="button" class="on" data-v="lib">元件庫</button><button type="button" data-v="found">通用規範</button><button type="button" data-v="store">前台示範</button></span>
-      <span class="viewhint" id="viewHint">七十二項元件一項一節，依風格與色系即時換裝。</span>
+      <span class="viewhint" id="viewHint">七十六項元件一項一節，依風格與色系即時換裝。</span>
     </div>
     <div class="row" role="group" aria-label="風格"><span class="lb">風格</span><span id="styleRow" style="display:contents"></span></div>
     <div class="row" role="group" aria-label="模式"><span class="lb">模式</span><span id="modeRow" style="display:contents"></span><span class="modehint" id="modeHint"></span></div>
@@ -236,7 +236,7 @@ body{
     <div class="row" role="group" aria-label="色系"><span class="lb">色系</span><span id="pairRow" style="display:contents"></span></div>
     <div class="pairnote" id="pairNote" role="status" aria-live="polite" hidden></div>
     <div class="row" id="idxRow"><span class="lb">元件</span>
-      <span style="font-size:11.5px;color:var(--muted)">七十二項元件一項一節，分核心 49／選用 23，逐項核對本風格是否都有。</span>
+      <span style="font-size:11.5px;color:var(--muted)">七十六項元件一項一節，分核心 49／選用 27，逐項核對本風格是否都有。</span>
       <button type="button" class="idxbtn" id="idxBtn" aria-expanded="false" aria-controls="idx">展開元件清單</button>
     </div>
     <div class="idx" id="idx" hidden></div>
@@ -494,7 +494,7 @@ document.getElementById("viewSeg").addEventListener("click",e=>{
     ? STORE_HINT[curStyle]+"說明與不適合的情境寫在示範頁頂端。"
     : curView==="found"
     ? "八套共用的字級、行距、字距、間距、圓角、高度、色彩三層、斷點；換風格只換灰階，換色系只換品牌雙色。"
-    : "七十二項元件一項一節，依風格、模式與色系即時換裝。";
+    : "七十六項元件一項一節，依風格、模式與色系即時換裝。";
   sync(); load();
 });
 function pickStyle(k){
@@ -566,7 +566,7 @@ const TIERS=[
  {tier:"選用 OPTIONAL ─ 依系統類型勾選", key:"opt", groups:[
   {g:"動作 ACTIONS", items:[["工具列","工具列 Toolbar"],["命令面板","命令面板 Command palette"]]},
   {g:"表單 DATA ENTRY", items:[["滑桿","滑桿 Slider"],["級聯選擇","級聯選擇 Cascader"],["穿梭框","穿梭框 Transfer"]]},
-  {g:"資料呈現 DATA DISPLAY", items:[["摘要方塊","摘要方塊 Summary box"],["來源標記","來源標記 Source badge"],["百分比膠囊","百分比膠囊 Percent pill"],["量表","量表 Meter"],["評分","評分 Rate"],["程式碼區塊","程式碼區塊 Code block"],["燈箱","燈箱 Lightbox"],["樹狀","樹狀 Tree"],["時間軸","時間軸 Timeline"],["圖表","圖表 Chart"],["媒體與輪播","媒體與輪播 Media / Carousel"],["動態列表","動態列表 Feed"]]},
+  {g:"資料呈現 DATA DISPLAY", items:[["摘要方塊","摘要方塊 Summary box"],["來源標記","來源標記 Source badge"],["百分比膠囊","百分比膠囊 Percent pill"],["量表","量表 Meter"],["評分","評分 Rate"],["程式碼區塊","程式碼區塊 Code block"],["燈箱","燈箱 Lightbox"],["樹狀","樹狀 Tree"],["時間軸","時間軸 Timeline"],["圖表","圖表 Chart"],["媒體與輪播","媒體與輪播 Media / Carousel"],["動態列表","動態列表 Feed"],["聊天泡泡","聊天泡泡 Chat bubble"],["語音播放","語音播放 Voice player"],["倒數計時","倒數計時 Countdown"],["進度圈","進度圈 Progress ring"]]},
   {g:"導覽 NAVIGATION", items:[["步驟精靈","步驟精靈 Stepper wizard"],["唯讀步驟","唯讀步驟 Read-only steps"],["分割面板","分割面板 Splitter"],["底部導覽","底部導覽 Tab Bar"],["頂部導覽","頂部導覽 Top nav"]]},
   {g:"回饋 FEEDBACK", items:[["結果頁","結果頁 Result"]]}
  ]}

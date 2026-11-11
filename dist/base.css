@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 43.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘七套以 style-s*.css 覆寫）
+/* ══ 管理者工作室 設計系統 44.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘七套以 style-s*.css 覆寫）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    先載 tokens.css，再載本檔，最後載一個 style-s*.css（順序不能換：風格層靠「排在後面」覆寫，權重與 S1 相同）。 */
 :root{--info:#1A66AA;--info-soft:#E8F0F6;--acc:#2B5FB8;--accsoft:#EDF1F9;--acc2:#C2377B;--acc2soft:#FAEEF4;--ink:#26292E;--line:#E4E2DE;--muted:#6F6B64;--paperc:#FBFAF8;--err:#B23F2F;--err-soft:#FAECEA;--wrn:#846200;--wrn-soft:#F8F0D8;--ok:#2A722E;--ok-soft:#E9F2EA}
@@ -624,6 +624,56 @@ html[data-style="s1"] .conf{background:transparent;box-shadow:inset 0 0 0 1px cu
 .cal .ch button:hover{color:var(--ink)}
 html[data-style="s1"] .cal .cg .sel.a{border-radius:999px 0 0 999px}
 html[data-style="s1"] .cal .cg .sel.b{border-radius:0 999px 999px 0}
+:root{--bub-r:16px;--bub-tail:4px;--wv-w:3px;--wv-r:999px;--cd-gap:var(--sp-2);--ring-w:3;--ring-tw:3;--ring-cap:round;--ring-dot:none;--ring-groove:none;--ring-hub:none;--ring-hub-bg:transparent}
+.chat{display:flex;flex-direction:column;gap:var(--sp-3);min-width:0}
+.chat .cday{align-self:center;font-size:var(--fs-l1);line-height:var(--lh-l1);letter-spacing:var(--ls-l1);font-weight:700;color:var(--muted)}
+.cmsg{display:flex;align-items:flex-end;gap:var(--sp-2);min-width:0}
+.cmsg.me{flex-direction:row-reverse}
+.cmsg .cb{display:flex;flex-direction:column;align-items:flex-start;gap:var(--sp-1);min-width:0;max-width:80%}
+.cmsg.me .cb{align-items:flex-end}
+.bub{padding:var(--sp-2) var(--sp-3);border:1px solid var(--line);border-radius:var(--bub-r) var(--bub-r) var(--bub-r) var(--bub-tail);background:var(--paperc);color:var(--ink);font-size:var(--fs-b1);line-height:var(--lh-b1);overflow-wrap:anywhere}
+.cmsg.me .bub{border-radius:var(--bub-r) var(--bub-r) var(--bub-tail) var(--bub-r);background:var(--acc);border-color:var(--acc);color:var(--on-acc,#fff)}
+.cmsg .ct{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
+.bub.typing{display:inline-flex;align-items:center;gap:var(--sp-1)}
+.bub.typing::before{content:"\200b"}
+.bub.typing i{width:6px;aspect-ratio:1/1;border-radius:50%;background:var(--muted);animation:cty 1.2s var(--ease-out) infinite}
+.bub.typing i:nth-child(2){animation-delay:.16s}
+.bub.typing i:nth-child(3){animation-delay:.32s}
+@keyframes cty{0%,60%,100%{opacity:.35;transform:translateY(0)}30%{opacity:1;transform:translateY(-3px)}}
+.voice{display:flex;align-items:center;gap:var(--sp-3);padding:var(--sp-2) var(--sp-3);border:1px solid var(--line);border-radius:var(--r-sm);background:var(--card,#fff);min-width:0}
+.vplay{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:center;width:44px;min-height:4.4rem;aspect-ratio:1/1;border:1px solid var(--acc);border-radius:50%;background:var(--acc);color:var(--on-acc,#fff);cursor:pointer;transition:background var(--dur-1) var(--ease-out),box-shadow var(--dur-1) var(--ease-out)}
+.vplay:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.vplay .pa,.voice.on .vplay .pl{display:none}
+.voice.on .vplay .pa{display:inline}
+.wave{flex:1 1 auto;min-width:0;display:flex;align-items:center;justify-content:space-between;min-height:3.2rem;overflow:hidden}
+.wave i{flex:0 0 var(--wv-w);height:calc(var(--h,40)*.032rem);border-radius:var(--wv-r);background:color-mix(in srgb,var(--muted) 38%,transparent);transition:background var(--dur-1) var(--ease-out)}
+.wave i.on{background:var(--acc)}
+.voice .vt{flex:0 0 auto;font-family:Arial,Helvetica,'Noto Sans TC',sans-serif;font-size:var(--fs-n4);line-height:var(--lh-n4);letter-spacing:var(--ls-n4);color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.cd{display:inline-flex;flex-wrap:wrap;align-items:stretch;gap:var(--cd-gap)}
+.cd .cu{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-1);min-width:64px;padding:var(--sp-2) var(--sp-3);border:1px solid var(--line);border-radius:var(--r-sm);background:var(--paperc);overflow:hidden}
+.cd .cu b{font-family:Arial,Helvetica,'Noto Sans TC',sans-serif;font-size:var(--fs-n1);line-height:var(--lh-n1);font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.cd .cu span{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted)}
+.cd .cu b.tick{animation:cdt var(--dur-2) var(--ease-out)}
+@keyframes cdt{from{opacity:.3;transform:translateY(-35%)}to{opacity:1;transform:translateY(0)}}
+.cd.urgent .cu b{color:var(--err)}
+.ring{position:relative;isolation:isolate;display:inline-flex;align-items:center;justify-content:center;flex:0 0 auto;width:96px;aspect-ratio:1/1}
+.ring::before{content:"";position:absolute;inset:2%;border-radius:50%;box-shadow:var(--ring-groove)}
+.ring::after{content:"";position:absolute;inset:15%;border-radius:50%;background:var(--ring-hub-bg);box-shadow:var(--ring-hub)}
+.ring svg{position:absolute;inset:0;z-index:1;width:100%;height:100%;transform:rotate(-90deg);overflow:visible}
+.ring circle{fill:none}
+.ring .rt{stroke:var(--ring-trk,var(--line));stroke-width:var(--ring-tw)}
+.ring .rv{stroke:var(--ring-c,var(--acc));stroke-width:var(--ring-w);stroke-linecap:var(--ring-cap);stroke-dasharray:var(--v,0) 100;transition:stroke-dasharray var(--dur-3) var(--ease-out)}
+.ring .rd{display:var(--ring-dot);fill:var(--ring-c,var(--acc));stroke:none;transform-origin:50% 50%;transform:rotate(calc(var(--v,0)*3.6deg));transition:transform var(--dur-3) var(--ease-out)}
+.ring .rc{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center}
+.ring .rc b{font-family:Arial,Helvetica,'Noto Sans TC',sans-serif;font-size:var(--fs-n2);line-height:var(--lh-n2);font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink)}
+.ring .rc b small{font-size:var(--fs-l1);line-height:var(--lh-l1);color:var(--muted)}
+.ring .rc span{font-size:var(--fs-l2);line-height:var(--lh-l2);letter-spacing:var(--ls-l2);font-weight:700;color:var(--muted)}
+.ring.sm{width:40px}
+.ring.ok{--ring-c:var(--ok)}
+.ring.wrn{--ring-c:var(--wrn)}
+.ring.err{--ring-c:var(--err)}
+.ringrow{display:flex;align-items:center;gap:var(--sp-2);font-size:var(--fs-b2);line-height:var(--lh-b2)}
+@media (prefers-reduced-motion:reduce){.bub.typing i,.cd .cu b.tick{animation:none}}
 .typels{display:flex;flex-direction:column}
 .typels .tl-row{display:flex;align-items:baseline;gap:1.6rem;padding:0.8rem 0;border-bottom:1px dashed var(--line);flex-wrap:wrap}
 .typels .tl-row:last-child{border-bottom:none}

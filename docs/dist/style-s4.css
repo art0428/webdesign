@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 43.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
+/* ══ 管理者工作室 設計系統 44.0.0 ══ style-s4.css（手帳 DOODLE 材質層：只有與 S1 不同的規則）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    風格層只准改顏色、框線、陰影、圓角、字型；不得出現 min-height、padding、font-size、z-index（第六項檢查的風格層純度會擋，規範 12.2）。 */
 
@@ -216,3 +216,11 @@ button{font-family:inherit;color:var(--ink)}
 .cal .cg .sel.a{border-radius:18px 225px 18px 255px/255px 18px 225px 18px}
 .cal .cg .sel.b{border-radius:255px 18px 225px 18px/18px 225px 18px 255px}
 .cal .cg .inr{background:linear-gradient(transparent 20%,color-mix(in srgb,var(--acc) 24%,transparent) 20% 80%,transparent 80%)}
+:root{--bub-r:14px;--bub-tail:3px;--cd-gap:var(--sp-3);--ring-w:4;--ring-tw:1;--ring-trk:var(--ink);--ring-cap:butt;--wv-r:1px}
+.bub{background:var(--card);border:2px solid var(--ink);border-radius:18px 14px 16px 3px/14px 18px 14px 3px}
+.cmsg.me .bub{background:var(--accsoft);border-color:var(--ink);color:var(--ink);border-radius:14px 18px 3px 16px/18px 14px 3px 14px;box-shadow:2.5px 2.5px 0 var(--ink)}
+.voice{background:var(--card);border:2px solid var(--ink);border-radius:255px 18px 225px 18px/18px 225px 18px 255px}
+.vplay{border:2px solid var(--ink);box-shadow:2.5px 2.5px 0 var(--ink)}
+.cd .cu{background:var(--card);border:2px solid var(--ink);border-radius:14px}
+.cd .cu:nth-child(4n+1){transform:rotate(-1.5deg)}
+.cd .cu:nth-child(4n+3){transform:rotate(1deg)}

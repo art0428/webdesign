@@ -1,13 +1,15 @@
 ---
 title: 設計系統使用說明
 kicker: 管理者工作室 設計系統
-subtitle: 給工程師的 dist/ 使用手冊（43.0.0）
+subtitle: 給工程師的 dist/ 使用手冊（44.0.0）
 source: 管理者工作室
-date: 2026.11.08
-highlight: 設計系統使用說明 v25
+date: 2026.11.11
+highlight: 設計系統使用說明 v26
 ---
 
-# 設計系統使用說明 v25
+# 設計系統使用說明 v26
+
+v26 變更範圍（44.0.0）：對應規範 v44——**四個新元件**：聊天泡泡、語音播放、倒數計時、進度圈，72 → 76 項。第 4.16 節是它們的寫法。都是選用元件，沒用到的產品升版不受影響；`base.css` 與八個風格檔各多一段。
 
 v25 變更範圍（43.0.0）：對應規範 v43——**S8 深色可切跟隨色系**，預設仍是中性黑。第 3.2 節「S8 的深色」補開關寫法、`DS.setDarkTint()`／`DS.darkTint()` 改成 S6 與 S8；第 7 節組合數 223。從 42.x 升上來的 S8 產品畫面不變；要帶色調就寫 `data-dark-tint="follow"` 或讓使用者在設定頁選。
 
@@ -57,7 +59,7 @@ v3 變更範圍（20.0.0）：S2〜S5 以 S1 為基底重建，**七套載法一
 
 v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套風格各一張、各在規範 8.7 的首選情境，`example.html` 改名為 `examples/same-markup.html`；第 10 節並寫明範例頁裡兩處「版面層保護」與一處過渡用覆寫的來歷；第 2.2 節補 flex 容器 `align-items:center` 一句；第 12 節新增一問。其餘與 v1 逐字相同。
 
-這份是給前端工程師看的：拿到 `dist/` 之後怎麼開工、每個元件怎麼寫、哪些事不能做、交付前怎麼自己檢查。規則的「為什麼」在《網頁設計規範 v43》，這裡只講「怎麼做」。本文件會同步複製成 `dist/USAGE.md`，跟著檔案一起發。
+這份是給前端工程師看的：拿到 `dist/` 之後怎麼開工、每個元件怎麼寫、哪些事不能做、交付前怎麼自己檢查。規則的「為什麼」在《網頁設計規範 v44》，這裡只講「怎麼做」。本文件會同步複製成 `dist/USAGE.md`，跟著檔案一起發。
 
 ## 1. 五分鐘上手
 
@@ -79,7 +81,7 @@ v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套�
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="dist/tokens.css">     <!-- 1 字級、間距、圓角、高度、動態、層級 -->
-<link rel="stylesheet" href="dist/base.css">       <!-- 2 結構層 ＋ S1 材質：72 項元件、焦點環、佔位文字、RWD -->
+<link rel="stylesheet" href="dist/base.css">       <!-- 2 結構層 ＋ S1 材質：76 項元件、焦點環、佔位文字、RWD -->
 <link rel="stylesheet" href="dist/style-s6.css">   <!-- 3 這一套的材質層；換風格只換這一行 -->
 </head>
 <body data-type="productive">                      <!-- 後台、購物車、結帳；前台閱讀型頁面改 expressive -->
@@ -102,7 +104,7 @@ v2 變更範圍：第 10 節「範例頁」改為 `dist/examples/`——七套�
 
 ### 1.5 升版
 
-規範升一版、`dist/` 升一版。產品把 `43.0.0` 的檔換成下一版的檔，跑一次第 11 節的檢查，看 diff 就知道哪裡變了。不要在產品裡修改 `dist/` 的任何檔案——要改，回元件庫改，重新產生。
+規範升一版、`dist/` 升一版。產品把 `44.0.0` 的檔換成下一版的檔，跑一次第 11 節的檢查，看 diff 就知道哪裡變了。不要在產品裡修改 `dist/` 的任何檔案——要改，回元件庫改，重新產生。
 
 ## 2. 頁面骨架
 
@@ -250,7 +252,7 @@ S8 的導覽（35.0.0）是一條 1px 的隆起線：頁籤、頂部導覽是底
 
 ## 4. 元件寫法
 
-下面是最常用的三十項，class 語彙八套相同、不得自創同義名。完整 72 項的標記看元件庫示範頁對應區段（`components_s1_cream.html`），**只抄 HTML，不抄 CSS**。
+下面是最常用的三十項，class 語彙八套相同、不得自創同義名。完整 76 項的標記看元件庫示範頁對應區段（`components_s1_cream.html`），**只抄 HTML，不抄 CSS**。
 
 ### 4.1 按鈕
 
@@ -451,6 +453,44 @@ S8 的導覽（35.0.0）是一條 1px 的隆起線：頁籤、頂部導覽是底
 ```
 
 不要用 `<input type="date">`：點開的面板是瀏覽器畫的，八套風格都長一樣。767px 以下可以改回原生欄位（手機的滾輪選日期比較好用）。日曆的換月按鈕放 14px 的 Lucide `chevron-left`／`chevron-right`，`aria-label` 寫「上個月」「下個月」；選中日加 `.sel`（起點再加 `.a`、終點加 `.b`）、中間的日子加 `.inr`，各套的樣子由風格檔處理。時間欄位用 `.timein`，同樣自動帶時鐘圖示。
+
+### 4.16 v44 補件：聊天泡泡、語音播放、倒數計時、進度圈
+
+```html
+<!-- 聊天泡泡：對方 .cmsg、自己 .cmsg.me；輸入中是 .bub.typing -->
+<div class="chat">
+  <div class="cday">今天</div>
+  <div class="cmsg"><span class="avatar sm">詮</span><div class="cb"><div class="bub">請問什麼時候出貨？</div><span class="ct">詮宏精密・14:02</span></div></div>
+  <div class="cmsg me"><div class="cb"><div class="bub">已排 09/10 出貨。</div><span class="ct">14:03・已讀</span></div></div>
+  <div class="cmsg"><span class="avatar sm">詮</span><div class="cb"><div class="bub typing" role="status" aria-label="對方輸入中"><i></i><i></i><i></i></div></div></div>
+</div>
+
+<!-- 語音播放：播放中在 .voice 加 .on；已播的長條加 .on；--h 是長條高度 0〜100 -->
+<div class="voice">
+  <button class="vplay" type="button" aria-label="播放"><svg class="ic pl">…play…</svg><svg class="ic pa">…pause…</svg></button>
+  <div class="wave" role="img" aria-label="語音波形"><i class="on" style="--h:28"></i><i style="--h:46"></i>…</div>
+  <span class="vt">0:12 / 0:42</span>
+</div>
+
+<!-- 倒數計時：剩不到一分鐘加 .urgent；數字換的時候加 .tick -->
+<div class="cd" role="timer" aria-label="報價有效期限剩餘 2 天 3 時 47 分">
+  <div class="cu"><b>02</b><span>天</span></div><div class="cu"><b>03</b><span>時</span></div>
+  <div class="cu"><b>47</b><span>分</span></div><div class="cu"><b>11</b><span>秒</span></div>
+</div>
+<span class="st wrn"><svg class="ic">…timer…</svg> 付款剩餘 <b class="num">14:59</b></span>   <!-- 行內版：用狀態標籤 -->
+
+<!-- 進度圈：--v 是 0〜100；小的加 .sm、不放 .rc；語意色 .ok／.wrn／.err -->
+<div class="ring" style="--v:75" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="75" aria-label="本月達成率">
+  <svg viewBox="0 0 36 36" aria-hidden="true"><circle class="rt" cx="18" cy="18" r="15" pathLength="100"/><circle class="rv" cx="18" cy="18" r="15" pathLength="100"/><circle class="rd" cx="33" cy="18" r="1.3"/></svg>
+  <div class="rc"><b>75<small>%</small></b><span>達成率</span></div>
+</div>
+```
+
+- 四項的行為都要你自己接：播放器切 `.voice.on` 與長條的 `.on`、計時器改數字、資料改 `--v` 與 `aria-valuenow`。`dist/` 只給樣子，示範頁的腳本不在 `theme.js` 裡。
+- 聊天列用 `.cmsg`，不是 `.msg`（那是欄位訊息）。泡泡裡只放訊息本身，時間與已讀放 `.ct`。
+- 進度圈三個 `circle` 都要 `pathLength="100"`，`--v` 才會剛好對到百分比；`.rd` 是末端的點，只有 S8 會顯示，標記八套都寫。
+- 倒數到了要換成結果文字，不要停在 00:00；只要一行就用狀態標籤，不用 `.cd`。
+- 不要自己寫這四個元件的圓角、底色、線寬：八套各有材質（規範 8.2「v44 四個元件的材質」），由風格檔處理。
 
 ## 5. 表格
 
