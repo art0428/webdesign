@@ -740,6 +740,21 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
 :where(html[data-density="compact"]) .grid{column-gap:var(--sp-3);row-gap:var(--sp-3)}
 :where(html[data-density="compact"]) .batchbar .btn.sm,:where(html[data-density="compact"]) .tarr .btn.sm{padding-top:0;padding-bottom:0}
 }
+/* ══ S8 控制項尺寸（規範 v45，5.7；結構層，dist 放在 base.css）：控制項比同檔小一級，留白不動；只在桌機，768 以下維持觸控尺寸 ══ */
+@media (min-width:768px){
+html[data-style="s8"]:not([data-density="normal"]){--h-btn-primary:3.6rem;--h-btn:3.6rem;--h-btn-sm:2.8rem;--h-input:3.6rem}
+html[data-style="s8"][data-density="normal"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.8rem;--h-input:3.2rem}
+html[data-style="s8"] .btn.btn.primary:not(.sm),html[data-style="s8"] .btn.btn.ghost:not(.sm),html[data-style="s8"] .btn.btn.danger:not(.sm){padding-left:var(--sp-5);padding-right:var(--sp-5)}
+html[data-style="s8"] .btn.btn:not(.primary):not(.ghost):not(.danger):not(.sm){padding-left:var(--sp-4);padding-right:var(--sp-4)}
+/* 批次列的小按鈕帶上下內距 0.4rem，高度 28 時會撐到 30.4（全站緊湊檔同樣歸零） */
+html[data-style="s8"] .batchbar .btn.sm{padding-top:0;padding-bottom:0}
+html[data-style="s8"]:not([data-density="normal"]) .seg button{min-height:3.2rem;padding:0 var(--sp-4)}
+html[data-style="s8"][data-density="normal"] .seg button{min-height:2.8rem;padding:0 var(--sp-4)}
+html[data-style="s8"]:not([data-density="normal"]) .pillf{min-height:3.2rem}
+html[data-style="s8"][data-density="normal"] .pillf{min-height:2.8rem}
+html[data-style="s8"]:not([data-density="normal"]) .kebab{width:3.6rem;min-height:3.6rem}
+html[data-style="s8"][data-density="normal"] .kebab{width:3.2rem;min-height:3.2rem}}
+/* S8 控制項尺寸結束 */
 
 /* ══════════════════════════════════════════════════════════════
    S8 線描 LINE 表面層（build_s8_line.py 產生）
@@ -749,25 +764,26 @@ html[data-density="compact"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.
    ══════════════════════════════════════════════════════════════ */
 /* 例外五（v37）：標籤與小字放輕，S1 的 700、900 一律 500（清單由 build_s8_line.py 自 S1 收集） */
 b,strong,.head .kick,.head h1,.accbar .lb,.accbtn,.accbtn .cc,.sec h2,.sec .no,.cap,.tokcell .tn,.radcell .tn,.btn,.field label,.chip.on,.pillf.on,.qty button,.qty input,.seg button.on,.st,.tag,.conf,.tcap b,.t th,.amt,.tfoot .tv,.statc .k,.statc .v,.cardx .ct,.sumrow .price,.sumrow.total,.nitem.on,.tab.on,.crumb b,.p1 button,.p2 button,.p3 button,.p4 button.on,.p5 button,.p5 input,.modal .mh,.flow .stp.cur,.mi.on,.mi.on::after,.kebab,.selcount,.upfile .pct,.noti .nh,.noti .nh .mk,.bell b,.selcount button,.alert i,.alert b,.pop .pt,.pop .pt i,.divider,.cal .ch,.cal .cg .wd,.cal .cg .sel,.cal .cf .num,.cal .quick button.on,.ac mark,.tab .cnt,.desc dt,.avatar,.avrow,.badge>b,.count,.batchbar,.drawer .dh,.toolbar .tb,.slider .tt,.meter .mh b,.casc li.on,.casc li.pick,.tlist .th2,.tree .nd.on,.stepper .sp .dot,.stepper .sp b,.tl .tt,.chart .chh,.chart .vl,.spark .k,.spark .v,.split .pa .li.on,.split .pb b,.thumb .lab,.result .ic,.result h3,.accbar .accnote,.tierbar,.typels .code,.tp .tpcol span.sel,.tp .tpcol .wd,.card .card-title,.check.ind i::after,.pillf .n,.upfile.ok .pct,.filerow.ok .sz,.upfile.err .pct,.filerow.err .sz,.alert .btn.sm,.sf-logo,.sf-eyebrow,.sf-h1,.sf-h2,.sf-more,.sf-pname,.sf-pricing .price,.sf-feat h3,.sf-h3,.sf-big,.sf-menuitem .price,.sf-quote,.sf-machine .sf-mno,:where(html) .flow .stp.done::before,table.t tbody tr td:first-child,table.t tbody tr td.ck + td,table.t tbody tr td[data-l]:not(:first-child):not(.amt):not(.ck):not(.ck + td):not(:has(> .st)):not(:has(> .btn:only-child))::before{font-weight:500}
-:root{--page:#EDEDED;--card:#EDEDED;--band:#E6E6E6;--sel:#E2E2E2;--line-2:#1A1A1A;
+:root{--page:#EDEDED;--card:#EDEDED;--band:#E6E6E6;--sel:#E2E2E2;--line-2:#888888;
  --lat:'Inter',Arial,'Noto Sans TC',sans-serif}
 body{background:var(--page)}
 .board{background:transparent}
 
-/* 墨線：可以按的東西用墨色細線，分隔用淡線 */
-.btn{border-color:var(--ink);background:transparent}
+/* 線的三個層次（v45）：墨線＝結構（表頭下緣、區塊分段線、浮層外框）；中線 --line-2＝可以按或可以填的東西；淡線＝分隔。
+   中線對頁面底的對比只多 3:1 一點點（淺 3.03、深 3.12），頁面底調亮或調暗時 --line-2 要重算（check_tokens.py 會擋） */
+.btn{border-color:var(--line-2);background:transparent}
 .btn.ghost,.btn.danger{border-width:1px;background:transparent}
-.kebab{border-color:var(--ink);background:transparent}
+.kebab{border-color:var(--line-2);background:transparent}
 .seg,.search,.chip,.pillf{background:transparent}
 .seg button{background:transparent}
 .chip.on{border-width:1px;background:transparent}
 .statc.hero{border-width:1px;background:transparent}
 
-/* 輸入框：只留底線，聚焦時變主色 */
-.field input,.field select{border:0;border-bottom:1px solid var(--ink);border-radius:0;background:transparent}
+/* 輸入框：只留中線底線，聚焦時變主色 */
+.field input,.field select{border:0;border-bottom:1px solid var(--line-2);border-radius:0;background:transparent}
 .dd .trg{border:0;border-bottom:1.5px solid var(--acc);border-radius:0;background:transparent}
 .field.err input{border:0;border-bottom:1.5px solid var(--err)}
-.txa textarea{border-color:var(--ink);background:transparent}
+.txa textarea{border-color:var(--line-2);background:transparent}
 .upload{border-width:1px;background:transparent}
 /* 面板緊接在只有底線的觸發框下方：面板不畫上緣，底線就是面板的上緣（規範 9.3「一處分隔只用一條線」） */
 .field + .cal,.field + .menu,.dd + .casc,.dd + .menu,.dd .trg + .menu{border-top:0;border-top-left-radius:0;border-top-right-radius:0}
@@ -780,12 +796,13 @@ body{background:var(--page)}
 .tp .tpcol .wd{justify-content:center}
 
 /* 選中＝同心圓：核取、單選、開關 */
-.check i{border:1px solid var(--ink);border-radius:4px}
-.radio i{border:1px solid var(--ink)}
+.check i{border:1px solid var(--line-2);border-radius:4px}
+.radio i{border:1px solid var(--line-2)}
 .radio.on i{border-color:var(--acc);box-shadow:0 0 0 3px var(--page),0 0 0 4px var(--line)}
-.sw2 .tk{background:transparent;border:1px solid var(--ink)}
-.sw2 .tk::after{background:var(--page);border:1px solid var(--ink)}
-.sw2 .tk::after{top:2px;left:2px}
+.sw2 .tk{background:transparent;border:1px solid var(--line-2)}
+.sw2 .tk::after{background:var(--page);border:1px solid var(--line-2)}
+/* 滑塊四邊各留 1px（v45）：軌道 40×22、1px 外框，內側 38×20；滑塊 16＋外框 2＝18。原本 2px 會偏下、偏右各 1px；開啟位移 18px 不變 */
+.sw2 .tk::after{top:1px;left:1px}
 .sw2.on .tk{background:var(--acc);border-color:var(--acc)}
 .sw2.on .tk::after{border-color:transparent}
 
@@ -1001,7 +1018,7 @@ svg[stroke-width="2"]{stroke-width:1.5}
 /* 媒體：不用斜紋與白底，佔位是一圈淡線，按鈕是細線 */
 .thumb{background:transparent;border:1px solid var(--line)}
 .thumb .lab,.strip .thumb small{background:transparent}
-.thumb .arr,.thumb .play{background:transparent;border:1px solid var(--ink);color:var(--ink)}
+.thumb .arr,.thumb .play{background:transparent;border:1px solid var(--line-2);color:var(--ink)}
 .thumb .play{align-self:center}
 .thumb .play svg{fill:none}
 .thumb .dur{background:transparent;color:var(--ink);border:1px solid var(--line)}
@@ -1009,7 +1026,7 @@ svg[stroke-width="2"]{stroke-width:1.5}
 .thumb .dots i.on{background:var(--acc);border-color:var(--acc)}
 /* 長文：標題細字重，圖片佔位不鋪色，表格與元件庫同一套線 */
 .prose>h2,.prose>h3{font-weight:300}
-.prose>blockquote{border-left:1px solid var(--ink)}
+.prose>blockquote{border-left:1px solid var(--line-2)}
 .prose figure .ph{background:transparent;color:var(--muted);border:1px solid var(--line)}
 .prose th{border-bottom-color:var(--ink)}
 .prose tr:last-child td{border-bottom-color:transparent}
@@ -1021,11 +1038,11 @@ svg[stroke-width="2"]{stroke-width:1.5}
 /* 評分：線條星，有分數的是深琥珀線，沒分數的是淡線 */
 .rate .ic,.rate.input button .ic{fill:none;stroke-width:1.5}
 /* 輸入框附加：和一般輸入框一樣只留底線 */
-.igroup .ad,.igroup .ad:first-child,.igroup .ad:last-child,.igroup input,.field .igroup input,.igroup input:first-child,.igroup input:last-child{background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0}
-.igroup .btn{border:1px solid var(--ink);border-radius:999px}
-.otp input,.field .otp input{background:transparent;border:0;border-bottom:1px solid var(--ink);border-radius:0}
-/* 核取框在選單裡也是墨線 */
-.mck i{border-color:var(--ink)}
+.igroup .ad,.igroup .ad:first-child,.igroup .ad:last-child,.igroup input,.field .igroup input,.igroup input:first-child,.igroup input:last-child{background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0}
+.igroup .btn{border:1px solid var(--line-2);border-radius:999px}
+.otp input,.field .otp input{background:transparent;border:0;border-bottom:1px solid var(--line-2);border-radius:0}
+/* 核取框在選單裡也是中線 */
+.mck i{border-color:var(--line-2)}
 /* 穿梭框左右兩塊上緣對齊 */
 .transfer{align-items:flex-start}
 /* 日期與時間欄的圖示：線條圖示，顏色跟字走 */
@@ -1048,7 +1065,7 @@ svg[stroke-width="2"]{stroke-width:1.5}
 .p2 button:hover{color:var(--ink)}
 .p2 button.on{background:transparent;color:var(--acc);font-weight:500;position:relative}
 .p2 button.on::after{content:"";position:absolute;left:calc(50% - 7px);bottom:7px;width:14px;height:1px;background:var(--acc)}
-.p5 input{border:0;border-bottom:1px solid var(--ink);border-radius:0;font-weight:400}
+.p5 input{border:0;border-bottom:1px solid var(--line-2);border-radius:0;font-weight:400}
 .p5 input:focus{border:0;border-bottom:1px solid var(--acc)}
 /* 數字步進器：外框淡線、內部不分隔，− ＋ 次要字色 */
 .qty{border-color:var(--line)}
@@ -1074,6 +1091,24 @@ html[data-theme="dark"] .drawerdemo .scrim,html[data-theme="dark"] .sheetdemo .s
 .cal .cg span{border:1px solid transparent}
 .cal .cg .sel,.cal .cg .sel.a,.cal .cg .sel.b{background:transparent;color:var(--acc);border-color:var(--acc);border-radius:999px}
 .cal .quick button.on{background:transparent;color:var(--acc);border-color:var(--acc)}
+/* ── v44 補件：聊天泡泡、語音播放、倒數計時、進度圈（線描：不鋪色，條改成線）── */
+:root{--ring-w:.4;--ring-tw:.4;--ring-dot:block;--wv-w:1px;--wv-r:0px;--cd-gap:0px}
+.bub{background:transparent;border-color:var(--line)}
+.cmsg.me .bub{background:transparent;border-color:var(--acc);color:var(--ink)}
+.voice{background:transparent}
+.vplay{background:transparent;border-color:var(--ink);color:var(--ink)}
+.wave i{background:var(--line)}
+.wave i.on{background:var(--acc)}
+.cd .cu{border:none;border-left:1px solid var(--line);border-radius:0;background:transparent}
+.cd .cu:first-child{border-left:none}
+.cd .cu b,.ring .rc b{font-weight:300}
+.ring.sm{--ring-w:.9;--ring-tw:.9}
+.ring.sm .rd{stroke:var(--ring-c,var(--acc));stroke-width:2}
+/* ── v45：中線補件（滑過變墨線；停用退到淡線；v44 的語音播放鈕和輪播播放鈕一樣用中線）── */
+.vplay{border-color:var(--line-2)}
+.kebab:hover,.thumb .arr:hover,.thumb .play:hover,.vplay:hover{border-color:var(--ink)}
+.field.dis input,.field.dis select{border-bottom-color:var(--line)}
+.check.dis i,.radio.dis i{border-color:var(--line)}
 /* S8 表面層結束 */
 </style>
 <style>
@@ -1313,7 +1348,7 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 }
 /* v37 區塊結束 */
 /* ══ 深色模式（build_dark.py 產生，不要手改）══ */
-html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#121212;--paperc:#1A1A1A;--band:#1A1A1A;--sel:#262626;--line:#3A3A3A;--line-2:#EDEDED;--ink:#EDEDED;--muted:#A3A3A3;--err:#F28B82;--err-soft:#362524;--wrn:#E2B341;--wrn-soft:#332C1A;--ok:#74C483;--ok-soft:#222E24;--info:#7DB6EE;--info-soft:#232C35;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-26292e:var(--ink);--tk-6f6b64:var(--muted);--tk-e4e2de:var(--line);--tk-fbfaf8:var(--paperc);--tk-e9c94a:var(--wrn);--tk-5a5751:var(--muted);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
+html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#121212;--paperc:#1A1A1A;--band:#1A1A1A;--sel:#262626;--line:#3A3A3A;--line-2:#636363;--ink:#EDEDED;--muted:#A3A3A3;--err:#F28B82;--err-soft:#362524;--wrn:#E2B341;--wrn-soft:#332C1A;--ok:#74C483;--ok-soft:#222E24;--info:#7DB6EE;--info-soft:#232C35;--d1:#6E97DB;--on-acc:#121212;--on-acc2:#121212;--on-err:#121212;--on-ink:#121212;--tk-26292e:var(--ink);--tk-6f6b64:var(--muted);--tk-e4e2de:var(--line);--tk-fbfaf8:var(--paperc);--tk-e9c94a:var(--wrn);--tk-5a5751:var(--muted);--acc:#629AF8;--accsoft:#262E3E;--acc-soft:#262E3E;--acc-deep:#629AF8;--acc2:#C2377B;--acc2soft:#351F2A;--acc2-soft:#351F2A;--acc2-deep:#F46BA8;--acc2-text:#EDEDED;}:where(html[data-theme="dark"]) [fill="#fff"]{fill:var(--card)}.ds-darknote{display:none}:where(html[data-theme="dark"]) .ds-darknote{display:block}
 
 /* 統計卡的小字是說明，不是漲跌，用次要字色；副色每頁最多三處 */
 .statc .sub{font-size:var(--fs-b3);line-height:var(--lh-b3);color:var(--muted)}
@@ -1330,7 +1365,7 @@ html[data-theme="dark"]{color-scheme:dark;--page:#121212;--card:#121212;--paperc
 .sf-links a[aria-current="page"]::after{content:"";position:absolute;left:50%;top:100%;width:5px;height:5px;margin:var(--sp-1) 0 0 -2.5px;border-radius:50%;background:var(--acc)}
 .sf-tools{gap:var(--sp-2)}   /* 圖示鈕有 1px 細框（hover 才看得見），並排時照 9.3 第十條隔 --sp-2 */
 .sf-ib{border:1px solid transparent}
-.sf-ib:hover{background:none;border-color:var(--line-2)}
+.sf-ib:hover{background:none;border-color:var(--ink)}
 .sf-eyebrow{font-family:var(--lat);letter-spacing:.3em;font-weight:400}
 .sf-h1,.sf-h2{font-weight:300}
 .sf-h3,.sf-pname,.sf-feat h3{font-weight:500}

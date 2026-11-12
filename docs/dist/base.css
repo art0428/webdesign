@@ -1,4 +1,4 @@
-/* ══ 管理者工作室 設計系統 44.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘七套以 style-s*.css 覆寫）
+/* ══ 管理者工作室 設計系統 45.0.0 ══ base.css（結構層 ＋ S1 奶油材質；S1 為基準，其餘七套以 style-s*.css 覆寫）
    由 emit_css.py 自元件庫示範頁產生，不要手改；改元件庫後重跑。
    先載 tokens.css，再載本檔，最後載一個 style-s*.css（順序不能換：風格層靠「排在後面」覆寫，權重與 S1 相同）。 */
 :root{--info:#1A66AA;--info-soft:#E8F0F6;--acc:#2B5FB8;--accsoft:#EDF1F9;--acc2:#C2377B;--acc2soft:#FAEEF4;--ink:#26292E;--line:#E4E2DE;--muted:#6F6B64;--paperc:#FBFAF8;--err:#B23F2F;--err-soft:#FAECEA;--wrn:#846200;--wrn-soft:#F8F0D8;--ok:#2A722E;--ok-soft:#E9F2EA}
@@ -889,3 +889,18 @@ table.t tbody tr:has(> td.ck) td:has(> .st){grid-column:3}
 :where(html) .split .gut{display:none}
 :where(html) .split .pa .li .num{white-space:nowrap}}
 :root{--page:#F6F5F2;--card:#FFFFFF}
+/* ══ S8 控制項尺寸（規範 v45，5.7；結構層，dist 放在 base.css）：控制項比同檔小一級，留白不動；只在桌機，768 以下維持觸控尺寸 ══ */
+@media (min-width:768px){
+html[data-style="s8"]:not([data-density="normal"]){--h-btn-primary:3.6rem;--h-btn:3.6rem;--h-btn-sm:2.8rem;--h-input:3.6rem}
+html[data-style="s8"][data-density="normal"]{--h-btn-primary:3.2rem;--h-btn:3.2rem;--h-btn-sm:2.8rem;--h-input:3.2rem}
+html[data-style="s8"] .btn.btn.primary:not(.sm),html[data-style="s8"] .btn.btn.ghost:not(.sm),html[data-style="s8"] .btn.btn.danger:not(.sm){padding-left:var(--sp-5);padding-right:var(--sp-5)}
+html[data-style="s8"] .btn.btn:not(.primary):not(.ghost):not(.danger):not(.sm){padding-left:var(--sp-4);padding-right:var(--sp-4)}
+/* 批次列的小按鈕帶上下內距 0.4rem，高度 28 時會撐到 30.4（全站緊湊檔同樣歸零） */
+html[data-style="s8"] .batchbar .btn.sm{padding-top:0;padding-bottom:0}
+html[data-style="s8"]:not([data-density="normal"]) .seg button{min-height:3.2rem;padding:0 var(--sp-4)}
+html[data-style="s8"][data-density="normal"] .seg button{min-height:2.8rem;padding:0 var(--sp-4)}
+html[data-style="s8"]:not([data-density="normal"]) .pillf{min-height:3.2rem}
+html[data-style="s8"][data-density="normal"] .pillf{min-height:2.8rem}
+html[data-style="s8"]:not([data-density="normal"]) .kebab{width:3.6rem;min-height:3.6rem}
+html[data-style="s8"][data-density="normal"] .kebab{width:3.2rem;min-height:3.2rem}}
+/* S8 控制項尺寸結束 */
