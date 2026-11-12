@@ -854,11 +854,16 @@ html[data-theme="dark"] .badge>b.gray{border-color:var(--muted)}
 .t td.amt{font-weight:400}
 .t .st{font-weight:500}
 .num,.amt,.dt{font-variant-numeric:lining-nums tabular-nums}
-/* 滑過不鋪色，只多一條墨線 */
+/* 滑過不鋪色、不加線（v46：列首一個主色圓點，見下） */
 /* 選取列靠核取方塊，字色不變：其他風格加深是因為鋪了淡底，S8 不鋪 */
 .t tr.sel td,.t tr.sel .dt{color:var(--muted)}
 .t tr.sel td.num,.t tr.sel td.amt,.t tr.sel td:first-child:not(.ck){color:var(--ink)}
-.t tbody tr:hover td{background:transparent;box-shadow:inset 0 -1px 0 var(--ink)}
+.t tbody tr:hover td{background:transparent}
+/* 滑過列（v46）：列的最左邊出現一個 5px 主色圓點，落在外框內距裡、不佔欄寬；原本列下方多一條墨線，和表頭下緣一樣深，像把表格切開。
+   墨線只留給結構，指向與選中用圓點，是 S8 原本的語言。只在有滑鼠的桌機；手機的卡片列沒有滑過 */
+@media (min-width:768px) and (hover:hover){
+.t tbody td:first-child{position:relative}
+.t tbody tr:hover td:first-child::after{content:"";position:absolute;left:-12px;top:50%;width:5px;height:5px;transform:translateY(-50%);border-radius:50%;background:var(--acc)}}
 .t tbody tr:hover td:first-child,.t tbody tr:hover td:last-child{border-radius:0}
 /* 標準密度列多，狀態標籤拿掉外框，只留圓點與文字；圓點靠齊表頭 */
 html[data-density="normal"] .t .st{border-color:transparent;padding-left:0}
@@ -1104,6 +1109,13 @@ html[data-theme="dark"] .drawerdemo .scrim,html[data-theme="dark"] .sheetdemo .s
 .cd .cu b,.ring .rc b{font-weight:300}
 .ring.sm{--ring-w:.9;--ring-tw:.9}
 .ring.sm .rd{stroke:var(--ring-c,var(--acc));stroke-width:2}
+/* ── v45：中線補件（滑過變墨線；停用退到淡線；v44 的語音播放鈕和輪播播放鈕一樣用中線）── */
+.vplay{border-color:var(--line-2)}
+.kebab:hover,.thumb .arr:hover,.thumb .play:hover,.vplay:hover{border-color:var(--ink)}
+/* v46：Token 節的圓角示範方塊也是中線（示範頁外框，不進 dist） */
+.radcell .shape{border-color:var(--line-2)}
+.field.dis input,.field.dis select{border-bottom-color:var(--line)}
+.check.dis i,.radio.dis i{border-color:var(--line)}
 /* ── v45：中線補件（滑過變墨線；停用退到淡線；v44 的語音播放鈕和輪播播放鈕一樣用中線）── */
 .vplay{border-color:var(--line-2)}
 .kebab:hover,.thumb .arr:hover,.thumb .play:hover,.vplay:hover{border-color:var(--ink)}

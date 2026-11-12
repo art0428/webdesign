@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>設計系統瀏覽器 v45</title>
+<title>設計系統瀏覽器 v46</title>
 <link rel="icon" id="favicon" type="image/svg+xml" href="favicon.svg">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -219,7 +219,7 @@ body{
     <div class="brandline">
       <span class="eyebrow">管理者工作室</span>
       <h1>設計系統瀏覽器</h1>
-      <span class="ver" id="dsVer" title="網頁設計規範 v45・dist 45.0.0（2026-11-12）">v45<span class="ver-d"> · 45.0.0 · 2026-11-12</span></span>
+      <span class="ver" id="dsVer" title="網頁設計規範 v46・dist 46.0.0（2026-11-12）">v46<span class="ver-d"> · 46.0.0 · 2026-11-12</span></span>
       <span class="now">
         <span class="duo"><i id="nowA1"></i><i id="nowA2"></i></span>
         <span>目前：<b id="nowTxt">—</b></span>
@@ -477,7 +477,7 @@ function backTo(spot){
     if(s) w.scrollBy({top:s.getBoundingClientRect().top-spot.top,behavior:"instant"});
   }catch(_){}
 }
-const FRAME_V="45.0.0";   /* 元件庫頁網址帶版號，換版時瀏覽器一定重抓（emit_css.py 每版寫入） */
+const FRAME_V="46.0.0";   /* 元件庫頁網址帶版號，換版時瀏覽器一定重抓（emit_css.py 每版寫入） */
 const FQ="?v="+FRAME_V;
 function load(){
   if(curView==="lib"){ const spot=whereAmI(); if(spot) keepSec=spot; } else keepSec=null;   /* 連按時上一頁還沒載完，沿用先前記下的位置 */
