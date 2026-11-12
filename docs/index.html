@@ -477,11 +477,13 @@ function backTo(spot){
     if(s) w.scrollBy({top:s.getBoundingClientRect().top-spot.top,behavior:"instant"});
   }catch(_){}
 }
+const FRAME_V="45.0.0";   /* 元件庫頁網址帶版號，換版時瀏覽器一定重抓（emit_css.py 每版寫入） */
+const FQ="?v="+FRAME_V;
 function load(){
   if(curView==="lib"){ const spot=whereAmI(); if(spot) keepSec=spot; } else keepSec=null;   /* 連按時上一頁還沒載完，沿用先前記下的位置 */
   const md=(effMode()==="dark"?".dark":"")+(tintOff()?"."+effTint():"");
-  if(curView==="store"){ frame.src=storeFile(curStyle)+"#"+curPair+md; return; }
-  frame.src = curView==="found" ? (FILES.found+"#"+curPair+"."+curStyle) : (FILES[curStyle]+"#"+curPair+md+"."+DENS_HASH[effDens()]);
+  if(curView==="store"){ frame.src=storeFile(curStyle)+FQ+"#"+curPair+md; return; }
+  frame.src = curView==="found" ? (FILES.found+FQ+"#"+curPair+"."+curStyle) : (FILES[curStyle]+FQ+"#"+curPair+md+"."+DENS_HASH[effDens()]);
 }
 document.getElementById("viewSeg").addEventListener("click",e=>{
   const b=e.target.closest("button"); if(!b||b.dataset.v===curView) return;
