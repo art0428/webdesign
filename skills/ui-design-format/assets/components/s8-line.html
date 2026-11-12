@@ -1479,7 +1479,7 @@ html[data-theme="dark"] .drawerdemo .scrim,html[data-theme="dark"] .sheetdemo .s
 <div class="head">
   <div class="kick">管理者工作室 — COMPONENT SPEC · S8 LINE · 十二組核心 ＋ SC1〜SC3</div>
   <h1>S8 線描（細線與圓點）</h1>
-  <p>管理者工作室 網頁介面會用到的全部元件，一次定義。原則：<b>只用 1px 線條、圓點與留白</b>——卡片與頁面同色、可以按的東西用墨色細線、選中用同心圓與實心點、零陰影零漸層；標題細字、英文眉標寬字距。給品牌官網、手機 App 前台、儀表板首頁這類「看」的畫面。<b>色彩紀律：元件只准出現四類顏色</b>——品牌雙色（runtime 注入）、結構灰階、以及四個固定語意色：error 紅／warning 琥珀／success 綠／info 藍。用下方切換鈕驗證雙色替換。</p>
+  <p>管理者工作室 網頁介面會用到的全部元件，一次定義。原則：<b>只用 1px 線條、圓點與留白</b>——卡片與頁面同色、線分三層（墨線是結構、中線是可以按或可以填的東西、淡線做分隔）、選中用同心圓與實心點、零陰影零漸層；標題細字、英文眉標寬字距。給品牌官網、手機 App 前台、儀表板首頁這類「看」的畫面。<b>色彩紀律：元件只准出現四類顏色</b>——品牌雙色（runtime 注入）、結構灰階、以及四個固定語意色：error 紅／warning 琥珀／success 綠／info 藍。用下方切換鈕驗證雙色替換。</p>
 </div>
 
 <div class="accbar">
@@ -1507,7 +1507,8 @@ html[data-theme="dark"] .drawerdemo .scrim,html[data-theme="dark"] .sheetdemo .s
 <div class="tok">
 <div class="tokcell"><div class="sw" style="background:var(--tk-26292e,#1A1A1A)"></div><div class="tn">ink 主文字</div><div class="tv">#1A1A1A</div></div>
 <div class="tokcell"><div class="sw" style="background:var(--tk-6f6b64,#5E5E5E)"></div><div class="tn">muted 次要</div><div class="tv">#5E5E5E</div></div>
-<div class="tokcell"><div class="sw" style="background:var(--tk-e4e2de,#C8C8C8)"></div><div class="tn">line 框線</div><div class="tv">#C8C8C8 · 1px</div></div>
+<div class="tokcell"><div class="sw" style="background:var(--tk-e4e2de,#C8C8C8)"></div><div class="tn">line 淡線</div><div class="tv">#C8C8C8 · 1px</div></div>
+<div class="tokcell"><div class="sw" style="background:var(--line-2)"></div><div class="tn">line-2 中線</div><div class="tv">#888888 · 1px</div></div>
 <div class="tokcell"><div class="sw" style="background:var(--tk-fbfaf8,#E6E6E6);border:1px solid var(--tk-e4e2de,#C8C8C8)"></div><div class="tn">band 表頭帶</div><div class="tv">#E6E6E6</div></div>
 <div class="tokcell"><div class="sw" style="background:var(--acc)"></div><div class="tn">accent-1 主色</div><div class="tv num" id="tvAcc1">#2B5FB8</div></div>
 <div class="tokcell"><div class="sw" style="background:var(--acc2)"></div><div class="tn">accent-2 副色</div><div class="tv num" id="tvAcc2">#C2377B</div></div>
